@@ -1,22 +1,53 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+
+
+// 引入一级组件
+import Default from "../views/default/Default";
+
+
+const Home = ()=> import('./../views/home/Home.vue');
+const Dynamic = ()=> import('./../views/dynamic/Dynamic.vue');
+const Message = ()=> import('./../views/message/Message.vue');
+const Mine = ()=> import('./../views/mine/Mine.vue');
 
 Vue.use(VueRouter)
 
 const routes = [
   {
     path: '/',
-    name: 'home',
-    component: Home
+    redirect: '/default'
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    path: '/default',
+    name: 'default',
+    component: Default,
+    children : [
+      {
+        path: '/default',
+        redirect: '/default/home'
+      },
+      {
+        path: 'home',
+        name: 'home',
+        component: Home
+      },
+      {
+        path: 'dynamic',
+        name: 'dynamic',
+        component: Dynamic
+      },
+      {
+        path: 'message',
+        name: 'message',
+        component: Message
+      },
+      {
+        path: 'mine',
+        name: 'mine',
+        component: Mine
+      }
+    ]
   }
 ]
 
