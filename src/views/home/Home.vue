@@ -1,6 +1,13 @@
 <template>
     <div id="home">
+        <van-nav-bar
+                title="主页"
+                fixed
+                border
+        ></van-nav-bar>
+        <div style="margin-top: 2.6rem;">
 
+        </div>
     </div>
 </template>
 

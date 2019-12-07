@@ -17,8 +17,8 @@
                         <img class="iconImage" src="
 https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f380c555f.jpg" alt="">
                         <div class="personInfo">
-                            <span>张XX</span>
-                            <span>15900898361</span>
+                            <span>不安分的选择</span>
+                            <span class="personInfo-number">15900898361</span>
                         </div>
                     </div>
                 </template>
@@ -26,24 +26,35 @@ https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f3
         </van-cell-group>
 
         <van-cell-group>
-            <van-grid :border="false">
-                <van-grid-item>
-                    <van-image src="https://img.yzcdn.cn/vant/apple-1.jpg" />
-                </van-grid-item>
-                <van-grid-item icon="photo-o" text="文字" />
-                <van-grid-item icon="photo-o" text="文字" />
-                <van-grid-item icon="photo-o" text="文字" />
-            </van-grid>
+            <div class="watch-like">
+            <div class="watch-like-container">
+                <span class="watch-like-container-show">233</span>
+                <span class="watch-like-container-label">看过我</span>
+            </div>
+            <div class="watch-like-container">
+                <span class="watch-like-container-show">56</span>
+                <span class="watch-like-container-label" >喜欢我</span>
+            </div>
+            <div class="watch-like-container">
+                <span class="watch-like-container-show">32</span>
+                <span class="watch-like-container-label">我喜欢</span>
+            </div>
+            </div>
         </van-cell-group>
 
         <van-cell-group style="margin-top: 0.4rem">
-            <van-cell title="我的优惠券" icon="gold-coin" value="1张" is-link></van-cell>
-            <van-cell title="我的收货地址" icon="todo-list" is-link></van-cell>
+            <van-cell title="实名认证" icon="gold-coin" is-link></van-cell>
+            <!--<van-cell title="我的认证" icon="todo-list" is-link></van-cell>-->
         </van-cell-group>
         <van-cell-group style="margin-top: 0.4rem">
+            <van-cell title="我的动态" icon="gold-coin" is-link></van-cell>
+            <van-cell title="我关注" icon="gold-coin" is-link></van-cell>
+            <van-cell title="关注我" icon="todo-list" is-link></van-cell>
+        </van-cell-group>
+        <!--<van-cell-group style="margin-top: 0.4rem">
             <van-cell title="我的优惠券" icon="gold-coin" value="1张" is-link></van-cell>
             <van-cell title="我的收货地址" icon="todo-list" is-link></van-cell>
-        </van-cell-group>
+        </van-cell-group>-->
     </div>
 </template>
 
@@ -76,8 +87,32 @@ https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f3
         flex-direction: column;
         margin-left: 0.8rem;
     }
+    .personInfo-number{
+        color: #7d7e80;
+        font-size: 12px;
+    }
 
     .van-grid-item__text{
         color: red;
+    }
+    .watch-like{
+        display: flex;
+    }
+    .watch-like .watch-like-container{
+        display: flex;
+        flex-direction: column;
+        flex-basis: 33.3%;
+        align-items: center;
+        padding: 16px 8px;
+    }
+    .watch-like-container-label{
+        color: #7d7e80;
+        font-size: 12px;
+    }
+    .watch-like-container-show{
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #fd2105;
     }
 </style>
