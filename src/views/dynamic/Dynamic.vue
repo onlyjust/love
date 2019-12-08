@@ -6,7 +6,7 @@
                 border
         ></van-nav-bar>
         <div style="margin-top: 2.6rem;">
-            <div>
+            <div class="dynamics">
                 <div class="chatMsg">
                     <img class="iconImage" src="
 https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f380c555f.jpg" alt="">
@@ -24,6 +24,15 @@ https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f3
                     </div>
                     <img style="width: 50%;height: 10rem;" src="
 https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f380c555f.jpg" alt="">
+                </div>
+                <div class="dynamic-footer">
+                    <ul>
+                        <li class="author">张彤</li>
+                        <li class="lmname"><a href="list2">技术精华</a></li>
+                        <li class="timer">2018-11-21</li>
+                        <li class="view"><span>210</span>已阅读</li>
+                        <li class="like">102</li>
+                    </ul>
                 </div>
             </div>
 
@@ -78,6 +87,15 @@ https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f3
         right:1rem;
         color: #fd2105;
         font-size: 12px;
+    }
+
+    .dynamic-footer{
+        overflow: hidden;
+        display: block;
+    }
+    .dynamic-footer li {
+        float: left;
+        color: #748594;
     }
 
 </style>
