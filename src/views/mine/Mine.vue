@@ -5,7 +5,7 @@
                 fixed
                 border
         ></van-nav-bar>
-        <van-cell-group style="margin-top: 2.6rem;">
+        <van-cell-group style="margin-top: 46px;">
             <van-cell
                     label-class="labelClass"
                     is-link
@@ -82,7 +82,6 @@ https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f3
 <style lang="less" scoped>
     #mine{
         width: 100%;
-        height: 100%;
     }
     .personMsg {
         display: flex;

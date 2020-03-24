@@ -5,49 +5,88 @@
                 fixed
                 border
         ></van-nav-bar>
-        <div style="margin-top: 2.6rem;">
-            <div class="chatMsg">
-                <img class="iconImage" src="
-https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f380c555f.jpg" alt="">
-                <div class="chatInfo">
-                    <span class="chatMsg-title">不安分的选择</span>
-                    <span class="chatMsg-content">15900898361</span>
-                </div>
-                <div class="chatTime">
-                    <span>08-09</span>
-                </div>
+        <div style="margin-top: 46px">
+            <div class="header">
+                <ul>
+                    <li>
+                        <i class="iconfont iconfensi"></i>
+                        <span>粉丝</span>
+                    </li>
+                    <li>
+                        <i class="iconfont iconzan"></i>
+                        <span>点赞</span>
+                    </li>
+                    <li>
+                        <i class="iconfont iconaite"></i>
+                        <span>艾特</span>
+                    </li>
+                    <li>
+                        <i class="iconfont iconpinglun"></i>
+                        <span>评论</span>
+                    </li>
+                </ul>
             </div>
-            <div class="chatMsg">
-                <img class="iconImage" src="
-https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f380c555f.jpg" alt="">
-                <div class="chatInfo">
-                    <span class="chatMsg-title">不安分的选择</span>
-                    <span class="chatMsg-content">15900898361</span>
+
+            <div class="message_container">
+                <div class="message_box">
+                    <div class="message_left">
+                        <img src="@/img/1.jpg">
+                    </div>
+                    <div class="message_content">
+                        <h1>晓晓</h1>
+                        <p>发来一条消息</p>
+                    </div>
+                    <div class="message_right">
+                        <span>2020-03-03</span>
+                    </div>
                 </div>
-                <div class="chatTime">
-                    <span>08-09</span>
+                <div class="message_box">
+                    <div class="message_left">
+                        <img src="@/img/1.jpg">
+                    </div>
+                    <div class="message_content">
+                        <h1>晓晓</h1>
+                        <p>发来一条消息</p>
+                    </div>
+                    <div class="message_right">
+                        <span>2020-03-03</span>
+                    </div>
                 </div>
-            </div>
-            <div class="chatMsg">
-                <img class="iconImage" src="
-https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f380c555f.jpg" alt="">
-                <div class="chatInfo">
-                    <span class="chatMsg-title">不安分的选择</span>
-                    <span class="chatMsg-content">15900898361</span>
+                <div class="message_box">
+                    <div class="message_left">
+                        <img src="@/img/3.jpg">
+                    </div>
+                    <div class="message_content">
+                        <h1>晓晓</h1>
+                        <p>发来一条消息</p>
+                    </div>
+                    <div class="message_right">
+                        <span>2020-03-03</span>
+                    </div>
                 </div>
-                <div class="chatTime">
-                    <span>08-09</span>
+                <div class="message_box">
+                    <div class="message_left">
+                        <img src="@/img/2.jpg">
+                    </div>
+                    <div class="message_content">
+                        <h1>晓晓</h1>
+                        <p>发来一条消息</p>
+                    </div>
+                    <div class="message_right">
+                        <span>2020-03-03</span>
+                    </div>
                 </div>
-            </div>
-            <div class="chatMsg">
-                <img class="iconImage" src="
-https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f380c555f.jpg" alt="">
-                <div class="chatInfo">
-                    <span class="chatMsg-title">不安分的选择</span>
-                    <span class="chatMsg-content">15900898361</span>
-                </div>
-                <div class="chatTime">
-                    <span>08-09</span>
+                <div class="message_box">
+                    <div class="message_left">
+                        <img src="@/img/3.jpg">
+                    </div>
+                    <div class="message_content">
+                        <h1>晓晓</h1>
+                        <p>发来一条消息</p>
+                    </div>
+                    <div class="message_right">
+                        <span>2020-03-03</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -66,40 +105,53 @@ https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f3
         width: 100%;
         height: 100%;
     }
-    .chatMsg {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-    }
 
-    .chatInfo {
+    .header ul{
+        display: flex;
+        font-size: 2.4rem;
+        justify-content: space-around;
+        padding: 1rem 0;
+        border-bottom: #b2b2c3 solid 1px;
+    }
+    .header ul li{
         display: flex;
         flex-direction: column;
-        margin-left: 0.8rem;
+        align-items: center;
+    }
+    .header ul li span{
+        font-size: 1.4rem;
     }
 
-    .chatMsg .iconImage {
-        width: 3rem;
-        height: 3rem;
-        margin: 0.4rem 0.4rem;
-        border-radius: 1.5rem;
-        border: 0.12rem solid #FFF;
+    /*消息*/
+    .message_container{
+        padding: 0 1rem;
     }
-
-    .chatMsg-title{
-        font-weight: bold;
-        font-size: 14px;
-        margin-bottom: 0.4rem;
+    .message_box {
+        display: flex;
+        align-items: center;
+        border-bottom: #b2b2c3 solid 1px;
     }
-    .chatMsg-content{
-        color: #7d7e80;
-        font-size: 12px;
+    .message_box .message_left {
+        width: 5rem;
+        padding: 0.5rem;
     }
-    .chatTime{
-        position: absolute;
-        right:1rem;
-        color: #7d7e80;
-        font-size: 12px;
+    .message_box .message_left img{
+        width: 100%;
+        border-radius: 50%;
+    }
+    .message_box .message_content{
+        flex-grow: 1;
+        margin-left: 1rem;
+    }
+    .message_box .message_content h1{
+        font-size: 1.6rem;
+        margin-bottom: 0.8rem;
+    }
+    .message_box .message_content p{
+        font-size: 1.2rem;
+    }
+    .message_box .message_right{
+        width: 6rem;
     }
 
 </style>

@@ -6,6 +6,8 @@ import store from './store/index'
 
 // 2. 引入全局的样式
 import '@/style/common.less'
+import '@/style/iconfont.less'
+import '@/style/iconfontcolor.less'
 
 // 引入全局UI组件库
 import '@/plugins/vant'
@@ -26,9 +28,22 @@ import 'font-awesome.css'
 Vue.config.productionTip = false
 
 
+window.onload = setHtmlFontSize;
+window.onresize = setHtmlFontSize;
+function setHtmlFontSize(){
+  const htmlWidth = document.documentElement.clientWidth || document.body.clientWidth;
+  const htmlDom = document.getElementsByTagName('html')[0];
+  htmlDom.style.fontSize = htmlWidth / 37.5 + 'px';
+  console.info("fontSize:",htmlDom.style.fontSize)
+};
+setHtmlFontSize();
 
 new Vue({
   router,
   store,
   render: h => h(App)
 }).$mount('#app')
+
+
+
+
