@@ -10,7 +10,7 @@
                     label-class="labelClass"
                     is-link
                     :center=true
-                    @click="$router.push('/default/mine/userCenter')"
+                    @click="$router.push('/default/mine/editor')"
             >
                 <template slot="title">
                     <div class="personMsg">
@@ -55,12 +55,27 @@ https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f3
             <van-cell title="我的优惠券" icon="gold-coin" value="1张" is-link></van-cell>
             <van-cell title="我的收货地址" icon="todo-list" is-link></van-cell>
         </van-cell-group>-->
+
+        <!--路由的出口-->
+        <transition name="router-slider" mode="out-in">
+            <router-view></router-view>
+        </transition>
     </div>
 </template>
 
 <script>
     export default {
-        name: "Mine"
+        name: "Mine",
+        created(){
+
+        },
+        methods: {
+            editPerson(){
+                this.$router.push({
+                    path:'/default/mine/editor'
+                });
+            }
+        }
     }
 </script>
 

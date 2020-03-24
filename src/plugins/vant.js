@@ -26,3 +26,11 @@ Vue.use(Icon);
 //Panel 面板
 import { Panel } from 'vant';
 Vue.use(Panel);
+
+// Card 卡片
+import { Card } from 'vant';
+Vue.use(Card);
+
+// Tag 标记
+import { Tag } from 'vant';
+Vue.use(Tag);
