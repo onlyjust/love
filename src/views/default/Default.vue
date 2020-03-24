@@ -1,19 +1,19 @@
 <template>
     <div id="default">
         <van-tabbar v-model="active" active-color="#fd2105">
-            <van-tabbar-item replace to="/default/home">
+            <van-tabbar-item replace to="/home">
                 <span>首页</span>
                 <img slot="icon" slot-scope="props" :src="props.active ? home_icon.active : home_icon.normal">
             </van-tabbar-item>
-            <van-tabbar-item replace to="/default/dynamic">
+            <van-tabbar-item replace to="/dynamic">
                 <span>动态</span>
                 <img slot="icon" slot-scope="props" :src="props.active ? dynamic_icon.active : dynamic_icon.normal">
             </van-tabbar-item>
-            <van-tabbar-item replace to="/default/message" >
+            <van-tabbar-item replace to="/message" >
                 <span>消息</span>
                 <img slot="icon" slot-scope="props" :src="props.active ? message_icon.active : message_icon.normal">
             </van-tabbar-item>
-            <van-tabbar-item replace to="/default/mine">
+            <van-tabbar-item replace to="/mine">
                 <span>我的</span>
                 <img slot="icon" slot-scope="props" :src="props.active ? mine_icon.active : mine_icon.normal">
             </van-tabbar-item>
