@@ -14,7 +14,7 @@
             </div>
             <div class="recommend_content">
                 <ul>
-                    <li><img src="@/img/1.jpg" alt=""><p class="name">亦菲</p><span class="job">演员</span></li>
+                    <li @click="$router.push({path:'/person', query:{id:'12'}})"><img src="@/img/1.jpg" alt=""><p class="name">亦菲</p><span class="job">演员</span></li>
                     <li><img src="@/img/2.jpg" alt=""><p class="name">大幂幂</p><span class="job">演员</span></li>
                     <li><img src="@/img/3.jpg" alt=""><p class="name">美美</p><span class="job">网红</span></li>
                     <li><img src="@/img/1.jpg" alt=""><p class="name">亦菲</p><span class="job">演员</span></li>

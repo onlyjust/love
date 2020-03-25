@@ -5,7 +5,7 @@ import homeRouter from './home'
 import mineRouter from './mine'
 import dynamicRouter from './dynamic'
 import messageRouter from './message'
-
+import personRouter from './person'
 
 Vue.use(VueRouter)
 /*
@@ -93,9 +93,10 @@ const router = new VueRouter({
         homeRouter,
         mineRouter,
         dynamicRouter,
-        messageRouter,
+        messageRouter
       ]
-    }
+    },
+    personRouter
   ]
 })
 
