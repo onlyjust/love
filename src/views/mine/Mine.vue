@@ -10,7 +10,7 @@
                     label-class="labelClass"
                     is-link
                     :center=true
-                    @click="$router.push('/default/mine/editor')"
+                    @click="$router.push('/person')"
             >
                 <template slot="title">
                     <div class="personMsg">
