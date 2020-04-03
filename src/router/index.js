@@ -14,7 +14,7 @@ const router = new VueRouter({
   routes:[
     defaultRouter,
     userinfoRouter,
-    personRouter,
+    ...personRouter,
     {
       path: '/*',
       redirect: '/default'

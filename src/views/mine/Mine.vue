@@ -14,8 +14,14 @@
             >
                 <template slot="title">
                     <div class="personMsg">
-                        <img class="iconImage" src="
-https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f380c555f.jpg" alt="">
+                        <van-image
+                                round
+                                width="8rem"
+                                height="8rem"
+                                src="https://img.yzcdn.cn/vant/cat.jpeg"
+                        />
+                        <!--<img class="iconImage" src="
+https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f380c555f.jpg" alt="">-->
                         <div class="personInfo">
                             <span>不安分的选择</span>
                             <span class="personInfo-number">15900898361</span>
@@ -64,6 +70,8 @@ https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f3
 </template>
 
 <script>
+
+
     export default {
         name: "Mine",
         created(){
@@ -75,6 +83,8 @@ https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f3
                     path:'/default/mine/editor'
                 });
             }
+        },
+        components:{
         }
     }
 </script>

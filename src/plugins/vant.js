@@ -34,3 +34,48 @@ Vue.use(Card);
 // Tag 标记
 import { Tag } from 'vant';
 Vue.use(Tag);
+
+// Swipe 轮播
+import { Swipe, SwipeItem } from 'vant';
+Vue.use(Swipe).use(SwipeItem);
+
+// 图片懒加载
+import { Lazyload } from 'vant';
+Vue.use(Lazyload);
+
+// ImagePreview 图片预览
+import { ImagePreview } from 'vant';
+Vue.use(ImagePreview);
+
+
+// Field 输入框
+import { Field } from 'vant';
+Vue.use(Field);
+
+// Form 表单
+import { Form } from 'vant';
+Vue.use(Form);
+
+// Button 按钮
+import { Button } from 'vant';
+Vue.use(Button);
+
+// Popup 弹出层
+import { Popup } from 'vant';
+Vue.use(Popup);
+
+// Area 省市区选择
+import { Area } from 'vant';
+Vue.use(Area);
+
+// Picker 选择器
+import { Picker } from 'vant';
+Vue.use(Picker);
+
+// Calendar 日历
+import { Calendar } from 'vant';
+Vue.use(Calendar);
+
+// DatetimePicker 时间选择
+import { DatetimePicker } from 'vant';
+Vue.use(DatetimePicker);
