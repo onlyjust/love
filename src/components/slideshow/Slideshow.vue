@@ -4,7 +4,7 @@
             <img style="width:100%;height:26rem;" v-lazy="image" @click="Preview_img(slideshow_list,index)" />
         </van-swipe-item>
         <template #indicator>
-            <div class="custom-indicator">
+            <div class="custom-indicator" @click="$router.push('/person/lifePhoto')">
                 编辑
             </div>
         </template>

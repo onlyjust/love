@@ -7,7 +7,7 @@
         <div class="question_container">
             <div class="subject">
                 <h2 class="subject_title question_title">自我描述</h2>
-                <a class="subject_edit" href="">编辑</a>
+                <a class="subject_edit" @click="$router.push('/person/question')">编辑</a>
             </div>
             <div class="answer_container">
                 <p class="answer">

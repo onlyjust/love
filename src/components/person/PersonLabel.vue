@@ -2,7 +2,7 @@
     <div class="label">
         <div class="subject">
             <h1>个性标签</h1>
-            <a href="">编辑</a>
+            <a @click="$router.push('/person/label')">编辑</a>
         </div>
         <div class="label_container">
             <label class="tag">直率</label>

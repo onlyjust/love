@@ -10,114 +10,217 @@
         ></van-nav-bar>
 
         <van-form @submit="onSubmit">
-            <van-field
-                    v-model="nickname"
-                    name="nickname"
-                    label="昵称"
-                    placeholder="昵称"
-                    :rules="[{ required: true, message: '请填写昵称' }]"
-            />
-
-            <van-field label="性别" value="男" disabled />
-
-            <van-field
-                    readonly
-                    clickable
-                    name="live"
-                    :value="live"
-                    label="居住地"
-                    placeholder="点击选择居住地"
-                    @click="showLive = true"
-            />
-            <van-popup v-model="showLive" position="bottom">
-                <van-area
-                        :area-list="areaList"
-                        @confirm="onLiveConfirm"
-                        @cancel="showLive = false"
+            <van-cell-group  title="基本资料">
+                <!--昵称-->
+                <van-field
+                        v-model="nickname"
+                        name="nickname"
+                        label="昵称"
+                        placeholder="昵称"
+                        input-align="right"
+                        required
                 />
-            </van-popup>
+                <!--性别-->
+                <van-field label="性别" v-model="gender" disabled input-align="right" required/>
 
-
-            <van-field
-                    readonly
-                    clickable
-                    name="native"
-                    :value="native"
-                    label="老家"
-                    placeholder="点击选择老家"
-                    @click="showNative = true"
-            />
-            <van-popup v-model="showNative" position="bottom">
-                <van-area
-                        :area-list="areaList"
-                        @confirm="onNativeConfirm"
-                        @cancel="showNative = false"
+                <!--身高-->
+                <van-field
+                        readonly
+                        clickable
+                        name="height"
+                        :value="height"
+                        label="身高"
+                        placeholder="点击选择身高"
+                        input-align="right"
+                        required
+                        @click="showHeightPicker = true"
                 />
-            </van-popup>
+                <van-popup v-model="showHeightPicker" position="bottom">
+                    <van-picker
+                            show-toolbar
+                            :columns="heightList"
+                            @confirm="onHeightConfirm"
+                            @cancel="showHeightPicker = false"
+                    />
+                </van-popup>
 
-            <van-field
+                <!--生日-->
+                <van-field
+                        readonly
+                        clickable
+                        name="birthday"
+                        :value="birthday"
+                        label="生日"
+                        placeholder="点击选择生日"
+                        input-align="right"
+                        required
+                        @click="showBirthdayPicker = true"
+                />
+                <van-popup v-model="showBirthdayPicker" position="bottom">
+                    <van-datetime-picker
+                            v-model="currentDate"
+                            type="date"
+                            :min-date="minBirthday"
+                            :max-date="maxBirthday"
+                            @confirm="onBirthdayConfirm"
+                            @cancel="showBirthdayPicker = false"
+                            :formatter="formatter"
+                    />
+                </van-popup>
+
+                <!--星座-->
+                <van-field
+                        readonly
+                        clickable
+                        name="horoscope"
+                        :value="horoscope"
+                        label="星座"
+                        placeholder="点击选择星座"
+                        input-align="right"
+                        required
+                        @click="showHoroscopePicker = true"
+                />
+                <van-popup v-model="showHoroscopePicker" position="bottom">
+                    <van-picker
+                            show-toolbar
+                            :columns="horoscopeList"
+                            @confirm="onHoroscopeConfirm"
+                            @cancel="showHoroscopePicker = false"
+                    />
+                </van-popup>
+
+                <van-field
+                        v-model="highlightTitle"
+                        name="highlightTitle"
+                        rows="1"
+                        autosize
+                        label="个性说说"
+                        type="textarea"
+                        placeholder="请输入个性说说"
+                        maxlength="80"
+                        input-align="right"
+                />
+
+                <!--居住地-->
+                <van-field
+                        readonly
+                        clickable
+                        name="live"
+                        :value="live"
+                        label="居住地"
+                        placeholder="点击选择居住地"
+                        input-align="right"
+                        required
+                        @click="showLive = true"
+                />
+                <van-popup v-model="showLive" position="bottom">
+                    <van-area
+                            :area-list="areaList"
+                            @confirm="onLiveConfirm"
+                            @cancel="showLive = false"
+                    />
+                </van-popup>
+
+                <!--家乡-->
+                <van-field
+                        readonly
+                        clickable
+                        name="native"
+                        :value="native"
+                        label="家乡"
+                        placeholder="点击选择家乡"
+                        input-align="right"
+                        required
+                        @click="showNative = true"
+                />
+                <van-popup v-model="showNative" position="bottom">
+                    <van-area
+                            :area-list="areaList"
+                            @confirm="onNativeConfirm"
+                            @cancel="showNative = false"
+                    />
+                </van-popup>
+            </van-cell-group>
+
+            <van-cell-group  title="教育/职业背景">
+                <!--学历-->
+                <van-field
                     readonly
                     clickable
-                    name="picker"
+                    name="education"
                     :value="education"
                     label="学历"
                     placeholder="点击选择城市"
+                    input-align="right"
+                    required
                     @click="showEducationPicker = true"
-            />
-            <van-popup v-model="showEducationPicker" position="bottom">
-                <van-picker
+                />
+                <van-popup v-model="showEducationPicker" position="bottom">
+                    <van-picker
                         show-toolbar
                         :columns="educationList"
                         @confirm="onEducationConfirm"
                         @cancel="showEducationPicker = false"
+                    />
+                </van-popup>
+
+                <!--毕业学校-->
+                <van-field
+                    v-model="graduateSchool"
+                    name="graduateSchool"
+                    label="毕业学校"
+                    input-align="right"
+                    placeholder="请输入毕业学校"
                 />
-            </van-popup>
 
+                <!--职业-->
+                <van-field
+                    v-model="job"
+                    name="job"
+                    label="职业"
+                    placeholder="请填写职业"
+                    input-align="right"
+                    required
+                />
 
-            <!--<van-field
+                <!--公司-->
+                <van-field
+                    v-model="company"
+                    name="company"
+                    label="公司名称"
+                    input-align="right"
+                    placeholder="请输入公司名称"
+                />
+
+                <!--收入-->
+                <van-field
                     readonly
                     clickable
-                    name="birthday"
-                    :value="birthday"
-                    label="生日"
-                    placeholder="点击选择生日"
-                    @click="showBirthdayPicker = true"
-            />
-            <van-popup v-model="showBirthdayPicker" position="bottom">
-                <van-datetime-picker
-                        v-model="birthday"
-                        type="date"
-                        :min-date="minBirthday"
-                        :max-date="maxBirthday"
-                        @change="onChangeBirthday"
-                        @confirm="showBirthdayPicker = false"
-                        @cancel="showBirthdayPicker = false"
-                        :formatter="formatter"
+                    name="salary"
+                    :value="salary"
+                    label="收入"
+                    placeholder="点击选择收入"
+                    input-align="right"
+                    required
+                    @click="showSalaryPicker = true"
                 />
-            </van-popup>-->
+                <van-popup v-model="showSalaryPicker" position="bottom">
+                    <van-picker
+                        show-toolbar
+                        :columns="salaryList"
+                        @confirm="onSalaryConfirm"
+                        @cancel="showSalaryPicker = false"
+                    />
+                </van-popup>
+            </van-cell-group>
+            <van-cell-group  title="联系方式">
+                <van-field v-model="wechatId" label="微信号" name="wechatId" placeholder="请输入微信号" required input-align="right"/>
+                <!-- 输入手机号，调起手机号键盘 -->
+                <van-field v-model="phone" type="tel" name="phone" label="手机号" placeholder="请输入手机号" required input-align="right"/>
+            </van-cell-group>
 
-
-            <van-field
-                    v-model="password"
-                    type="password"
-                    name="密码"
-                    label="密码"
-                    placeholder="密码"
-                    :rules="[{ required: true, message: '请填写密码' }]"
-            />
-
-            <!-- 输入任意文本 -->
-            <van-field v-model="text" label="文本" />
-            <!-- 输入手机号，调起手机号键盘 -->
-            <van-field v-model="tel" type="tel" label="手机号" />
-            <!-- 允许输入正整数，调起纯数字键盘 -->
-            <van-field v-model="digit" type="digit" label="整数" />
-            <!-- 允许输入数字，调起带符号的纯数字键盘 -->
-            <van-field v-model="number" type="number" label="数字" />
-            <!-- 输入密码 -->
-            <van-field v-model="password" type="password" label="密码" />
             <div style="margin: 16px;">
-                <van-button round block type="info" native-type="submit">
+                <van-button round block color="#65c4aa" native-type="submit">
                     提交
                 </van-button>
             </div>
@@ -132,29 +235,40 @@
         name: "Basic",
         data(){
             return {
-                tel: '',
-                text: '',
-                digit: '',
-                number: '',
-                password: '',
-
+                gender:'男',
                 nickname:'',
-
-                education: '',
+                highlightTitle:'',
+                education: '大专',
                 educationList: ['初中', '高中', '中专', '大专', '本科', '硕士','博士','教授'],
                 showEducationPicker: false,
-
+                graduateSchool:'',
                 native:'',
                 showNative: false,
-
                 live: '',
                 showLive: false,
-
-                minBirthday: new Date(2020, 0, 1),
-                maxBirthday: new Date(2025, 10, 1),
-                birthday: this.dataFormat(new Date(2025, 10, 1)),
+                birthday:'',
                 showBirthdayPicker: false,
+                minBirthday: new Date(1950, 1, 1),
+                maxBirthday: new Date(2020, 1, 1),
+                currentDate: new Date(1990, 1, 1),
 
+                horoscope:'',
+                horoscopeList:['白羊座','金牛座'],
+                showHoroscopePicker:false,
+
+                height:'',
+                heightList:['160','161','162','163','164','165','166','167','168','169'],
+                showHeightPicker:false,
+
+                salary:'',
+                salaryList:["3W-5W","5W-8W","8W-15W","15W-20W","20W-25W","25W-30W","30W-40W","40W-50W","50W-100W","100W-1000W"],
+                showSalaryPicker:false,
+
+                job:'',
+                company:'',
+
+                phone:'',
+                wechatId:'',
                 areaList: AreaList, // 数据格式见 Area 组件文档
             }
         },
@@ -162,39 +276,34 @@
             onSubmit(values) {
                 console.log('submit', values);
             },
+            // 学历
             onEducationConfirm(value) {
                 this.education = value;
                 this.showEducationPicker = false;
             },
+            // 居住地选择确认
             onLiveConfirm(values) {
                 this.live = values.map(item => item.name).join('-');
                 this.showLive = false;
                 console.info(this.live)
             },
+            //老家选择确认
             onNativeConfirm(values) {
                 this.native = values.map(item => item.name).join('-');
                 this.showNative = false;
                 console.info(this.native)
             },
-            onChangeBirthday(date) { // 值变化是触发
-                let endTimeArr = date.getValues();
-                console.log("endTimeArr",endTimeArr)
-                console.log("currentDate",date);
-                console.log("birthday",this.birthday);
-                this.birthday = this.dataFormat(date.getData()) // Tue Sep 08 2020 00:00:00 GMT+0800 (中国标准时间)
-            },
+            //生日选择确认
             onBirthdayConfirm(date) {
                 let year = date.getFullYear();
                 let month = date.getMonth() + 1;
                 let day = date.getDate();
                 if (month >= 1 && month <= 9) { month = `0${month}` }
                 if (day >= 1 && day <= 9) { day = `0${day}` }
-                // this.birthday = `${year}-${month}-${day}`;
-                this.birthday = this.dataFormat(date);
+                this.birthday = `${year}-${month}-${day}`;
                 this.showBirthdayPicker = false;
                 console.log(this.birthday)
             },
-
             formatter(type, value) {
                 if (type === 'year') {
                     return `${value}年`;
@@ -205,14 +314,21 @@
                 }
                 return value;
             },
-
-            dataFormat(time) { // 时间格式化 2019-09-08
-                let year = time.getFullYear();
-                let month = time.getMonth() + 1;
-                let day = time.getDate();
-                return year + '年' + month + '月' + day + '日'
+            // 星座
+            onHoroscopeConfirm(value){
+                this.horoscope = value;
+                this.showHoroscopePicker = false;
+            },
+            // 身高
+            onHeightConfirm(value){
+                this.height = value;
+                this.showHeightPicker = false;
+            },
+            // 收入
+            onSalaryConfirm(value) {
+                this.salary = value;
+                this.showSalaryPicker = false;
             }
-
         }
     }
 </script>

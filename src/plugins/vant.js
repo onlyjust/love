@@ -79,3 +79,8 @@ Vue.use(Calendar);
 // DatetimePicker 时间选择
 import { DatetimePicker } from 'vant';
 Vue.use(DatetimePicker);
+
+// Uploader 文件上传
+import { Uploader } from 'vant';
+Vue.use(Uploader);
+
