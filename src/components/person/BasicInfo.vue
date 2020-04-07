@@ -7,8 +7,8 @@
                 <img src="@/img/2.jpg">
             </div>-->
             <div class="header_box">
-                <h1 class="nickname">晓晓<i class="iconfont iconnv"></i><a @click="$router.push('/person/basic')">编辑</a></h1>
-                <p class="highlight_title">一句突出自己的话</p>
+                <h1 class="nickname">{{userInfo.nickname}}<i class="iconfont " :class="[userInfo.gender == 1?'iconnan':'iconnv']"></i><a @click="$router.push('/person/basic')"><i class="iconfont iconbianji"></i></a></h1>
+                <p class="highlight_title">{{userInfo.highlightTitle}}</p>
             </div>
             <div class="header_right">
                 <img src="@/img/shengyin.png">
@@ -20,33 +20,31 @@
             <div class="basic_box_info">
                 <div>
                     <i class="iconfont iconshengao"></i>
-                    <span>180CM</span>
+                    <span>{{userInfo.height}}CM</span>
                     <i class="iconfont iconnianling"></i>
-                    <span>26</span>
+                    <span>{{userInfo.age}}</span>
                     <i class="iconfont icon_xingzuoyuncheng"></i>
-                    <span>水瓶座</span>
+                    <span>{{userInfo.horoscope}}</span>
                 </div>
                 <div>
                     <i class="iconfont iconzuobiao"></i>
-                    <span>上海</span>
+                    <span>{{userInfo.live}}</span>
                     <i class="iconfont iconsuozaidi"></i>
-                    <span>本科</span>
+                    <span>{{userInfo.education}}</span>
                     <i class="iconfont iconw_zhiye"></i>
-                    <span>设计师</span>
-                    <i class="iconfont iconshouruqingkuang"></i>
-                    <span>20-30W</span>
+                    <span>{{userInfo.job}}</span>
+                    <span v-if="userInfo.salary"><i class="iconfont iconshouruqingkuang"></i>{{userInfo.salary}}元</span>
                 </div>
-                <div>
+                <div v-if="userInfo.graduateSchool">
                     <i class="iconfont iconbiye"></i>
-                    <span>XXX大学</span>
+                    <span>{{userInfo.graduateSchool}}</span>
                 </div>
-                <div>
-                    <i class="iconfont icongongsimingcheng"></i>
-                    <span>杭州XXX科技有限公司</span>
+                <div v-if="userInfo.company">
+                    <span><i class="iconfont icongongsimingcheng"></i>{{userInfo.company}}</span>
                 </div>
-                <div>
+                <div  v-if="userInfo.nativePlace">
                     <i class="iconfont iconsuozaidi"></i>
-                    <span>江苏 · 泰州人</span>
+                    <span>{{userInfo.nativePlace}}人</span>
                 </div>
             </div>
         </div>
@@ -55,7 +53,12 @@
 
 <script>
     export default {
-        name: "BasicInfo"
+        name: "BasicInfo",
+        props:{
+            userInfo:{
+                type:Object
+            }
+        }
     }
 </script>
 
@@ -81,6 +84,10 @@
     .header .header_box .nickname{
         font-size: 1.6rem;
         font-weight: bold;
+    }
+    .header .header_box .nickname a{
+        margin-left: 1rem;
+        font-size: 1.4rem;
     }
     .header .header_box .highlight_title{
         margin-top: 1rem;

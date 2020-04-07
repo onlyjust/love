@@ -84,3 +84,6 @@ Vue.use(DatetimePicker);
 import { Uploader } from 'vant';
 Vue.use(Uploader);
 
+// Toast 轻提示
+import { Toast } from 'vant';
+Vue.use(Toast);

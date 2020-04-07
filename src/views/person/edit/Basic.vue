@@ -94,9 +94,9 @@
                         name="highlightTitle"
                         rows="1"
                         autosize
-                        label="个性说说"
+                        label="个性标语"
                         type="textarea"
-                        placeholder="请输入个性说说"
+                        placeholder="请输入个性标语"
                         maxlength="80"
                         input-align="right"
                 />

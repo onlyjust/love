@@ -1,7 +1,7 @@
 <template>
-    <van-swipe id="my_swipe" :autoplay="3000">
+    <van-swipe :height="350" :autoplay="3000" >
         <van-swipe-item v-for="(image, index) in slideshow_list" :key="index">
-            <img style="width:100%;height:26rem;" v-lazy="image" @click="Preview_img(slideshow_list,index)" />
+                <img class="swipe-img" v-lazy="image" @click="Preview_img(slideshow_list,index)" />
         </van-swipe-item>
         <template #indicator>
             <div class="custom-indicator" @click="$router.push('/person/lifePhoto')">
@@ -34,7 +34,18 @@
     }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+    .van-swipe .van-swipe-item {
+        text-align: center;
+        background-color: #ffffff;
+    }
+    .swipe-img{
+        max-width: 100%;
+        max-height: 100%;
+        width:auto;
+        height:100%;
+    }
+
     .custom-indicator {
         position: absolute;
         right: 5px;

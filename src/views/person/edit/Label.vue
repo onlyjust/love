@@ -9,14 +9,14 @@
                 :border=true
                 @click-left="$router.go(-1)"
         ></van-nav-bar>
-        <van-cell-group title="性格特点">
+        <van-cell-group v-for="(label,idx) in labelList" v-if="label.labelType != 'CUSTOM'" :title="label.labelTypeDesc">
             <ul class="tag_list">
-                <li v-for="(tag,index) in tagList" @click="selectTag(index)" :class="{'select': tag.select}">
-                    {{tag.tagName}}
+                <li v-for="(tag,index) in label.datingLabelList" @click="selectTag(idx,index)" :class="{'select': tag.selected}">
+                    {{tag.label}}
                 </li>
             </ul>
         </van-cell-group>
-        <van-cell-group title="兴趣爱好">
+        <!--<van-cell-group title="兴趣爱好">
             <ul class="tag_list">
                 <li v-for="(tag,index) in tagList" @click="selectTag(index)" :class="{'select': tag.select}">
                     {{tag.tagName}}
@@ -29,7 +29,7 @@
                     {{tag.tagName}}
                 </li>
             </ul>
-        </van-cell-group>
+        </van-cell-group>-->
 
         <van-cell-group title="自定义标签">
             <tags-input v-model="tags"></tags-input>
@@ -37,7 +37,6 @@
 
 
         <van-form @submit="onSubmit">
-            <input type="hidden" v-model="tagNameList" name="tagNameList">
             <div style="margin: 16px;">
                 <van-button round block color="#65c4aa" native-type="submit">
                     提交
@@ -48,67 +47,67 @@
 </template>
 
 <script>
+    import {getLabelList, updateDatingLabel} from '@/service/api/index';
     import TagsInput from '@/components/tag/TagsInput';
     export default {
         name: "Label",
         data() {
             return {
-                tags: ['tag1', 'tag2', 'tag3'],
-                tagNameList:[],
-                tagList: [
-                    {
-                        id: 1,
-                        tagName: '90后'
-                    },
-                    {
-                        id: 2,
-                        tagName: '土豪',
-                        select:true
-                    },
-                    {
-                        id: 3,
-                        tagName: '美女'
-                    },
-                    {
-                        id: 4,
-                        tagName: '帅哥',
-                        select:true
-                    },
-                    {
-                        id: 5,
-                        tagName: '鸽子王'
-                    },
-                    {
-                        id: 6,
-                        tagName: '人傻钱多'
-                    }
-                ]
+                tags: [],
+                labelList:[],
+                selectedLabelList:[]
             }
         },
-        mounted(){
+        created(){
+            console.log("请求数据")
             this.initData();
         },
+        mounted(){
+
+        },
         methods: {
-            initData(){
-                this.tagList.forEach((item,index) =>{
-                    if(item.select){
-                        this.tagNameList.push(item.tagName);
-                    }
-                })
-            },
-            onSubmit(values) {
-                console.log("tagNameList",this.tagNameList);
-                console.log("自定义",this.tags)
-                console.log('submit', values);
-            },
-            selectTag(index){
-                this.$set(this.tagList[index],'select',!this.tagList[index].select); //正确姿势
-                if (this.tagList[index].select) {
-                    this.tagNameList.push(this.tagList[index].tagName);
+            async initData(){
+                //获取标签数据
+                let result = await getLabelList();
+                console.log('result', result);
+                if (result.success){
+                    this.labelList = result.data;
+                    this.labelList.forEach((item) =>{
+                        item.datingLabelList.forEach((label) =>{
+                            if (item.labelType === 'CUSTOM'){
+                                this.tags.push(label.label)
+                            } else if (label.selected) {
+                                this.selectedLabelList.push(label);
+                            }
+                        });
+                    });
                 } else {
-                    this.tagNameList.forEach((item,idx)=>{
-                        if(item === this.tagList[index].tagName){
-                            this.tagNameList.splice(idx,1);
+                    this.$toast(result.message);
+                }
+            },
+            // 提交标签信息
+            async onSubmit(values) {
+                // console.log("selectedLabelList",this.selectedLabelList);
+                // console.log("自定义",this.tags)
+                this.tags.forEach(tag=>{
+                   this.selectedLabelList.push({label:tag,labelType:'CUSTOM'})
+                });
+                // console.log("所有选中的",this.selectedLabelList);
+                let result = await updateDatingLabel(this.selectedLabelList);
+                this.$toast(result.message);
+                if (result.success){
+                    // 回去
+                    this.$router.back();
+                }
+            },
+            selectTag(idx,index){
+                this.$set(this.labelList[idx].datingLabelList[index],'selected',!this.labelList[idx].datingLabelList[index].selected); //正确姿势
+                if (this.labelList[idx].datingLabelList[index].selected) {
+                    this.selectedLabelList.push(this.labelList[idx].datingLabelList[index]);
+                } else {
+                    this.selectedLabelList.forEach((item,num)=>{
+                        if(item.label === this.labelList[idx].datingLabelList[index].label){
+                            this.selectedLabelList.splice(num,1);
                         }
                     });
                 }
