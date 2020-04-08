@@ -20,7 +20,7 @@
             <div class="basic_box_info">
                 <div>
                     <i class="iconfont iconshengao"></i>
-                    <span>{{userInfo.height}}CM</span>
+                    <span v-if="userInfo.height">{{userInfo.height}}CM</span>
                     <i class="iconfont iconnianling"></i>
                     <span>{{userInfo.age}}</span>
                     <i class="iconfont icon_xingzuoyuncheng"></i>
@@ -28,12 +28,12 @@
                 </div>
                 <div>
                     <i class="iconfont iconzuobiao"></i>
-                    <span>{{userInfo.live}}</span>
+                    <span>{{userInfo.liveCity}}</span>
                     <i class="iconfont iconsuozaidi"></i>
                     <span>{{userInfo.education}}</span>
                     <i class="iconfont iconw_zhiye"></i>
                     <span>{{userInfo.job}}</span>
-                    <span v-if="userInfo.salary"><i class="iconfont iconshouruqingkuang"></i>{{userInfo.salary}}元</span>
+                    <span v-if="userInfo.salary"><i class="iconfont iconshouruqingkuang"></i>{{userInfo.salary}}元{{userInfo.salaryScope==='1'?'以上':''}}</span>
                 </div>
                 <div v-if="userInfo.graduateSchool">
                     <i class="iconfont iconbiye"></i>

@@ -13,7 +13,7 @@
             <van-cell-group  title="基本资料">
                 <!--昵称-->
                 <van-field
-                        v-model="nickname"
+                        v-model="datingBasic.nickname"
                         name="nickname"
                         label="昵称"
                         placeholder="昵称"
@@ -21,14 +21,14 @@
                         required
                 />
                 <!--性别-->
-                <van-field label="性别" v-model="gender" disabled input-align="right" required/>
+                <van-field label="性别" v-model="datingBasic.gender" disabled input-align="right" required/>
 
                 <!--身高-->
                 <van-field
                         readonly
                         clickable
                         name="height"
-                        :value="height"
+                        :value="datingBasic.height"
                         label="身高"
                         placeholder="点击选择身高"
                         input-align="right"
@@ -39,6 +39,7 @@
                     <van-picker
                             show-toolbar
                             :columns="heightList"
+                            :default-index="defaultHeightIdx"
                             @confirm="onHeightConfirm"
                             @cancel="showHeightPicker = false"
                     />
@@ -49,7 +50,7 @@
                         readonly
                         clickable
                         name="birthday"
-                        :value="birthday"
+                        :value="datingBasic.birthday"
                         label="生日"
                         placeholder="点击选择生日"
                         input-align="right"
@@ -73,7 +74,7 @@
                         readonly
                         clickable
                         name="horoscope"
-                        :value="horoscope"
+                        :value="datingBasic.horoscope"
                         label="星座"
                         placeholder="点击选择星座"
                         input-align="right"
@@ -84,13 +85,14 @@
                     <van-picker
                             show-toolbar
                             :columns="horoscopeList"
+                            :default-index="defaultHoroscopeIdx"
                             @confirm="onHoroscopeConfirm"
                             @cancel="showHoroscopePicker = false"
                     />
                 </van-popup>
 
                 <van-field
-                        v-model="highlightTitle"
+                        v-model="datingBasic.highlightTitle"
                         name="highlightTitle"
                         rows="1"
                         autosize
@@ -106,7 +108,7 @@
                         readonly
                         clickable
                         name="live"
-                        :value="live"
+                        :value="datingBasic.live"
                         label="居住地"
                         placeholder="点击选择居住地"
                         input-align="right"
@@ -116,6 +118,7 @@
                 <van-popup v-model="showLive" position="bottom">
                     <van-area
                             :area-list="areaList"
+                            :value="datingBasic.liveAreaCode"
                             @confirm="onLiveConfirm"
                             @cancel="showLive = false"
                     />
@@ -125,8 +128,8 @@
                 <van-field
                         readonly
                         clickable
-                        name="native"
-                        :value="native"
+                        name="nativePlace"
+                        :value="datingBasic.nativePlace"
                         label="家乡"
                         placeholder="点击选择家乡"
                         input-align="right"
@@ -142,13 +145,13 @@
                 </van-popup>
             </van-cell-group>
 
-            <van-cell-group  title="教育/职业背景">
+            <van-cell-group title="教育/职业背景">
                 <!--学历-->
                 <van-field
                     readonly
                     clickable
                     name="education"
-                    :value="education"
+                    :value="datingBasic.education"
                     label="学历"
                     placeholder="点击选择城市"
                     input-align="right"
@@ -166,7 +169,7 @@
 
                 <!--毕业学校-->
                 <van-field
-                    v-model="graduateSchool"
+                    v-model="datingBasic.graduateSchool"
                     name="graduateSchool"
                     label="毕业学校"
                     input-align="right"
@@ -175,7 +178,7 @@
 
                 <!--职业-->
                 <van-field
-                    v-model="job"
+                    v-model="datingBasic.job"
                     name="job"
                     label="职业"
                     placeholder="请填写职业"
@@ -185,38 +188,47 @@
 
                 <!--公司-->
                 <van-field
-                    v-model="company"
+                    v-model="datingBasic.company"
                     name="company"
                     label="公司名称"
                     input-align="right"
                     placeholder="请输入公司名称"
                 />
+                <div class="salaryBox">
+                    <van-field
+                               name="salary"
+                               :value="datingBasic.salary"
+                               label="月薪(元)"
+                               type="digit"
+                               placeholder="请填写月薪"
+                               input-align="right"
+                               required
+                    />
+                    <van-field
+                            clickable
+                            readonly
+                            name="salaryScopeDesc"
+                            :value="datingBasic.salaryScopeDesc"
+                            placeholder="选中薪资范畴"
+                            input-align="right"
+                            @click="showSalaryPicker = true"
+                    />
+                </div>
 
-                <!--收入-->
-                <van-field
-                    readonly
-                    clickable
-                    name="salary"
-                    :value="salary"
-                    label="收入"
-                    placeholder="点击选择收入"
-                    input-align="right"
-                    required
-                    @click="showSalaryPicker = true"
-                />
                 <van-popup v-model="showSalaryPicker" position="bottom">
                     <van-picker
                         show-toolbar
                         :columns="salaryList"
+                        :default-index="defaultSalaryScopeIdx"
                         @confirm="onSalaryConfirm"
                         @cancel="showSalaryPicker = false"
                     />
                 </van-popup>
             </van-cell-group>
-            <van-cell-group  title="联系方式">
-                <van-field v-model="wechatId" label="微信号" name="wechatId" placeholder="请输入微信号" required input-align="right"/>
+            <van-cell-group title="联系方式">
+                <van-field v-model="datingBasic.wechatId" label="微信号" name="wechatId" placeholder="请输入微信号" required input-align="right"/>
                 <!-- 输入手机号，调起手机号键盘 -->
-                <van-field v-model="phone" type="tel" name="phone" label="手机号" placeholder="请输入手机号" required input-align="right"/>
+                <van-field v-model="datingBasic.phone" type="tel" name="phone" label="手机号" placeholder="请输入手机号" required input-align="right"/>
             </van-cell-group>
 
             <div style="margin: 16px;">
@@ -229,69 +241,115 @@
 </template>
 
 <script>
+    import {getDatingBasic,updateDatingBasic} from './../../../service/api/index';
     import AreaList from '@/plugins/area';
+    import Basic from './../../../plugins/basic'
 
     export default {
         name: "Basic",
         data(){
             return {
-                gender:'男',
-                nickname:'',
-                highlightTitle:'',
-                education: '大专',
-                educationList: ['初中', '高中', '中专', '大专', '本科', '硕士','博士','教授'],
+                datingBasic:{},
+                educationList: Basic.educationList,
                 showEducationPicker: false,
-                graduateSchool:'',
-                native:'',
                 showNative: false,
-                live: '',
                 showLive: false,
-                birthday:'',
                 showBirthdayPicker: false,
                 minBirthday: new Date(1950, 1, 1),
                 maxBirthday: new Date(2020, 1, 1),
                 currentDate: new Date(1990, 1, 1),
-
-                horoscope:'',
-                horoscopeList:['白羊座','金牛座'],
+                defaultHoroscopeIdx:0,
+                horoscopeList: Basic.horoscopeList,
                 showHoroscopePicker:false,
 
-                height:'',
-                heightList:['160','161','162','163','164','165','166','167','168','169'],
+                defaultHeightIdx:12,
+                heightList: Basic.heightList,
                 showHeightPicker:false,
 
-                salary:'',
-                salaryList:["3W-5W","5W-8W","8W-15W","15W-20W","20W-25W","25W-30W","30W-40W","40W-50W","50W-100W","100W-1000W"],
+                salaryList:Basic.salaryList,
+                defaultSalaryScopeIdx:0,
                 showSalaryPicker:false,
-
-                job:'',
-                company:'',
-
-                phone:'',
-                wechatId:'',
-                areaList: AreaList, // 数据格式见 Area 组件文档
+                areaList: AreaList, // 省份数据
             }
         },
+        created(){
+          this.initData();
+        },
         methods:{
-            onSubmit(values) {
+            async initData(){
+                // 请求加载数据
+                let result = await getDatingBasic();
+                if (result.success){
+                    this.datingBasic = result.data;
+                    // 生日
+                    if (this.datingBasic.birthday){
+                        this.currentDate = new Date(this.datingBasic.birthday)
+                    }
+                    // 性别
+                    if (this.datingBasic.gender == 1){
+                        this.datingBasic.gender = '男'
+                    } else if (this.datingBasic.gender == 2){
+                        this.datingBasic.gender = '女'
+                    }
+                    // 收入
+                    if (this.salaryScope){
+                        this.salaryList.forEach((item,index)=>{
+                            if(item.value == this.datingBasic.salaryScope){
+                                this.defaultSalaryScopeIdx = index;
+                                this.datingBasic.salaryScopeDesc=item.text;
+                                return;
+                            }
+                        })
+                    } else {
+                        this.datingBasic.salaryScopeDesc = '左右'
+                    }
+                    // 身高
+                    this.heightList.forEach((item,index)=>{
+                        if(item.value == this.datingBasic.height){
+                            this.defaultHeightIdx = index;
+                            return;
+                        }
+                    });
+                    // 星座
+                    this.horoscopeList.forEach((item,index)=>{
+                        if(item.value == this.datingBasic.horoscope){
+                            this.defaultHoroscopeIdx = index;
+                            return;
+                        }
+                    });
+                    // console.log(this.areaList.county_list)
+
+                }
+                console.log('result:{}',result)
+
+            },
+
+
+            //提交
+            async onSubmit(values) {
+                values.salaryScope = this.datingBasic.salaryScope;
                 console.log('submit', values);
+                //console.log("datingBasic",this.datingBasic)
+                let result = await updateDatingBasic(values);
+                this.$toast(result.message);
+                if (result.success){
+                    this.$router.back();
+                }
             },
             // 学历
             onEducationConfirm(value) {
-                this.education = value;
+                this.datingBasic.education = value;
                 this.showEducationPicker = false;
             },
             // 居住地选择确认
             onLiveConfirm(values) {
-                this.live = values.map(item => item.name).join('-');
+                this.datingBasic.live = values.map(item => item.name).join('-');
                 this.showLive = false;
-                console.info(this.live)
             },
             //老家选择确认
             onNativeConfirm(values) {
-                this.native = values.map(item => item.name).join('-');
+                this.datingBasic.nativePlace = values.map(item => item.name).join('-');
                 this.showNative = false;
-                console.info(this.native)
             },
             //生日选择确认
             onBirthdayConfirm(date) {
@@ -300,9 +358,8 @@
                 let day = date.getDate();
                 if (month >= 1 && month <= 9) { month = `0${month}` }
                 if (day >= 1 && day <= 9) { day = `0${day}` }
-                this.birthday = `${year}-${month}-${day}`;
+                this.datingBasic.birthday = `${year}-${month}-${day}`;
                 this.showBirthdayPicker = false;
-                console.log(this.birthday)
             },
             formatter(type, value) {
                 if (type === 'year') {
@@ -316,17 +373,20 @@
             },
             // 星座
             onHoroscopeConfirm(value){
-                this.horoscope = value;
+                this.datingBasic.horoscope = value.value;
                 this.showHoroscopePicker = false;
             },
             // 身高
             onHeightConfirm(value){
-                this.height = value;
+                console.log(value);
+                this.datingBasic.height = value.value;
                 this.showHeightPicker = false;
             },
             // 收入
             onSalaryConfirm(value) {
-                this.salary = value;
+                console.log("value",value)
+                this.datingBasic.salaryScopeDesc = value.text;
+                this.datingBasic.salaryScope = value.value;
                 this.showSalaryPicker = false;
             }
         }
@@ -335,4 +395,11 @@
 
 <style scoped>
 
+    .salaryBox{
+        display: flex;
+        justify-content: space-between;
+    }
+    .salaryBox > div:last-child{
+        width: 6rem;
+    }
 </style>
