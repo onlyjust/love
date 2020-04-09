@@ -73,11 +73,17 @@
             /*background: #fff;*/
             /*border: 1px solid #eee;*/
             /*box-shadow:  0 0 4px;*/
-            margin: 0.5rem 0.5rem;
+            /*margin: 0.5rem 0.5rem;
             padding: 0.25rem 0.6rem;
-            border-radius: 0.25rem;
+            border-radius: 0.25rem;*/
             background-color: #7232dd;
             color: #ffffff;
+            font-size: 1.4rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.5rem;
+            margin: 0.3rem 0.5rem;
+
+
         }
     }
 </style>

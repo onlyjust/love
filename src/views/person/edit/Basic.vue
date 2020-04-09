@@ -327,8 +327,14 @@
             //提交
             async onSubmit(values) {
                 values.salaryScope = this.datingBasic.salaryScope;
+                values.liveProvince = this.datingBasic.liveProvince;
+                values.liveCity = this.datingBasic.liveCity;
+                values.liveArea = this.datingBasic.liveArea;
+                values.nativeProvince = this.datingBasic.nativeProvince;
+                values.nativeCity = this.datingBasic.nativeCity;
+                values.nativeArea = this.datingBasic.nativeArea;
                 console.log('submit', values);
-                //console.log("datingBasic",this.datingBasic)
+                console.log("datingBasic",this.datingBasic)
                 let result = await updateDatingBasic(values);
                 this.$toast(result.message);
                 if (result.success){
@@ -343,12 +349,18 @@
             // 居住地选择确认
             onLiveConfirm(values) {
                 console.log("居住地",values)
-                this.datingBasic.live = values.map(item => item.name).join('-');
+                this.datingBasic.live = values.filter(item => item).map(item => item.name).join('-');
+                this.datingBasic.liveProvince = values[0]?values[0].name:'';
+                this.datingBasic.liveCity = values[1]?values[1].name:'';
+                this.datingBasic.liveArea = values[2]?values[2].name:'';
                 this.showLive = false;
             },
             //老家选择确认
             onNativeConfirm(values) {
-                this.datingBasic.nativePlace = values.map(item => item.name).join('-');
+                this.datingBasic.nativePlace =values.filter(item => item).map(item => item.name).join('-');
+                this.datingBasic.nativeProvince = values[0]?values[0].name:'';
+                this.datingBasic.nativeCity = values[1]?values[1].name:'';
+                this.datingBasic.nativeArea = values[2]?values[2].name:'';
                 this.showNative = false;
             },
             //生日选择确认

@@ -19,30 +19,23 @@
         <div class="basic_box">
             <div class="basic_box_info">
                 <div>
-                    <i class="iconfont iconshengao"></i>
-                    <span v-if="userInfo.height">{{userInfo.height}}CM</span>
-                    <i class="iconfont iconnianling"></i>
-                    <span>{{userInfo.age}}</span>
-                    <i class="iconfont icon_xingzuoyuncheng"></i>
-                    <span>{{userInfo.horoscope}}</span>
+                    <span v-if="userInfo.height"><i class="iconfont iconshengao"></i>{{userInfo.height}}CM</span>
+                    <span v-if="userInfo.age"><i class="iconfont iconnianling"></i>{{userInfo.age}}</span>
+                    <span v-if="userInfo.horoscope"><i class="iconfont icon_xingzuoyuncheng"></i>{{userInfo.horoscope}}</span>
                 </div>
                 <div>
-                    <i class="iconfont iconzuobiao"></i>
-                    <span>{{userInfo.liveCity}}</span>
-                    <i class="iconfont iconsuozaidi"></i>
-                    <span>{{userInfo.education}}</span>
-                    <i class="iconfont iconw_zhiye"></i>
-                    <span>{{userInfo.job}}</span>
+                    <span v-if="userInfo.liveCity"><i class="iconfont iconzuobiao"></i>{{userInfo.liveCity}}</span>
+                    <span v-if="userInfo.job"><i class="iconfont iconw_zhiye"></i>{{userInfo.job}}</span>
                     <span v-if="userInfo.salary"><i class="iconfont iconshouruqingkuang"></i>{{userInfo.salary}}元{{userInfo.salaryScope==='1'?'以上':''}}</span>
                 </div>
-                <div v-if="userInfo.graduateSchool">
-                    <i class="iconfont iconbiye"></i>
-                    <span>{{userInfo.graduateSchool}}</span>
+                <div>
+                    <span v-if="userInfo.graduateSchool"><i class="iconfont iconbiye"></i>{{userInfo.graduateSchool}}</span>
+                    <span v-if="userInfo.education"><i class="iconfont iconsuozaidi"></i>{{userInfo.education}}</span>
                 </div>
                 <div v-if="userInfo.company">
                     <span><i class="iconfont icongongsimingcheng"></i>{{userInfo.company}}</span>
                 </div>
-                <div  v-if="userInfo.nativePlace">
+                <div v-if="userInfo.nativePlace">
                     <i class="iconfont iconsuozaidi"></i>
                     <span>{{userInfo.nativePlace}}人</span>
                 </div>
@@ -109,6 +102,7 @@
     }
     .basic .basic_box .basic_box_info>div{
         display: flex;
+        flex-wrap: nowrap;
         align-items: flex-start;
         font-size: 1.3rem;
         box-sizing: border-box;

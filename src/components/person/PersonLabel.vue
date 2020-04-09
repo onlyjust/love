@@ -6,22 +6,6 @@
         </div>
         <div class="label_container">
             <label class="tag" v-for="(item,index) in labelList" :key="index">{{item}}</label>
-            <!--<label class="tag">直率</label>
-            <label class="tag">开朗</label>
-            <label class="tag">独立</label>
-            <label class="tag">善解人意</label>
-            <label class="tag">看电影</label>
-            <label class="tag">听歌</label>
-            <label class="tag">吃鸡</label>
-            <label class="tag">烹饪</label>
-            <label class="tag">直率</label>
-            <label class="tag">开朗</label>
-            <label class="tag">独立</label>
-            <label class="tag">善解人意</label>
-            <label class="tag">看电影</label>
-            <label class="tag">听歌</label>
-            <label class="tag">吃鸡</label>
-            <label class="tag">烹饪</label>-->
         </div>
     </div>
 </template>

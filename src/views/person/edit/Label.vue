@@ -125,11 +125,15 @@
         flex-wrap: wrap;
     }
     .tag_list li {
-        margin: 0.5rem 0.5rem;
+        /*margin: 0.5rem 0.5rem;
         padding: 0.25rem 0.6rem;
-        border-radius: 0.25rem;
+        border-radius: 0.25rem;*/
         border: #7232dd solid 1px;
         color: #7232dd;
+        font-size: 1.4rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 0.5rem;
+        margin: 0.3rem 0.5rem;
     }
 
     .select {
