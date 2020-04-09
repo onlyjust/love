@@ -139,6 +139,7 @@
                 <van-popup v-model="showNative" position="bottom">
                     <van-area
                             :area-list="areaList"
+                            :value="datingBasic.nativeAreaCode"
                             @confirm="onNativeConfirm"
                             @cancel="showNative = false"
                     />
@@ -317,8 +318,6 @@
                             return;
                         }
                     });
-                    // console.log(this.areaList.county_list)
-
                 }
                 console.log('result:{}',result)
 
@@ -343,6 +342,7 @@
             },
             // 居住地选择确认
             onLiveConfirm(values) {
+                console.log("居住地",values)
                 this.datingBasic.live = values.map(item => item.name).join('-');
                 this.showLive = false;
             },
