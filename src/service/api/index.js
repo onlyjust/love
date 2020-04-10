@@ -24,3 +24,7 @@ export const getDatingBasic = () => ajax(BASE_URL+'/mine/getDatingBasic');
 export const updateDatingBasic = (datingBasic) => ajax(BASE_URL+'/mine/updateDatingBasic', datingBasic, "POST");
 // 获取交友走心问题
 export const getDatingQuestion = () => ajax(BASE_URL+'/mine/getDatingQuestion');
+// 获取交友走心回答
+export const getDatingQuestionAnswer = (questionId) => ajax(BASE_URL+'/mine/getDatingQuestionAnswer/'+questionId);
+// 更新交友走心回答
+export const updateDatingQuestionAnswer = (questionId,answer) => ajax(BASE_URL+'/mine/updateDatingQuestionAnswer',{questionId,answer},"POST");

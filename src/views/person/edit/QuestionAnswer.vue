@@ -37,25 +37,46 @@
 </template>
 
 <script>
+
+    import {getDatingQuestionAnswer, updateDatingQuestionAnswer} from './../../../service/api/index';
+
     export default {
         name: "QuestionAnswer",
         data(){
           return{
-              id:'',
+              questionId:'',
               question:'',
               answer:'',
               fileList:[]
           }
         },
         created() {
-            this.id = this.$route.params.id;
+            this.questionId = this.$route.params.id;
             this.question = this.$route.params.question;
+
+            this.initData();
         },
         methods:{
             // 提交
-            onSubmit(values){
-                values.id = this.id;
+            async onSubmit(values){
+                values.questionId = this.questionId;
                 console.log("values",values);
+                let result = await updateDatingQuestionAnswer(values.questionId, values.answer);
+                this.$toast(result.message);
+                if (result.success){
+                    this.$router.back();
+                }
+            },
+            // 初始化数据
+            async initData(){
+                let result = await getDatingQuestionAnswer(this.questionId);
+                if (result.success){
+                    if (result.data){
+                        this.answer = result.data.answer
+                        this.fileList = result.data.answerPhotoList.map(item=>item.filePath);
+                        console.log('fileList',this.fileList)
+                    }
+                }
             }
         }
     }
