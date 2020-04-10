@@ -28,3 +28,8 @@ export const getDatingQuestion = () => ajax(BASE_URL+'/mine/getDatingQuestion');
 export const getDatingQuestionAnswer = (questionId) => ajax(BASE_URL+'/mine/getDatingQuestionAnswer/'+questionId);
 // 更新交友走心回答
 export const updateDatingQuestionAnswer = (questionId,answer) => ajax(BASE_URL+'/mine/updateDatingQuestionAnswer',{questionId,answer},"POST");
+
+// 上传文件
+export const uploadFile = (fileParam) => ajax(BASE_URL+'/file/upload',fileParam,"POST");
+// 删除文件
+export const deleteFile = (fileId) => ajax(BASE_URL+'/file/delete/'+fileId);
