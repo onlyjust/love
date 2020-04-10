@@ -46,6 +46,7 @@
         font-size: 1.2rem;
         line-height: 2rem;
         margin: 1rem auto;
+        white-space: pre-wrap;
     }
     .question .answer_container img{
         width: 100%;
