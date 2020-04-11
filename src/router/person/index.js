@@ -12,7 +12,8 @@ export default [
         component: () => import('@/views/person/edit/Question')
     },
     {
-        path: '/person/lifePhoto',
+        path: '/person/lifePhoto/:datingId',
+        name: 'lifePhoto',
         component: () => import('@/views/person/edit/LifePhoto')
     },
     {

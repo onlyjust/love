@@ -24,9 +24,9 @@ export default function ajax(url = '', params = {},type = 'GET') {
                         return data
                     }]*/
                 }
+                console.log("config",config);
             }
         }
-        console.log("config",config);
         if (type.toUpperCase() == 'GET'){
             let paramsStr = '';
             if (params){

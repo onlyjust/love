@@ -61,7 +61,7 @@
     .header{
         display: flex;
         flex-wrap: wrap;
-        padding: 2rem 2rem;
+        padding: 2rem 2rem 1rem;
         align-items: center;
     }
     .header .header_left{
@@ -75,7 +75,7 @@
         flex-grow: 1;
     }
     .header .header_box .nickname{
-        font-size: 1.6rem;
+        font-size: 1.8rem;
         font-weight: bold;
     }
     .header .header_box .nickname a{
@@ -84,7 +84,7 @@
     }
     .header .header_box .highlight_title{
         margin-top: 1rem;
-        font-size: 1.4rem;
+        font-size: 1.5rem;
     }
 
     .header .header_right {

@@ -5,9 +5,6 @@ export const get = (url = '',param={})=>ajax(url,param);
 //POST请求
 export const post = (url = '',param={})=>ajax(url,param,'POST');
 
-
-export const getMovieOnInfoList = (cityId) => ajax('/api/movieOnInfoList',{cityId});
-
 export const BASE_URL = '/api';
 
 // 获取我的界面数据
@@ -27,9 +24,10 @@ export const getDatingQuestion = () => ajax(BASE_URL+'/mine/getDatingQuestion');
 // 获取交友走心回答
 export const getDatingQuestionAnswer = (questionId) => ajax(BASE_URL+'/mine/getDatingQuestionAnswer/'+questionId);
 // 更新交友走心回答
-export const updateDatingQuestionAnswer = (questionId,answer) => ajax(BASE_URL+'/mine/updateDatingQuestionAnswer',{questionId,answer},"POST");
-
+export const updateDatingQuestionAnswer = (questionId,answer,fileIdList) => ajax(BASE_URL+'/mine/updateDatingQuestionAnswer',{questionId,answer,fileIdList},"POST");
 // 上传文件
 export const uploadFile = (fileParam) => ajax(BASE_URL+'/file/upload',fileParam,"POST");
 // 删除文件
 export const deleteFile = (fileId) => ajax(BASE_URL+'/file/delete/'+fileId);
+// 获取生活照
+export const getLifePhotoList = () => ajax(BASE_URL+'/mine/getLifePhotoList');

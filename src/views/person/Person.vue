@@ -1,7 +1,7 @@
 <template>
     <div id="person">
         <!--轮播图-->
-        <Slideshow :slideshow_list="slideshow_list"/>
+        <Slideshow :slideshow_list="slideshow_list" :datingId="userInfo.datingDataId"/>
         <!--基本信息-->
         <BasicInfo :userInfo="userInfo"/>
         <!--个性标签-->
@@ -29,10 +29,7 @@
         name: "Person",
         data(){
             return{
-                slideshow_list: [
-                    /*'https://img.yzcdn.cn/vant/apple-1.jpg',
-                    'https://img.yzcdn.cn/vant/apple-2.jpg'*/
-                ],
+                slideshow_list: [],
                 userInfo:{}
             }
         },
@@ -44,16 +41,15 @@
         },
         created() {
             setStore(USER_INFO,{"token":'15900898361:838552232aeb4e4ab51d3a282ba6a659'});
-            this.$toast('初始化数据');
             this.initData();
         },
         methods:{
             async initData(){
                 let result = await getPersonal();
-                console.log('result',result)
+                // console.log('result',result)
                 if (result.success){
-                    var data = result.data;
-                    console.log("lifePhotoList",data.lifePhotoList)
+                    let data = result.data;
+                    // console.log("lifePhotoList",data.lifePhotoList)
                     data.lifePhotoList.forEach(item =>{
                         this.slideshow_list.push(item.filePath)
                     });
@@ -61,7 +57,7 @@
                 } else {
                     this.$toast(result.message);
                 }
-                console.log('questionAnswerList',result.data.questionAnswerList)
+                // console.log('questionAnswerList',result.data.questionAnswerList)
             }
         }
     }

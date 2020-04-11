@@ -28,7 +28,8 @@
                         :after-read="afterReadFile"
                         :before-read="beforeReadFile"
                         :before-delete="deleteFile"
-
+                        image-fit="cover"
+                        preview-size="80px"
                 />
             </van-cell-group>
             <div style="margin: 16px;">
@@ -42,6 +43,8 @@
 
 <script>
 
+    import file from './../../../plugins/file';
+
     import {getDatingQuestionAnswer, updateDatingQuestionAnswer, uploadFile, deleteFile} from './../../../service/api/index';
 
     export default {
@@ -52,7 +55,8 @@
               questionId:'',
               question:'',
               answer:'',
-              fileList:[]
+              fileList:[],
+              fileIdList:[]
           }
         },
         created() {
@@ -64,8 +68,9 @@
             // 提交
             async onSubmit(values){
                 values.questionId = this.questionId;
-                console.log("values",values);
-                let result = await updateDatingQuestionAnswer(values.questionId, values.answer);
+                values.fileIdList = this.fileIdList;
+                // console.log("values",values);
+                let result = await updateDatingQuestionAnswer(values.questionId, values.answer, values.fileIdList);
                 this.$toast(result.message);
                 if (result.success){
                     this.$router.back();
@@ -74,6 +79,7 @@
             // 初始化数据
             async initData(){
                 let result = await getDatingQuestionAnswer(this.questionId);
+                // console.log("初始化数据",result)
                 if (result.success){
                     if (result.data){
                         this.answer = result.data.answer;
@@ -96,26 +102,37 @@
             async afterReadFile(file){
                 file.status = 'uploading';
                 file.message = '上传中...';
-                console.log("afterReadFile",file);
+                // console.log("afterReadFile",file);
                 let formData = new FormData();
                 formData.append("file", file.file);
                 formData.append("fileName", file.file.name);
                 formData.append("relationalId", this.relationalId);
                 formData.append("relationalName", 'QUESTION_ANSWER_PHOTO');
                 let result = await uploadFile(formData);
-                console.log("上传结果", result);
+                // console.log("上传结果", result);
                 if (result.success){
                     file.status = 'done';
                     file.message = '上传成功';
                     file.id = result.data.id;
+                    if (!this.relationalId){
+                        this.fileIdList.push(file.id);
+                    }
                     return true;
                 }
                 return false;
             },
             async deleteFile(file){
-                console.log("deleteFile", file);
+                // console.log("deleteFile", file);
                 let result = await deleteFile(file.id);
                 if (result.success){
+                    // 删除
+                    if (!this.relationalId){
+                        this.fileIdList.forEach((item,index)=>{
+                            if (item == file.id){
+                                this.fileIdList.splice(index, 1);
+                            }
+                        });
+                    }
                     return true;
                 } else {
                     return false;

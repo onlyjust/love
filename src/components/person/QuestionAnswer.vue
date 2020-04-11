@@ -31,22 +31,29 @@
 <style scoped>
 
     /*走心问答*/
+    .question {
+        margin-bottom: 5rem;
+    }
     .question .question_container{
 
     }
     .question .question_container .question_title{
         text-align: center;
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         font-weight: bold;
+        color: #4773c4;
+        background-color: #e8e3d0;
+        border-radius: 1rem;
     }
     .question .answer_container{
         padding: 0 2rem;
     }
     .question .answer_container .answer{
-        font-size: 1.2rem;
-        line-height: 2rem;
+        font-size: 1.5rem;
+        line-height: 2.5rem;
         margin: 1rem auto;
         white-space: pre-wrap;
+        color: #323233;
     }
     .question .answer_container img{
         width: 100%;

@@ -4,7 +4,7 @@
                 <img class="swipe-img" v-lazy="image" @click="Preview_img(slideshow_list,index)" />
         </van-swipe-item>
         <template #indicator>
-            <div class="custom-indicator" @click="$router.push('/person/lifePhoto')">
+            <div class="custom-indicator" @click="$router.push({name:'lifePhoto',params:{datingId:datingId}})">
                 编辑
             </div>
         </template>
@@ -17,7 +17,8 @@
     export default {
         name: "Slideshow",
         props:{
-            slideshow_list:Array
+            slideshow_list:Array,
+            datingId:Number
         },
         methods: {
             // 轮播图预览
