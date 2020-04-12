@@ -211,7 +211,6 @@
                             name="salaryScopeDesc"
                             :value="datingBasic.salaryScopeDesc"
                             placeholder="选中薪资范畴"
-                            input-align="right"
                             @click="showSalaryPicker = true"
                     />
                 </div>
@@ -293,7 +292,7 @@
                         this.datingBasic.gender = '女'
                     }
                     // 收入
-                    if (this.salaryScope){
+                    if (this.datingBasic.salaryScope){
                         this.salaryList.forEach((item,index)=>{
                             if(item.value == this.datingBasic.salaryScope){
                                 this.defaultSalaryScopeIdx = index;
@@ -412,6 +411,6 @@
         justify-content: space-between;
     }
     .salaryBox > div:last-child{
-        width: 6rem;
+        width: 8rem;
     }
 </style>

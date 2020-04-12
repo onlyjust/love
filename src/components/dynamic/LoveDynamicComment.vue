@@ -1,0 +1,165 @@
+<template>
+    <div id="loveDynamicComment">
+
+        <!--动态评论-->
+        <div class="dynamic_comment">
+            <ul>
+                <li>
+                    <!--用户头像-->
+                    <div class="comment_user">
+                        <a href="">
+                            <img src="@/img/1.jpg">
+                        </a>
+                    </div>
+                    <div class="comment_content">
+                        <div class="comment_header">
+                            <div>
+                                <h2>小媛</h2>
+                                <span>20-03-04 00:23</span>
+                            </div>
+                            <p><i class="iconfont iconz-like"></i>5</p>
+                        </div>
+                        <p class="comment">我好像喜欢上你了，你看能不能……我好像喜欢上你了，你看能不能……我好像喜欢上你了，你看能不能……</p>
+                        <!--追加评论-->
+                        <ul class="add_comment">
+                            <li>
+                                <a href="" class="reply_user">晓晓</a> 回复 <a href=""  class="reply_user">小媛：</a>我其实早就关注你了，只是不敢告诉你而已……
+                            </li>
+                            <li>
+                                <a href="" class="reply_user">小媛</a> 回复 <a href=""  class="reply_user">晓晓：</a>我其实早就关注你了，只是不敢告诉你而已……
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li>
+                    <!--用户头像-->
+                    <div class="comment_user">
+                        <a href="">
+                            <img src="@/img/2.jpg">
+                        </a>
+                    </div>
+                    <div class="comment_content">
+                        <div class="comment_header">
+                            <div>
+                                <h2>小媛</h2>
+                                <span>20-03-04 00:23</span>
+                            </div>
+                            <p><i class="iconfont iconz-like"></i>5</p>
+                        </div>
+                        <p class="comment">我好像喜欢上你了，你看能不能……</p>
+                    </div>
+                </li>
+
+                <li>
+                    <!--用户头像-->
+                    <div class="comment_user">
+                        <a href="">
+                            <img src="@/img/3.jpg">
+                        </a>
+                    </div>
+                    <div class="comment_content">
+                        <div class="comment_header">
+                            <div>
+                                <h2>莹莹</h2>
+                                <span>20-03-04 00:23</span>
+                            </div>
+                            <p><i class="iconfont iconz-like"></i>5</p>
+                        </div>
+                        <p class="comment">我好像喜欢上你了，你看能不能……我好像喜欢上你了，你看能不能……我好像喜欢上你了，你看能不能……</p>
+                        <!--追加评论-->
+                        <ul class="add_comment">
+                            <li>
+                                <a href="" class="reply_user">晓晓</a> 回复 <a href=""  class="reply_user">小媛：</a>我其实早就关注你了，只是不敢告诉你而已……
+                            </li>
+                            <li>
+                                <a href="" class="reply_user">小媛</a> 回复 <a href=""  class="reply_user">晓晓：</a>我其实早就关注你了，只是不敢告诉你而已……
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!--最下面区块空格-->
+        <div class="footer"></div>
+
+    </div>
+</template>
+
+<script>
+    export default {
+        name: "LoveDynamicComment"
+    }
+</script>
+
+<style scoped>
+
+    /*动态评论*/
+    .dynamic_comment > ul > li {
+        display: flex;
+        padding: 1rem 0;
+        border-top: #eee solid 1px;
+    }
+    .dynamic_comment > ul > li:last-child{
+        border-bottom: #eee solid 1px;
+        margin-bottom: 3rem;
+    }
+    .dynamic_comment .comment_user{
+        /*background-color: #e9a4a5;*/
+        width: 6rem;
+        text-align: center;
+    }
+    .dynamic_comment .comment_user img{
+        width: 4rem;
+        border-radius: 50%;
+    }
+    .dynamic_comment .comment_content{
+        flex: 1;
+        margin-right: 1rem;
+    }
+    .dynamic_comment .comment_content .comment_header{
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+    }
+    .dynamic_comment .comment_content .comment_header>div>h2{
+        font-size: 1.6rem;
+        line-height: 2rem;
+        color: #3f659d;
+        flex-grow: 1;
+    }
+    .dynamic_comment .comment_content .comment_header>div>span{
+        color: #9d9d9d;
+    }
+    .dynamic_comment .comment_content .comment_header>p{
+        width: 4rem;
+        height: 4rem;
+        line-height: 4rem;
+        font-size: 1.6rem;
+        flex-shrink: 0;
+    }
+
+    .dynamic_comment .comment_content .comment{
+        margin: 0.5rem 0;
+        font-size: 1.4rem;
+        line-height: 2rem;
+        color: #373737;
+    }
+    .dynamic_comment .comment_content .add_comment{
+        font-size: 1.4rem;
+        line-height: 2rem;
+        background-color: #e5e5e5;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        color: #373737;
+    }
+    .dynamic_comment .comment_content .add_comment .reply_user{
+        color: #3f659d;
+    }
+
+    /*最下面区块空格*/
+    .footer{
+        height: 3.5rem;
+    }
+</style>
