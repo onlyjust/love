@@ -6,5 +6,9 @@ export default [
     {
         path: '/dynamicDetail',
         component: () => import('@/views/dynamic/DynamicDetail')
+    },
+    {
+        path: '/publish/dynamic',
+        component: () => import('@/views/mydynamic/PublishDynamic')
     }
 ]
