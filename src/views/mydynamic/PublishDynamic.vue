@@ -73,7 +73,6 @@
         </van-form>
 
 
-
         <!--动态内容区-->
         <div class="dynamic_container">
             <div class="dynamic_select">
@@ -101,7 +100,8 @@
                 dynamicContent:'',
                 switchChecked:false,
                 subject:'',
-                subjectList:[]
+                subjectList:[],
+                showSubjectPicker:false,
             }
         },
         methods:{

@@ -40,7 +40,7 @@
             BasicInfo,
         },
         created() {
-            setStore(USER_INFO,{"token":'15900898361:838552232aeb4e4ab51d3a282ba6a659'});
+
             this.initData();
         },
         methods:{

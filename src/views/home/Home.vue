@@ -214,7 +214,7 @@
     }
     .container .list .photo img {
         width: 100%;
-        height: 26rem;
+        /*height: 26rem;*/
     }
     .container .list .desc {
         color: #999999;

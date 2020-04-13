@@ -261,6 +261,7 @@
 
     .dynamic .dynamic_container .dynamic_right .dynamic_person .dynamic_info .dynamic_img {
         display: flex;
+        align-items:center;
         /*justify-content: space-around;*/
         /*justify-content: space-between;*/
         /*justify-content: flex-start;*/
