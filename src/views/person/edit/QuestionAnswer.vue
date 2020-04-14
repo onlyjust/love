@@ -43,7 +43,7 @@
 
 <script>
 
-    import file from './../../../plugins/file';
+    import fileUtil from './../../../plugins/file';
 
     import {getDatingQuestionAnswer, updateDatingQuestionAnswer, uploadFile, deleteFile} from './../../../service/api/index';
 

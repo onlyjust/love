@@ -1,7 +1,7 @@
 <template>
     <div id="my-dynamic">
         <!--动态-->
-        <love-dynamic v-for="(dynamic,index) in dynamicList" :key="index" />
+        <love-dynamic v-for="(dynamic,index) in dynamicList" :dynamicInfo="dynamic" :key="index" />
 
 
         <div class="publish-dynamic" @click="$router.push('/publish/dynamic')">
@@ -20,7 +20,7 @@
         name: "MyDynamic",
         data(){
            return {
-               dynamicList:[11,212,323,32]
+               dynamicList:[]
            }
         },
         created(){
@@ -30,6 +30,9 @@
             async initData(){
                 let result = await getPersonalDynamicPage();
                 console.log('result',result)
+                if (result.success){
+                    this.dynamicList = result.data.list;
+                }
             }
         },
         components:{

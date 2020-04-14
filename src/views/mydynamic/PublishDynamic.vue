@@ -98,7 +98,7 @@
     import {getStore,setStore} from './../../config/global';
     import {USER_INFO} from "../../store/mutations-type";
 
-    import {pushDynamic} from './../../service/api/index';
+    import {pushDynamic, uploadFile, deleteFile} from './../../service/api/index';
 
     export default {
         name: "PublishDynamic",

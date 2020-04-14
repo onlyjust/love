@@ -3,62 +3,35 @@
         <div class="dynamic_container">
             <div class="dynamic_left">
                 <div class="user">
-                    <img src="@/img/3.jpg">
+                    <img :src="dynamicInfo.personalPhoto">
                 </div>
             </div>
             <div class="dynamic_right">
                 <div class="dynamic_person">
                     <div class="person_info">
                         <div>
-                            <h1>晓晓<i class="iconfont iconnv"></i></h1>
-                            <span>网红</span>
+                            <h1>{{dynamicInfo.nickname}}<i class="iconfont iconnv"></i></h1>
+                            <span>{{dynamicInfo.job}}</span>
                         </div>
                         <span>09:12</span>
                     </div>
                     <div class="dynamic_info">
-                        <p class="dynamic_txt" @click="$router.push({path:'/dynamicDetail', query:{id:'12'}})">
-                            啊书法大赛反对阿斯蒂芬萨芬就打算大事发生啊手动阀手动阀<br>
-                            a爱的色放的撒发生阿发是否打算的撒发生
-                            啊但是发射点发生广泛大概热帖热舞
-                        </p>
+                        <!--<p class="dynamic_txt" v-if="isDetail">{{dynamicInfo.content}}</p>-->
+                        <p class="dynamic_txt" @click="$router.push({path:'/dynamicDetail', query:{id:dynamicInfo.id}})">{{dynamicInfo.content}}</p>
                         <div class="dynamic_img">
-                            <!--<img class="dynamic_img_1" src="img/1.jpg">-->
-                            <!--<img class="dynamic_img_2" src="img/2.jpg">-->
-                            <!--<img class="dynamic_img_2" src="img/3.jpg">-->
-
-                            <img class="dynamic_img_3" src="@/img/1.jpg">
-                            <img class="dynamic_img_3" src="@/img/2.jpg">
-                            <img class="dynamic_img_2" src="@/img/3.jpg">
-                            <!--<img class="dynamic_img_2" src="">-->
+                            <img :class="dynamicImgIdx" v-for="(file,index) in dynamicInfo.dynamicFileList" :src="file.filePath">
                         </div>
-                        <h1 class="dynamic_title">#疫情的生活</h1>
-                        <p class="location iconfont iconzuobiao">上海.世博园</p>
+                        <h1 v-if="dynamicInfo.title" class="dynamic_title">#{{dynamicInfo.title}}</h1>
+                        <p v-if="dynamicInfo.location" class="location iconfont iconzuobiao">{{dynamicInfo.location}}</p>
                     </div>
                     <div class="dynamic_footer">
                         <span ><i class="iconfont iconz-like"></i> 12</span>
                         <span ><i class="iconfont iconpinglun1"></i> 3</span>
                     </div>
                 </div>
-                <div class="dynamic_like">
+                <div class="dynamic_like" v-if="dynamicInfo.dynamicLikeList">
                     <ul>
-                        <li><img src="@/img/1.jpg"></li>
-                        <li><img src="@/img/2.jpg"></li>
-                        <li><img src="@/img/3.jpg"></li>
-                        <li><img src="@/img/1.jpg"></li>
-                        <li><img src="@/img/3.jpg"></li>
-                        <li><img src="@/img/2.jpg"></li>
-                        <li><img src="@/img/1.jpg"></li>
-                        <li><img src="@/img/2.jpg"></li>
-                        <li><img src="@/img/3.jpg"></li>
-                        <li><img src="@/img/1.jpg"></li>
-                        <li><img src="@/img/3.jpg"></li>
-                        <li><img src="@/img/2.jpg"></li>
-                        <li><img src="@/img/1.jpg"></li>
-                        <li><img src="@/img/2.jpg"></li>
-                        <li><img src="@/img/3.jpg"></li>
-                        <li><img src="@/img/1.jpg"></li>
-                        <li><img src="@/img/3.jpg"></li>
-                        <li><img src="@/img/2.jpg"></li>
+                        <li v-for="(like, idx) in dynamicInfo.dynamicLikeList" :key="idx"><img :src="like.personalPhoto"></li>
                     </ul>
                 </div>
             </div>
@@ -68,7 +41,24 @@
 
 <script>
     export default {
-        name: "LoveDynamic"
+        name: "LoveDynamic",
+        props:{
+            dynamicInfo:Object,
+            isDetail:Boolean
+        },
+        data(){
+            return {
+            }
+        },
+        computed:{
+            dynamicImgIdx(){
+                if (this.dynamicInfo.dynamicFileList){
+                    let index = (this.dynamicInfo.dynamicFileList.length-1)%3
+                    return 'dynamic_img_'+index;
+                }
+
+            }
+        }
     }
 </script>
 
@@ -123,8 +113,9 @@
 
     .dynamic .dynamic_container .dynamic_right .dynamic_person .dynamic_info .dynamic_txt{
         font-size: 1.6rem;
-        line-height: 2.5rem;
+        line-height: 2.3rem;
         color: #373737;
+        white-space: pre-wrap;
     }
 
     .dynamic .dynamic_container .dynamic_right .dynamic_person .dynamic_info .dynamic_img {
@@ -134,16 +125,16 @@
         /*justify-content: space-between;*/
         /*justify-content: flex-start;*/
     }
-    .dynamic .dynamic_container .dynamic_right .dynamic_person .dynamic_info .dynamic_img .dynamic_img_1{
+    .dynamic .dynamic_container .dynamic_right .dynamic_person .dynamic_info .dynamic_img .dynamic_img_0{
         /*width: 90%;*/
         height: 12rem;
         margin: 1%;
     }
-    .dynamic .dynamic_container .dynamic_right .dynamic_person .dynamic_info .dynamic_img .dynamic_img_2{
+    .dynamic .dynamic_container .dynamic_right .dynamic_person .dynamic_info .dynamic_img .dynamic_img_1{
         width: 30%;
         margin: 1%;
     }
-    .dynamic .dynamic_container .dynamic_right .dynamic_person .dynamic_info .dynamic_img .dynamic_img_3{
+    .dynamic .dynamic_container .dynamic_right .dynamic_person .dynamic_info .dynamic_img .dynamic_img_2{
         width: 30%;
         margin: 1%;
     }

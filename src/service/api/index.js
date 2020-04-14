@@ -35,3 +35,5 @@ export const getLifePhotoList = () => ajax(BASE_URL+'/mine/getLifePhotoList');
 export const getPersonalDynamicPage = (pageNum=1,pageSize=20) => ajax(BASE_URL+'/mine/getPersonalDynamicPage',{pageNum,pageSize}, 'POST');
 // 发布动态信息
 export const pushDynamic = (dynamicParam) => ajax(BASE_URL+'/mine/pushDynamic', dynamicParam, 'POST');
+// 根据动态ID获取动态信息
+export const getDynamicInfo = (dynamicId) => ajax(BASE_URL+'/dynamic/getDynamicInfo/'+dynamicId);
