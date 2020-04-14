@@ -84,7 +84,7 @@ https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f3
             }
         },
         created(){
-            setStore(USER_INFO,{"token":'15900898361:838552232aeb4e4ab51d3a282ba6a659'});
+            setStore(USER_INFO,{"token":'15900898361:838552232aeb4e4ab51d3a282ba6a659',"userId":2,"datingId":100001});
             this.initData();
         },
         methods: {

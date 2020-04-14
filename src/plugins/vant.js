@@ -87,3 +87,7 @@ Vue.use(Uploader);
 // Toast 轻提示
 import { Toast } from 'vant';
 Vue.use(Toast);
+
+// Switch 开关
+import { Switch } from 'vant';
+Vue.use(Switch);

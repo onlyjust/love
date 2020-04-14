@@ -33,3 +33,5 @@ export const deleteFile = (fileId) => ajax(BASE_URL+'/file/delete/'+fileId);
 export const getLifePhotoList = () => ajax(BASE_URL+'/mine/getLifePhotoList');
 // 获取当前登录人动态信息
 export const getPersonalDynamicPage = (pageNum=1,pageSize=20) => ajax(BASE_URL+'/mine/getPersonalDynamicPage',{pageNum,pageSize}, 'POST');
+// 发布动态信息
+export const pushDynamic = (dynamicParam) => ajax(BASE_URL+'/mine/pushDynamic', dynamicParam, 'POST');
