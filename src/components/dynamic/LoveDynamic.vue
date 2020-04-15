@@ -16,17 +16,17 @@
                         <span>09:12</span>
                     </div>
                     <div class="dynamic_info">
-                        <!--<p class="dynamic_txt" v-if="isDetail">{{dynamicInfo.content}}</p>-->
-                        <p class="dynamic_txt" @click="$router.push({path:'/dynamicDetail', query:{id:dynamicInfo.id}})">{{dynamicInfo.content}}</p>
+                        <p class="dynamic_txt" v-if="isDetail">{{dynamicInfo.content}}</p>
+                        <p class="dynamic_txt" v-else @click="$router.push({path:'/dynamicDetail', query:{id:dynamicInfo.id}})">{{dynamicInfo.content}}</p>
                         <div class="dynamic_img">
-                            <img :class="dynamicImgIdx" v-for="(file,index) in dynamicInfo.dynamicFileList" :src="file.filePath">
+                            <img :class="dynamicImgIdx" v-for="(file,index) in dynamicInfo.dynamicFileList" @click="Preview_img(dynamicInfo.dynamicFileList,index)"  :src="file.filePath">
                         </div>
                         <h1 v-if="dynamicInfo.title" class="dynamic_title">#{{dynamicInfo.title}}</h1>
                         <p v-if="dynamicInfo.location" class="location iconfont iconzuobiao">{{dynamicInfo.location}}</p>
                     </div>
                     <div class="dynamic_footer">
-                        <span ><i class="iconfont iconz-like"></i> 12</span>
-                        <span ><i class="iconfont iconpinglun1"></i> 3</span>
+                        <span @click="likeDynamic(dynamicInfo)"><i class="iconfont iconz-like" :style="dynamicInfo.liked? 'color:red':''"/>{{dynamicInfo.likeNum}}</span>
+                        <span @click="$router.push({path:'/dynamicDetail', query:{id:dynamicInfo.id}})"><i class="iconfont iconpinglun1"></i> {{dynamicInfo.commentNum}}</span>
                     </div>
                 </div>
                 <div class="dynamic_like" v-if="dynamicInfo.dynamicLikeList">
@@ -40,6 +40,10 @@
 </template>
 
 <script>
+    import {ImagePreview} from 'vant';//引入预览
+
+    import {likeDynamic} from "../../service/api";
+
     export default {
         name: "LoveDynamic",
         props:{
@@ -48,6 +52,25 @@
         },
         data(){
             return {
+
+            }
+        },
+        methods:{
+            async likeDynamic(dynamic){
+                let result = await likeDynamic(dynamic.id,!dynamic.liked);
+                if (result.success){
+                    dynamic.liked = !dynamic.liked;
+                }
+            },
+            // 轮播图预览
+            Preview_img(images, index) {
+                let imgList = images.map(image=>image.filePath);
+                ImagePreview({
+                    images: imgList,//图片数组
+                    showIndex: true,
+                    loop: false,
+                    startPosition: index
+                })
             }
         },
         computed:{
@@ -56,7 +79,6 @@
                     let index = (this.dynamicInfo.dynamicFileList.length-1)%3
                     return 'dynamic_img_'+index;
                 }
-
             }
         }
     }

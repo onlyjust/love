@@ -1,8 +1,7 @@
 <template>
     <div id="my-dynamic">
-        <!--动态-->
+        <!--动态列表-->
         <love-dynamic v-for="(dynamic,index) in dynamicList" :dynamicInfo="dynamic" :key="index" />
-
 
         <div class="publish-dynamic" @click="$router.push('/publish/dynamic')">
             <span class="iconfont iconfabu4-copy"></span>

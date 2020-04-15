@@ -91,3 +91,4 @@ Vue.use(Toast);
 // Switch 开关
 import { Switch } from 'vant';
 Vue.use(Switch);
+

@@ -20,8 +20,12 @@
                 </div>
             </div>
         </div>
+
+        <!--动态列表-->
+        <love-dynamic v-for="(dynamic,index) in dynamicList" :dynamicInfo="dynamic" :key="index" />
+
         <!--动态-->
-        <div class="dynamic">
+        <!--<div class="dynamic">
             <div class="dynamic_container">
                 <div class="dynamic_left">
                     <div class="phone">
@@ -44,14 +48,14 @@
                                 啊但是发射点发生广泛大概热帖热舞
                             </p>
                             <div class="dynamic_img">
-                                <!--<img class="dynamic_img_1" src="img/1.jpg">-->
-                                <!--<img class="dynamic_img_2" src="img/2.jpg">-->
-                                <!--<img class="dynamic_img_2" src="img/3.jpg">-->
+                                &lt;!&ndash;<img class="dynamic_img_1" src="img/1.jpg">&ndash;&gt;
+                                &lt;!&ndash;<img class="dynamic_img_2" src="img/2.jpg">&ndash;&gt;
+                                &lt;!&ndash;<img class="dynamic_img_2" src="img/3.jpg">&ndash;&gt;
 
                                 <img class="dynamic_img_3" src="@/img/1.jpg">
                                 <img class="dynamic_img_3" src="@/img/2.jpg">
                                 <img class="dynamic_img_2" src="@/img/3.jpg">
-                                <!--<img class="dynamic_img_2" src="">-->
+                                &lt;!&ndash;<img class="dynamic_img_2" src="">&ndash;&gt;
                             </div>
                             <h1 class="dynamic_title">#疫情的生活</h1>
                             <p class="location">上海.世博园</p>
@@ -85,14 +89,14 @@
                                 啊但是发射点发生广泛大概热帖热舞
                             </p>
                             <div class="dynamic_img">
-                                <!--<img class="dynamic_img_1" src="img/1.jpg">-->
-                                <!--<img class="dynamic_img_2" src="img/2.jpg">-->
-                                <!--<img class="dynamic_img_2" src="img/3.jpg">-->
+                                &lt;!&ndash;<img class="dynamic_img_1" src="img/1.jpg">&ndash;&gt;
+                                &lt;!&ndash;<img class="dynamic_img_2" src="img/2.jpg">&ndash;&gt;
+                                &lt;!&ndash;<img class="dynamic_img_2" src="img/3.jpg">&ndash;&gt;
 
                                 <img class="dynamic_img_3" src="@/img/1.jpg">
                                 <img class="dynamic_img_3" src="@/img/2.jpg">
                                 <img class="dynamic_img_2" src="@/img/3.jpg">
-                                <!--<img class="dynamic_img_2" src="">-->
+                                &lt;!&ndash;<img class="dynamic_img_2" src="">&ndash;&gt;
                             </div>
                             <h1 class="dynamic_title">#疫情的生活</h1>
                             <p class="location"><i class="iconfont iconzuobiao"></i>上海.世博园</p>
@@ -126,14 +130,14 @@
                                 啊但是发射点发生广泛大概热帖热舞
                             </p>
                             <div class="dynamic_img">
-                                <!--<img class="dynamic_img_1" src="img/1.jpg">-->
-                                <!--<img class="dynamic_img_2" src="img/2.jpg">-->
-                                <!--<img class="dynamic_img_2" src="img/3.jpg">-->
+                                &lt;!&ndash;<img class="dynamic_img_1" src="img/1.jpg">&ndash;&gt;
+                                &lt;!&ndash;<img class="dynamic_img_2" src="img/2.jpg">&ndash;&gt;
+                                &lt;!&ndash;<img class="dynamic_img_2" src="img/3.jpg">&ndash;&gt;
 
                                 <img class="dynamic_img_3" src="@/img/1.jpg">
                                 <img class="dynamic_img_3" src="@/img/2.jpg">
                                 <img class="dynamic_img_2" src="@/img/3.jpg">
-                                <!--<img class="dynamic_img_2" src="">-->
+                                &lt;!&ndash;<img class="dynamic_img_2" src="">&ndash;&gt;
                             </div>
                             <h1 class="dynamic_title">#疫情的生活</h1>
                             <p class="location"><i class="iconfont iconzuobiao"></i>上海.世博园</p>
@@ -145,15 +149,40 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
 
         <div class="footer"></div>
     </div>
 </template>
 
 <script>
+
+    import LoveDynamic from '../../components/dynamic/LoveDynamic';
+    import {getDynamicPage} from './../../service/api/index';
+
     export default {
-        name: "Dynamic"
+        name: "Dynamic",
+        data(){
+            return {
+                dynamicList:[]
+            }
+        },
+        created() {
+            this.initData();
+        },
+        methods:{
+            async initData(){
+                let result = await getDynamicPage();
+                if (result.success){
+                    if (result.data) {
+                        this.dynamicList = result.data.list;
+                    }
+                }
+            }
+        },
+        components:{
+            LoveDynamic
+        }
     }
 </script>
 
