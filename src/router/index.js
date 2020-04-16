@@ -38,7 +38,7 @@ Vue.use(wechatPlugin , {
   appid: 'wxba0cda0e7484c8b8', // 您的微信appid
   responseType: 'code', // 返回类型，请填写code
   scope: 'snsapi_userinfo', // 应用授权作用域，snsapi_base （不弹出授权页面，直接跳转，只能获取用户openid），snsapi_userinfo （弹出授权页面，可通过openid拿到昵称、性别、所在地。并且，即使在未关注的情况下，只要用户授权，也能获取其信息）
-  redirectUri: 'http://wxxsr.free.idcfengye.com', //微信回调地址
+  redirectUri: 'http://wx.ngrok.51vipyuan.com:8888', //微信回调地址
   getCodeCallback (next, code) {
     // 用户同意授权后回调方法
     // code：用户同意授权后，获得code值
@@ -54,8 +54,8 @@ Vue.use(wechatPlugin , {
       },
     }).then(response => {
       let data = response.data
-      let result = data.result; //后端返回的获取accessToken成功或失败，布尔型
       console.log("后端获取accessToken响应",data);
+      let result = data.success; //后端返回的获取accessToken成功或失败，布尔型
       if (result) {
         next('', code); // 获取access_toeken成功
       } else {

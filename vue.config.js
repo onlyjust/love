@@ -1,6 +1,7 @@
 module.exports = {
     publicPath: '/',
     devServer:{
+        disableHostCheck: true,
         proxy:{
             '/api':{
                 // target: 'http://api.51vipyuan.com',
