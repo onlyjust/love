@@ -28,6 +28,12 @@ import 'font-awesome.css'
 Vue.config.productionTip = false
 
 
+// import wechatAuth from './plugins/wechatAuth'//微信登录插件
+// const queryString = require('query-string');
+//
+// Vue.use(wechatAuth, {appid: 'wxba0cda0e7484c8b8'});
+
+
 window.onload = setHtmlFontSize;
 window.onresize = setHtmlFontSize;
 function setHtmlFontSize(){
