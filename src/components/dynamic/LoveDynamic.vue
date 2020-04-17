@@ -10,7 +10,7 @@
                 <div class="dynamic_person">
                     <div class="person_info">
                         <div>
-                            <h1>{{dynamicInfo.nickname}}<i class="iconfont iconnv"></i></h1>
+                            <h1>{{dynamicInfo.nickname}}<i class="iconfont" :class="[dynamicInfo.gender == 1?'iconnan':'iconnv']"></i></h1>
                             <span>{{dynamicInfo.job}}</span>
                         </div>
                         <span>09:12</span>

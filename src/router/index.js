@@ -29,13 +29,13 @@ const router = new VueRouter({
     }
   ]
 });
-
-
+import {setStore} from './../config/global';
+import {USER_INFO} from "../store/mutations-type";
 
 // 微信授权插件初始化
 Vue.use(wechatPlugin , {
   router, // 路由实例对象
-  appid: 'wxba0cda0e7484c8b8', // 您的微信appid
+  appid: process.env.VUE_APP_WX_APPID, // 您的微信appid
   responseType: 'code', // 返回类型，请填写code
   scope: 'snsapi_userinfo', // 应用授权作用域，snsapi_base （不弹出授权页面，直接跳转，只能获取用户openid），snsapi_userinfo （弹出授权页面，可通过openid拿到昵称、性别、所在地。并且，即使在未关注的情况下，只要用户授权，也能获取其信息）
   redirectUri: 'http://wx.ngrok.51vipyuan.com:8888', //微信回调地址
@@ -57,6 +57,9 @@ Vue.use(wechatPlugin , {
       console.log("后端获取accessToken响应",data);
       let result = data.success; //后端返回的获取accessToken成功或失败，布尔型
       if (result) {
+        // 存储用户信息
+        console.log(USER_INFO,data.data)
+        setStore(USER_INFO,data.data);
         next('', code); // 获取access_toeken成功
       } else {
         next('/login'); // 获取access_token失败

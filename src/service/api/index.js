@@ -5,6 +5,10 @@ export const get = (url = '',param={})=>ajax(url,param);
 //POST请求
 export const post = (url = '',param={})=>ajax(url,param,'POST');
 
+// api地址路径
+// export const API_URL = process.env.VUE_APP_API;
+// export const BASE_URL = API_URL+ '/api';
+
 export const BASE_URL = '/api';
 
 // 获取我的界面数据
