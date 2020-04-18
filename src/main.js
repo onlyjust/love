@@ -8,6 +8,7 @@ import store from './store/index'
 import '@/style/common.less'
 import '@/style/iconfont.less'
 import '@/style/iconfontcolor.less'
+import '@/style/iconfont/iconfont.css'
 
 // 引入全局UI组件库
 import '@/plugins/vant'

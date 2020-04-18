@@ -198,7 +198,7 @@
                 <div class="salaryBox">
                     <van-field
                                name="salary"
-                               :value="datingBasic.salary"
+                               v-model="datingBasic.salary"
                                label="月薪(元)"
                                type="digit"
                                placeholder="请填写月薪"

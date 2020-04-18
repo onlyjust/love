@@ -3,7 +3,7 @@
         <!--动态-->
         <love-dynamic :dynamicInfo="dynamicInfo" :isDetail="true"/>
         <!--动态评论-->
-        <love-dynamic-comment/>
+        <love-dynamic-comment :dynamicCommentList="dynamicInfo.dynamicCommentList"/>
         <!--动态回复-->
         <love-reply-dynamic />
     </div>
@@ -16,10 +16,14 @@
     import LoveReplyDynamic from './../../components/dynamic/LoveReplyDynamic';
 
     import {getDynamicInfo} from './../../service/api/index';
+    import VueReport from "../../components/dynamic/sendReplay";
+    import LoveReply from "../../components/dynamic/LoveReply";
 
     export default {
         name: "DynamicDetail",
         components:{
+            LoveReply,
+            VueReport,
             LoveDynamicComment,
             LoveDynamic,
             LoveReplyDynamic

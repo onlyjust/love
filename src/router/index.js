@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 
-import wechatPlugin from 'vue-wechat-plugin'
+import wechatPlugin from './../plugins/index'
 import axios from 'axios'
 
 import defaultRouter from './default'
 import userinfoRouter from './userinfo'
 import personRouter from './person'
 import myDynamicRouter from './mydynamic'
+
+import chatRouter from './message/chat'
 
 Vue.use(VueRouter)
 
@@ -20,6 +22,7 @@ const router = new VueRouter({
     userinfoRouter,
     ...personRouter,
     ...myDynamicRouter,
+    ...chatRouter,
     {
       path: '/*',
       redirect: '/default',
@@ -30,7 +33,7 @@ const router = new VueRouter({
   ]
 });
 import {setStore} from './../config/global';
-import {USER_INFO} from "../store/mutations-type";
+import {TOKEN,USER_INFO} from "../store/mutations-type";
 
 // 微信授权插件初始化
 Vue.use(wechatPlugin , {

@@ -13,7 +13,7 @@
                             <h1>{{dynamicInfo.nickname}}<i class="iconfont" :class="[dynamicInfo.gender == 1?'iconnan':'iconnv']"></i></h1>
                             <span>{{dynamicInfo.job}}</span>
                         </div>
-                        <span>09:12</span>
+                        <span>{{dynamicInfo.dynamicTime}}</span>
                     </div>
                     <div class="dynamic_info">
                         <p class="dynamic_txt" v-if="isDetail">{{dynamicInfo.content}}</p>

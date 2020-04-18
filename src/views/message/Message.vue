@@ -28,18 +28,20 @@
             </div>
 
             <div class="message_container">
-                <div class="message_box">
-                    <div class="message_left">
-                        <img src="@/img/1.jpg">
+                <router-link tag="li"  ref="cell" :to="'/chat/晓晓'">
+                    <div class="message_box">
+                        <div class="message_left">
+                            <img src="@/img/1.jpg">
+                        </div>
+                        <div class="message_content">
+                            <h1>晓晓</h1>
+                            <p>发来一条消息</p>
+                        </div>
+                        <div class="message_right">
+                            <span>2020-03-03</span>
+                        </div>
                     </div>
-                    <div class="message_content">
-                        <h1>晓晓</h1>
-                        <p>发来一条消息</p>
-                    </div>
-                    <div class="message_right">
-                        <span>2020-03-03</span>
-                    </div>
-                </div>
+                </router-link>
                 <div class="message_box">
                     <div class="message_left">
                         <img src="@/img/1.jpg">

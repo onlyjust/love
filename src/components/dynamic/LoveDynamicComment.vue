@@ -4,36 +4,33 @@
         <!--动态评论-->
         <div class="dynamic_comment">
             <ul>
-                <li>
+                <li v-for="dynamicComment in dynamicCommentList" :key="dynamicComment.id">
                     <!--用户头像-->
                     <div class="comment_user">
                         <a href="">
-                            <img src="@/img/1.jpg">
+                            <img :src="dynamicComment.personalPhoto">
                         </a>
                     </div>
                     <div class="comment_content">
                         <div class="comment_header">
                             <div>
-                                <h2>小媛</h2>
-                                <span>20-03-04 00:23</span>
+                                <h2>{{dynamicComment.nickname}}</h2>
+                                <span>{{dynamicComment.commentTime}}</span>
                             </div>
                             <p><i class="iconfont iconz-like"></i>5</p>
                         </div>
-                        <p class="comment">我好像喜欢上你了，你看能不能……我好像喜欢上你了，你看能不能……我好像喜欢上你了，你看能不能……</p>
+                        <p class="comment">{{dynamicComment.comment}}</p>
                         <!--追加评论-->
-                        <ul class="add_comment">
-                            <li>
-                                <a href="" class="reply_user">晓晓</a> 回复 <a href=""  class="reply_user">小媛：</a>我其实早就关注你了，只是不敢告诉你而已……
-                            </li>
-                            <li>
-                                <a href="" class="reply_user">小媛</a> 回复 <a href=""  class="reply_user">晓晓：</a>我其实早就关注你了，只是不敢告诉你而已……
+                        <ul class="add_comment" v-if="dynamicComment.appendCommentList">
+                            <li v-for="appendCommend in dynamicComment.appendCommentList">
+                                <a href="" class="reply_user">{{appendCommend.nickname}}</a> 回复 <a href=""  class="reply_user">{{appendCommend.replierNickname}}：</a>{{appendCommend.comment}}
                             </li>
                         </ul>
                     </div>
                 </li>
 
-                <li>
-                    <!--用户头像-->
+                <!--<li>
+                    &lt;!&ndash;用户头像&ndash;&gt;
                     <div class="comment_user">
                         <a href="">
                             <img src="@/img/2.jpg">
@@ -52,7 +49,7 @@
                 </li>
 
                 <li>
-                    <!--用户头像-->
+                    &lt;!&ndash;用户头像&ndash;&gt;
                     <div class="comment_user">
                         <a href="">
                             <img src="@/img/3.jpg">
@@ -67,7 +64,7 @@
                             <p><i class="iconfont iconz-like"></i>5</p>
                         </div>
                         <p class="comment">我好像喜欢上你了，你看能不能……我好像喜欢上你了，你看能不能……我好像喜欢上你了，你看能不能……</p>
-                        <!--追加评论-->
+                        &lt;!&ndash;追加评论&ndash;&gt;
                         <ul class="add_comment">
                             <li>
                                 <a href="" class="reply_user">晓晓</a> 回复 <a href=""  class="reply_user">小媛：</a>我其实早就关注你了，只是不敢告诉你而已……
@@ -77,7 +74,7 @@
                             </li>
                         </ul>
                     </div>
-                </li>
+                </li>-->
             </ul>
         </div>
 
@@ -89,7 +86,10 @@
 
 <script>
     export default {
-        name: "LoveDynamicComment"
+        name: "LoveDynamicComment",
+        props:{
+            dynamicCommentList:Array
+        }
     }
 </script>
 
