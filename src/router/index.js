@@ -15,8 +15,8 @@ Vue.use(VueRouter)
 
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
+  // mode: 'history',
+  // base: process.env.BASE_URL,
   routes:[
     defaultRouter,
     userinfoRouter,
@@ -26,9 +26,9 @@ const router = new VueRouter({
     {
       path: '/*',
       redirect: '/default',
-      meta: {
+      /*meta: {
         wechatAuth: true // 如果此路由需要微信授权请设置为true,默认为false
-      },
+      },*/
     }
   ]
 });
