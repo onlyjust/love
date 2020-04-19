@@ -3,9 +3,9 @@
         <!--动态-->
         <love-dynamic :dynamicInfo="dynamicInfo" :isDetail="true"/>
         <!--动态评论-->
-        <love-dynamic-comment :dynamicCommentList="dynamicInfo.dynamicCommentList"/>
+        <love-dynamic-comment :Event="Event" :dynamicCommentList="dynamicInfo.dynamicCommentList"/>
         <!--动态回复-->
-        <love-reply-dynamic />
+        <love-reply-dynamic :Event="Event" :dynamicId="dynamicInfo.id" />
     </div>
 </template>
 
@@ -18,6 +18,9 @@
     import {getDynamicInfo} from './../../service/api/index';
     import VueReport from "../../components/dynamic/sendReplay";
     import LoveReply from "../../components/dynamic/LoveReply";
+    import Vue from "vue";
+
+    const Event = new Vue();
 
     export default {
         name: "DynamicDetail",
@@ -31,7 +34,8 @@
         data(){
             return {
                 dynamicId:'',
-                dynamicInfo: {}
+                dynamicInfo: {},
+                Event: Event
             }
         },
         created() {

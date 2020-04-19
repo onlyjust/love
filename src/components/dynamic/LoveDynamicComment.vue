@@ -17,13 +17,13 @@
                                 <h2>{{dynamicComment.nickname}}</h2>
                                 <span>{{dynamicComment.commentTime}}</span>
                             </div>
-                            <p><i class="iconfont iconz-like"></i>5</p>
+                            <p @click="likeComment(dynamicComment)"><i class="iconfont iconz-like" :style="dynamicComment.liked? 'color:red':''"></i>{{dynamicComment.likeNum}}</p>
                         </div>
-                        <p class="comment">{{dynamicComment.comment}}</p>
+                        <p class="comment" @click="onChangeComment(dynamicComment.id,dynamicComment.nickname)">{{dynamicComment.comment}}</p>
                         <!--追加评论-->
                         <ul class="add_comment" v-if="dynamicComment.appendCommentList">
-                            <li v-for="appendCommend in dynamicComment.appendCommentList">
-                                <a href="" class="reply_user">{{appendCommend.nickname}}</a> 回复 <a href=""  class="reply_user">{{appendCommend.replierNickname}}：</a>{{appendCommend.comment}}
+                            <li v-for="appendCommend in dynamicComment.appendCommentList" @click="onChangeComment(appendCommend.id,appendCommend.nickname)">
+                                <a class="reply_user">{{appendCommend.nickname}}</a> 回复 <a class="reply_user">{{appendCommend.replierNickname}}：</a>{{appendCommend.comment}}
                             </li>
                         </ul>
                     </div>
@@ -85,10 +85,33 @@
 </template>
 
 <script>
+    // import Bus from '@/plugins/bus';
+
+    import {likeComment} from "../../service/api";
+
     export default {
         name: "LoveDynamicComment",
         props:{
-            dynamicCommentList:Array
+            dynamicCommentList:Array,
+            Event:Object
+        },
+        methods:{
+            onChangeComment(commentId,commentNickname){
+                let obj = {commentId, commentNickname};
+                // console.log("传值",obj);
+                this.Event.$emit("onChangeComment", obj);
+            },
+            async likeComment(comment){
+                let result = await likeComment(comment.id, !comment.liked)
+                if (result.success){
+                    comment.liked = !comment.liked;
+                    if (comment.liked){
+                        comment.likeNum++;
+                    } else {
+                        comment.likeNum--;
+                    }
+                }
+            }
         }
     }
 </script>

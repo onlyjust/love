@@ -45,3 +45,7 @@ export const likeDynamic = (dynamicId,liked) => ajax(BASE_URL+'/mine/likeDynamic
 export const getDynamicPage = (pageNum=1,pageSize=20) => ajax(BASE_URL+'/dynamic/getDynamicPage',{pageNum,pageSize}, 'POST');
 // 根据动态ID获取动态信息
 export const getDynamicInfo = (dynamicId) => ajax(BASE_URL+'/dynamic/getDynamicInfo/'+dynamicId);
+// 评论动态信息
+export const commentDynamic = (commentParam) => ajax(BASE_URL+'/mine/commentDynamic', commentParam, 'POST');
+// 动态评论点赞
+export const likeComment = (commentId,liked) => ajax(BASE_URL+'/mine/likeComment',{commentId,liked}, 'POST');

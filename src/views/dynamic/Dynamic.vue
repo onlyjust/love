@@ -23,6 +23,8 @@
 
         <!--动态列表-->
         <love-dynamic v-for="(dynamic,index) in dynamicList" :dynamicInfo="dynamic" :key="index" />
+        <!--发布动态按钮-->
+        <publish-button/>
 
         <!--动态-->
         <!--<div class="dynamic">
@@ -159,6 +161,7 @@
 
     import LoveDynamic from '../../components/dynamic/LoveDynamic';
     import {getDynamicPage} from './../../service/api/index';
+    import PublishButton from "../mydynamic/PublishButton";
 
     export default {
         name: "Dynamic",
@@ -181,6 +184,7 @@
             }
         },
         components:{
+            PublishButton,
             LoveDynamic
         }
     }

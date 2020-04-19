@@ -51,7 +51,7 @@
                 console.log(value);
                 let tabBarActiveIndex = value > 0?value:0;
                 // 缓存到本地
-                sessionStorage.setItem('tabBarActiveIndex', value);
+                sessionStorage.setItem('tabBarActiveIndex', tabBarActiveIndex);
             }
         }
     }

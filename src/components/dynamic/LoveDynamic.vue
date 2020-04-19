@@ -60,6 +60,11 @@
                 let result = await likeDynamic(dynamic.id,!dynamic.liked);
                 if (result.success){
                     dynamic.liked = !dynamic.liked;
+                    if (dynamic.liked){
+                        dynamic.likeNum++;
+                    } else {
+                        dynamic.likeNum--;
+                    }
                 }
             },
             // 轮播图预览
