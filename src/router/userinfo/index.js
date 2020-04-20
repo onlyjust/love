@@ -1,4 +1,5 @@
 export default {
-    path : '/userinfo',
+    path : '/userinfo/:datingId',
+    name : 'userinfo',
     component: () => import('@/views/userinfo/UserInfo.vue')
 }

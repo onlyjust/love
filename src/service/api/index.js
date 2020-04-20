@@ -49,3 +49,11 @@ export const getDynamicInfo = (dynamicId) => ajax(BASE_URL+'/dynamic/getDynamicI
 export const commentDynamic = (commentParam) => ajax(BASE_URL+'/mine/commentDynamic', commentParam, 'POST');
 // 动态评论点赞
 export const likeComment = (commentId,liked) => ajax(BASE_URL+'/mine/likeComment',{commentId,liked}, 'POST');
+
+
+// 最新推荐
+export const recommend = () => ajax(BASE_URL+'/home/recommend');
+// 个人匹配
+export const personMatch = () => ajax(BASE_URL+'/home/personMatch');
+// 预览个人信息
+export const previewPersonal = (datingId) => ajax(BASE_URL+'/home/previewPersonal/'+datingId);
