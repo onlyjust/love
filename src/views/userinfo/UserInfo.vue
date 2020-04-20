@@ -14,6 +14,7 @@
         <UserLabel/>
         <!--走心问答-->
         <UserQuestion/>
+        <div class="footer"></div>
 
         <div class="float_block">
             <span>分享</span>
@@ -50,6 +51,11 @@
 </script>
 
 <style scoped>
+
+    /*底部*/
+    .footer{
+        height: 10rem;
+    }
 
     /*浮块*/
     .float_block{

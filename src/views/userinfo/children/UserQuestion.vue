@@ -35,7 +35,7 @@
         </div>
     </div>
 
-    <div class="footer"></div>
+
 </template>
 
 <script>
@@ -66,9 +66,6 @@
         margin: 0.25rem auto;
     }
 
-    /*底部*/
-    .footer{
-        height: 10rem;
-    }
+
 
 </style>
