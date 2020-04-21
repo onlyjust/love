@@ -6,7 +6,7 @@
             <div class="login-header">
                 <div class="login-logo">
                     <!--<img src="./images/lk_logo_sm.png" alt="" width="300">-->
-                    <img src="./images/hehe_logo.jpg" alt="" width="300">
+                    <img src="./images/hehe_logo.jpg" alt="" style="width: 30rem">
                     <!--<h5>心上人</h5>-->
                 </div>
                 <!--面板标题-->

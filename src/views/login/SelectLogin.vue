@@ -1,7 +1,7 @@
 <template>
     <div class="select-login">
         <div class="bottom">
-            <img src="./images/haha_logo.jpg" alt="" width="300">
+            <img src="./images/haha_logo.jpg" alt="" style="width: 30rem">
             <!--<h5 class="login-logo">心上人</h5>-->
         </div>
         <h4>选择登录方式</h4>
@@ -45,6 +45,9 @@
         top: 130px;
         left: 50%;
         transform: translateX(-50%);
+    }
+    .select-login h4 {
+        font-size: 1.6rem;
     }
     .login-logo {
         font-size: 40px;
