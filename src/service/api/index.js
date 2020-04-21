@@ -57,3 +57,17 @@ export const recommend = () => ajax(BASE_URL+'/home/recommend');
 export const personMatch = () => ajax(BASE_URL+'/home/personMatch');
 // 预览个人信息
 export const previewPersonal = (datingId) => ajax(BASE_URL+'/home/previewPersonal/'+datingId);
+
+
+
+
+// 获取短信验证码(GET)
+export const getPhoneCode = (phone) => ajax(BASE_URL + '/login/sendPhoneSms/'+phone);
+// 手机验证码登录(POST)
+export const phoneCodeLogin = (phone, code) => ajax(BASE_URL + '/login/login', {phone, code}, 'POST');
+// 用户名和密码登录(POST)
+export const pwdLogin = (userName, userPwd, captcha) => ajax(BASE_URL + '/login/login_pwd', {userName, userPwd, captcha}, 'POST');
+// 自动登录
+export const  getUserInfo = ()=> ajax(BASE_URL + '/login/userinfo');
+// 退出登录
+export const getLogOut = ()=> ajax(BASE_URL + '/login/logout');

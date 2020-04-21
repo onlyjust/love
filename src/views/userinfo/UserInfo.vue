@@ -3,17 +3,17 @@
         <!--用户轮播-->
         <Slideshow :slideshow_list="slideshow_list"/>
         <!--用户头信息-->
-        <UserHeader />
+        <UserHeader :userInfo="datingData" />
         <!--用户导航-->
         <UserNav />
         <!--基本信息-->
-        <UserBasic/>
+        <UserBasic :userInfo="datingData"/>
         <!--认证信息-->
         <UserAuth />
         <!--个性标签-->
-        <UserLabel/>
+        <UserLabel :labelList="datingData.labelList"/>
         <!--走心问答-->
-        <UserQuestion/>
+        <UserQuestion :questionAnswerList="datingData.questionAnswerList"/>
         <div class="footer"></div>
 
         <div class="float_block">
@@ -31,21 +31,35 @@
     import UserAuth from "./children/UserAuth";
     import UserLabel from "./children/UserLabel";
     import UserQuestion from "./children/UserQuestion";
+
+    import {previewPersonal} from "../../service/api";
+
     export default {
         name: "Person",
         components: {UserQuestion, UserLabel, UserAuth, UserBasic, UserNav, UserHeader, Slideshow},
         data(){
             return {
                 datingId:0,
-                slideshow_list:['http://file.51vipyuan.com/8d11ff72-3827-4eee-82af-c7e86b3e9efd.JPG','http://file.51vipyuan.com/9113a71b-ac28-43f9-becf-41ae72160a30.jpeg']
+                slideshow_list:['http://file.51vipyuan.com/8d11ff72-3827-4eee-82af-c7e86b3e9efd.JPG','http://file.51vipyuan.com/9113a71b-ac28-43f9-becf-41ae72160a30.jpeg'],
+                datingData:{}
             }
         },
         created(){
             this.datingId = this.$route.params.datingId;
             console.log(this.datingId);
+            this.initData();
         },
         computed:{
 
+        },
+        methods:{
+            async initData(){
+                let result = await previewPersonal(this.datingId);
+                console.log("个人信息数据：", result);
+                if (result.success){
+                    this.datingData = result.data;
+                }
+            }
         }
     }
 </script>
@@ -72,11 +86,12 @@
         background-color: #e9a4a5;
         padding: 0 2rem;
         text-align: center;
-        font-size: 1.4rem;
-        height: 2.4rem;
-        line-height: 2.4rem;
+        font-size: 1.6rem;
+        height: 3rem;
+        line-height: 3rem;
         display: inline-block;
         border-radius: 1rem;
+        color: #787878;
     }
 
 </style>

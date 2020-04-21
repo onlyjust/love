@@ -1,10 +1,5 @@
 <template>
-    <div id="mine">
-        <!--<van-nav-bar
-                title="我的"
-                fixed
-                border
-        ></van-nav-bar>-->
+    <div id="mine" v-if="userInfo.token">
         <van-cell-group>
             <van-cell
                     label-class="labelClass"
@@ -67,6 +62,7 @@ https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f3
             <router-view></router-view>
         </transition>
     </div>
+    <SelectLogin v-else/>
 </template>
 
 <script>
@@ -75,6 +71,9 @@ https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f3
 
     import {getStore,setStore} from './../../config/global';
     import {USER_INFO} from "../../store/mutations-type";
+
+    import {mapState} from 'vuex';
+    import SelectLogin from "../login/SelectLogin";
 
     export default {
         name: "Mine",
@@ -87,6 +86,9 @@ https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f3
             console.log("BASE_URL:",process.env.BASE_URL);
             setStore(USER_INFO,{"token":'15900898361:838552232aeb4e4ab51d3a282ba6a659',"userId":2,"datingId":100001});
             this.initData();
+        },
+        computed:{
+            ...mapState(["userInfo"])
         },
         methods: {
             async initData(){
@@ -102,6 +104,7 @@ https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f3
             }
         },
         components:{
+            SelectLogin
         }
     }
 </script>

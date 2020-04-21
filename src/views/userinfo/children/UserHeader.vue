@@ -5,15 +5,18 @@
             <img src="img/2.jpg">
         </div>-->
         <div class="header_right">
-            <h1 class="nickname">晓晓<i class="iconfont iconnv"></i></h1>
-            <p class="highlight_title">一句突出自己的话</p>
+            <h1 class="nickname">{{userInfo.nickname}}<i class="iconfont" :class="[userInfo.gender == 1?'iconnan':'iconnv']"></i></h1>
+            <p class="highlight_title">{{userInfo.highlightTitle}}</p>
         </div>
     </header>
 </template>
 
 <script>
     export default {
-        name: "UserHeader"
+        name: "UserHeader",
+        props:{
+            userInfo:Object
+        }
     }
 </script>
 
