@@ -1,7 +1,7 @@
 <template>
     <!-- 正文列表 -->
     <div class="container">
-        <div class="list" v-for="match in matchList">
+        <div class="list" >
             <div class="photo">
                 <img :src="match.personalPhoto">
             </div>
@@ -24,7 +24,7 @@
     export default {
         name: "HomeMatch",
         props:{
-            matchList:Array
+            match:Object
         }
     }
 </script>
@@ -38,14 +38,14 @@
         margin: 0.5rem auto;
         border-radius: 1rem;
         padding: 1rem 1rem 1rem 1rem;
-
+        box-shadow: 5px 5px 10px 5px rgba(178, 178, 195, 0.5);
     }
     .container .list .photo {
         margin: 0 auto;
     }
     .container .list .photo img {
         width: 100%;
-        /*height: 26rem;*/
+        height: 31rem;
     }
     .container .list .desc {
         color: #999999;

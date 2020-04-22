@@ -1,14 +1,16 @@
 <template>
-    <van-swipe :height="350" :autoplay="3000" indicator-color="white">
-        <van-swipe-item v-for="(image, index) in slideshow_list" :key="index">
+    <div>
+        <van-swipe :height="350" :autoplay="3000" indicator-color="white">
+            <van-swipe-item v-for="(image, index) in slideshow_list" :key="index">
                 <img class="swipe-img" v-lazy="image" @click="Preview_img(slideshow_list,index)" />
-        </van-swipe-item>
-        <template #indicator v-if="datingId">
-            <div class="custom-indicator" @click="$router.push({name:'lifePhoto',params:{datingId:datingId}})">
-                编辑
-            </div>
-        </template>
-    </van-swipe>
+            </van-swipe-item>
+            <template #indicator v-if="datingId">
+                <div class="custom-indicator" @click="$router.push({name:'lifePhoto',params:{datingId:datingId}})">
+                    编辑
+                </div>
+            </template>
+        </van-swipe>
+    </div>
 </template>
 
 <script>
