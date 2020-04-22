@@ -25,4 +25,9 @@ export default [
         name: 'questionAnswer',
         component: () => import('@/views/person/edit/QuestionAnswer')
     },
+    {
+        path: '/person/dynamic',
+        name: 'personDynamic',
+        component: () => import('@/views/person/TaDynamic'),
+    },
 ]

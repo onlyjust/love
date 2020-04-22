@@ -1,5 +1,5 @@
 <template>
-    <div id="mine" v-if="userInfo.token">
+    <div id="mine" v-if="token">
         <van-cell-group>
             <van-cell
                     label-class="labelClass"
@@ -72,7 +72,7 @@ https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f3
     import {getStore,setStore} from './../../config/global';
     import {USER_INFO} from "../../store/mutations-type";
 
-    import {mapState} from 'vuex';
+    import {mapState,mapActions} from 'vuex';
     import SelectLogin from "../login/SelectLogin";
 
     export default {
@@ -84,11 +84,14 @@ https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f3
         },
         created(){
             console.log("BASE_URL:",process.env.BASE_URL);
-            setStore(USER_INFO,{"token":'15900898361:838552232aeb4e4ab51d3a282ba6a659',"userId":2,"datingId":100001});
-            this.initData();
+            // setStore(USER_INFO,{"token":'15900898361:838552232aeb4e4ab51d3a282ba6a659',"userId":2,"datingId":100001});
+            console.log('this token',this.token);
+            if (this.token){
+                this.initData();
+            }
         },
         computed:{
-            ...mapState(["userInfo"])
+            ...mapState(["token","userInfo"]),
         },
         methods: {
             async initData(){

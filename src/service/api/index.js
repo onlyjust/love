@@ -43,6 +43,7 @@ export const pushDynamic = (dynamicParam) => ajax(BASE_URL+'/mine/pushDynamic', 
 export const likeDynamic = (dynamicId,liked) => ajax(BASE_URL+'/mine/likeDynamic',{dynamicId,liked}, 'POST');
 // 获取动态列表
 export const getDynamicPage = (pageNum=1,pageSize=20) => ajax(BASE_URL+'/dynamic/getDynamicPage',{pageNum,pageSize}, 'POST');
+export const getTaDynamicPage = (datingId,pageNum=1,pageSize=20) => ajax(BASE_URL+'/dynamic/getDynamicPage',{datingId,pageNum,pageSize}, 'POST');
 // 根据动态ID获取动态信息
 export const getDynamicInfo = (dynamicId) => ajax(BASE_URL+'/dynamic/getDynamicInfo/'+dynamicId);
 // 评论动态信息
@@ -68,6 +69,6 @@ export const phoneCodeLogin = (phone, code) => ajax(BASE_URL + '/login/login', {
 // 用户名和密码登录(POST)
 export const pwdLogin = (userName, userPwd, captcha) => ajax(BASE_URL + '/login/login_pwd', {userName, userPwd, captcha}, 'POST');
 // 自动登录
-export const  getUserInfo = ()=> ajax(BASE_URL + '/login/userinfo');
+export const getUserInfo = (token)=> ajax(BASE_URL + '/login/getLoginUser/'+token);
 // 退出登录
 export const getLogOut = ()=> ajax(BASE_URL + '/login/logout');

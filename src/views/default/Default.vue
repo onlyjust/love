@@ -23,6 +23,7 @@
 </template>
 
 <script>
+    import {mapState,mapActions} from 'vuex';
     export default {
         name: "Default",
         data() {
@@ -53,6 +54,16 @@
                 // 缓存到本地
                 sessionStorage.setItem('tabBarActiveIndex', tabBarActiveIndex);
             }
+        },
+        computed:{
+
+        },
+        mounted() {
+            console.log("default mounted");
+            this.reqUserInfo();
+        },
+        methods:{
+            ...mapActions(["reqUserInfo"]),
         }
     }
 </script>

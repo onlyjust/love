@@ -15,7 +15,7 @@
                 <div class="topic_content">
                     <div class="topic_info">
                         <h1 class="title">#疫情职场办公晒一下午餐#</h1>
-                        <a href="" class="reply">参与话题</a>
+                        <a href="javascript:;" class="reply">参与话题</a>
                     </div>
                 </div>
             </div>
@@ -230,13 +230,14 @@
         font-weight: bold;
     }
     .topic .topic_container .topic_content .topic_info .reply{
-        background: #e9a4a5;
+        background: #eeeeee;
         font-size: 1.2rem;
         border-radius: 1.2rem;
-        padding: 0.2rem 0.8rem;
+        padding: 0.5rem 1rem;
         position: absolute;
         right: 0;
         bottom: 0;
+        color: #60993c;
     }
 
     /*动态*/

@@ -1,47 +1,33 @@
 <template>
     <div id="message">
-        <van-nav-bar
+        <!--<van-nav-bar
                 title="消息"
                 fixed
                 border
-        ></van-nav-bar>
-        <div style="margin-top: 46px">
-            <div class="header">
-                <ul>
-                    <li>
-                        <i class="iconfont iconfensi"></i>
-                        <span>粉丝</span>
-                    </li>
-                    <li>
-                        <i class="iconfont iconzan"></i>
-                        <span>点赞</span>
-                    </li>
-                    <li>
-                        <i class="iconfont iconaite"></i>
-                        <span>艾特</span>
-                    </li>
-                    <li>
-                        <i class="iconfont iconpinglun"></i>
-                        <span>评论</span>
-                    </li>
-                </ul>
-            </div>
+        ></van-nav-bar>-->
+        <div class="header">
+            <ul>
+                <li>
+                    <i class="iconfont iconfensi"></i>
+                    <span>粉丝</span>
+                </li>
+                <li>
+                    <i class="iconfont iconzan"></i>
+                    <span>点赞</span>
+                </li>
+                <li>
+                    <i class="iconfont iconaite"></i>
+                    <span>艾特</span>
+                </li>
+                <li>
+                    <i class="iconfont iconpinglun"></i>
+                    <span>评论</span>
+                </li>
+            </ul>
+        </div>
 
-            <div class="message_container">
-                <router-link tag="li"  ref="cell" :to="'/chat/晓晓'">
-                    <div class="message_box">
-                        <div class="message_left">
-                            <img src="@/img/1.jpg">
-                        </div>
-                        <div class="message_content">
-                            <h1>晓晓</h1>
-                            <p>发来一条消息</p>
-                        </div>
-                        <div class="message_right">
-                            <span>2020-03-03</span>
-                        </div>
-                    </div>
-                </router-link>
+        <div class="message_container">
+            <router-link tag="li"  ref="cell" :to="'/chat/晓晓'">
                 <div class="message_box">
                     <div class="message_left">
                         <img src="@/img/1.jpg">
@@ -54,41 +40,53 @@
                         <span>2020-03-03</span>
                     </div>
                 </div>
-                <div class="message_box">
-                    <div class="message_left">
-                        <img src="@/img/3.jpg">
-                    </div>
-                    <div class="message_content">
-                        <h1>晓晓</h1>
-                        <p>发来一条消息</p>
-                    </div>
-                    <div class="message_right">
-                        <span>2020-03-03</span>
-                    </div>
+            </router-link>
+            <div class="message_box">
+                <div class="message_left">
+                    <img src="@/img/1.jpg">
                 </div>
-                <div class="message_box">
-                    <div class="message_left">
-                        <img src="@/img/2.jpg">
-                    </div>
-                    <div class="message_content">
-                        <h1>晓晓</h1>
-                        <p>发来一条消息</p>
-                    </div>
-                    <div class="message_right">
-                        <span>2020-03-03</span>
-                    </div>
+                <div class="message_content">
+                    <h1>晓晓</h1>
+                    <p>发来一条消息</p>
                 </div>
-                <div class="message_box">
-                    <div class="message_left">
-                        <img src="@/img/3.jpg">
-                    </div>
-                    <div class="message_content">
-                        <h1>晓晓</h1>
-                        <p>发来一条消息</p>
-                    </div>
-                    <div class="message_right">
-                        <span>2020-03-03</span>
-                    </div>
+                <div class="message_right">
+                    <span>2020-03-03</span>
+                </div>
+            </div>
+            <div class="message_box">
+                <div class="message_left">
+                    <img src="@/img/3.jpg">
+                </div>
+                <div class="message_content">
+                    <h1>晓晓</h1>
+                    <p>发来一条消息</p>
+                </div>
+                <div class="message_right">
+                    <span>2020-03-03</span>
+                </div>
+            </div>
+            <div class="message_box">
+                <div class="message_left">
+                    <img src="@/img/2.jpg">
+                </div>
+                <div class="message_content">
+                    <h1>晓晓</h1>
+                    <p>发来一条消息</p>
+                </div>
+                <div class="message_right">
+                    <span>2020-03-03</span>
+                </div>
+            </div>
+            <div class="message_box">
+                <div class="message_left">
+                    <img src="@/img/3.jpg">
+                </div>
+                <div class="message_content">
+                    <h1>晓晓</h1>
+                    <p>发来一条消息</p>
+                </div>
+                <div class="message_right">
+                    <span>2020-03-03</span>
                 </div>
             </div>
         </div>

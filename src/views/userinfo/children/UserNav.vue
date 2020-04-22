@@ -5,7 +5,7 @@
                 <img src="@/img/guanzhu.png">
                 <span>关注TA</span>
             </li>
-            <li>
+            <li @click="onDynamic()">
                 <img src="@/img/dongtai.png">
                 <span>TA的动态</span>
             </li>
@@ -19,7 +19,19 @@
 
 <script>
     export default {
-        name: "UserNav"
+        name: "UserNav",
+        props:{
+            datingId:Number
+        },
+        created(){
+            console.log('datingId is ',this.datingId);
+        },
+        methods:{
+            onDynamic(){
+                this.$router.push({name:'personDynamic',params:{datingId:this.datingId}})
+
+            }
+        }
     }
 </script>
 

@@ -5,7 +5,7 @@
         <!--用户头信息-->
         <UserHeader :userInfo="datingData" />
         <!--用户导航-->
-        <UserNav />
+        <UserNav :datingId="datingData.datingDataId"/>
         <!--基本信息-->
         <UserBasic :userInfo="datingData"/>
         <!--认证信息-->

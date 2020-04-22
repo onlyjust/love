@@ -1,23 +1,23 @@
 import axios from 'axios'
 
 import {getStore} from './../../config/global';
-import {USER_INFO} from "../../store/mutations-type";
+import {TOKEN,USER_INFO} from "../../store/mutations-type";
 
 export default function ajax(url = '', params = {},type = 'GET') {
     let promise;
 
     return new Promise((resolve, reject) => {
         let config = {};
-        if (getStore(USER_INFO)){
+        if (getStore(TOKEN)){
             config = {
                 headers: {
-                    'TOKEN' : JSON.parse(getStore(USER_INFO)).token,
+                    'TOKEN' : getStore(TOKEN),
                 }
             }
             if (params instanceof FormData){
                 config = {
                     headers: {
-                        'TOKEN' : JSON.parse(getStore(USER_INFO)).token,
+                        'TOKEN' : getStore(TOKEN),
                         'Content-Type' : 'multipart/form-data; charset=utf-8'
                     },
                     /*transformRequest: [function (data) {
@@ -27,6 +27,7 @@ export default function ajax(url = '', params = {},type = 'GET') {
                 console.log("config",config);
             }
         }
+        console.log("config",config);
         if (type.toUpperCase() == 'GET'){
             let paramsStr = '';
             if (params){

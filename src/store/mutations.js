@@ -10,16 +10,22 @@ import Vue from 'vue'
 
 export default {
 
+    // 保存token信息
+    [TOKEN](state, token){
+        state.token = token;
+        setStore(TOKEN, state.token);
+    },
+
     // 保存用户信息报本地
     [USER_INFO](state, {userInfo}){
         state.userInfo = userInfo;
-        setStore('userInfo', state.userInfo);
+        setStore(USER_INFO, state.userInfo);
     },
 
     // 获取用户信息
     [INIT_USER_INFO](state){
         // 8.1 获取用户信息
-        let userInfo = getStore('userInfo');
+        let userInfo = getStore(USER_INFO);
         // 8.2 判断
         if(userInfo){
             state.userInfo = JSON.parse(userInfo);
@@ -29,6 +35,6 @@ export default {
     // 退出登录
     [RESET_USER_INFO](state){
         state.userInfo = {};
-        removeStore('userInfo');
+        removeStore(USER_INFO);
     }
 }

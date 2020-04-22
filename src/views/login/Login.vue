@@ -70,7 +70,7 @@
 </template>
 
 <script>
-    import {getPhoneCode, phoneCodeLogin, pwdLogin} from './../../service/api/index'
+    import {getPhoneCode, phoneCodeLogin, pwdLogin,getUserInfo} from './../../service/api/index'
     import {mapActions} from 'vuex'
     import {Toast} from 'vant'
     export default {
@@ -96,7 +96,7 @@
             }
         },
         methods: {
-            ...mapActions(['syncUserInfo']),
+            ...mapActions(['syncUserInfo','syncAuthToken']),
             // 1. 处理登录模式
             dealLoginMode(flag){
                 this.loginMode = flag;
@@ -155,10 +155,18 @@
                     let result = await phoneCodeLogin(this.phone, this.code);
                     // console.log(result);
                     if(result.success){
-                        // 4.1 保存用户信息
-                        this.syncUserInfo(result.data);
-                        // 4.2 回到主面板
-                        this.$router.back();
+                        // 保存用户登录TOKEN
+                        this.syncAuthToken(result.data);
+                        result = await getUserInfo(result.data);
+                        if (result.success){
+                            // 4.1 保存用户信息
+                            this.syncUserInfo(result.data);
+                            if (result.data.status === 0){
+                                this.$router.push('/person/basic');
+                            }
+                            // 4.2 回到主面板
+                            this.$router.back();
+                        }
                     }else {
                         Toast({
                             message: '登录失败，手机号码或者验证码不正确！',

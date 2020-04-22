@@ -86,6 +86,7 @@
     .reply_dynamic textarea{
         outline: none;
         border: none;
+        resize: none;
         line-height: 2rem;
         margin-top: 0.8rem;
         margin-left: 1em;
@@ -98,5 +99,7 @@
         border: none;
         flex-shrink: 0;
         padding: 0 1rem;
+        height: 3.5rem;
+        box-sizing: border-box;
     }
 </style>
