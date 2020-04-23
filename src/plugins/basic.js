@@ -73,5 +73,10 @@ export default {
     salaryList:[
         {text:'左右',value:0},
         {text:'以上',value:1},
+    ],
+
+    genderList:[
+        {text:'男',value:1},
+        {text:'女',value:2},
     ]
 }
