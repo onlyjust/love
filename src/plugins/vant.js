@@ -92,3 +92,6 @@ Vue.use(Toast);
 import { Switch } from 'vant';
 Vue.use(Switch);
 
+// Steps 步骤条
+import { Step, Steps } from 'vant';
+Vue.use(Step).use(Steps);
