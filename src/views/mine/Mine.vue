@@ -9,12 +9,15 @@
             >
                 <template slot="title">
                     <div class="personMsg">
-                        <van-image
-                                round
-                                width="80px"
-                                height="80px"
-                                :src="main.personalPhoto"
-                        />
+                        <van-uploader :after-read="afterReadFile"
+                                      :before-read="beforeReadFile">
+                            <van-image
+                                    round
+                                    width="80px"
+                                    height="80px"
+                                    :src="main.personalPhoto"
+                            />
+                        </van-uploader>
                         <!--<img class="iconImage" src="
 https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f380c555f.jpg" alt="">-->
                         <div class="personInfo">
@@ -104,7 +107,31 @@ https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f3
                 this.$router.push({
                     path:'/default/mine/editor'
                 });
-            }
+            },
+
+            beforeReadFile(file){
+                //console.log("beforeReadFile", file);
+                return true;
+            },
+            async afterReadFile(file){
+                file.status = 'uploading';
+                file.message = '上传中...';
+                //console.log("afterReadFile",file);
+                let formData = new FormData();
+                formData.append("file", file.file);
+                formData.append("fileName", file.file.name);
+                formData.append("relationalId", this.relationalId);
+                formData.append("relationalName", 'DATING_LIFE_PHOTO');
+                let result = await uploadFile(formData);
+                //console.log("上传结果", result);
+                if (result.success){
+                    file.status = 'done';
+                    file.message = '上传成功';
+                    file.id = result.data.id;
+                    return true;
+                }
+                return false;
+            },
         },
         components:{
             SelectLogin

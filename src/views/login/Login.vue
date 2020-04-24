@@ -161,8 +161,10 @@
                         if (result.success){
                             // 4.1 保存用户信息
                             this.syncUserInfo(result.data);
+                            console.log("保存用户信息",result.data);
                             if (result.data.status === 0){
-                                this.$router.push('/person/basic');
+                                this.$router.push('/register');
+                                return
                             }
                             // 4.2 回到主面板
                             this.$router.back();

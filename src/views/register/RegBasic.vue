@@ -1,6 +1,6 @@
 <template>
     <div class="basic">
-        <van-cell-group  title="基本资料">
+        <van-cell-group title="">
             <!--昵称-->
             <van-field
                     v-model="datingBasic.nickname"

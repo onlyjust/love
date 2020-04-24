@@ -154,7 +154,7 @@
                     name="education"
                     :value="datingBasic.education"
                     label="学历"
-                    placeholder="点击选择城市"
+                    placeholder="点击选择学历"
                     input-align="right"
                     required
                     @click="showEducationPicker = true"
@@ -333,7 +333,10 @@
                 values.nativeCity = this.datingBasic.nativeCity;
                 values.nativeArea = this.datingBasic.nativeArea;
                 console.log('submit', values);
-                console.log("datingBasic",this.datingBasic)
+                console.log("datingBasic",this.datingBasic);
+                if (!this.validateDating(values)) {
+                    return;
+                }
                 let result = await updateDatingBasic(values);
                 this.$toast(result.message);
                 if (result.success){
@@ -399,7 +402,58 @@
                 this.datingBasic.salaryScopeDesc = value.text;
                 this.datingBasic.salaryScope = value.value;
                 this.showSalaryPicker = false;
-            }
+            },
+
+            //验证
+            validateDating(datingObj){
+                if (!datingObj.nickname) {
+                    this.$toast('请输入昵称');
+                    return false;
+                }
+                if (!datingObj.height) {
+                    this.$toast('请选择身高');
+                    return false;
+                }
+                if (!datingObj.birthday) {
+                    this.$toast('请选择生日');
+                    return false;
+                }
+                if (!datingObj.horoscope) {
+                    this.$toast('请选择星座');
+                    return false;
+                }
+                if (!datingObj.live) {
+                    this.$toast('请选择居住地');
+                    return false;
+                }
+                if (!datingObj.nativePlace) {
+                    this.$toast('请选择家乡');
+                    return false;
+                }
+                if (!datingObj.education) {
+                    this.$toast('点击选择学历');
+                    return false;
+                }
+                if (!datingObj.job) {
+                    this.$toast('请填写职业');
+                    return false;
+                }
+                if (!datingObj.salary) {
+                    this.$toast('请填写月薪');
+                    return false;
+                }
+                if (!datingObj.wechatId) {
+                    this.$toast('请输入微信号');
+                    return false;
+                }
+                if (!datingObj.phone) {
+                    this.$toast('请输入手机号');
+                    return false;
+                }
+                return true;
+            },
+
+
         }
     }
 </script>

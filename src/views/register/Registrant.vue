@@ -1,10 +1,10 @@
 <template>
     <div class="registrant">
-        <div @click="selectedGender(1)" :class="{'boy':dating.gender==1}">
+        <div @click="selectedGender(1)" :class="[gender==1?'boy':'']">
             <img src="@/images/gender/boy.jpg">
             <p>男生</p>
         </div>
-        <div @click="selectedGender(2)" :class="{'girl':dating.gender==2}">
+        <div @click="selectedGender(2)" :class="{'girl':gender==2}">
             <img src="@/images/gender/girl.jpg">
             <p>女生</p>
         </div>
@@ -18,20 +18,18 @@
             datingObj:Object
         },
         created(){
-            this.dating = this.datingObj;
+            this.gender = this.datingObj.gender;
         },
         data(){
             return{
-                dating:{
-                    gender:0
-                },
+                gender:0
             }
         },
         methods:{
             selectedGender(gender){
-                this.dating.gender = gender;
-                console.log("选中",this.dating.gender);
-                this.$emit('onDating',this.dating);
+                this.gender = gender;
+                this.datingObj.gender = gender;
+                this.$emit('onDating',this.datingObj);
             }
         }
     }
