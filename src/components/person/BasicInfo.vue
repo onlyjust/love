@@ -3,18 +3,22 @@
 
         <!--用户头信息-->
         <header class="header">
-            <!--<div class="header_left">
-                <img src="@/img/2.jpg">
-            </div>-->
+            <div class="header_left">
+                <van-uploader :after-read="afterReadFile"
+                              :before-read="beforeReadFile">
+                    <img :src="userInfo.personalPhoto">
+                </van-uploader>
+            </div>
             <div class="header_box">
                 <h1 class="nickname">{{userInfo.nickname}}<i class="iconfont " :class="[userInfo.gender == 1?'iconnan':'iconnv']"></i><a @click="$router.push('/person/basic')"><i class="iconfont iconbianji"></i></a></h1>
-                <p class="highlight_title">{{userInfo.highlightTitle}}</p>
+                <!--<p class="highlight_title">{{userInfo.highlightTitle}}</p>-->
             </div>
             <div class="header_right">
                 <img src="@/img/shengyin.png">
                 <p>TA的声音</p>
             </div>
         </header>
+        <p class="highlight_title">{{userInfo.highlightTitle}}</p>
         <!--基本信息-->
         <div class="basic_box">
             <div class="basic_box_info">
@@ -45,12 +49,36 @@
 </template>
 
 <script>
+    import {uploadAvatar} from "../../service/api";
+
     export default {
         name: "BasicInfo",
         props:{
             userInfo:{
                 type:Object
             }
+        },
+        methods:{
+            beforeReadFile(file){
+                //console.log("beforeReadFile", file);
+                return true;
+            },
+            async afterReadFile(file){
+                file.status = 'uploading';
+                file.message = '上传中...';
+                let formData = new FormData();
+                formData.append("file", file.file);
+                formData.append("fileName", file.file.name);
+                let result = await uploadAvatar(formData);
+                //console.log("上传结果", result);
+                if (result.success){
+                    file.status = 'done';
+                    file.message = '上传成功';
+                    this.userInfo.personalPhoto = result.data;
+                    return true;
+                }
+                return false;
+            },
         }
     }
 </script>
@@ -60,19 +88,22 @@
     /*用户头信息*/
     .header{
         display: flex;
-        flex-wrap: wrap;
-        padding: 2rem 2rem 1rem;
+        flex-wrap: nowrap;
+        padding: 2rem 2rem 0rem;
         align-items: center;
     }
     .header .header_left{
-        width: 6rem;
+        width: 5rem;
     }
     .header .header_left img{
-        width: 100%;
+        width: 90%;
         border-radius: 50%;
     }
     .header .header_box{
         flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
     }
     .header .header_box .nickname{
         font-size: 1.8rem;
@@ -82,7 +113,8 @@
         margin-left: 1rem;
         font-size: 1.4rem;
     }
-    .header .header_box .highlight_title{
+    .highlight_title{
+        margin-left: 2rem;
         margin-top: 1rem;
         font-size: 1.5rem;
     }

@@ -72,3 +72,6 @@ export const pwdLogin = (userName, userPwd, captcha) => ajax(BASE_URL + '/login/
 export const getUserInfo = (token)=> ajax(BASE_URL + '/login/getLoginUser/'+token);
 // 退出登录
 export const getLogOut = ()=> ajax(BASE_URL + '/login/logout');
+
+// 上传文件
+export const uploadAvatar = (fileParam) => ajax(BASE_URL+'/user/avatar',fileParam,"POST");
