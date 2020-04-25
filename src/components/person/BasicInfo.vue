@@ -70,7 +70,7 @@
                 formData.append("file", file.file);
                 formData.append("fileName", file.file.name);
                 let result = await uploadAvatar(formData);
-                //console.log("上传结果", result);
+                console.log("上传结果", result);
                 if (result.success){
                     file.status = 'done';
                     file.message = '上传成功';
@@ -89,14 +89,15 @@
     .header{
         display: flex;
         flex-wrap: nowrap;
-        padding: 2rem 2rem 0rem;
+        padding: 1rem 2rem 0rem;
         align-items: center;
     }
     .header .header_left{
         width: 5rem;
     }
     .header .header_left img{
-        width: 90%;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
     }
     .header .header_box{

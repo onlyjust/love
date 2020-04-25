@@ -7,7 +7,7 @@
                 <li v-for="dynamicComment in dynamicCommentList" :key="dynamicComment.id">
                     <!--用户头像-->
                     <div class="comment_user">
-                        <a href="">
+                        <a >
                             <img :src="dynamicComment.personalPhoto">
                         </a>
                     </div>
@@ -135,6 +135,7 @@
     }
     .dynamic_comment .comment_user img{
         width: 4rem;
+        height: 4rem;
         border-radius: 50%;
     }
     .dynamic_comment .comment_content{
