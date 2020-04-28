@@ -74,7 +74,8 @@
         margin: 0 0.8rem;
     }
     .latest_recommend .recommend_content  ul li img {
-        width: 90%;
+        width: 5.5rem;
+        height: 5.5rem;
         border-radius: 50%;
         padding: 0.2rem;
     }

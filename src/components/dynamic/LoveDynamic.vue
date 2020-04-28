@@ -106,7 +106,8 @@
         box-sizing: border-box;
     }
     .dynamic .dynamic_container .dynamic_left .user img{
-        width: 100%;
+        width: 4rem;
+        height: 4rem;
         border-radius: 50%;
     }
     .dynamic .dynamic_container .dynamic_right{
@@ -204,7 +205,8 @@
         box-sizing: border-box;
     }
     .dynamic .dynamic_container .dynamic_like ul li img{
-        width: 100%;
+        width: 3rem;
+        height: 3rem;
         border-radius: 50%;
     }
 </style>
