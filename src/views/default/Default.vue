@@ -61,6 +61,7 @@
         mounted() {
             console.log("default mounted");
             this.reqUserInfo();
+            console.log("websocket init");
         },
         methods:{
             ...mapActions(["reqUserInfo"]),

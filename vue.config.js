@@ -7,6 +7,9 @@ module.exports = {
                 // target: 'http://api.51vipyuan.com',
                 target: 'http://127.0.0.1:8089',
                 changeOrigin: true
+            },
+            '/webchat':{
+                target: 'http://127.0.0.1:8089'
             }
         }
     }

@@ -162,6 +162,12 @@
                             // 4.1 保存用户信息
                             this.syncUserInfo(result.data);
                             console.log("保存用户信息",result.data);
+
+                            let userInfo = {accessToken:this.TOKEN,username:result.data.userId};
+                            this.$store.dispatch('subscribe_msg', userInfo).then(() => {
+
+                            });
+
                             if (result.data.status === 0){
                                 this.$router.push('/register');
                                 return
