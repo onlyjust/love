@@ -7,7 +7,8 @@ import {
     RECEIVE_MESSAGE,
     ACCEPTED_FRIEND_REQ,
     SET_MESSAGE_TIMEOUT,
-    SET_MESSAGE_SENT
+    SET_MESSAGE_SENT,
+    SWITCH_SESSION
 } from './mutations-type'
 
 import {getStore, removeStore, setStore} from './../config/global'
