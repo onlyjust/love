@@ -27,8 +27,8 @@
         </div>
 
         <div class="message_container">
-            <router-link tag="li"  ref="cell" :to="'/chat/晓晓'">
-                <div class="message_box">
+            <!--<router-link tag="li"  ref="cell" :to="'/chat/晓晓'">-->
+                <div class="message_box" @click="switchSession(58,'晓晓')">
                     <div class="message_left">
                         <img src="@/img/1.jpg">
                     </div>
@@ -40,7 +40,7 @@
                         <span>2020-03-03</span>
                     </div>
                 </div>
-            </router-link>
+            <!--</router-link>-->
             <div class="message_box">
                 <div class="message_left">
                     <img src="@/img/1.jpg">
@@ -96,13 +96,15 @@
 <script>
     export default {
         name: "Message",
-        switchSession (fromId) {
-            let from = fromId;
-            let remark = '';
-            this.$store.dispatch('switchSession', {from, remark}).then(() => {
-                this.$router.push({path: '/messageSection'})
-            })
-        },
+        methods:{
+            switchSession (fromId,fromName) {
+                let from = fromId;
+                let remark = '';
+                this.$store.dispatch('switchSession', {from, remark}).then(() => {
+                    this.$router.push({path: '/chat/'+fromName})
+                })
+            },
+        }
     }
 </script>
 

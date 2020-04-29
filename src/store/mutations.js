@@ -8,8 +8,12 @@ import {
     ACCEPTED_FRIEND_REQ,
     SET_MESSAGE_TIMEOUT,
     SET_MESSAGE_SENT,
-    SWITCH_SESSION
+    SWITCH_SESSION,
+    ADD_UN_SEND_MSG,
+    CLEAR_SESSION
 } from './mutations-type'
+
+import apis from '../service/api/websocket'
 
 import {getStore, removeStore, setStore} from './../config/global'
 import Vue from 'vue'
@@ -25,6 +29,7 @@ export default {
     // 保存用户信息报本地
     [USER_INFO](state, {userInfo}){
         state.userInfo = userInfo;
+        state.username = userInfo.userId;
         setStore(USER_INFO, state.userInfo);
     },
 
@@ -76,12 +81,21 @@ export default {
             state.messages[id].timestamp = timestamp
         }
     },
+    // 设置消息发送
     [SET_MESSAGE_SENT] (state, id) {
         state.messages[id].sent = true
     },
-
+    // 开关对话框
     [SWITCH_SESSION] (state, {from, remark}) {
         setCurrentSession(state, from, remark)
+    },
+    // 添加未发送消息
+    [ADD_UN_SEND_MSG] (state, message) {
+        state.unSendMsg.push(message)
+    },
+
+    [CLEAR_SESSION] (state) {
+        state.currentFrom = null
     },
 }
 
@@ -105,7 +119,7 @@ function addMessage(state, message) {
     message.isRead = from === state.currentFrom
     // add it to the session it belongs to
     const session = state.sessions[from]
-
+    console.log("session:",session)
     if (!session.messages.some(id => id === message.id)) {
         session.messages.push(message.id)
         session.lastMessage = message
