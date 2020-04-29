@@ -6,6 +6,7 @@ import store from './store/index'
 
 // 2. 引入全局的样式
 import '@/style/common.less'
+import '@/style/icon.css'
 import '@/style/iconfont.less'
 import '@/style/iconfontcolor.less'
 import '@/style/iconfont/iconfont.css'

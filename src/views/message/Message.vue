@@ -95,7 +95,14 @@
 
 <script>
     export default {
-        name: "Message"
+        name: "Message",
+        switchSession (fromId) {
+            let from = fromId;
+            let remark = '';
+            this.$store.dispatch('switchSession', {from, remark}).then(() => {
+                this.$router.push({path: '/messageSection'})
+            })
+        },
     }
 </script>
 
