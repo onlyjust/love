@@ -34,11 +34,15 @@ const router = new VueRouter({
     }
   ]
 });
+
+// websocket插件初始化
+// Vue.use(wechatPlugin,{router});
+
 import {setStore} from './../config/global';
 import {TOKEN,USER_INFO} from "../store/mutations-type";
 
 // 微信授权插件初始化
-Vue.use(wechatPlugin , {
+/*Vue.use(wechatPlugin , {
   router, // 路由实例对象
   appid: process.env.VUE_APP_WX_APPID, // 您的微信appid
   responseType: 'code', // 返回类型，请填写code
@@ -73,7 +77,7 @@ Vue.use(wechatPlugin , {
       next('/login'); // ajax出现错误
     })
   },
-});
+});*/
 
 
 export default router

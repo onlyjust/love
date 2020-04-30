@@ -38,7 +38,7 @@ export default {
             }
         }
         let user = {accessToken:token,username:userInfo.userId};
-        let result = new Promise((resolve, reject) => {
+        /*let result = new Promise((resolve, reject) => {
             api.subscribe(user, (connected) => {
                 console.log("connected", connected);
                 if (connected) {
@@ -47,7 +47,7 @@ export default {
                     reject()
                 }
             })
-        })
+        })*/
     },
 
 
