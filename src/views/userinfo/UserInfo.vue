@@ -18,7 +18,7 @@
 
         <div class="float_block">
             <span>分享</span>
-            <span>想认识</span>
+            <span @click="switchSession(datingId,datingData.nickname)">想认识</span>
         </div>
     </div>
 </template>
@@ -59,7 +59,14 @@
                 if (result.success){
                     this.datingData = result.data;
                 }
-            }
+            },
+            switchSession (fromId,fromName) {
+                let from = fromId;
+                let remark = '';
+                this.$store.dispatch('switchSession', {from, remark}).then(() => {
+                    this.$router.push({path: '/chat/'+fromName})
+                })
+            },
         }
     }
 </script>

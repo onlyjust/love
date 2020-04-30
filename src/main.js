@@ -40,6 +40,12 @@ function setHtmlFontSize(){
 };
 setHtmlFontSize();
 
+
+
+Vue.filter('time', timestamp => {
+  return new Date(timestamp).toLocaleTimeString(Vue.config.lang)
+});
+
 new Vue({
   router,
   store,

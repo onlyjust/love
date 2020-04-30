@@ -6,7 +6,7 @@ import * as mutationTypes from '../../store/mutations-type'
 import store from '../../store'
 import axios from 'axios'
 // import i18n from '../i18n'
-// import {uuidv4} from '../utils'
+import {uuidv4} from '../../utils'
 
 const debug = true
 
@@ -309,7 +309,7 @@ let api = {
     },
     createMessage ({content, session, data, duration}, cb) {
         const message = {
-            // id: 'm_' + uuidv4(),
+            id: 'm_' + uuidv4(),
             from: store.getters.username,
             isMe: true,
             to: session.from,

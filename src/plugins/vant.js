@@ -95,3 +95,8 @@ Vue.use(Switch);
 // Steps 步骤条
 import { Step, Steps } from 'vant';
 Vue.use(Step).use(Steps);
+
+// PullRefresh 下拉刷新
+import { PullRefresh } from 'vant';
+Vue.use(PullRefresh);
+

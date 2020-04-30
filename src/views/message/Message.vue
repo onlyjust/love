@@ -26,8 +26,8 @@
             </ul>
         </div>
 
-        <div class="message_container">
-            <!--<router-link tag="li"  ref="cell" :to="'/chat/晓晓'">-->
+        <session-section :height="height"/>
+        <!--<div class="message_container">
                 <div class="message_box" @click="switchSession(58,'晓晓')">
                     <div class="message_left">
                         <img src="@/img/1.jpg">
@@ -40,7 +40,6 @@
                         <span>2020-03-03</span>
                     </div>
                 </div>
-            <!--</router-link>-->
             <div class="message_box">
                 <div class="message_left">
                     <img src="@/img/1.jpg">
@@ -89,13 +88,23 @@
                     <span>2020-03-03</span>
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
 </template>
 
 <script>
+    import SessionSection from "./session/SessionSection";
     export default {
         name: "Message",
+        data(){
+            return{
+                height:0
+            }
+        },
+        components: {SessionSection},
+        created() {
+            this.height = document.documentElement.clientHeight - 95
+        },
         methods:{
             switchSession (fromId,fromName) {
                 let from = fromId;
