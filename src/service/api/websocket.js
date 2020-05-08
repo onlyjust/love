@@ -277,19 +277,32 @@ let api = {
         )
     },
     getUnReadMessages(cb) {
-        axios.get('/apis/message/getUnReadMessages').then(
+        axios.get('/api/message/getUnReadMessages').then(
             (res) => {
-                cb(res.responseData)
+                cb(res.data.data)
             },
             () => {
                 cb(-1)
             }
         )
     },
+
+    getMessageList(cb) {
+        axios.get('/api/message/getMessageList').then(
+            (res) => {
+                console.log("getMessageList res:",res);
+                cb(res.data.data)
+            },
+            () => {
+                cb(-1)
+            }
+        )
+    },
+
     getNearbyPeoples({x, y}, cb) {
         axios.post('/apis/user/getNearbyPeoples', {x, y}).then(
             (res) => {
-                cb(res.responseData)
+                cb(res.data)
             },
             () => {
                 cb(-1)

@@ -4,9 +4,12 @@ export default {
     install(Vue, options) {
         let router = options.router;
         if (!router) return false;
-        const un_check_url = ['/login', '/register', '/testRtc','/home'];
+        let un_check_url = ['/login'];
         router.beforeEach((to, from, next) => {
-            if (!~un_check_url.indexOf(to.fullPath)) {
+            console.log("to_path:",to.fullPath);
+            console.log("indexOf:",un_check_url.indexOf(to.fullPath));
+            console.log("indexOf:",~un_check_url.indexOf(to.fullPath));
+            if (un_check_url.indexOf(to.fullPath) < 1) {
                 if (!store.getters.token) {
                     return next({path: '/login'})
                 }
@@ -26,9 +29,10 @@ export default {
                     }
                 }
             } else {
+                console.log("to_path1111:",to.fullPath)
                 if (checkToken()) {
                     subscribe()
-                    return next({path: '/'})
+                    return next({path: '/default'})
                 }
                 return next()
             }

@@ -10,7 +10,10 @@ import {
     SET_MESSAGE_SENT,
     SWITCH_SESSION,
     ADD_UN_SEND_MSG,
-    CLEAR_SESSION
+    CLEAR_SESSION,
+    LOGOUT,
+    RECEIVE_ALL,
+    MESSAGE_ALL
 } from './mutations-type'
 
 import apis from '../service/api/websocket'
@@ -96,6 +99,49 @@ export default {
 
     [CLEAR_SESSION] (state) {
         state.currentFrom = null
+    },
+
+    [LOGOUT] (state) {
+        logout(state)
+    },
+
+    [RECEIVE_ALL] (state, {messages}) {
+        let latestMessage
+        messages.forEach(message => {
+            // create new session if the session doesn't exist
+            if (!state.sessions[message.from]) {
+                createSession(state, message.from)
+            }
+            // mark the latest message
+            if (!latestMessage || message.timestamp > latestMessage.timestamp) {
+                latestMessage = message
+            }
+            // add message
+            addMessage(state, message)
+        })
+    },
+
+    [MESSAGE_ALL] (state, {messages}) {
+        let latestMessage
+        messages.forEach(message => {
+            // create new session if the session doesn't exist
+            // let from = message.isMe ? message.to : message.from
+            if (message.from === state.username){
+                if (!state.sessions[message.to]) {
+                    createSession(state, message.to)
+                }
+                Vue.set(message,"isMe",true);
+            } else if (!state.sessions[message.from]) {
+                createSession(state, message.from)
+                Vue.set(message,"isMe",false);
+            }
+            // mark the latest message
+            if (!latestMessage || message.timestamp > latestMessage.timestamp) {
+                latestMessage = message
+            }
+            // add message
+            addMessage(state, message)
+        })
     },
 }
 

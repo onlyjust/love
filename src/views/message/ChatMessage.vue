@@ -51,7 +51,7 @@
       },
       imgSrc() {
         let version = this.message.isMe ? ('?' + this.profilePhotoVersion) : ''
-        return `/apis/user/getProfilePhoto/${this.message.from + version}`
+        return `/api/user/getProfilePhoto/${this.message.from + version}`
       }
     },
     props: {

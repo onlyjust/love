@@ -103,7 +103,8 @@
         },
         components: {SessionSection},
         created() {
-            this.height = document.documentElement.clientHeight - 95
+            this.height = document.documentElement.clientHeight - 95;
+            this.$store.dispatch('getMessageList');
         },
         methods:{
             switchSession (fromId,fromName) {

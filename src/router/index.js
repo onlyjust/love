@@ -12,6 +12,8 @@ import loginRouter from './login'
 
 import chatRouter from './message/chat'
 
+import store from '../store'
+
 Vue.use(VueRouter)
 
 
@@ -78,6 +80,62 @@ import {TOKEN,USER_INFO} from "../store/mutations-type";
     })
   },
 });*/
+
+
+
+
+function checkToken() {
+  // return store.getters.expiredTime && store.getters.expiredTime > Date.now()
+  return true;
+}
+
+function subscribe() {
+  if (!store.getters.connected) {
+    store.dispatch('subscribe_msg',
+        {
+          accessToken: store.getters.token,
+          username: store.getters.username
+        }
+    ).catch(
+        () => {
+          //ignore
+        }
+    )
+  }
+}
+
+const un_check_url = ['/login', '/register', '/testRtc']
+
+router.beforeEach((to, from, next) => {
+  if (!~un_check_url.indexOf(to.fullPath)) {
+    console.log("token",store.getters.token);
+    if (!store.getters.token) {
+      return next({path: '/login'})
+    }
+    if (!checkToken()) {
+      store.commit('LOGOUT')
+      return next({path: '/login'})
+    } else {
+      subscribe()
+      if (from.fullPath === '/messageSection') {
+        store.dispatch('clearSession').then(
+            () => {
+              return next()
+            }
+        )
+      } else {
+        return next()
+      }
+    }
+  } else {
+    if (checkToken()) {
+      subscribe()
+      return next({path: '/'})
+    }
+    return next()
+  }
+})
+
 
 
 export default router

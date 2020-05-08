@@ -133,7 +133,7 @@
 
 <style lang="less" scoped>
     .chat-view {
-        background: white;
+        /*background: white;*/
         position: absolute;
         width: 100%;
         height: 100%;

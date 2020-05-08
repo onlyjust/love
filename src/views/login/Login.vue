@@ -165,15 +165,18 @@
 
                             let userInfo = {accessToken:this.TOKEN,username:result.data.userId};
                             this.$store.dispatch('subscribe_msg', userInfo).then(() => {
+                                this.$store.dispatch('getUnReadMessages');
+                                // this.$store.dispatch('getUnreadFriendReq')
 
                             });
-
                             if (result.data.status === 0){
                                 this.$router.push('/register');
                                 return
+                            } else {
+                                this.$router.push({path: '/'})
                             }
                             // 4.2 回到主面板
-                            this.$router.back();
+                            // this.$router.back();
                         }
                     }else {
                         Toast({

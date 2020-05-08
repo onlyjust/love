@@ -2,7 +2,7 @@ export default {
     // 用户信息
     userInfo: {},
     // token
-    token: localStorage.TOKE || '',
+    token: localStorage.TOKEN || '',
 
     currentFrom: null,
     sessions: {},
@@ -14,7 +14,7 @@ export default {
     requestContacts: [],
     nearbyPeoples: [],
 
-    username: localStorage.username || '',
+    username: JSON.parse(localStorage.USER_INFO).userId || '',
     gender: localStorage.gender || null,
     whatUp: localStorage.whatUp || '',
     realName: localStorage.realName || '',

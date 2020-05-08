@@ -38,7 +38,7 @@ export default {
             }
         }
         let user = {accessToken:token,username:userInfo.userId};
-        /*let result = new Promise((resolve, reject) => {
+        let result = new Promise((resolve, reject) => {
             api.subscribe(user, (connected) => {
                 console.log("connected", connected);
                 if (connected) {
@@ -47,7 +47,7 @@ export default {
                     reject()
                 }
             })
-        })*/
+        })
     },
 
 
@@ -147,6 +147,22 @@ export default {
                 } else {
                     if (messages && messages.length > 0) {
                         commit(types.RECEIVE_ALL, {messages})
+                    }
+                    resolve(true)
+                }
+            })
+        })
+    },
+
+    getMessageList({commit}) {
+        return new Promise((resolve) => {
+            api.getMessageList(messages => {
+                console.log("getMessageList:", messages);
+                if (messages === -1) {
+                    resolve(false)
+                } else {
+                    if (messages && messages.length > 0) {
+                        commit(types.MESSAGE_ALL, {messages})
                     }
                     resolve(true)
                 }

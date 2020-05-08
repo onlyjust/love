@@ -12,6 +12,7 @@ export const CREATE_SESSION = 'CREATE_SESSION'
 export const SWITCH_SESSION = 'SWITCH_SESSION'
 export const CLEAR_SESSION = "CLEAR_SESSION"
 export const RECEIVE_ALL = 'RECEIVE_ALL'
+export const MESSAGE_ALL = 'MESSAGE_ALL'
 export const RECEIVE_MESSAGE = 'RECEIVE_MESSAGE'
 export const GET_CONTACTS = 'GET_CONTACTS'
 export const SET_MASK = 'SET_MASK'

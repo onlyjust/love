@@ -60,7 +60,7 @@
         },
         mounted() {
             console.log("default mounted");
-            this.reqUserInfo();
+            // this.reqUserInfo();
             console.log("websocket init");
         },
         methods:{
