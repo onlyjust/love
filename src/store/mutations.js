@@ -122,7 +122,7 @@ export default {
     },
 
     [MESSAGE_ALL] (state, {messages}) {
-        let latestMessage
+        let latestMessage;
         messages.forEach(message => {
             // create new session if the session doesn't exist
             // let from = message.isMe ? message.to : message.from
@@ -131,6 +131,8 @@ export default {
                     createSession(state, message.to)
                 }
                 Vue.set(message,"isMe",true);
+                Vue.set(message,"sent",true);
+                Vue.set(message,"timeout",false);
             } else if (!state.sessions[message.from]) {
                 createSession(state, message.from)
                 Vue.set(message,"isMe",false);
@@ -158,7 +160,7 @@ function createSession(state, from, remark) {
 }
 
 function addMessage(state, message) {
-    console.log(message)
+    console.log("添加message：",message)
 
     // add a `isRead` field before adding the message
     let from = message.isMe ? message.to : message.from

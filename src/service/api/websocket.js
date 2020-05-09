@@ -7,6 +7,7 @@ import store from '../../store'
 import axios from 'axios'
 // import i18n from '../i18n'
 import {uuidv4} from '../../utils'
+import ajax from './ajax'
 
 const debug = true
 
@@ -287,7 +288,7 @@ let api = {
         )
     },
 
-    getMessageList(cb) {
+    /*getMessageList(cb) {
         axios.get('/api/message/getMessageList').then(
             (res) => {
                 console.log("getMessageList res:",res);
@@ -297,7 +298,12 @@ let api = {
                 cb(-1)
             }
         )
+    },*/
+
+    getMessageList(){
+        return ajax("/api/message/getMessageList");
     },
+
 
     getNearbyPeoples({x, y}, cb) {
         axios.post('/apis/user/getNearbyPeoples', {x, y}).then(
