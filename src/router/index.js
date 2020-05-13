@@ -38,7 +38,7 @@ const router = new VueRouter({
 });
 
 // websocket插件初始化
-// Vue.use(wechatPlugin,{router});
+Vue.use(wechatPlugin,{router});
 
 import {setStore} from './../config/global';
 import {TOKEN,USER_INFO} from "../store/mutations-type";
@@ -83,10 +83,10 @@ import {TOKEN,USER_INFO} from "../store/mutations-type";
 
 
 
-
+/*
 function checkToken() {
   // return store.getters.expiredTime && store.getters.expiredTime > Date.now()
-  return true;
+  return false;
 }
 
 function subscribe() {
@@ -102,15 +102,19 @@ function subscribe() {
         }
     )
   }
-}
-
+}*/
+/*
 const un_check_url = ['/login', '/register', '/testRtc']
 
 router.beforeEach((to, from, next) => {
+  console.log("to.fullPath",to.fullPath);
+  console.log(un_check_url.indexOf(to.fullPath))
+  console.log(!~un_check_url.indexOf(to.fullPath))
   if (!~un_check_url.indexOf(to.fullPath)) {
     console.log("token",store.getters.token);
     if (!store.getters.token) {
-      return next({path: '/login'})
+      console.log("跳转login")
+      return next({name: 'login'})
     }
     if (!checkToken()) {
       store.commit('LOGOUT')
@@ -134,7 +138,7 @@ router.beforeEach((to, from, next) => {
     }
     return next()
   }
-})
+})*/
 
 
 

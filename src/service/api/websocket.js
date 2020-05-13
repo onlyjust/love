@@ -101,8 +101,8 @@ let api = {
         if (cb && typeof cb === 'function') {
             cb(true)
         }
-        vm.webSocket.subscribe('/api/message/' + userToken.username, function (res) {
-            console.log('res==>',res);
+        vm.webSocket.subscribe('/message/' + userToken.username, function (res) {
+            console.log('message res==>',res);
             if (res.body) {
                 let message = JSON.parse(res.body)
                 vm.onMessage(message)
@@ -191,7 +191,7 @@ let api = {
     onPushOut() {
         store.commit(mutationTypes.LOGOUT)
         this.disconnect()
-        MessageBox.close()
+        /*MessageBox.close()
         let config = {
             confirmButtonText: i18n.t('msg.confirm'),
             cancelButtonText: i18n.t('msg.cancel')
@@ -204,7 +204,7 @@ let api = {
             () => {
                 window.location.reload()
             }
-        )
+        )*/
     },
     onAddFriendMsg(message) {
         store.commit(mutationTypes.ADD_REQ_CONTACT, message.from)

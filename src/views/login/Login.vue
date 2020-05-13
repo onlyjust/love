@@ -35,7 +35,7 @@
                             <a href="javascript:;">服务协议与隐私政策</a>
                         </section>
                     </div>
-                    <!--账号登录部分-->
+                    <!--&lt;!&ndash;账号登录部分&ndash;&gt;
                     <div :class="{current: !loginMode}">
                         <section>
                             <section class="login-message">
@@ -60,7 +60,7 @@
                                 >
                             </section>
                         </section>
-                    </div>
+                    </div>-->
                     <button class="login-submit" @click.prevent="login">登录</button>
                 </form>
                 <button class="login-back" @click.prevent="$router.back()">返回</button>

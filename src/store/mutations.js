@@ -13,7 +13,8 @@ import {
     CLEAR_SESSION,
     LOGOUT,
     RECEIVE_ALL,
-    MESSAGE_ALL
+    MESSAGE_ALL,
+    LOST_CONNECT
 } from './mutations-type'
 
 import apis from '../service/api/websocket'
@@ -91,6 +92,9 @@ export default {
     // 开关对话框
     [SWITCH_SESSION] (state, {from, remark}) {
         setCurrentSession(state, from, remark)
+    },
+    [LOST_CONNECT] (state, lost) {
+        state.lostConnect = lost
     },
     // 添加未发送消息
     [ADD_UN_SEND_MSG] (state, message) {

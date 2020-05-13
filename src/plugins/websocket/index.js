@@ -9,12 +9,9 @@ export default {
             console.log("to_path:",to.fullPath);
             console.log("indexOf:",un_check_url.indexOf(to.fullPath));
             console.log("indexOf:",~un_check_url.indexOf(to.fullPath));
-            if (un_check_url.indexOf(to.fullPath) < 1) {
+            console.log("indexOf:",!~un_check_url.indexOf(to.fullPath));
+            if (!~un_check_url.indexOf(to.fullPath)) {
                 if (!store.getters.token) {
-                    return next({path: '/login'})
-                }
-                if (!checkToken()) {
-                    store.commit('LOGOUT')
                     return next({path: '/login'})
                 } else {
                     subscribe()
@@ -44,7 +41,7 @@ export default {
 
 function checkToken() {
     // return store.getters.expiredTime && store.getters.expiredTime > Date.now()
-    return true;
+    return false;
 }
 
 function subscribe() {

@@ -67,6 +67,7 @@
     },
     methods: {
       switchSession (from) {
+        console.log("from",from)
         this.$store.dispatch('switchSession', {from}).then(() => {
           this.$router.push({path: '/chat/'+from})
         })

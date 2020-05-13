@@ -18,7 +18,7 @@
 
         <div class="float_block">
             <span>分享</span>
-            <span @click="switchSession(datingId,datingData.nickname)">想认识</span>
+            <span @click="switchSession(datingData.userId,datingData.nickname)">想认识</span>
         </div>
     </div>
 </template>
