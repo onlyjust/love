@@ -155,7 +155,7 @@ export default {
     },
 
     getMessageList({commit}) {
-        /*return new Promise((resolve) => {
+        return new Promise((resolve) => {
             api.getMessageList(messages => {
                 console.log("getMessageList:", messages);
                 if (messages === -1) {
@@ -167,15 +167,15 @@ export default {
                     resolve(true)
                 }
             })
-        })*/
-        let result = api.getMessageList();
+        })
+        /*let result = api.getMessageList();
         if (result.success){
             let messages = result.data;
             if (messages && messages.length > 0) {
                 commit(types.MESSAGE_ALL, {messages})
             }
         }
-        return result;
+        return result;*/
     },
 
     getNearbyPeoples({commit}, payload) {

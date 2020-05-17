@@ -7,7 +7,7 @@ import store from '../../store'
 import axios from 'axios'
 // import i18n from '../i18n'
 import {uuidv4} from '../../utils'
-import ajax from './ajax'
+import httpClient from './http'
 
 const debug = true
 
@@ -300,8 +300,15 @@ let api = {
         )
     },*/
 
-    getMessageList(){
-        return ajax("/api/message/getMessageList");
+    getMessageList(cb){
+        httpClient("/api/message/getMessageList").then(
+            (res) => {
+                cb(res.data.data)
+            },
+            () => {
+                cb(-1)
+            }
+        );
     },
 
 

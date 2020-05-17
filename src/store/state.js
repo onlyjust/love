@@ -14,7 +14,7 @@ export default {
     requestContacts: [],
     nearbyPeoples: [],
 
-    username: JSON.parse(localStorage.USER_INFO).userId || '',
+    username: localStorage.USER_INFO ? JSON.parse(localStorage.USER_INFO).userId : '',
     gender: localStorage.gender || null,
     whatUp: localStorage.whatUp || '',
     realName: localStorage.realName || '',

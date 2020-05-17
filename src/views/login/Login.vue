@@ -123,7 +123,7 @@
                 // 3.1 判断登录模式
                 if(this.loginMode){ // 手机验证码登录
                     // 3.1.1 输入数据校验
-                    if(!this.phone.trim()){
+                    if(!this.phone || !this.phone.trim()){
                         Toast({
                             message: '请输入手机号码',
                             duration: 500
@@ -137,7 +137,7 @@
                         return;
                     }
 
-                    if(!this.code.trim()){
+                    if(!this.code || !this.code.trim()){
                         Toast({
                             message: '请输入验证码',
                             duration: 500
