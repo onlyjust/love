@@ -168,17 +168,22 @@ function addMessage(state, message) {
     console.log("添加message：",message)
 
     // add a `isRead` field before adding the message
-    let from = message.isMe ? message.to : message.from
-    message.isRead = from === state.currentFrom
+    let from = message.isMe ? message.to : message.from;
+    if (message.isMe){
+        message.isRead = true;
+    } else if (!message.isRead){
+        // console.log("isRead "+message.isRead+" isMe:"+message.isMe+" from"+from+" to:"+message.to+" from:"+message.from)
+        message.isRead = from === state.currentFrom;
+    }
     // add it to the session it belongs to
-    const session = state.sessions[from]
-    console.log("session:",session)
+    const session = state.sessions[from];
+    console.log("session:",session);
     if (!session.messages.some(id => id === message.id)) {
-        session.messages.push(message.id)
-        session.lastMessage = message
+        session.messages.push(message.id);
+        session.lastMessage = message;
         if (!message.isRead) {
-            ++session.unreadMsgCount
-            ++state.unreadMsgCount
+            ++session.unreadMsgCount;
+            ++state.unreadMsgCount;
         }
     }
     if (!message.isMe && message.isRead) {
