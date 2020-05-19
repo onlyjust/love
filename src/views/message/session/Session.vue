@@ -7,13 +7,13 @@
       <img v-lazy="'/apis/user/getProfilePhoto/' + session.from" width="44" height="44"/>
     </mt-cell>-->
     <van-cell
-            :title="session.remark || session.from"
+            :title="session.remark || session.fromName"
             :label="session.lastMessage.duration ? '[语音]': session.lastMessage.content" >
       <!-- 使用 right-icon 插槽来自定义右侧图标 -->
       <template #icon>
         <!--<img v-lazy="'https://b.yzcdn.cn/vant/icon-demo-1126.png'" width="44" height="44"/>-->
-        <van-icon name="https://b.yzcdn.cn/vant/icon-demo-1126.png" size="44" v-if="session.unreadMsgCount==0" />
-        <van-icon name="https://b.yzcdn.cn/vant/icon-demo-1126.png" size="44" v-else :badge="session.unreadMsgCount > 99 ? '99+' : session.unreadMsgCount"/>
+        <van-icon :name="`/api/user/getProfilePhoto/`+ session.from" size="44" v-if="session.unreadMsgCount==0" />
+        <van-icon :name="`/api/user/getProfilePhoto/`+ session.from" size="44" v-else :badge="session.unreadMsgCount > 99 ? '99+' : session.unreadMsgCount"/>
       </template>
     </van-cell>
 

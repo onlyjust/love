@@ -62,7 +62,7 @@ export default {
     // 接收信息
     [RECEIVE_MESSAGE] (state, {message}) {
         if (!state.sessions[message.from]) {
-            createSession(state, message.from)
+            createSession(state, message.from, message.fromName)
         }
         addMessage(state, message)
     },
@@ -114,7 +114,7 @@ export default {
         messages.forEach(message => {
             // create new session if the session doesn't exist
             if (!state.sessions[message.from]) {
-                createSession(state, message.from)
+                createSession(state, message.from, message.fromName)
             }
             // mark the latest message
             if (!latestMessage || message.timestamp > latestMessage.timestamp) {
@@ -132,13 +132,13 @@ export default {
             // let from = message.isMe ? message.to : message.from
             if (message.from === state.username){
                 if (!state.sessions[message.to]) {
-                    createSession(state, message.to)
+                    createSession(state, message.to, message.toName)
                 }
                 Vue.set(message,"isMe",true);
                 Vue.set(message,"sent",true);
                 Vue.set(message,"timeout",false);
             } else if (!state.sessions[message.from]) {
-                createSession(state, message.from)
+                createSession(state, message.from, message.fromName)
                 Vue.set(message,"isMe",false);
             }
             // mark the latest message
@@ -153,9 +153,10 @@ export default {
 
 
 
-function createSession(state, from, remark) {
+function createSession(state, from, fromName, remark) {
     Vue.set(state.sessions, from, {
         from,
+        fromName,
         remark,
         messages: [],
         lastMessage: null,

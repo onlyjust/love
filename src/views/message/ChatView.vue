@@ -3,7 +3,7 @@
         <div class="chat-view">
             <chat-content bg-color="#f2f2f2" color="black">
                 <div slot="left" class="iconfont icon" @click="back()">&#xe697;</div>
-                <div slot="title">{{friend}}</div>
+                <div slot="title">{{this.session.fromName}}</div>
                 <div slot="right" class="iconfont" :style="{'font-size': '1.8rem'}">&#xe710;</div>
             </chat-content>
 
