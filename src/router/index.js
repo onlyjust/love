@@ -9,6 +9,7 @@ import userinfoRouter from './userinfo'
 import personRouter from './person'
 import myDynamicRouter from './mydynamic'
 import loginRouter from './login'
+import identity from './auth'
 
 import chatRouter from './message/chat'
 
@@ -27,6 +28,7 @@ const router = new VueRouter({
     ...myDynamicRouter,
     ...chatRouter,
     ...loginRouter,
+      ...identity,
     {
       path: '/*',
       redirect: '/default',

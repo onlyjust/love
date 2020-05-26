@@ -100,3 +100,6 @@ Vue.use(Step).use(Steps);
 import { PullRefresh } from 'vant';
 Vue.use(PullRefresh);
 
+// NumberKeyboard 数字键盘
+import { NumberKeyboard } from 'vant';
+Vue.use(NumberKeyboard);

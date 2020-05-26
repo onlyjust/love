@@ -2,12 +2,12 @@
     <div>
         <div class="chat-view">
             <chat-content bg-color="#f2f2f2" color="black">
-                <div slot="left" class="iconfont icon" @click="back()">&#xe697;</div>
+                <div slot="left" class="iconfont" :style="{'font-size': '2.4rem'}" @click="back()">&#xe697;</div>
                 <div slot="title">{{this.session.fromName}}</div>
                 <div slot="right" class="iconfont" :style="{'font-size': '1.8rem'}">&#xe710;</div>
             </chat-content>
 
-            <div class="message-section">
+            <div id="content" class="message-section">
                 <ul class="message-list" ref="list">
                     <chat-message
                             v-for="message in sortedMessages"
@@ -120,6 +120,12 @@
                             : this.$router.push('/')
                     }
                 )
+            },
+            scrollToBottom() {
+                this.$nextTick(() => {
+                    let container = document.getElementById('content')
+                    container.scrollTop = container.scrollHeight;
+                })
             }
         },
         mounted() {
@@ -127,6 +133,9 @@
             if (!this.session || Object.keys(this.session).length === 0) {
                 // this.$router.push('/')
             }
+        },
+        updated() {
+            scrollToBottom();
         }
     }
 </script>
