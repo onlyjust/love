@@ -1,7 +1,7 @@
 <template>
     <!-- 正文列表 -->
     <div class="container">
-        <div class="list" >
+        <div class="list" @click="$router.push({name:'userinfo',params:{datingId:match.matchDatingId}})" >
             <div class="photo">
                 <img :src="match.personalPhoto">
             </div>
@@ -45,7 +45,7 @@
     }
     .container .list .photo img {
         width: 100%;
-        height: 31rem;
+        height: 24rem;
     }
     .container .list .desc {
         color: #999999;

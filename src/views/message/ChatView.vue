@@ -7,8 +7,8 @@
                 <div slot="right" class="iconfont" :style="{'font-size': '1.8rem'}">&#xe710;</div>
             </chat-content>
 
-            <div id="content" class="message-section">
-                <ul class="message-list" ref="list">
+            <div  class="message-section">
+                <ul id="content" class="message-list" ref="list">
                     <chat-message
                             v-for="message in sortedMessages"
                             :key="message.id"
@@ -123,7 +123,8 @@
             },
             scrollToBottom() {
                 this.$nextTick(() => {
-                    let container = document.getElementById('content')
+                    let container = document.getElementById('content');
+                    console.log("container.scrollHeight",container.scrollHeight)
                     container.scrollTop = container.scrollHeight;
                 })
             }
@@ -134,8 +135,10 @@
                 // this.$router.push('/')
             }
         },
-        updated() {
-            scrollToBottom();
+        created() {
+            this.$nextTick(() => {
+                this.scrollToBottom();
+            })
         }
     }
 </script>

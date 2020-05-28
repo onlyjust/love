@@ -40,7 +40,7 @@
         data(){
             return {
                 datingId:0,
-                slideshow_list:['http://file.51vipyuan.com/8d11ff72-3827-4eee-82af-c7e86b3e9efd.JPG','http://file.51vipyuan.com/9113a71b-ac28-43f9-becf-41ae72160a30.jpeg'],
+                slideshow_list:[],
                 datingData:{}
             }
         },
@@ -58,6 +58,9 @@
                 console.log("个人信息数据：", result);
                 if (result.success){
                     this.datingData = result.data;
+                    this.slideshow_list = result.data.lifePhotoList.map(photo => {
+                        return photo.filePath;
+                    });
                 }
             },
             switchSession (fromId,fromName) {

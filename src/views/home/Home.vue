@@ -4,7 +4,8 @@
         <love-recommend :recommendList="recommendList"/>
         <!--主页匹配-->
         <!--<home-match :matchList="matchList"/>-->
-        <home-swipe :matchList="matchList"/>
+        <!--<home-swipe :matchList="matchList"/>-->
+        <home-list :matchList="matchList"/>
     </div>
 </template>
 
@@ -14,10 +15,11 @@
 
     import {recommend,personMatch} from './../../service/api/index';
     import HomeSwipe from "./children/HomeSwipe";
+    import HomeList from "./children/HomeList";
 
     export default {
         name: "Home",
-        components: {HomeSwipe, HomeMatch, LoveRecommend},
+        components: {HomeList, HomeSwipe, HomeMatch, LoveRecommend},
         data(){
             return {
                 recommendList:[],
