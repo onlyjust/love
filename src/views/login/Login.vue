@@ -143,7 +143,7 @@
                             duration: 500
                         });
                         return;
-                    }else if(!(/^\d{6}$/gi.test(this.code))){ // 验证码不正确
+                    }else if(!(/^\d{4}$/gi.test(this.code))){ // 验证码不正确
                         Toast({
                             message: '请输入正确的验证码',
                             duration: 500
