@@ -12,8 +12,8 @@
             />
             <!--身份证号-->
             <van-field
-                    v-model="idValue"
-                    name="idValue"
+                    v-model="idNumber"
+                    name="idNumber"
                     label="身份证号"
                     placeholder="身份证号"
                     input-align="right"
@@ -21,14 +21,14 @@
                     @touchstart.native.stop="show = true"
             />
             <van-number-keyboard
-                    v-model="idValue"
+                    v-model="idNumber"
                     :show="show"
                     extra-key="X"
                     close-button-text="完成"
                     @blur="show = false"
             />
         </van-cell-group>
-        <van-cell-group>
+        <!--<van-cell-group>
             <div class="img">
                 <van-uploader>
                     <van-image width="300" height="180" src="https://img.yzcdn.cn/vant/cat.jpeg" />
@@ -37,9 +37,9 @@
                     <van-image width="300" height="180" src="/images/auth/shenfenzhengfm.png" />
                 </van-uploader>
             </div>
-        </van-cell-group>
+        </van-cell-group>-->
         <div style="margin: 16px;">
-            <van-button round block color="#65c4aa" native-type="submit">
+            <van-button round block color="#65c4aa" @click="submitData">
                 提交
             </van-button>
         </div>
@@ -52,8 +52,18 @@
         data(){
             return {
                 name:"",
-                idValue:"",
+                idNumber:"",
                 show: false,
+            }
+        },
+        methods:{
+            submitData(){
+                let name = this.name;
+                let idNumber = this.idNumber;
+                console.log(name);
+                console.log(idNumber);
+
+
             }
         }
     }
