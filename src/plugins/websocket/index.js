@@ -55,6 +55,12 @@ function subscribe() {
             () => {
                 //ignore
             }
-        )
+        );
+    }
+    if (store.getters.connected || store.getters.currentMessages) {
+        // 获取所有消息列表
+        store.dispatch('getMessageList').catch(() => {
+
+        });
     }
 }

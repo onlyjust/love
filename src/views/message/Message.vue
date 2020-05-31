@@ -27,68 +27,7 @@
         </div>
 
         <session-section :height="height"/>
-        <!--<div class="message_container">
-                <div class="message_box" @click="switchSession(58,'晓晓')">
-                    <div class="message_left">
-                        <img src="@/img/1.jpg">
-                    </div>
-                    <div class="message_content">
-                        <h1>晓晓</h1>
-                        <p>发来一条消息</p>
-                    </div>
-                    <div class="message_right">
-                        <span>2020-03-03</span>
-                    </div>
-                </div>
-            <div class="message_box">
-                <div class="message_left">
-                    <img src="@/img/1.jpg">
-                </div>
-                <div class="message_content">
-                    <h1>晓晓</h1>
-                    <p>发来一条消息</p>
-                </div>
-                <div class="message_right">
-                    <span>2020-03-03</span>
-                </div>
-            </div>
-            <div class="message_box">
-                <div class="message_left">
-                    <img src="@/img/3.jpg">
-                </div>
-                <div class="message_content">
-                    <h1>晓晓</h1>
-                    <p>发来一条消息</p>
-                </div>
-                <div class="message_right">
-                    <span>2020-03-03</span>
-                </div>
-            </div>
-            <div class="message_box">
-                <div class="message_left">
-                    <img src="@/img/2.jpg">
-                </div>
-                <div class="message_content">
-                    <h1>晓晓</h1>
-                    <p>发来一条消息</p>
-                </div>
-                <div class="message_right">
-                    <span>2020-03-03</span>
-                </div>
-            </div>
-            <div class="message_box">
-                <div class="message_left">
-                    <img src="@/img/3.jpg">
-                </div>
-                <div class="message_content">
-                    <h1>晓晓</h1>
-                    <p>发来一条消息</p>
-                </div>
-                <div class="message_right">
-                    <span>2020-03-03</span>
-                </div>
-            </div>
-        </div>-->
+
     </div>
 </template>
 
@@ -104,7 +43,7 @@
         components: {SessionSection},
         created() {
             this.height = document.documentElement.clientHeight - 95;
-            this.$store.dispatch('getMessageList');
+            //this.$store.dispatch('getMessageList');
         },
         methods:{
             switchSession (fromId,fromName) {

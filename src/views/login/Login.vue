@@ -165,7 +165,7 @@
 
                             let userInfo = {accessToken:this.TOKEN,username:result.data.userId};
                             this.$store.dispatch('subscribe_msg', userInfo).then(() => {
-                                this.$store.dispatch('getUnReadMessages');
+                                this.$store.dispatch('getMessageList');
                                 // this.$store.dispatch('getUnreadFriendReq')
 
                             });
@@ -173,7 +173,8 @@
                                 this.$router.push('/register');
                                 return
                             } else {
-                                this.$router.push({path: '/'})
+                                // this.$router.push({path: '/'})
+                                this.$router.back();
                             }
                             // 4.2 回到主面板
                             // this.$router.back();

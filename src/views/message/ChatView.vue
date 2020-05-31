@@ -124,8 +124,11 @@
             scrollToBottom() {
                 this.$nextTick(() => {
                     let container = document.getElementById('content');
-                    console.log("container.scrollHeight",container.scrollHeight)
-                    container.scrollTop = container.scrollHeight;
+                    console.log("container",container);
+                    if (container){
+                        console.log("container.scrollHeight",container.scrollHeight);
+                        container.scrollTop = container.scrollHeight;
+                    }
                 })
             }
         },

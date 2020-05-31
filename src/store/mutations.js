@@ -147,7 +147,11 @@ export default {
             }
             // add message
             addMessage(state, message)
-        })
+        });
+        // 更新最后一条信息
+        let from = latestMessage.isMe ? latestMessage.to : latestMessage.from;
+        const session = state.sessions[from];
+        session.lastMessage = latestMessage;
     },
 }
 
@@ -165,8 +169,6 @@ function createSession(state, from, fromName, remark) {
 }
 
 function addMessage(state, message) {
-    console.log("添加message：",message)
-
     // add a `isRead` field before adding the message
     let from = message.isMe ? message.to : message.from;
     if (message.isMe){
@@ -177,7 +179,6 @@ function addMessage(state, message) {
     }
     // add it to the session it belongs to
     const session = state.sessions[from];
-    console.log("session:",session);
     if (!session.messages.some(id => id === message.id)) {
         session.messages.push(message.id);
         session.lastMessage = message;

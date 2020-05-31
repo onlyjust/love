@@ -4,10 +4,16 @@
         <!--回复动态-->
         <form class="reply_dynamic" >
             <textarea rows="1" v-model="comment" :placeholder="placeholder" @blur.prevent="resetComment()" ref="replyTextarea"></textarea>
-            <input class="btn" type="button" @click="submitComment" value="发送"/>
+            <van-button class="btn" type="primary"  @click="submitComment">发送</van-button>
+
         </form>
     </div>
-
+    <!--<div class="message-foot">
+        <span @click="switchMode" class="btn-mic"><i :class="'icon icon-' + mode"></i></span>
+        <input v-show="mode === 'mic'" v-model="msg" id="msgInput" class="msg" @keyup.enter.native="sendMessage"/>
+        <wc-mic-status v-show="mode === 'keyboard'" class="msg" @onMsg="onMsg"></wc-mic-status>
+        <van-button class="btn-send" type="primary" size="small" @click="sendMessage">发送</van-button>
+    </div>-->
 </template>
 
 <script>
@@ -74,23 +80,30 @@
 
     /*回复*/
     .reply_dynamic{
-        display: flex;
+        /*display: flex;*/
         position: fixed;
         bottom: 0;
         width: 100%;
         height: 3.5rem;
         border: #cccccc solid 1px;
         font-size: 1.4rem;
-        background-color: white;
+        background-color: #eee;
     }
     .reply_dynamic textarea{
-        outline: none;
-        border: none;
         resize: none;
-        line-height: 2rem;
-        margin-top: 0.8rem;
-        margin-left: 1em;
         flex-grow: 1;
+        width: calc(100% - 7rem);
+        height: 3rem;
+        line-height: 2rem;
+        position: absolute;
+        top: 0.2rem;
+        left: 0.5rem;
+        outline: none;
+        border: 1px solid #9f9f9f;
+        border-radius: 5px;
+        color: #3e3e3e;
+        margin: 0;
+        padding: 0;
     }
     .reply_dynamic .btn {
         color: #333333;
@@ -99,7 +112,13 @@
         border: none;
         flex-shrink: 0;
         padding: 0 1rem;
-        height: 3.5rem;
+        width: 5rem;
+        height: 3rem;
+        line-height: 3rem;
         box-sizing: border-box;
+        position: absolute;
+        right: 8px;
+        top: 0.2rem;
     }
+
 </style>
