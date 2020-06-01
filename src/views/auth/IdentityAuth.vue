@@ -47,6 +47,8 @@
 </template>
 
 <script>
+    import {idCardAuth} from "../../service/api";
+
     export default {
         name: "IdentityAuth",
         data(){
@@ -57,13 +59,17 @@
             }
         },
         methods:{
-            submitData(){
+            async submitData(){
                 let name = this.name;
                 let idNumber = this.idNumber;
                 console.log(name);
                 console.log(idNumber);
-
-
+                let result = await idCardAuth(idNumber, name);
+                if (!result.success){
+                    this.$toast(result.message);
+                } else {
+                    this.$router.back();
+                }
             }
         }
     }

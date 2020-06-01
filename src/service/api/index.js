@@ -58,7 +58,8 @@ export const recommend = () => ajax(BASE_URL+'/home/recommend');
 export const personMatch = () => ajax(BASE_URL+'/home/personMatch');
 // 预览个人信息
 export const previewPersonal = (datingId) => ajax(BASE_URL+'/home/previewPersonal/'+datingId);
-
+// 身份证认证
+export const idCardAuth = (idCard,realName) => ajax(BASE_URL+'/auth/identity',{idCard,realName}, 'POST');
 
 
 
