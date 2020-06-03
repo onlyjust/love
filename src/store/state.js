@@ -4,6 +4,8 @@ export default {
     // token
     token: localStorage.TOKEN || '',
 
+    authIdentity: localStorage.AUTH_IDENTITY || 0,
+
     currentFrom: null,
     sessions: {},
     messages: {},

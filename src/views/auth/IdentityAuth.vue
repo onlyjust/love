@@ -1,12 +1,12 @@
 <template>
-    <div id="identity">
+    <div id="identity" v-if="authIdentity==1">
         <van-cell-group title="身份认证">
             <!--姓名-->
             <van-field
                     v-model="name"
                     name="name"
-                    label="姓名"
-                    placeholder="姓名"
+                    label="真实姓名"
+                    placeholder="真实姓名"
                     input-align="right"
                     required
             />
@@ -44,13 +44,20 @@
             </van-button>
         </div>
     </div>
+    <identity-info v-else/>
 </template>
 
 <script>
     import {idCardAuth} from "../../service/api";
+    import IdentityInfo from "./IdentityInfo";
+    import {mapGetters} from 'vuex';
 
     export default {
         name: "IdentityAuth",
+        components: {IdentityInfo},
+        computed:{
+            ...mapGetters(["authIdentity"])
+        },
         data(){
             return {
                 name:"",
@@ -71,7 +78,8 @@
                     this.$router.back();
                 }
             }
-        }
+        },
+
     }
 </script>
 
