@@ -28,7 +28,7 @@
                             </button>
                         </section>
                         <section class="login-verification">
-                            <input type="number" maxlength="8" placeholder="验证码" v-model="code"/>
+                            <input type="number" maxlength="4" placeholder="验证码" v-model="code"/>
                         </section>
                         <section class="login-hint">
                             温馨提示：未注册心上人的手机号，登录时将自动注册，且代表已同意

@@ -51,6 +51,12 @@ export const commentDynamic = (commentParam) => ajax(BASE_URL+'/mine/commentDyna
 // 动态评论点赞
 export const likeComment = (commentId,liked) => ajax(BASE_URL+'/mine/likeComment',{commentId,liked}, 'POST');
 
+// 获取话题列表
+export const getTopicList = () => ajax(BASE_URL+'/dynamic/getTopicList');
+
+// 获取微信公众号签名
+export const getSignature = (reqUrl) => ajax(BASE_URL+'/weixin/getSignature',{reqUrl});
+
 
 // 最新推荐
 export const recommend = () => ajax(BASE_URL+'/home/recommend');
