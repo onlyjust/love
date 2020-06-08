@@ -126,11 +126,12 @@
                     this.subjectList = result.data.map(data => data.topic);
                 }
                 let url = window.location.href.split('#')[0];
-                url = window.location.href;
+                // url = window.location.href;
                 result = await getSignature(url);
                 console.log("getSignature:",result);
                 if (result.success) {
                     let data = result.data;
+                    console.log("data",data);
                     wx.config({
                         debug: false, //生产环境需要关闭debug模式  测试环境下可以设置为true 可以在开发者工具中查看问题
                         appId: data.appId, //appId通过微信服务号后台查看
@@ -157,7 +158,8 @@
                             var longitude = res.longitude; // 经度，浮点数，范围为180 ~ -180。
                             var speed = res.speed; // 速度，以米/每秒计
                             var accuracy = res.accuracy; // 位置精度
-                            console.log("res==>",res)
+                            console.log("res==>",res);
+                            alert(res);
                         }
                     });
                 }
