@@ -75,14 +75,18 @@
                     required
                     @click="showLocationPicker = true"
             />
-            <van-popup v-model="showLocationPicker" position="bottom">
-                <van-picker
+            <van-popup v-model="showLocationPicker" position="bottom"  :style="{ height: '90%' }">
+                <!--<van-picker
                         show-toolbar
                         :columns="locationList"
                         @confirm="onLocationConfirm"
                         @cancel="showSubjectPicker = false"
-                />
+                />-->
+                <iframe id="mapPage" width="100%" height="100%" frameborder=0
+                        src="https://3gimg.qq.com/lightmap/components/locationPicker2/index.html?search=1&type=1&key=FYUBZ-S42CS-X5BOQ-6SUUV-LDADQ-FIBNX&referer=myapp">
+                </iframe>
             </van-popup>
+
 
             <van-field name="switch" label="是否匿名" input-align="right">
                 <template #input>
@@ -90,12 +94,15 @@
                 </template>
             </van-field>
         </van-cell-group>
+
     </div>
+
 </template>
 
 <script>
 
-    import {pushDynamic, uploadFile, deleteFile, getTopicList, getSignature} from './../../service/api/index';
+    import {pushDynamic, uploadFile, deleteFile, getTopicList, getSignature, getComponentMap} from './../../service/api/index';
+
     export default {
         name: "PublishDynamic",
         data(){
@@ -118,15 +125,32 @@
             this.initData();
             // this.getLocation();
         },
+        mounted(){
+            //这里是监听iframe发送事件的监听
+            window.addEventListener('message', this.handleMessage,false)
+        },
         methods:{
+            //vue 接收iframe的方法
+            handleMessage(event){
+                // 接收位置信息，用户选择确认位置点后选点组件会触发该事件，回传用户的位置信息
+                let loc = event.data;
+                if (loc && loc.module == 'locationPicker') {//防止其他应用也会向该页面post信息，需判断module是否为'locationPicker'
+                    console.log('location', loc);
+                    alert(JSON.stringify(loc));
+                    this.location = loc.poiaddress;
+                    this.showLocationPicker = false;
+                }
+
+            },
             async initData(){
                 let result = await getTopicList();
                 console.log("result:",result);
                 if (result.success){
                     this.subjectList = result.data.map(data => data.topic);
                 }
+                /*
                 let url = window.location.href.split('#')[0];
-                // url = window.location.href;
+                url = window.location.href;
                 result = await getSignature(url);
                 console.log("getSignature:",result);
                 if (result.success) {
@@ -162,8 +186,14 @@
                             alert(res);
                         }
                     });
-                }
+                }*/
 
+            },
+
+
+            showLocation(){
+                let url = decodeURIComponent(window.location.href);
+                getComponentMap(url);
             },
 
             async onPublishDynamic(){

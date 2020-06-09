@@ -56,6 +56,8 @@ export const getTopicList = () => ajax(BASE_URL+'/dynamic/getTopicList');
 
 // 获取微信公众号签名
 export const getSignature = (reqUrl) => ajax(BASE_URL+'/weixin/getSignature',{reqUrl});
+// 地图选点组件
+export const getComponentMap = (backurl) => ajax('https://3gimg.qq.com/lightmap/components/locationPicker2/index.html?search=1&type=0&backurl='+backurl+'&key=FYUBZ-S42CS-X5BOQ-6SUUV-LDADQ-FIBNX&referer=myapp');
 
 
 // 最新推荐
