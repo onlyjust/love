@@ -83,7 +83,7 @@
                         @cancel="showSubjectPicker = false"
                 />-->
                 <iframe id="mapPage" width="100%" height="100%" frameborder=0
-                        src="https://3gimg.qq.com/lightmap/components/locationPicker2/index.html?search=1&type=1&key=FYUBZ-S42CS-X5BOQ-6SUUV-LDADQ-FIBNX&referer=myapp">
+                        src="https://apis.map.qq.com/tools/locpicker?search=1&type=1&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&referer=myapp">
                 </iframe>
             </van-popup>
 
@@ -115,6 +115,8 @@
                 fileList:[],
 
                 location: '',
+                longitude:'',
+                latitude:'',
                 locationList: [],
                 showLocationPicker: false,
 
@@ -137,7 +139,13 @@
                 if (loc && loc.module == 'locationPicker') {//防止其他应用也会向该页面post信息，需判断module是否为'locationPicker'
                     // console.log('location', loc);
                     // alert(JSON.stringify(loc));
-                    this.location = loc.poiaddress;
+                    if(loc.poiname == '我的位置'){
+                        this.location = loc.poiaddress;
+                    } else {
+                        this.location = loc.poiname;
+                    }
+                    this.longitude = loc.latlng.lng;
+                    this.latitude = loc.latlng.lat;
                     this.showLocationPicker = false;
                 }
 
@@ -201,6 +209,8 @@
                 pushObj.content = this.dynamicContent;
                 pushObj.title = this.subject;
                 pushObj.location = this.location;
+                pushObj.longitude = this.longitude;
+                pushObj.latitude = this.latitude;
                 pushObj.anonymity = this.anonymityChecked ? 1 : 0;
                 // let userInfo = getStore(USER_INFO);
                 // pushObj.datingId = JSON.parse(userInfo).datingId;
