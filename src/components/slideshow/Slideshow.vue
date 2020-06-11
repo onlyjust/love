@@ -47,6 +47,13 @@
         max-height: 100%;
         width:auto;
         height:100%;
+
+        /*min-width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform:translate(-50%,-50%);
+        object-fit: cover*/
     }
 
     .custom-indicator {

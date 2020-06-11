@@ -12,7 +12,7 @@
       <!-- 使用 right-icon 插槽来自定义右侧图标 -->
       <template #icon>
         <!--<img v-lazy="'https://b.yzcdn.cn/vant/icon-demo-1126.png'" width="44" height="44"/>-->
-        <van-icon :name="`/api/user/getProfilePhoto/`+ session.from" size="44" v-if="session.unreadMsgCount==0" />
+        <van-image :src="`/api/user/getProfilePhoto/`+ session.from" width="44" height="44" v-if="session.unreadMsgCount==0" />
         <van-icon :name="`/api/user/getProfilePhoto/`+ session.from" size="44" v-else :badge="session.unreadMsgCount > 99 ? '99+' : session.unreadMsgCount"/>
       </template>
     </van-cell>
