@@ -103,3 +103,4 @@ Vue.use(PullRefresh);
 // NumberKeyboard 数字键盘
 import { NumberKeyboard } from 'vant';
 Vue.use(NumberKeyboard);
+

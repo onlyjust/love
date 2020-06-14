@@ -6,5 +6,9 @@ export default [
     {
         path: '/identityInfo',
         component: () => import('@/views/auth/IdentityInfo'),
+    },
+    {
+        path: '/auth/index',
+        component: () => import('@/views/auth/index'),
     }
 ]
