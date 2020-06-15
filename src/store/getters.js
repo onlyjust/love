@@ -7,7 +7,10 @@ export const currentSession = state => {
 }
 
 export const currentMessages = state => {
-    const session = currentSession(state)
+    const session = currentSession(state);
+    if (!session){
+        return []
+    }
     return session.messages
         ? session.messages.map(id => state.messages[id])
         : []

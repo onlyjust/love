@@ -1,10 +1,10 @@
 export default [
     {
-        path: '/identity',
+        path: '/auth/identity/auth',
         component: () => import('@/views/auth/IdentityAuth'),
     },
     {
-        path: '/identityInfo',
+        path: '/auth/identity/info',
         component: () => import('@/views/auth/IdentityInfo'),
     },
     {

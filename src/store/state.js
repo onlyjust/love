@@ -6,7 +6,7 @@ export default {
 
     authIdentity: localStorage.AUTH_IDENTITY || 0,
 
-    currentFrom: null,
+    currentFrom: localStorage.USER_INFO ? JSON.parse(localStorage.USER_INFO).userId : null,
     sessions: {},
     messages: {},
     unreadMsgCount: 0,

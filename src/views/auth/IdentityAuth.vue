@@ -1,5 +1,5 @@
 <template>
-    <div id="identity" v-if="authIdentity==1">
+    <div id="identity">
         <van-cell-group title="身份认证">
             <!--姓名-->
             <van-field
@@ -44,7 +44,7 @@
             </van-button>
         </div>
     </div>
-    <identity-info v-else/>
+    <!--<identity-info v-else/>-->
 </template>
 
 <script>

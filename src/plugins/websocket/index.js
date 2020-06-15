@@ -57,7 +57,8 @@ function subscribe() {
             }
         );
     }
-    if (store.getters.connected || store.getters.currentMessages) {
+    if (store.getters.connected && (!store.getters.currentMessages || store.getters.currentMessages.length == 0)) {
+        console.log('store.getters.currentMessages',store.getters.currentMessages)
         // 获取所有消息列表
         store.dispatch('getMessageList').catch(() => {
 

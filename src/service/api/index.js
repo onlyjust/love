@@ -68,6 +68,10 @@ export const personMatch = () => ajax(BASE_URL+'/home/personMatch');
 export const previewPersonal = (datingId) => ajax(BASE_URL+'/home/previewPersonal/'+datingId);
 // 身份证认证
 export const idCardAuth = (idCard,realName) => ajax(BASE_URL+'/auth/identity',{idCard,realName}, 'POST');
+// 获取认证信息
+export const getAuthInfo = () => ajax(BASE_URL+'/auth/getAuthInfo');
+// 获取身份认证信息
+export const getIdentityInfo = () => ajax(BASE_URL+'/auth/getIdentityInfo');
 
 
 
