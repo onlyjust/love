@@ -9,7 +9,7 @@
         <!--基本信息-->
         <UserBasic :userInfo="datingData"/>
         <!--认证信息-->
-        <UserAuth />
+        <UserAuth v-if="datingData.authIdentity" :authIdentity="datingData.authIdentity"/>
         <!--个性标签-->
         <UserLabel :labelList="datingData.labelList"/>
         <!--走心问答-->

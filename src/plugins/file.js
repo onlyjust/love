@@ -1,6 +1,44 @@
 
-export default {
+import Exif from 'exif-js';
 
+export default {
+// 处理图片
+    imgPreview(file) {
+        let headerImage;
+        let Orientation;
+        //去获取拍照时的信息，解决拍出来的照片旋转问题
+        Exif.getData(file, function () {
+            Orientation = Exif.getTag(this, "Orientation");
+        });
+        // 看支持不支持FileReader
+        if (!file || !window.FileReader) return;
+        console.log("file.type",file.type);
+        console.log("file test",/^image/.test(file.type));
+        if (/^image/.test(file.type)) {
+            // 创建一个reader
+            let reader = new FileReader();
+            // 将图片2将转成 base64 格式
+            reader.readAsDataURL(file);
+            // 读取成功后的回调
+            reader.onloadend = function () {
+                // console.log(this.result);
+                let result = this.result;
+                let img = new Image();
+                img.src = result;
+                //判断图片是否大于500K,是就直接上传，反之压缩图片
+                if (this.result.length <= 500 * 1024) {
+                    headerImage = this.result;
+                } else {
+                    img.onload = function () {
+                        let data = this.compress(img, Orientation);
+                        headerImage = data;
+                    };
+                }
+                return headerImage;
+            };
+        }
+        return headerImage;
+    },
     // 压缩图片
     compress(img, Orientation) {
         let canvas = document.createElement("canvas");
@@ -65,7 +103,7 @@ export default {
         tCanvas.width = tCanvas.height = canvas.width = canvas.height = 0;
         return ndata;
     },
-// 旋转图片
+    // 旋转图片
     rotateImg(img, direction, canvas) {
         //最小与最大旋转方向，图片旋转4次后回到原方向
         const min_step = 0;
@@ -115,7 +153,7 @@ export default {
                 break;
         }
     },
-//将base64转换为文件
+    //将base64转换为文件
     dataURLtoFile(dataurl) {
         var arr = dataurl.split(","),
             bstr = atob(arr[1]),

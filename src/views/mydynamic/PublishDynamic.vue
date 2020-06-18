@@ -124,6 +124,7 @@
             }
         },
         created(){
+            this.subject = this.$route.params.title;
             this.initData();
             // this.getLocation();
         },

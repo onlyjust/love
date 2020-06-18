@@ -44,6 +44,7 @@ export const likeDynamic = (dynamicId,liked) => ajax(BASE_URL+'/mine/likeDynamic
 // 获取动态列表
 export const getDynamicPage = (pageNum=1,pageSize=20) => ajax(BASE_URL+'/dynamic/getDynamicPage',{pageNum,pageSize}, 'POST');
 export const getTaDynamicPage = (datingId,pageNum=1,pageSize=20) => ajax(BASE_URL+'/dynamic/getDynamicPage',{datingId,pageNum,pageSize}, 'POST');
+export const getTitleDynamicPage = (title,pageNum=1,pageSize=20) => ajax(BASE_URL+'/dynamic/getDynamicPage',{title,pageNum,pageSize}, 'POST');
 // 根据动态ID获取动态信息
 export const getDynamicInfo = (dynamicId) => ajax(BASE_URL+'/dynamic/getDynamicInfo/'+dynamicId);
 // 评论动态信息

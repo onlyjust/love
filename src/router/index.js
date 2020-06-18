@@ -10,6 +10,7 @@ import personRouter from './person'
 import myDynamicRouter from './mydynamic'
 import loginRouter from './login'
 import identity from './auth'
+import topic from './topic'
 
 import chatRouter from './message/chat'
 
@@ -29,6 +30,7 @@ const router = new VueRouter({
     ...chatRouter,
     ...loginRouter,
       ...identity,
+      ...topic,
     {
       path: '/*',
       redirect: '/default',

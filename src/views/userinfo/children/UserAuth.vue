@@ -7,9 +7,9 @@
                 <i class="iconfont iconrenzheng"></i>
             </div>
             <div class="auth_right">
-                <p>张*</p>
-                <p>321***199101******</p>
-                <p>2020-01-01 通过身份认证</p>
+                <p>{{authIdentity.name}}</p>
+                <p>{{authIdentity.identityNumber}}</p>
+                <p>{{authIdentity.authDate}} 通过身份认证</p>
             </div>
         </div>
     </div>
@@ -17,7 +17,23 @@
 
 <script>
     export default {
-        name: "UserAuth"
+        name: "UserAuth",
+        props:{
+            authIdentity:Object
+        },
+        data(){
+            return {
+
+            }
+        },
+        created() {
+
+        },
+        methods:{
+            async initData(){
+
+            }
+        }
     }
 </script>
 
@@ -39,6 +55,7 @@
         text-align: right;
         padding-right: 1rem;
         padding-top: 1rem;
+        font-size: 1.2rem;
     }
 
 </style>

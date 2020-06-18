@@ -27,6 +27,8 @@
 <script>
     import {uploadFile, deleteFile, getLifePhotoList} from './../../../service/api/index';
 
+    import fileUtils from './../../../plugins/file';
+
     export default {
         name: "LifePhoto",
         data() {
@@ -61,8 +63,11 @@
                 file.status = 'uploading';
                 file.message = '上传中...';
                 //console.log("afterReadFile",file);
+                let headerImage = fileUtils.imgPreview(file.file);
                 let formData = new FormData();
-                formData.append("file", file.file);
+                // formData.append("file", file.file);
+                console.log("headerImage",headerImage);
+                formData.append("file", fileUtils.dataURLtoFile(headerImage));
                 formData.append("fileName", file.file.name);
                 formData.append("relationalId", this.relationalId);
                 formData.append("relationalName", 'DATING_LIFE_PHOTO');
@@ -84,7 +89,8 @@
                 } else {
                     return false;
                 }
-            }
+            },
+
         }
     }
 </script>

@@ -6,7 +6,8 @@
                 border
         ></van-nav-bar>-->
         <!--今日话题-->
-        <div class="topic">
+        <Topic/>
+        <!--<div class="topic">
             <div class="topic_title">
                 <h1 class="title">今日话题</h1>
                 <a href="">历史话题></a>
@@ -19,7 +20,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>-->
 
         <!--动态列表-->
         <love-dynamic v-for="(dynamic,index) in dynamicList" :dynamicInfo="dynamic" :key="index" />
@@ -162,6 +163,7 @@
     import LoveDynamic from '../../components/dynamic/LoveDynamic';
     import {getDynamicPage} from './../../service/api/index';
     import PublishButton from "../mydynamic/PublishButton";
+    import Topic from "../../components/topic/Topic";
 
     export default {
         name: "Dynamic",
@@ -184,6 +186,7 @@
             }
         },
         components:{
+            Topic,
             PublishButton,
             LoveDynamic
         }
@@ -200,10 +203,10 @@
         height: 5rem;
     }
 
-    /*今日话题*/
+    /*!*今日话题*!
     .topic{
         width: 100%;
-        /*background: #999999;*/
+        !*background: #999999;*!
         margin-bottom: 1rem;
     }
     .topic .topic_title{
@@ -221,7 +224,7 @@
         padding: 2rem;
     }
     .topic .topic_container .topic_content .topic_info {
-        /*background: antiquewhite;*/
+        !*background: antiquewhite;*!
         height: 6rem;
         position: relative;
     }
@@ -239,7 +242,7 @@
         bottom: 0;
         color: #60993c;
     }
-
+*/
     /*动态*/
     .dynamic {
         width: 100%;

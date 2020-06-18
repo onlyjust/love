@@ -9,6 +9,7 @@ export default [
     },
     {
         path: '/publish/dynamic',
+        name: 'publishDynamic',
         component: () => import('@/views/mydynamic/PublishDynamic')
     }
 ]
