@@ -2,25 +2,31 @@
 import Exif from 'exif-js';
 
 export default {
-// 处理图片
+    // 处理图片
     imgPreview(file) {
-        let headerImage;
-        let Orientation;
-        //去获取拍照时的信息，解决拍出来的照片旋转问题
-        Exif.getData(file, function () {
-            Orientation = Exif.getTag(this, "Orientation");
-        });
-        // 看支持不支持FileReader
-        if (!file || !window.FileReader) return;
-        console.log("file.type",file.type);
-        console.log("file test",/^image/.test(file.type));
-        if (/^image/.test(file.type)) {
+        let self = this
+        return new Promise((res, rej) => {
+            let headerImage;
+            let Orientation;
+            //去获取拍照时的信息，解决拍出来的照片旋转问题
+            Exif.getData(file, function () {
+                Orientation = Exif.getTag(this, "Orientation");
+            });
+            // 看支持不支持FileReader
+            if (!file || !window.FileReader) return;
+            // console.log("file.type", file.type);
+            // console.log("file test", /^image/.test(file.type));
+            if (!/^image/.test(file.type)) {
+                this.$toast('请选择图片文件');
+                rej('请选择图片')
+                return;
+            }
             // 创建一个reader
             let reader = new FileReader();
             // 将图片2将转成 base64 格式
             reader.readAsDataURL(file);
             // 读取成功后的回调
-            reader.onloadend = function () {
+            reader.onloadend =  function () {
                 // console.log(this.result);
                 let result = this.result;
                 let img = new Image();
@@ -29,15 +35,20 @@ export default {
                 if (this.result.length <= 500 * 1024) {
                     headerImage = this.result;
                 } else {
-                    img.onload = function () {
-                        let data = this.compress(img, Orientation);
-                        headerImage = data;
-                    };
+                    headerImage =  self.imageLoad(self, img, Orientation)
                 }
-                return headerImage;
+                res(headerImage)
             };
-        }
-        return headerImage;
+        })
+    },
+    // img 回调
+   async imageLoad(self, img, Orientation) {
+        return await  new Promise((res, rej) => {
+            img.onload = function () {
+                let data = self.compress(img, Orientation);
+                res(data)
+            };
+        })
     },
     // 压缩图片
     compress(img, Orientation) {
@@ -154,7 +165,8 @@ export default {
         }
     },
     //将base64转换为文件
-    dataURLtoFile(dataurl) {
+    dataURLtoFile(dataurl, file) {
+        // console.log('dataurl', dataurl)
         var arr = dataurl.split(","),
             bstr = atob(arr[1]),
             n = bstr.length,
@@ -162,8 +174,8 @@ export default {
         while (n--) {
             u8arr[n] = bstr.charCodeAt(n);
         }
-        return new File([u8arr], this.files.name, {
-            type: this.files.type
+        return new File([u8arr], file.name, {
+            type: file.type
         });
     },
 }
