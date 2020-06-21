@@ -21,14 +21,14 @@
                     <!--手机验证码登录部分-->
                     <div :class="{current: loginMode}">
                         <section class="login-message">
-                            <input type="number" maxlength="11" placeholder="手机号" v-model="phone">
+                            <input type="number" maxlength="11" placeholder="手机号" v-model="phone" oninput="if(value.length>11)value=value.slice(0,11)" />
                             <button v-if="!countDown" class="get-verification" :class="{phone_right: phoneRight}" @click.prevent="getVerifyCode()">获取验证码</button>
                             <button v-else disabled="disabled" class="get-verification">
                                 已发送({{countDown}}s)
                             </button>
                         </section>
                         <section class="login-verification">
-                            <input type="number" maxlength="4" placeholder="验证码" v-model="code"/>
+                            <input type="number" maxlength="4" placeholder="验证码" v-model="code" oninput="if(value.length>4)value=value.slice(0,4)"/>
                         </section>
                         <section class="login-hint">
                             温馨提示：未注册心上人的手机号，登录时将自动注册，且代表已同意
