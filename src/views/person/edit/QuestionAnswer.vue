@@ -8,7 +8,6 @@
                 :border=true
                 @click-left="$router.go(-1)"
         ></van-nav-bar>
-        <van-form @submit="onSubmit">
             <van-cell-group>
                 <van-field name="question" v-model="question" disabled />
                 <van-field
@@ -21,7 +20,7 @@
                 />
             </van-cell-group>
             <van-cell-group title="上传回答问题相关图片" style="padding: 1rem">
-                <van-uploader
+                <!--<van-uploader
                         v-model="fileList"
                         multiple
                         :max-count="3"
@@ -30,16 +29,19 @@
                         :before-delete="deleteFile"
                         image-fit="cover"
                         preview-size="80px"
-                />
+                />-->
+                <cropper :fileList="fileList"
+                         :relationalId="relationalId"
+                         relationalName="QUESTION_ANSWER_PHOTO"
+                         @on-success="onCropSuccess" ></cropper>
             </van-cell-group>
             <div style="margin: 16px;">
-                <van-button round block color="#65c4aa" native-type="submit">
+                <van-button round block color="#65c4aa" @click="onSubmit">
                     提交
                 </van-button>
             </div>
-        </van-form>
 
-        <van-popup v-model="cropperShow" :close-on-click-overlay="false">
+        <!--<van-popup v-model="cropperShow" :close-on-click-overlay="false">
             <div class="cut">
                 <vue-cropper
                         ref="cropper"
@@ -59,7 +61,7 @@
                 <van-button class="cropperCancel" plain type="primary">取消</van-button>
                 <van-button class="cropperConfirm" plain type="info" @click="cutCropper">确认</van-button>
             </div>
-        </van-popup>
+        </van-popup>-->
     </div>
 </template>
 
@@ -69,10 +71,12 @@
     import { VueCropper }  from 'vue-cropper';
 
     import {getDatingQuestionAnswer, updateDatingQuestionAnswer, uploadFile, deleteFile} from './../../../service/api/index';
+    import Cropper from "../../../components/cropper/Cropper";
 
     export default {
         name: "QuestionAnswer",
         components:{
+            Cropper,
             VueCropper
         },
         data(){
@@ -83,14 +87,14 @@
               answer:'',
               fileList:[],
               fileIdList:[],
-              cropperShow:false,
+              /*cropperShow:false,
               cropperImg: '',
               option:{
                   img:'',
                   size: 1,
                   outputType: 'jpeg',
                   fixedNumber:[1,1]
-              }
+              }*/
           }
         },
         created() {
@@ -129,6 +133,11 @@
                 }
             },
 
+            onCropSuccess(val){
+                console.log('onCropSuccess'),
+                    this.fileIdList = val
+            },
+            /*
             cutCropper(){
                 // 获取截图的base64 数据
                 this.$refs.cropper.getCropData((data) => {
@@ -139,17 +148,12 @@
                 });
                 this.cropperShow = false;
                 return;
-            },
-            beforeReadFile(file){
+            },*/
+            /*beforeReadFile(file){
                 console.log("beforeReadFile", file);
                 this.cropperShow = true;
                 let this_ = this;
-                this_.$refs.cropper.getCropData((data) => {
-                    // do something
-                    console.log(data)
-                    this.cropperImg = data;
-                    file = fileUtils.dataURLtoFile(data,file)
-                });
+
                 return true;
             },
             async afterReadFile(file){
@@ -191,7 +195,7 @@
                     return false;
                 }
 
-            }
+            }*/
         }
     }
 </script>
