@@ -21,7 +21,7 @@ export default [
         component: () => import('@/views/person/edit/Label')
     },
     {
-        path: '/person/questionAnswer/:id:question',
+        path: '/person/questionAnswer/:id/:question',
         name: 'questionAnswer',
         component: () => import('@/views/person/edit/QuestionAnswer')
     },

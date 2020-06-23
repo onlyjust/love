@@ -38,17 +38,43 @@
                 </van-button>
             </div>
         </van-form>
+
+        <van-popup v-model="cropperShow" :close-on-click-overlay="false">
+            <div class="cut">
+                <vue-cropper
+                        ref="cropper"
+                        img="https://qn-qn-kibey-static-cdn.app-echo.com/goodboy-weixin.PNG"
+                        :outputSize="option.size"
+                        :outputType="option.outputType"
+                        autoCrop
+                        :autoCropWidth="100"
+                        fixed
+                        :fixedNumber="option.fixedNumber"
+                        full
+                        canScale
+                        centerBox
+                        high
+                        mode="cover"
+                ></vue-cropper>
+                <van-button class="cropperCancel" plain type="primary">取消</van-button>
+                <van-button class="cropperConfirm" plain type="info" @click="cutCropper">确认</van-button>
+            </div>
+        </van-popup>
     </div>
 </template>
 
 <script>
 
-    import fileUtil from './../../../plugins/file';
+    import fileUtils from "./../../../plugins/file";
+    import { VueCropper }  from 'vue-cropper';
 
     import {getDatingQuestionAnswer, updateDatingQuestionAnswer, uploadFile, deleteFile} from './../../../service/api/index';
 
     export default {
         name: "QuestionAnswer",
+        components:{
+            VueCropper
+        },
         data(){
           return{
               relationalId:'',
@@ -56,7 +82,15 @@
               question:'',
               answer:'',
               fileList:[],
-              fileIdList:[]
+              fileIdList:[],
+              cropperShow:false,
+              cropperImg: '',
+              option:{
+                  img:'',
+                  size: 1,
+                  outputType: 'jpeg',
+                  fixedNumber:[1,1]
+              }
           }
         },
         created() {
@@ -95,8 +129,27 @@
                 }
             },
 
+            cutCropper(){
+                // 获取截图的base64 数据
+                this.$refs.cropper.getCropData((data) => {
+                    // do something
+                    console.log(data)
+                    this.cropperImg = data;
+                    file = fileUtils.dataURLtoFile(data,file)
+                });
+                this.cropperShow = false;
+                return;
+            },
             beforeReadFile(file){
                 console.log("beforeReadFile", file);
+                this.cropperShow = true;
+                let this_ = this;
+                this_.$refs.cropper.getCropData((data) => {
+                    // do something
+                    console.log(data)
+                    this.cropperImg = data;
+                    file = fileUtils.dataURLtoFile(data,file)
+                });
                 return true;
             },
             async afterReadFile(file){
@@ -143,6 +196,23 @@
     }
 </script>
 
-<style scoped>
-
+<style lang="less" scoped>
+    .cut {
+        /*width: 100%;
+        height: 500px;*/
+        width: 100vw;
+        height: 100vh;
+        .cropperCancel{
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            margin-left: 3rem;
+        }
+        .cropperConfirm{
+            position: fixed;
+            bottom: 0;
+            right: 0;
+            margin-right: 3rem;
+        }
+    }
 </style>
