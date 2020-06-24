@@ -32,6 +32,7 @@
                 />-->
                 <cropper :fileList="fileList"
                          :relationalId="relationalId"
+                         :fixed="false"
                          relationalName="QUESTION_ANSWER_PHOTO"
                          @on-success="onCropSuccess" ></cropper>
             </van-cell-group>
@@ -40,35 +41,10 @@
                     提交
                 </van-button>
             </div>
-
-        <!--<van-popup v-model="cropperShow" :close-on-click-overlay="false">
-            <div class="cut">
-                <vue-cropper
-                        ref="cropper"
-                        img="https://qn-qn-kibey-static-cdn.app-echo.com/goodboy-weixin.PNG"
-                        :outputSize="option.size"
-                        :outputType="option.outputType"
-                        autoCrop
-                        :autoCropWidth="100"
-                        fixed
-                        :fixedNumber="option.fixedNumber"
-                        full
-                        canScale
-                        centerBox
-                        high
-                        mode="cover"
-                ></vue-cropper>
-                <van-button class="cropperCancel" plain type="primary">取消</van-button>
-                <van-button class="cropperConfirm" plain type="info" @click="cutCropper">确认</van-button>
-            </div>
-        </van-popup>-->
     </div>
 </template>
 
 <script>
-
-    import fileUtils from "./../../../plugins/file";
-    import { VueCropper }  from 'vue-cropper';
 
     import {getDatingQuestionAnswer, updateDatingQuestionAnswer, uploadFile, deleteFile} from './../../../service/api/index';
     import Cropper from "../../../components/cropper/Cropper";
@@ -77,7 +53,6 @@
         name: "QuestionAnswer",
         components:{
             Cropper,
-            VueCropper
         },
         data(){
           return{
@@ -87,14 +62,6 @@
               answer:'',
               fileList:[],
               fileIdList:[],
-              /*cropperShow:false,
-              cropperImg: '',
-              option:{
-                  img:'',
-                  size: 1,
-                  outputType: 'jpeg',
-                  fixedNumber:[1,1]
-              }*/
           }
         },
         created() {
@@ -137,86 +104,11 @@
                 console.log('onCropSuccess'),
                     this.fileIdList = val
             },
-            /*
-            cutCropper(){
-                // 获取截图的base64 数据
-                this.$refs.cropper.getCropData((data) => {
-                    // do something
-                    console.log(data)
-                    this.cropperImg = data;
-                    file = fileUtils.dataURLtoFile(data,file)
-                });
-                this.cropperShow = false;
-                return;
-            },*/
-            /*beforeReadFile(file){
-                console.log("beforeReadFile", file);
-                this.cropperShow = true;
-                let this_ = this;
 
-                return true;
-            },
-            async afterReadFile(file){
-                file.status = 'uploading';
-                file.message = '上传中...';
-                // console.log("afterReadFile",file);
-                let formData = new FormData();
-                formData.append("file", file.file);
-                formData.append("fileName", file.file.name);
-                formData.append("relationalId", this.relationalId);
-                formData.append("relationalName", 'QUESTION_ANSWER_PHOTO');
-                let result = await uploadFile(formData);
-                // console.log("上传结果", result);
-                if (result.success){
-                    file.status = 'done';
-                    file.message = '上传成功';
-                    file.id = result.data.id;
-                    if (!this.relationalId){
-                        this.fileIdList.push(file.id);
-                    }
-                    return true;
-                }
-                return false;
-            },
-            async deleteFile(file){
-                // console.log("deleteFile", file);
-                let result = await deleteFile(file.id);
-                if (result.success){
-                    // 删除
-                    if (!this.relationalId){
-                        this.fileIdList.forEach((item,index)=>{
-                            if (item == file.id){
-                                this.fileIdList.splice(index, 1);
-                            }
-                        });
-                    }
-                    return true;
-                } else {
-                    return false;
-                }
-
-            }*/
         }
     }
 </script>
 
 <style lang="less" scoped>
-    .cut {
-        /*width: 100%;
-        height: 500px;*/
-        width: 100vw;
-        height: 100vh;
-        .cropperCancel{
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            margin-left: 3rem;
-        }
-        .cropperConfirm{
-            position: fixed;
-            bottom: 0;
-            right: 0;
-            margin-right: 3rem;
-        }
-    }
+
 </style>

@@ -28,21 +28,21 @@ export default {
             // 读取成功后的回调
             reader.onloadend =  function () {
                 // console.log(this.result);
-                let result = this.result;
-                let img = new Image();
-                img.src = result;
+                // let result = this.result;
+                // let img = new Image();
+                // img.src = result;
                 //判断图片是否大于500K,是就直接上传，反之压缩图片
-                if (this.result.length <= 500 * 1024) {
-                    headerImage = this.result;
-                } else {
-                    headerImage =  self.imageLoad(self, img, Orientation)
-                }
-                res(headerImage)
+                // if (this.result.length <= 500 * 1024) {
+                //     headerImage = this.result;
+                // } else {
+                //     headerImage =  self.imageLoad(self, img, Orientation)
+                // }
+                res(this.result)
             };
         })
     },
     // img 回调
-   async imageLoad(self, img, Orientation) {
+    async imageLoad(self, img, Orientation) {
         return await  new Promise((res, rej) => {
             img.onload = function () {
                 let data = self.compress(img, Orientation);
