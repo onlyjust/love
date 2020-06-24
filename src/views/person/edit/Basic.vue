@@ -11,6 +11,10 @@
 
         <van-form @submit="onSubmit">
             <van-cell-group  title="基本资料">
+                <!--头像-->
+                <van-cell title="头像" center is-link :to="{name:'profilePhoto',query:{url:'https://img.yzcdn.cn/vant/cat.jpeg'}}">
+                    <van-image width="40" height="40" radius="5" src="https://img.yzcdn.cn/vant/cat.jpeg" />
+                </van-cell>
                 <!--昵称-->
                 <van-field
                         v-model="datingBasic.nickname"

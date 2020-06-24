@@ -18,7 +18,7 @@
                              :outputType="option.outputType"
                              autoCrop
                              :fixed="fixed"
-                             :fixedNumber="option.fixedNumber"
+                             :fixedNumber="fixedNumber"
                              full
                              centerBox
                 ></vue-cropper>
@@ -61,6 +61,10 @@
             fixed: {
                 type: Boolean,
                 default: true
+            },
+            fixedNumber: {
+                type: Array,
+                default: [1,1]
             }
         },
         data() {

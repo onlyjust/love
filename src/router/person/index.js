@@ -8,6 +8,11 @@ export default [
         component: () => import('@/views/person/edit/Basic')
     },
     {
+        path: '/person/profile/photo',
+        name: 'profilePhoto',
+        component: () => import('@/views/person/edit/ProfilePhoto')
+    },
+    {
         path: '/person/question',
         component: () => import('@/views/person/edit/Question')
     },
