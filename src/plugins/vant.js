@@ -104,3 +104,6 @@ Vue.use(PullRefresh);
 import { NumberKeyboard } from 'vant';
 Vue.use(NumberKeyboard);
 
+// ActionSheet 动作面板
+import { ActionSheet } from 'vant';
+Vue.use(ActionSheet);
