@@ -6,12 +6,12 @@
                 left-arrow
                 :fixed=true
                 :border=true
-                right-text="上传图片"
+                right-text="…"
                 @click-left="$router.go(-1)"
                 @click-right="onClickRight"
         ></van-nav-bar>
         <div class="photo-box">
-            <van-image width="25rem" height="25rem" fit="cover" radius="5" :src="cropperImg"  @click="Preview_img(cropperImg)"/>
+            <van-image width="25rem" height="25rem" fit="cover" radius="5" :src="profilePhoto"  @click="Preview_img(profilePhoto)"/>
         </div>
         <van-action-sheet
                 v-model="showUploadSheet"
@@ -19,9 +19,9 @@
                 close-on-click-action
                 @cancel="onCancel"
         >
-            <div class="uploadSheet">
-                <van-uploader :before-read="beforeRead" :after-read="afterRead">
-                    上传文件
+            <div class="uploadSheet" @click="selectUpload">
+                <van-uploader :before-read="beforeRead" >
+                    <p>上传图片</p>
                 </van-uploader>
             </div>
         </van-action-sheet>
@@ -70,6 +70,7 @@
             return {
                 showUploadSheet: false,
                 cropperShow: false,
+                profilePhoto: "",
                 cropperImg: "",
                 file: null,
                 option: {
@@ -81,11 +82,14 @@
             }
         },
         created(){
-            this.cropperImg = this.$route.query.url;
+            this.profilePhoto = this.$route.query.url;
         },
         methods:{
             onClickRight() {
                 this.showUploadSheet = true
+            },
+            selectUpload(){
+                this.showUploadSheet = false;
             },
             cancelCropper() {
                 this.cropperShow = false;
@@ -108,10 +112,6 @@
                 // console.log(file);
                 return false;
             },
-            afterRead(file) {
-                // console.log(file);
-                return false;
-            },
             async onUpload(headerImage, self) {
                 let formData = new FormData();
                 let tmpfile = fileUtils.dataURLtoFile(headerImage, self.file);
@@ -119,11 +119,14 @@
                 formData.append("fileName", self.file.name);
                 let result = await uploadAvatar(formData);
                 if (result.success) {
+                    // this.$toast(result.message);
+                    this.profilePhoto = headerImage;
+                } else {
                     this.$toast(result.message);
                 }
             },
             onCancel() {
-                this.$toast('取消');
+                this.showUploadSheet = false;
             },
             Preview_img(img){
                 ImagePreview({
@@ -155,6 +158,9 @@
         text-align: center;
         font-size: 16px;
         line-height: 50px;
+    }
+    .uploadSheet p{
+        margin: 0 15rem;
     }
 
     .cut {
