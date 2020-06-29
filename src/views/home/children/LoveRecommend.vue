@@ -3,10 +3,11 @@
     <div class="latest_recommend">
         <div class="recommend_title">
             <h1 class="title">最新推荐</h1>
-            <a href="">全部></a>
+            <span class="iconfont icontuijian" @click="recommend"></span>
         </div>
         <div class="recommend_content">
             <ul>
+                <!--<li><img src="@/img/2.jpg" alt=""><p class="name">推荐</p></li>-->
                 <li @click="$router.push({name:'userinfo',params:{datingId:recommend.datingId}})" v-for="recommend in recommendList">
                     <img :src="recommend.personalPhoto"><p class="name">{{recommend.nickname}}</p><span class="job">{{recommend.job}}</span>
                 </li>
@@ -24,10 +25,28 @@
 </template>
 
 <script>
+    import {wantRecommend} from "../../../service/api";
+
     export default {
         name: "LoveRecommend",
         props:{
             recommendList:Array
+        },
+        methods:{
+            recommend: function () {
+                this.$dialog.confirm({
+                    title: '推荐上墙',
+                    message: '您确定要推荐上墙吗？',
+                }).then(async () => {
+                    // on confirm
+                    let result = await wantRecommend();
+                    if (!result.success){
+                        this.$toast(result.message);
+                    }
+                }).catch(() => {
+                    // on cancel
+                });
+            }
         }
     }
 </script>
@@ -37,19 +56,24 @@
     /* 最新推荐 */
     .latest_recommend{
         width: 100%;
-        display: flex;
-        flex-direction: column;
+        /*display: flex;
+        flex-direction: column;*/
     }
     .latest_recommend .recommend_title{
         display: flex;
         justify-content: space-between;
         text-align: center;
-        margin: 1rem;
+        align-items: center;
+        margin: 0 1rem;
         font-size: 1.4rem;
     }
     .latest_recommend .recommend_title h1 {
         font-weight: bold;
         font-size: 1.3rem;
+    }
+
+    .latest_recommend .recommend_title span {
+        font-size: 40px;
     }
 
     .latest_recommend .recommend_content{

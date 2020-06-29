@@ -49,7 +49,7 @@ https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f3
         </van-cell-group>
         <van-cell-group style="margin-top: 0.4rem">
             <van-cell title="我的动态" icon="gold-coin" is-link to="/mydynamic"></van-cell>
-            <van-cell title="我关注" icon="gold-coin" is-link></van-cell>
+            <van-cell title="我关注" icon="gold-coin" is-link to="/fans"></van-cell>
             <van-cell title="关注我" icon="todo-list" is-link></van-cell>
         </van-cell-group>
         <!--<van-cell-group style="margin-top: 0.4rem">

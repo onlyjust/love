@@ -65,6 +65,8 @@ export const getComponentMap = (backurl) => ajax('https://3gimg.qq.com/lightmap/
 export const recommend = () => ajax(BASE_URL+'/home/recommend');
 // 个人匹配
 export const personMatch = () => ajax(BASE_URL+'/home/personMatch');
+// 推荐上墙
+export const wantRecommend = () => ajax(BASE_URL+'/home/wantRecommend');
 // 预览个人信息
 export const previewPersonal = (datingId) => ajax(BASE_URL+'/home/previewPersonal/'+datingId);
 // 身份证认证

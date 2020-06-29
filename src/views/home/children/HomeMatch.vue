@@ -12,7 +12,7 @@
                 <p class="desc_info">
                     <span>{{match.matchPerson.age}}岁</span>
                     <span>{{match.matchPerson.height}}cm</span>
-                    <span>演员</span>
+                    <span>{{match.matchPerson.job}}</span>
                 </p>
                 <span class="location"><i class="iconfont iconzuobiao"></i>{{match.matchPerson.liveCity}}</span>
             </div>
@@ -45,7 +45,6 @@
     }
     .container .list .photo img {
         width: 100%;
-        height: 24rem;
     }
     .container .list .desc {
         color: #999999;
@@ -59,6 +58,9 @@
     .container .list .desc .desc_info{
         margin-top: 0.2rem;
         font-size: 1.2rem;
+    }
+    .container .list .desc .desc_info span {
+        margin-right: 1rem;
     }
 
     .container .list .desc .location {

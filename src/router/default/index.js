@@ -15,7 +15,7 @@ export default {
             redirect: '/home'
         },
         homeRouter,
-        mineRouter,
+        ...mineRouter,
         dynamicRouter,
         messageRouter
     ]

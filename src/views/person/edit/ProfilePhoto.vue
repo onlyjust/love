@@ -6,27 +6,21 @@
                 left-arrow
                 :fixed=true
                 :border=true
-                right-text="…"
                 @click-left="$router.go(-1)"
-                @click-right="onClickRight"
-        ></van-nav-bar>
+        >
+            <template #right>
+                <van-uploader :before-read="beforeRead" >
+                    上传照片
+                </van-uploader>
+            </template>
+        </van-nav-bar>
+
+        <!--照片区-->
         <div class="photo-box">
             <van-image width="25rem" height="25rem" fit="cover" radius="5" :src="profilePhoto"  @click="Preview_img(profilePhoto)"/>
         </div>
-        <van-action-sheet
-                v-model="showUploadSheet"
-                cancel-text="取消"
-                close-on-click-action
-                @cancel="onCancel"
-        >
-            <div class="uploadSheet" @click="selectUpload">
-                <van-uploader :before-read="beforeRead" >
-                    <p>上传图片</p>
-                </van-uploader>
-            </div>
-        </van-action-sheet>
 
-
+        <!--裁剪-->
         <van-popup v-model="cropperShow"
                    :close-on-click-overlay="false">
             <div class="cut">
@@ -68,7 +62,6 @@
         },
         data(){
             return {
-                showUploadSheet: false,
                 cropperShow: false,
                 profilePhoto: "",
                 cropperImg: "",
@@ -85,12 +78,6 @@
             this.profilePhoto = this.$route.query.url;
         },
         methods:{
-            onClickRight() {
-                this.showUploadSheet = true
-            },
-            selectUpload(){
-                this.showUploadSheet = false;
-            },
             cancelCropper() {
                 this.cropperShow = false;
             },
@@ -103,7 +90,6 @@
                 });
             },
             async beforeRead(file) {
-                this.showUploadSheet = false;
                 this.file = file;
                 let headerImage = await fileUtils.imgPreview(file);
                 this.cropperImg = headerImage;
@@ -124,9 +110,6 @@
                 } else {
                     this.$toast(result.message);
                 }
-            },
-            onCancel() {
-                this.showUploadSheet = false;
             },
             Preview_img(img){
                 ImagePreview({

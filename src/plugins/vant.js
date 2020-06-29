@@ -107,3 +107,15 @@ Vue.use(NumberKeyboard);
 // ActionSheet 动作面板
 import { ActionSheet } from 'vant';
 Vue.use(ActionSheet);
+
+// Dialog 弹出框
+import { Dialog } from 'vant';
+Vue.use(Dialog);
+
+// SwipeCell 滑动单元格
+import { SwipeCell } from 'vant';
+Vue.use(SwipeCell);
+
+// Divider 分割线
+import { Divider } from 'vant';
+Vue.use(Divider);
