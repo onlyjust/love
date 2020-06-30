@@ -25,7 +25,7 @@
         methods: {
             // 轮播图预览
             Preview_img(images, index) {
-                console.info("image:{}",images)
+                // console.info("image:{}",images)
                 ImagePreview({
                     images: images,//图片数组
                     showIndex: true,
@@ -46,9 +46,14 @@
         max-width: 100%;
         max-height: 100%;
         width:auto;
-        height:100%;
+        height:auto;
 
-        /*min-width: 100%;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform:translate(-50%,-50%);
+
+        /*width: 100%;
         position: absolute;
         top: 50%;
         left: 50%;

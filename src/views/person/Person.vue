@@ -50,8 +50,9 @@
                 if (result.success){
                     let data = result.data;
                     // console.log("lifePhotoList",data.lifePhotoList)
+                    this.slideshow_list.push(data.personalPhoto);
                     data.lifePhotoList.forEach(item =>{
-                        this.slideshow_list.push(item.filePath)
+                        this.slideshow_list.push(item.filePath);
                     });
                     this.userInfo = data;
                 } else {

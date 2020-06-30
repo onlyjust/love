@@ -55,12 +55,16 @@
         methods:{
             async initData(){
                 let result = await previewPersonal(this.datingId);
-                console.log("个人信息数据：", result);
+                // console.log("个人信息数据：", result);
                 if (result.success){
                     this.datingData = result.data;
-                    this.slideshow_list = result.data.lifePhotoList.map(photo => {
-                        return photo.filePath;
+                    this.slideshow_list.push(this.datingData.personalPhoto);
+                    this.datingData.lifePhotoList.forEach(item =>{
+                        this.slideshow_list.push(item.filePath);
                     });
+                    /*this.slideshow_list = result.data.lifePhotoList.map(photo => {
+                        return photo.filePath;
+                    });*/
                 }
             },
             switchSession (fromId,fromName) {

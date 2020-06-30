@@ -3,12 +3,9 @@
 
         <!--用户头信息-->
         <header class="header">
-            <div class="header_left">
-                <van-uploader :after-read="afterReadFile"
-                              :before-read="beforeReadFile">
-                    <img :src="userInfo.personalPhoto">
-                </van-uploader>
-            </div>
+            <!--<div class="header_left">
+                <img :src="userInfo.personalPhoto">
+            </div>-->
             <div class="header_box">
                 <h1 class="nickname">{{userInfo.nickname}}<i class="iconfont " :class="[userInfo.gender == 1?'iconnan':'iconnv']"></i><a @click="$router.push('/person/basic')"><i class="iconfont iconbianji"></i></a></h1>
                 <!--<p class="highlight_title">{{userInfo.highlightTitle}}</p>-->
@@ -59,11 +56,11 @@
             }
         },
         methods:{
-            beforeReadFile(file){
+            /*beforeReadFile(file){
                 //console.log("beforeReadFile", file);
                 return true;
-            },
-            async afterReadFile(file){
+            },*/
+            /*async afterReadFile(file){
                 file.status = 'uploading';
                 file.message = '上传中...';
                 let formData = new FormData();
@@ -78,7 +75,7 @@
                     return true;
                 }
                 return false;
-            },
+            },*/
         }
     }
 </script>

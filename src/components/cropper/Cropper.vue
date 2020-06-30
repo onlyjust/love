@@ -22,14 +22,20 @@
                              full
                              centerBox
                 ></vue-cropper>
-                <van-button class="cropperCancel"
-                            plain
-                            type="primary"
-                            @click="cancelCropper">取消</van-button>
-                <van-button class="cropperConfirm"
-                            plain
-                            type="info"
-                            @click="cutCropper">确认</van-button>
+                <div class="cut-footer">
+                    <van-button class="cropperCancel"
+                                color="#4bb0ff"
+                                @click="cancelCropper">取消</van-button>
+                    <van-button class="rotateLeft"
+                                color="#4bb0ff"
+                                @click="rotateLeft">↺</van-button>
+                    <van-button class="rotateRight"
+                                color="#4bb0ff"
+                                @click="rotateRight">↻</van-button>
+                    <van-button class="cropperConfirm"
+                                color="#4bb0ff"
+                                @click="cutCropper">确认</van-button>
+                </div>
             </div>
         </van-popup>
     </div>
@@ -64,7 +70,7 @@
             },
             fixedNumber: {
                 type: Array,
-                default: [1,1]
+                default: () => [1,1]
             }
         },
         data() {
@@ -95,6 +101,16 @@
         methods: {
             cancelCropper() {
                 this.cropperShow = false;
+            },
+            //坐旋转
+            rotateLeft() {
+                console.log('rotateLeft')
+                this.$refs.cropper.rotateLeft();
+            },
+            //右旋转
+            rotateRight() {
+                console.log('rotateRight')
+                this.$refs.cropper.rotateRight();
             },
             cutCropper() {
                 // 获取截图的base64 数据
@@ -170,17 +186,14 @@
     .cut {
         width: 100vw;
         height: 100vh;
-        .cropperCancel {
+        .cut-footer {
+            width: 100%;
             position: fixed;
+            display: flex;
             bottom: 0;
             left: 0;
-            margin-left: 3rem;
-        }
-        .cropperConfirm {
-            position: fixed;
-            bottom: 0;
-            right: 0;
-            margin-right: 3rem;
+            justify-content: space-around;
+            background-color: #4bb0ff;
         }
     }
 </style>
