@@ -1,46 +1,38 @@
 <template>
     <div>
-        <van-swipe-cell>
-            <div class="cell-box">
-                <van-image
-                        round
-                        width="5rem"
-                        height="5rem"
-                        src="https://img.yzcdn.cn/vant/cat.jpeg"
-                />
-                <div class="clearfix cell-right">
-                    <div class="left">
-                        <h2>小小</h2>
-                        <span>撒打算</span>
-                    </div>
-                    <div class="right">05-09</div>
+        <div class="cell-box">
+            <van-image
+                    round
+                    width="5rem"
+                    height="5rem"
+                    src="https://img.yzcdn.cn/vant/cat.jpeg"
+            />
+            <div class="clearfix cell-right">
+                <div class="left">
+                    <h2>小小</h2>
+                    <span>撒打算</span>
                 </div>
+                <div class="right">05-09</div>
             </div>
-            <!--<template #right>
-                <van-button square text="删除" type="danger" class="delete-button" />
-            </template>-->
-        </van-swipe-cell>
-        <!--<van-divider />-->
-        <van-swipe-cell>
-            <div class="cell-box">
-                <van-image
-                        round
-                        width="5rem"
-                        height="5rem"
-                        src="https://img.yzcdn.cn/vant/cat.jpeg"
-                />
-                <div class="clearfix cell-right">
-                    <div class="left">
-                        <h2>小小</h2>
-                        <span>撒打算</span>
-                    </div>
-                    <div class="right">05-09</div>
+        </div>
+    <!--<van-divider />-->
+        <div class="cell-box">
+            <van-image
+                    round
+                    width="5rem"
+                    height="5rem"
+                    src="https://img.yzcdn.cn/vant/cat.jpeg"
+            />
+            <div class="clearfix cell-right">
+                <div class="left">
+                    <h2>小小</h2>
+                    <span>撒打算</span>
                 </div>
+                <div class="right">05-09</div>
             </div>
-            <!--<template #right>
-                <van-button square text="删除" type="danger" class="delete-button" />
-            </template>-->
-        </van-swipe-cell>
+        </div>
+
+
     </div>
 </template>
 

@@ -71,11 +71,11 @@
         },
         methods:{
             // 提交
-            async onSubmit(values){
-                values.questionId = this.questionId;
-                values.fileIdList = this.fileIdList;
+            async onSubmit(){
+                // values.questionId = this.questionId;
+                // values.fileIdList = this.fileIdList;
                 // console.log("values",values);
-                let result = await updateDatingQuestionAnswer(values.questionId, values.answer, values.fileIdList);
+                let result = await updateDatingQuestionAnswer(this.questionId, this.answer, this.fileIdList);
                 this.$toast(result.message);
                 if (result.success){
                     this.$router.back();
