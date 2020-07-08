@@ -28,6 +28,8 @@
                              :img="cropperImg"
                              :outputSize="option.size"
                              :outputType="option.outputType"
+                             :autoCropWidth="autoCropWidth"
+                             :autoCropHeight="autoCropHeight"
                              autoCrop
                              fixed
                              :fixedNumber="option.fixedNumber"
@@ -77,12 +79,26 @@
                     img: "",
                     size: 1,
                     outputType: "jpeg",
-                    fixedNumber: [1, 1]
-                }
+                    fixedNumber: [1,1]
+                },
+                autoCropWidth:200,
+                autoCropHeight:200,
             }
         },
         created(){
             this.profilePhoto = this.$route.query.url;
+        },
+        mounted(){
+            let screenWidth = document.body.clientWidth;
+            let screenHeight = document.body.clientHeight;
+            window.onresize = () => {
+                return (() => {
+                    screenWidth = document.body.clientWidth;
+                    screenHeight = document.body.clientHeight;
+                })();
+            };
+            this.autoCropWidth = screenWidth;
+            this.autoCropHeight = screenWidth;
         },
         methods:{
             cancelCropper() {
@@ -174,6 +190,9 @@
             left: 0;
             justify-content: space-around;
             background-color: #4bb0ff;
+        }
+        .vue-cropper {
+            background: black
         }
     }
 </style>

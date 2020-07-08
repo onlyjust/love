@@ -16,6 +16,8 @@
                              :img="cropperImg"
                              :outputSize="option.size"
                              :outputType="option.outputType"
+                             :autoCropWidth="autoCropWidth"
+                             :autoCropHeight="autoCropHeight"
                              autoCrop
                              :fixed="fixed"
                              :fixedNumber="fixedNumber"
@@ -71,6 +73,14 @@
             fixedNumber: {
                 type: Array,
                 default: () => [1,1]
+            },
+            cropWidth: {
+                type:Number,
+                default: 1
+            },
+            cropHeight: {
+                type:Number,
+                default: 1
             }
         },
         data() {
@@ -84,8 +94,22 @@
                     size: 1,
                     outputType: "jpeg",
                     fixedNumber: [1, 1]
-                }
+                },
+                autoCropWidth:100,
+                autoCropHeight:100,
             };
+        },
+        mounted(){
+            let screenWidth = document.body.clientWidth;
+            let screenHeight = document.body.clientHeight;
+            window.onresize = () => {
+                return (() => {
+                    screenWidth = document.body.clientWidth;
+                    screenHeight = document.body.clientHeight;
+                })();
+            };
+            this.autoCropWidth = screenWidth * this.cropWidth;
+            this.autoCropHeight = screenWidth  * this.cropHeight;
         },
         computed: {
             files: {
@@ -194,6 +218,9 @@
             left: 0;
             justify-content: space-around;
             background-color: #4bb0ff;
+        }
+        .vue-cropper {
+            background: black
         }
     }
 </style>
