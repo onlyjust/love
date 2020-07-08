@@ -101,13 +101,13 @@
         },
         mounted(){
             let screenWidth = document.body.clientWidth;
-            let screenHeight = document.body.clientHeight;
+            /*let screenHeight = document.body.clientHeight;
             window.onresize = () => {
                 return (() => {
                     screenWidth = document.body.clientWidth;
                     screenHeight = document.body.clientHeight;
                 })();
-            };
+            };*/
             this.autoCropWidth = screenWidth * this.cropWidth;
             this.autoCropHeight = screenWidth  * this.cropHeight;
         },
