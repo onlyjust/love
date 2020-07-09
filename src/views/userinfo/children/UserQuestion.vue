@@ -25,51 +25,45 @@
 </script>
 
 <style scoped>
-
-    /*走心问答*/
-    /*.question .question_container{*/
-        /*padding: 0 2rem;*/
-    /*}*/
-    /*.question .question_container .question_title{*/
-        /*text-align: center;*/
-        /*font-size: 1.5rem;*/
-        /*font-weight: bold;*/
-        /*margin: 1rem 0;*/
-    /*}*/
-    /*.question .question_container .answer{*/
-        /*font-size: 1.2rem;*/
-        /*line-height: 2rem;*/
-        /*margin: 1rem auto;*/
-    /*}*/
-    /*.question .question_container img{*/
-        /*width: 100%;*/
-        /*margin: 0.25rem auto;*/
-    /*}*/
-
     /*走心问答*/
     .question {
-        margin-bottom: 5rem;
+        margin-bottom: 50px;
     }
     .question .question_container{
 
     }
     .question .question_container .question_title{
-        text-align: center;
+        /*text-align: center;
         font-size: 1.8rem;
         font-weight: bold;
         color: #4773c4;
         background-color: #e8e3d0;
-        border-radius: 1rem;
+        border-radius: 1rem;*/
+
+        margin: 1rem 0;
+        /*margin-left: 2rem;*/
+        /*margin-right: 2rem;*/
+        font-size: 16px;
+        font-weight: bold;
+        color: #4773c4;
+        border-left: #18a38d solid 4px;
+        padding-left: 5px;
     }
     .question .answer_container{
         padding: 0 2rem;
     }
     .question .answer_container .answer{
-        font-size: 1.5rem;
+        /*font-size: 1.5rem;
         line-height: 2.5rem;
         margin: 1rem auto;
         white-space: pre-wrap;
-        color: #323233;
+        color: #323233;*/
+
+        font-size: 13px;
+        line-height: 26px;
+        margin: 1rem auto;
+        white-space: pre-wrap;
+        color: #999999;
     }
     .question .answer_container img{
         width: 100%;

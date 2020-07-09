@@ -25,7 +25,7 @@
     /*用户头信息*/
     .header{
         display: flex;
-        padding: 2rem 2rem;
+        padding: 20px 20px;
         align-items: center;
     }
     .header .header_left{
@@ -36,12 +36,12 @@
         border-radius: 50%;
     }
     .header .header_right .nickname{
-        font-size: 1.6rem;
+        font-size: 16px;
         font-weight: bold;
     }
     .header .header_right .highlight_title{
-        margin-top: 1rem;
-        font-size: 1.4rem;
+        margin-top: 10px;
+        font-size: 14px;
     }
 
 </style>

@@ -41,6 +41,7 @@
 
     /*认证信息*/
     .auth{
+        color: #999999;
     }
     .auth .auth_container{
         display: flex;
@@ -53,9 +54,9 @@
     .auth .auth_container .auth_right {
         flex-grow: 1;
         text-align: right;
-        padding-right: 1rem;
-        padding-top: 1rem;
-        font-size: 1.2rem;
+        padding-right: 10px;
+        padding-top: 10px;
+        font-size: 12px;
     }
 
 </style>

@@ -27,6 +27,6 @@
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-start;
-        padding: 0 1.5rem;
+        padding: 0 15px;
     }
 </style>

@@ -5,8 +5,8 @@
             <a @click="$router.push('/person/question')"><i class="iconfont iconbianji"></i></a>
         </div>
         <div class="question_container" v-for="(item,index) in questionAnswerList" :key="index">
-            <div class="subject">
-                <h2 class="subject_title question_title">{{item.question}}</h2>
+            <div class="">
+                <h2 class=" question_title">{{item.question}}</h2>
                 <!--<a class="subject_edit" >编辑</a>-->
             </div>
             <div class="answer_container">
@@ -38,22 +38,29 @@
 
     }
     .question .question_container .question_title{
-        text-align: center;
-        font-size: 1.8rem;
+        /*text-align: center;*/
+        margin: 1rem 2rem;
+        /*margin-left: 2rem;*/
+        /*margin-right: 2rem;*/
+        font-size: 16px;
         font-weight: bold;
         color: #4773c4;
-        background-color: #e8e3d0;
-        border-radius: 1rem;
+        border-left: #18a38d solid 4px;
+        padding-left: 5px;
+        /*border-bottom: #1296db solid 2px;
+        padding-bottom: 3px;
+        display: inline-block;*/
     }
+
     .question .answer_container{
         padding: 0 2rem;
     }
     .question .answer_container .answer{
-        font-size: 1.5rem;
-        line-height: 2.5rem;
+        font-size: 13px;
+        line-height: 26px;
         margin: 1rem auto;
         white-space: pre-wrap;
-        color: #323233;
+        color: #999999;
     }
     .question .answer_container img{
         width: 100%;
