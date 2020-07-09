@@ -28,8 +28,8 @@
                              :img="cropperImg"
                              :outputSize="option.size"
                              :outputType="option.outputType"
-                             :autoCropWidth="autoCropWidth"
-                             :autoCropHeight="autoCropHeight"
+                             :autoCropWidth="option.autoCropWidth"
+                             :autoCropHeight="option.autoCropHeight"
                              autoCrop
                              fixed
                              :fixedNumber="option.fixedNumber"
@@ -79,10 +79,11 @@
                     img: "",
                     size: 1,
                     outputType: "jpeg",
-                    fixedNumber: [1,1]
+                    fixedNumber: [1,1],
+                    autoCropWidth:200,
+                    autoCropHeight:200,
                 },
-                autoCropWidth:200,
-                autoCropHeight:200,
+
             }
         },
         created(){
@@ -90,15 +91,8 @@
         },
         mounted(){
             let screenWidth = document.body.clientWidth;
-            /*let screenHeight = document.body.clientHeight;
-            window.onresize = () => {
-                return (() => {
-                    screenWidth = document.body.clientWidth;
-                    screenHeight = document.body.clientHeight;
-                })();
-            };*/
-            this.autoCropWidth = screenWidth;
-            this.autoCropHeight = screenWidth;
+            this.option.autoCropWidth = screenWidth;
+            this.option.autoCropHeight = screenWidth;
         },
         methods:{
             cancelCropper() {

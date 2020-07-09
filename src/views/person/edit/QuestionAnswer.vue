@@ -33,6 +33,7 @@
                 <cropper :fileList="fileList"
                          :relationalId="relationalId"
                          :fixed="false"
+                         :cropHeight = "0.8"
                          relationalName="QUESTION_ANSWER_PHOTO"
                          @on-success="onCropSuccess" ></cropper>
             </van-cell-group>

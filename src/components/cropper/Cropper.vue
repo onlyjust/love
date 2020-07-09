@@ -16,8 +16,8 @@
                              :img="cropperImg"
                              :outputSize="option.size"
                              :outputType="option.outputType"
-                             :autoCropWidth="autoCropWidth"
-                             :autoCropHeight="autoCropHeight"
+                             :autoCropWidth="option.autoCropWidth"
+                             :autoCropHeight="option.autoCropHeight"
                              autoCrop
                              :fixed="fixed"
                              :fixedNumber="fixedNumber"
@@ -93,10 +93,10 @@
                     img: "",
                     size: 1,
                     outputType: "jpeg",
-                    fixedNumber: [1, 1]
+                    fixedNumber: [1, 1],
+                    autoCropWidth:100,
+                    autoCropHeight:100,
                 },
-                autoCropWidth:100,
-                autoCropHeight:100,
             };
         },
         mounted(){
@@ -108,8 +108,8 @@
                     screenHeight = document.body.clientHeight;
                 })();
             };*/
-            this.autoCropWidth = screenWidth * this.cropWidth;
-            this.autoCropHeight = screenWidth  * this.cropHeight;
+            this.option.autoCropWidth = screenWidth * this.cropWidth;
+            this.option.autoCropHeight = screenWidth  * this.cropHeight;
         },
         computed: {
             files: {
@@ -151,7 +151,6 @@
                 this.cropperImg = headerImage;
                 // console.log("beforeReadFile", this.cropperImg);
                 this.cropperShow = true;
-
                 return false;
             },
             async afterReadFile(file) {
