@@ -153,7 +153,7 @@
 
                     // 3.1.2 手机验证码登录
                     let result = await phoneCodeLogin(this.phone, this.code);
-                    // console.log(result);
+                    console.log("登录返回结果：",result);
                     if(result.success){
                         // 保存用户登录TOKEN
                         this.syncAuthToken(result.data);

@@ -140,8 +140,8 @@
     }
 
     .dynamic .dynamic_container .dynamic_right .dynamic_person .dynamic_info .dynamic_txt{
-        font-size: 14px;
-        line-height: 23px;
+        font-size: 1.4rem;
+        line-height: 2.3rem;
         color: #393939;
         white-space: pre-wrap;
     }
@@ -168,13 +168,13 @@
     }
 
     .dynamic .dynamic_container .dynamic_right .dynamic_person .dynamic_info .dynamic_title {
-        font-size: 12px;
+        font-size: 1.2rem;
         color: #ca78b5;
-        height: 22px;
-        line-height: 22px;
+        height: 2.2rem;
+        line-height: 2.2rem;
     }
     .dynamic .dynamic_container .dynamic_right .dynamic_person .dynamic_info .location {
-        font-size: 11px;
+        font-size: 1.1rem;
         color: #9393a1;
     }
     .dynamic .dynamic_container .dynamic_right .dynamic_person .dynamic_info .location i {
