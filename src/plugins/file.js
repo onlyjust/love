@@ -178,4 +178,20 @@ export default {
             type: file.type
         });
     },
+
+
+    //异步执行
+    getBase64Image(img) {
+        let image = new Image();
+        image.src = img;
+        let canvas = document.createElement("canvas");
+        canvas.width = image.width;
+        canvas.height = image.height;
+        let ctx = canvas.getContext("2d");
+        ctx.drawImage(image, 0, 0, image.width, image.height);
+        let ext = image.src.substring(image.src.lastIndexOf(".")+1).toLowerCase();
+        let dataURL = canvas.toDataURL("image/"+ext);
+        return dataURL;
+    }
+
 }

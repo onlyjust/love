@@ -16,10 +16,34 @@
 </template>
 
 <script>
+    import fileUtils from "@/plugins/file";
     export default {
         name: "UserQuestion",
         props:{
             questionAnswerList:Array
+        },
+        created() {
+
+        },
+        mounted(){
+            this.imageConvert();
+        },
+        methods:{
+            imageConvert(){
+               /* console.log("this.questionAnswerList  ",this.questionAnswerList);
+                if (this.questionAnswerList) {
+                    console.log("this.questionAnswerList  ",this.questionAnswerList);
+                    this.questionAnswerList.forEach((question) => {
+                        console.log("question  ",question);
+                        question.answerPhotoList.forEach(item => {
+                            console.log("file path ",item.filePath)
+                            // fileUtils.imageUrlToBase64()
+                        })
+
+                    })
+                }*/
+
+            }
         }
     }
 </script>

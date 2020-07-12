@@ -17,9 +17,11 @@
         <div class="footer"></div>
 
         <div class="float_block">
-            <span>分享</span>
+            <span @click="shareInfo()">分享</span>
             <span @click="switchSession(datingData.userId,datingData.nickname)">想认识</span>
         </div>
+
+        <HtmlToCanvas ref="canvasImage" :datingData="datingData"></HtmlToCanvas>
     </div>
 </template>
 
@@ -33,10 +35,11 @@
     import UserQuestion from "./children/UserQuestion";
 
     import {previewPersonal} from "../../service/api";
+    import HtmlToCanvas from "../../components/canvas/HtmlToCanvas";
 
     export default {
         name: "Person",
-        components: {UserQuestion, UserLabel, UserAuth, UserBasic, UserNav, UserHeader, Slideshow},
+        components: {HtmlToCanvas, UserQuestion, UserLabel, UserAuth, UserBasic, UserNav, UserHeader, Slideshow},
         data(){
             return {
                 datingId:0,
@@ -74,6 +77,9 @@
                     this.$router.push({path: '/chat/'+fromName})
                 })
             },
+            shareInfo(){
+                this.$refs.canvasImage.htmlToCanvas();
+            }
         }
     }
 </script>

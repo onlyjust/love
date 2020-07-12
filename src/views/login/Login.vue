@@ -173,8 +173,8 @@
                                 this.$router.push('/register');
                                 return
                             } else {
-                                // this.$router.push({path: '/'})
-                                this.$router.back();
+                                this.$router.push({path: '/'})
+                                // this.$router.back();
                             }
                             // 4.2 回到主面板
                             // this.$router.back();

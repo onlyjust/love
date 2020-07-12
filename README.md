@@ -20,4 +20,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ```
 npm install exif-js --save
+npm install --save html2canvas
+npm install vue-qr --save
 ```
