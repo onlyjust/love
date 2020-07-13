@@ -33,6 +33,10 @@ export const updateDatingQuestionAnswer = (questionId,answer,fileIdList) => ajax
 export const uploadFile = (fileParam) => ajax(BASE_URL+'/file/upload',fileParam,"POST");
 // 删除文件
 export const deleteFile = (fileId) => ajax(BASE_URL+'/file/delete/'+fileId);
+// 文件转base64
+export const getBase64 = (fileUrl) => ajax(BASE_URL+'/file/getBase64',{fileUrl});
+// 下载文件
+export const getFile = (fileUrl) => ajax(BASE_URL+'/file/getFile',{fileUrl});
 // 获取生活照
 export const getLifePhotoList = () => ajax(BASE_URL+'/mine/getLifePhotoList');
 // 获取当前登录人动态信息

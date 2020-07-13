@@ -21,7 +21,7 @@
             <span @click="switchSession(datingData.userId,datingData.nickname)">想认识</span>
         </div>
 
-        <HtmlToCanvas ref="canvasImage" :datingData="datingData"></HtmlToCanvas>
+        <HtmlToCanvas v-if="datingData" ref="canvasImage" :userInfo="datingData"/>
     </div>
 </template>
 

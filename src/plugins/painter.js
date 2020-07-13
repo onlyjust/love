@@ -40,7 +40,7 @@ function poster(data) {
 
       {
         type: 'text',
-        text: data.datingData.nickname,
+        text: data.nickname,
         css: {
           top: '48px',
           left: '136px',

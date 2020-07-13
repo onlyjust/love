@@ -5,26 +5,17 @@
         </van-popup>
         <vue-canvas-poster class="poster" :widthPixels="400" :painting="painting" @success="success" @fail="fail"></vue-canvas-poster>
     </div>
-
 </template>
 
 <script>
     import { drawPoster } from './../../plugins/painter';
     import { VueCanvasPoster } from 'vue-canvas-poster'
-    import VueQr from 'vue-qr';
-    import html2canvas from "html2canvas";
-    import UserHeader from "../../views/userinfo/children/UserHeader";
-    import UserNav from "../../views/userinfo/children/UserNav";
-    import UserBasic from "../../views/userinfo/children/UserBasic";
-    import UserAuth from "../../views/userinfo/children/UserAuth";
-    import UserLabel from "../../views/userinfo/children/UserLabel";
-    import UserQuestion from "../../views/userinfo/children/UserQuestion";
 
     export default {
         name: "HtmlToCanvas",
-        components: {VueCanvasPoster,VueQr,UserQuestion, UserLabel, UserAuth, UserBasic, UserNav, UserHeader},
+        components: {VueCanvasPoster},
         props:{
-            datingData:Object,
+            userInfo:Object
         },
         data(){
             return {
@@ -33,23 +24,41 @@
                 canvasPosterShow:false
             }
         },
-        created(){
-
+        watch: {
+            //正确给 cData 赋值的 方法
+            /*userInfo: function(newVal,oldVal){
+                this.userInfo = newVal;  //newVal即是chartData
+                // newVal && this.htmlToCanvas(); //newVal存在的话执行drawChar函数
+            }*/
         },
         mounted(){
-            const params = {
+            // let avatar = getFile('http://a0.att.hudong.com/16/12/01300535031999137270128786964.jpg');
+            /*const params = {
                 type: 'pro', // 尝试换一下text,image
-                avatar: this.datingData.personalPhoto,
-                datingData: this.datingData,
+                // avatar: this.datingData.personalPhoto,
+                avatar: this.personalPhoto,
+                // avatar: 'https://imgs.solui.cn/avatar.png',
+                nickname: this.nickname,
                 qrcodeContent: window.location.href,
-            }
+            };
+            console.log("params:",params);
             drawPoster(params).then(res => {
                 this.painting = res
-            })
+            })*/
         },
         methods:{
             htmlToCanvas() {
                 this.canvasPosterShow = true;
+                const params = {
+                    type: 'pro', // 尝试换一下text,image
+                    avatar: this.userInfo.personalPhoto,
+                    nickname: this.userInfo.nickname,
+                    qrcodeContent: window.location.href,
+                };
+                console.log("params:",params);
+                drawPoster(params).then(res => {
+                    this.painting = res
+                })
             },
             // 保存
             success(src) {
@@ -58,7 +67,7 @@
             },
             fail(err) {
                 console.log('fail', err)
-            }
+            },
         }
     }
 </script>
