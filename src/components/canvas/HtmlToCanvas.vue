@@ -49,9 +49,12 @@
         methods:{
             htmlToCanvas() {
                 this.canvasPosterShow = true;
+                let avatar = "http://api.51vipyuan.com/api/file/download/"+this.userInfo.personalPhoto.substring(this.userInfo.personalPhoto.lastIndexOf("/")+1);
                 const params = {
                     type: 'pro', // 尝试换一下text,image
-                    avatar: this.userInfo.personalPhoto,
+                    // avatar: this.userInfo.personalPhoto,
+                    // avatar: "http://192.168.0.103:8089/api/file/download/fa5b2c7c-991c-4eac-b416-13b66a822802.jpeg",
+                    avatar: avatar,
                     nickname: this.userInfo.nickname,
                     qrcodeContent: window.location.href,
                 };
