@@ -3,7 +3,7 @@
         <van-popup v-model="canvasPosterShow" style="width: 60%">
             <img :src="src" alt="" class="share-image">
         </van-popup>
-        <vue-canvas-poster class="poster" :widthPixels="400" :painting="painting" @success="success" @fail="fail"></vue-canvas-poster>
+        <vue-canvas-poster class="poster" :widthPixels="1000" :painting="painting" @success="success" @fail="fail"></vue-canvas-poster>
     </div>
 </template>
 
@@ -56,6 +56,7 @@
                     // avatar: "http://192.168.0.103:8089/api/file/download/fa5b2c7c-991c-4eac-b416-13b66a822802.jpeg",
                     avatar: avatar,
                     nickname: this.userInfo.nickname,
+                    highlightTitle: this.userInfo.highlightTitle,
                     qrcodeContent: window.location.href,
                 };
                 console.log("params:",params);

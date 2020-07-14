@@ -56,6 +56,14 @@ export const commentDynamic = (commentParam) => ajax(BASE_URL+'/mine/commentDyna
 // 动态评论点赞
 export const likeComment = (commentId,liked) => ajax(BASE_URL+'/mine/likeComment',{commentId,liked}, 'POST');
 
+
+// 签到历史信息
+export const signInHistory = () => ajax(BASE_URL+'/task/signInHistory');
+// 签到
+export const signIn = () => ajax(BASE_URL+'/task/signIn');
+// 获取签到所有的狗粮
+export const getSignInFoodList = () => ajax(BASE_URL+'/task/getSignInFoodList');
+
 // 获取话题列表
 export const getTopicList = () => ajax(BASE_URL+'/dynamic/getTopicList');
 

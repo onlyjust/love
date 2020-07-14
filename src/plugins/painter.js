@@ -128,12 +128,24 @@ function poster(data) {
         type: 'text',
         text: '¥259.00',
         css: {
-          top: '609px',
+          top: '649px',
           left: '243px',
           color: '#999999',
           fontSize: '26px',
           fontWeight: 'bold',
           textDecoration: 'line-through'
+        }
+      },*/
+      {
+        type: 'text',
+        text: data.highlightTitle,
+        css: {
+          top: '688px',
+          left: '26px',
+          color: '#7db38a',
+          fontSize: '30px',
+          fontWeight: 'bold',
+          width: "300px"
         }
       },
       {
@@ -146,7 +158,7 @@ function poster(data) {
           height: '28px',
           rotate: 45
         }
-      },*/
+      },
       {
         type: 'text',
         text: '长按或扫描二维码',

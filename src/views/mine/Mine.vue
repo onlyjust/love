@@ -44,6 +44,7 @@ https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f3
         </van-cell-group>
 
         <van-cell-group style="margin-top: 0.4rem">
+            <van-cell title="签到" icon="gold-coin" is-link to="/task/signIn"></van-cell>
             <van-cell title="实名认证" icon="gold-coin" is-link to="/auth/index"></van-cell>
             <!--<van-cell title="我的认证" icon="todo-list" is-link></van-cell>-->
         </van-cell-group>

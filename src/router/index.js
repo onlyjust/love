@@ -11,6 +11,7 @@ import myDynamicRouter from './mydynamic'
 import loginRouter from './login'
 import identity from './auth'
 import topic from './topic'
+import task from './task'
 
 import chatRouter from './message/chat'
 
@@ -32,6 +33,7 @@ const router = new VueRouter({
     ...loginRouter,
       ...identity,
       ...topic,
+      ...task,
     {
       path: '/*',
       redirect: '/default',
