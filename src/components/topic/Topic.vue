@@ -6,20 +6,38 @@
         </div>
         <div class="topic_container">
             <div class="topic_content" >
-                <div class="topic_info" @click="$router.push({name:'topicList',query: {title: '疫情职场办公晒一下午餐'}})">
-                    <h1 class="title">#疫情职场办公晒一下午餐#</h1>
+                <div class="topic_info" @click="$router.push({name:'topicList',query: {title: topicInfo.topic}})">
+                    <h1 class="title">#{{topicInfo.topic}}#</h1>
                 </div>
-                <a @click="$router.push({name:'publishDynamic',params: {title: '疫情职场办公晒一下午餐'}})" class="reply">参与话题</a>
+                <a @click="$router.push({name:'publishDynamic',params: {title: topicInfo.topic}})" class="reply">参与话题</a>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+    import {getTodayTopic} from "../../service/api";
+
     export default {
         name: "Topic",
         props:{
             title:Boolean
+        },
+        data(){
+            return {
+                topicInfo: {}
+            }
+        },
+        created() {
+            this.initData();
+        },
+        methods:{
+            async initData(){
+                let result = await getTodayTopic();
+                if (result.success) {
+                    this.topicInfo = result.data;
+                }
+            }
         }
     }
 </script>

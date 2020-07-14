@@ -51,6 +51,9 @@ export const getTaDynamicPage = (datingId,pageNum=1,pageSize=20) => ajax(BASE_UR
 export const getTitleDynamicPage = (title,pageNum=1,pageSize=20) => ajax(BASE_URL+'/dynamic/getDynamicPage',{title,pageNum,pageSize}, 'POST');
 // 根据动态ID获取动态信息
 export const getDynamicInfo = (dynamicId) => ajax(BASE_URL+'/dynamic/getDynamicInfo/'+dynamicId);
+// 获取当天话题
+export const getTodayTopic = () => ajax(BASE_URL+'/dynamic/getTodayTopic');
+
 // 评论动态信息
 export const commentDynamic = (commentParam) => ajax(BASE_URL+'/mine/commentDynamic', commentParam, 'POST');
 // 动态评论点赞
