@@ -48,10 +48,13 @@
         },
         methods:{
             htmlToCanvas() {
-                // console.log("window.location.host",window.location.host);
-                // console.log("window.location.hostname",window.location.hostname);
-                // console.log("window.location.href",window.location.href);
-                this.canvasPosterShow = true;
+                /*console.log("window.location.port",window.location.port);
+                console.log("window.location.protocol",window.location.protocol);
+                console.log("window.location.pathname",window.location.pathname);
+                console.log("window.location.host",window.location.host);
+                console.log("window.location.hostname",window.location.hostname);
+                console.log("window.location.href",window.location.href);
+                console.log("window.location",window.location.href.substring(0,window.location.href.indexOf(window.location.pathname)));*/
                 let avatar = "http://api.51vipyuan.com/api/file/download/"+this.userInfo.personalPhoto.substring(this.userInfo.personalPhoto.lastIndexOf("/")+1);
                 const params = {
                     type: 'pro', // 尝试换一下text,image
@@ -61,7 +64,7 @@
                     nickname: this.userInfo.nickname,
                     highlightTitle: this.userInfo.highlightTitle,
                     // qrcodeContent: window.location.href,
-                    qrcodeContent: window.location.host+"/tourist/preview"+this.userInfo.datingDataId,
+                    qrcodeContent: window.location.href.substring(0,window.location.href.indexOf(window.location.pathname))+"/tourist/preview/"+this.userInfo.datingDataId,
                 };
                 console.log("params:",params);
                 drawPoster(params).then(res => {
@@ -70,6 +73,7 @@
             },
             // 保存
             success(src) {
+                this.canvasPosterShow = true;
                 this.src = src
                 // console.log("src:",this.src);
             },

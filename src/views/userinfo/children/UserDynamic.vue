@@ -1,10 +1,10 @@
 <template>
-    <div id="user-dynamic">
+    <div id="user-dynamic" v-if="dynamicInfo">
         <div class="subject">
             <h1>最新动态</h1>
             <a>更多…</a>
         </div>
-        <div class="dynamic_container" v-if="dynamicInfo">
+        <div class="dynamic_container">
             <div class="dynamic_info">
                 <p class="dynamic_txt">{{dynamicInfo.content}}</p>
                 <div class="dynamic_img">
