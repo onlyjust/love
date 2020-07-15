@@ -25,7 +25,7 @@
     /*用户头信息*/
     .header{
         display: flex;
-        padding: 20px 20px;
+        padding: 10px 20px;
         align-items: center;
     }
     .header .header_left{

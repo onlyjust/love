@@ -45,6 +45,7 @@
     }
     .auth .auth_container{
         display: flex;
+        padding: 0 1rem;
     }
     .auth .auth_container .auth_left {
         width: 6rem;

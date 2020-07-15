@@ -3,7 +3,7 @@
         <van-popup v-model="canvasPosterShow" style="width: 60%">
             <img :src="src" alt="" class="share-image">
         </van-popup>
-        <vue-canvas-poster class="poster" :widthPixels="1000" :painting="painting" @success="success" @fail="fail"></vue-canvas-poster>
+        <vue-canvas-poster class="poster" :widthPixels="550" :painting="painting" @success="success" @fail="fail"></vue-canvas-poster>
     </div>
 </template>
 
@@ -48,6 +48,9 @@
         },
         methods:{
             htmlToCanvas() {
+                // console.log("window.location.host",window.location.host);
+                // console.log("window.location.hostname",window.location.hostname);
+                // console.log("window.location.href",window.location.href);
                 this.canvasPosterShow = true;
                 let avatar = "http://api.51vipyuan.com/api/file/download/"+this.userInfo.personalPhoto.substring(this.userInfo.personalPhoto.lastIndexOf("/")+1);
                 const params = {
@@ -57,7 +60,8 @@
                     avatar: avatar,
                     nickname: this.userInfo.nickname,
                     highlightTitle: this.userInfo.highlightTitle,
-                    qrcodeContent: window.location.href,
+                    // qrcodeContent: window.location.href,
+                    qrcodeContent: window.location.host+"/tourist/preview"+this.userInfo.datingDataId,
                 };
                 console.log("params:",params);
                 drawPoster(params).then(res => {

@@ -5,41 +5,39 @@
         <!--用户头信息-->
         <UserHeader :userInfo="datingData" />
         <!--用户导航-->
-        <UserNav :datingId="datingData.datingDataId" :liked="false"/>
+        <!--<UserNav :datingId="datingData.datingDataId" :liked="false"/>-->
         <!--基本信息-->
         <UserBasic :userInfo="datingData"/>
         <!--认证信息-->
         <UserAuth v-if="datingData.authIdentity" :authIdentity="datingData.authIdentity"/>
+        <!--最新动态-->
+        <UserDynamic :dynamicInfo="datingData.dynamicInfo"/>
         <!--个性标签-->
         <UserLabel :labelList="datingData.labelList"/>
         <!--走心问答-->
         <UserQuestion :questionAnswerList="datingData.questionAnswerList"/>
         <div class="footer"></div>
-
-        <div class="float_block">
-            <span @click="shareInfo()">分享</span>
-            <span @click="switchSession(datingData.userId,datingData.nickname)">想认识</span>
-        </div>
-
-        <HtmlToCanvas v-if="datingData" ref="canvasImage" :userInfo="datingData"/>
     </div>
 </template>
 
 <script>
     import Slideshow from "../../components/slideshow/Slideshow";
-    import UserHeader from "./children/UserHeader";
-    import UserNav from "./children/UserNav";
-    import UserBasic from "./children/UserBasic";
-    import UserAuth from "./children/UserAuth";
-    import UserLabel from "./children/UserLabel";
-    import UserQuestion from "./children/UserQuestion";
+    import UserHeader from "./../userinfo/children/UserHeader";
+    import UserNav from "./../userinfo/children/UserNav";
+    import UserBasic from "./../userinfo/children/UserBasic";
+    import UserAuth from "./../userinfo/children/UserAuth";
+    import UserLabel from "./../userinfo/children/UserLabel";
+    import UserQuestion from "./../userinfo/children/UserQuestion";
 
-    import {previewPersonal} from "../../service/api";
+    import {preview} from "../../service/api";
     import HtmlToCanvas from "../../components/canvas/HtmlToCanvas";
+    import UserDynamic from "../userinfo/children/UserDynamic";
 
     export default {
-        name: "Person",
-        components: {HtmlToCanvas, UserQuestion, UserLabel, UserAuth, UserBasic, UserNav, UserHeader, Slideshow},
+        name: "PreviewInfo",
+        components: {
+            UserDynamic,
+            HtmlToCanvas, UserQuestion, UserLabel, UserAuth, UserBasic, UserNav, UserHeader, Slideshow},
         data(){
             return {
                 datingId:0,
@@ -57,7 +55,7 @@
         },
         methods:{
             async initData(){
-                let result = await previewPersonal(this.datingId);
+                let result = await preview(this.datingId);
                 // console.log("个人信息数据：", result);
                 if (result.success){
                     this.datingData = result.data;

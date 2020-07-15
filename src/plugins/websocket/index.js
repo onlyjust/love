@@ -10,8 +10,8 @@ export default {
             console.log("indexOf:",un_check_url.indexOf(to.fullPath));
             console.log("indexOf:",~un_check_url.indexOf(to.fullPath));
             console.log("indexOf:",!~un_check_url.indexOf(to.fullPath));
-            console.log("userinfo:",!to.fullPath.indexOf("/userinfo/"));
-            if (!to.fullPath.indexOf("/userinfo/")){
+            console.log("tourist:",!to.fullPath.indexOf("/tourist/"));
+            if (!to.fullPath.indexOf("/tourist/")){
                 return next();
             }
             if (!~un_check_url.indexOf(to.fullPath)) {

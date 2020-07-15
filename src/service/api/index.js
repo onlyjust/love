@@ -91,7 +91,8 @@ export const getAuthInfo = () => ajax(BASE_URL+'/auth/getAuthInfo');
 // 获取身份认证信息
 export const getIdentityInfo = () => ajax(BASE_URL+'/auth/getIdentityInfo');
 
-
+// 游客预览信息
+export const preview = (datingId) => ajax(BASE_URL+'/tourist/preview/'+datingId);
 
 // 获取短信验证码(GET)
 export const getPhoneCode = (phone) => ajax(BASE_URL + '/login/sendPhoneSms/'+phone);

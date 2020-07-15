@@ -1,16 +1,17 @@
 <template>
     <div class="nav">
         <ul class="nav_container">
-            <li>
-                <img src="@/img/guanzhu.png">
+            <li @click="onLike()">
+                <img v-if="false" src="@/images/user/guanzhu.png">
+                <img v-else src="@/images/user/guanzhu2.png">
                 <span>关注TA</span>
             </li>
             <li @click="onDynamic()">
-                <img src="@/img/dongtai.png">
+                <img src="@/images/user/dongtai.png">
                 <span>TA的动态</span>
             </li>
             <li>
-                <img src="@/img/shengyin.png">
+                <img src="@/images/user/shengyin.png">
                 <span>TA的声音</span>
             </li>
         </ul>
@@ -21,7 +22,8 @@
     export default {
         name: "UserNav",
         props:{
-            datingId:Number
+            datingId:Number,
+            liked:Boolean
         },
         created(){
             console.log('datingId is ',this.datingId);
@@ -29,6 +31,9 @@
         methods:{
             onDynamic(){
                 this.$router.push({name:'personDynamic',params:{datingId:this.datingId}})
+            },
+            // 关注
+            onLike(){
 
             }
         }
