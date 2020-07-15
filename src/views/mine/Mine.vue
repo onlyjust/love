@@ -1,7 +1,7 @@
 <template>
     <div id="mine" v-if="token">
         <van-cell-group>
-            <van-cell
+            <!--<van-cell
                     label-class="labelClass"
                     is-link
                     :center=true
@@ -15,15 +15,30 @@
                                 height="80px"
                                 :src="main.personalPhoto"
                         />
-                        <!--<img class="iconImage" src="
-https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f380c555f.jpg" alt="">-->
                         <div class="personInfo">
                             <span class="nickname">{{main.nickname}}</span>
                             <span class="personInfo-number">{{main.datingDataId}}</span>
                         </div>
                     </div>
                 </template>
-            </van-cell>
+            </van-cell>-->
+            <header class="header">
+                <div class="head-top"></div>
+                <div class="head-container">
+                    <div @click="$router.push('/person')">
+                        <van-image
+                                round
+                                width="100px"
+                                height="100px"
+                                :src="main.personalPhoto"
+                        />
+                        <h2>{{main.nickname}}</h2>
+                        <span class="">NO.{{main.datingDataId}}</span>
+                        <p>{{main.highlightTitle}}</p>
+                    </div>
+                    <span class="signIn" @click="$router.push('/task/signIn')">签到</span>
+                </div>
+            </header>
         </van-cell-group>
 
         <van-cell-group>
@@ -44,7 +59,7 @@ https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f3
         </van-cell-group>
 
         <van-cell-group style="margin-top: 0.4rem">
-            <van-cell title="签到" icon="gold-coin" is-link to="/task/signIn"></van-cell>
+            <!--<van-cell title="签到" icon="gold-coin" is-link to="/task/signIn"></van-cell>-->
             <van-cell title="实名认证" icon="gold-coin" is-link to="/auth/index"></van-cell>
             <!--<van-cell title="我的认证" icon="todo-list" is-link></van-cell>-->
         </van-cell-group>
@@ -116,6 +131,42 @@ https://leo-public-dfs.oss-cn-beijing.aliyuncs.com/17313d72-96e2-4865-bc88-a82f3
 <style lang="less" scoped>
     #mine{
         width: 100%;
+    }
+    /* header start */
+    .header{
+        text-align: center;
+        color: #3d3d3d;
+        background: -webkit-linear-gradient(top, #c2e3ff, #80c7ff, #7ccedf);
+    }
+    .header .head-top {
+        height: 3rem;
+    }
+    .header .head-container {
+        /*border: #795da3 solid 1rem;*/
+        font-size: 1.4rem;
+        padding: 2rem 0;
+        position: relative;
+    }
+    .header .head-container h2 {
+        font-weight: bold;
+        font-size: 2rem;
+        color: #333333;
+        font-family: "Times New Roman",Georgia,Serif;
+    }
+    .header .head-container p{
+        color: #ee5cab;
+    }
+    .header .head-container .signIn {
+        position: absolute;
+        right: 0;
+        top: 4rem;
+        width: 7rem;
+        height: 4rem;
+        line-height: 4rem;
+        background: #ff615f;
+        color: white;
+        font-size: 1.6rem;
+        border-radius: 2rem 0 0 2rem;
     }
     .personMsg {
         display: flex;
