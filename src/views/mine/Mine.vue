@@ -139,17 +139,17 @@
         background: -webkit-linear-gradient(top, #c2e3ff, #80c7ff, #7ccedf);
     }
     .header .head-top {
-        height: 3rem;
+        height: 30px;
     }
     .header .head-container {
         /*border: #795da3 solid 1rem;*/
-        font-size: 1.4rem;
-        padding: 2rem 0;
+        font-size: 14px;
+        padding: 20px 0;
         position: relative;
     }
     .header .head-container h2 {
         font-weight: bold;
-        font-size: 2rem;
+        font-size: 20px;
         color: #333333;
         font-family: "Times New Roman",Georgia,Serif;
     }
@@ -159,14 +159,14 @@
     .header .head-container .signIn {
         position: absolute;
         right: 0;
-        top: 4rem;
-        width: 7rem;
-        height: 4rem;
-        line-height: 4rem;
+        top: 40px;
+        width: 70px;
+        height: 40px;
+        line-height: 40px;
         background: #ff615f;
         color: white;
-        font-size: 1.6rem;
-        border-radius: 2rem 0 0 2rem;
+        font-size: 16px;
+        border-radius: 20px 0 0 20px;
     }
     .personMsg {
         display: flex;
