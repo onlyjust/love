@@ -12,7 +12,7 @@
                 <div>
                     <span v-if="userInfo.liveCity"><i class="iconfont iconzuobiao"></i>{{userInfo.liveCity}}</span>
                     <span v-if="userInfo.job"><i class="iconfont iconw_zhiye"></i>{{userInfo.job}}</span>
-                    <span v-if="userInfo.salary"><i class="iconfont iconshouruqingkuang"></i>{{userInfo.salary}}元{{userInfo.salaryScope==='1'?'以上':''}}</span>
+                    <span v-if="userInfo.salary"><i class="iconfont iconshouruqingkuang"></i>{{userInfo.salary}}元{{userInfo.salaryScope=='1'?'以上':''}}</span>
                 </div>
                 <div>
                     <span v-if="userInfo.graduateSchool"><i class="iconfont iconbiye"></i>{{userInfo.graduateSchool}}</span>

@@ -2,7 +2,7 @@
     <div class="nav">
         <ul class="nav_container">
             <li @click="onLike()">
-                <img v-if="false" src="@/images/user/guanzhu.png">
+                <img v-if="liked" src="@/images/user/guanzhu.png">
                 <img v-else src="@/images/user/guanzhu2.png">
                 <span>关注TA</span>
             </li>
@@ -19,6 +19,8 @@
 </template>
 
 <script>
+    import {likeUser} from "../../../service/api";
+
     export default {
         name: "UserNav",
         props:{
@@ -33,8 +35,11 @@
                 this.$router.push({name:'personDynamic',params:{datingId:this.datingId}})
             },
             // 关注
-            onLike(){
-
+            async onLike(){
+                let result = await likeUser(this.datingId,!this.liked);
+                if (result.success) {
+                    this.liked = !this.liked;
+                }
             }
         }
     }

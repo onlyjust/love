@@ -107,3 +107,5 @@ export const getLogOut = ()=> ajax(BASE_URL + '/login/logout');
 
 // 上传文件
 export const uploadAvatar = (fileParam) => ajax(BASE_URL+'/user/avatar',fileParam,"POST");
+// 喜欢TA关注TA
+export const likeUser = (datingId,liked) => ajax(BASE_URL+'/user/likeUser',{datingId,liked},"POST");
