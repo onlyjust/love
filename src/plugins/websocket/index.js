@@ -6,6 +6,10 @@ export default {
         if (!router) return false;
         let un_check_url = ['/login'];
         router.beforeEach((to, from, next) => {
+            /*路由发生改变修改页面的title */
+            if(to.meta.title) {
+                document.title = to.meta.title
+            }
             console.log("to_path:",to.fullPath);
             console.log("indexOf:",un_check_url.indexOf(to.fullPath));
             console.log("indexOf:",~un_check_url.indexOf(to.fullPath));

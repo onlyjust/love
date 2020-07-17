@@ -161,12 +161,12 @@
         right: 0;
         top: 40px;
         width: 70px;
-        height: 40px;
-        line-height: 40px;
+        height: 36px;
+        line-height: 36px;
         background: #ff615f;
         color: white;
         font-size: 16px;
-        border-radius: 20px 0 0 20px;
+        border-radius: 18px 0 0 18px;
     }
     .personMsg {
         display: flex;

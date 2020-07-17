@@ -1,4 +1,7 @@
 export default {
     path: '/message',
-    component : () => import('@/views/message/Message.vue')
+    component : () => import('@/views/message/Message.vue'),
+    meta: {
+        title: '消息'
+    }
 }

@@ -7,7 +7,16 @@
                 border
                 @click-left="$router.go(-1)"
         ></van-nav-bar>
-        <ul class="auth_type">
+
+        <van-steps :active="authActive">
+            <van-step>身份认证</van-step>
+            <van-step>学历认证</van-step>
+            <van-step>工作认证</van-step>
+        </van-steps>
+        <Identity v-if="authActive==0" @childFun="changeAuthActiveVal"/>
+        <Education v-else-if="authActive == 1"/>
+
+        <!--<ul class="auth_type">
             <li @click="routerView(0,datingAuth.authIdentity)">
                 <img src="../../images/auth/shenfen_auth.png">
                 <p>{{datingAuth.authIdentity==0?'身份认证':'身份已认证'}}</p>
@@ -20,17 +29,21 @@
                 <img src="../../images/auth/gongzuo_auth.png">
                 <p>{{datingAuth.authCompany==0?'工作认证':'工作已认证'}}</p>
             </li>
-        </ul>
+        </ul>-->
     </div>
 </template>
 
 <script>
     import {getAuthInfo } from '../../service/api/index';
+    import Identity from "./Identity";
+    import Education from "./Education";
     export default {
         name: "index",
+        components: {Education, Identity},
         data(){
             return {
-                datingAuth:{}
+                datingAuth:{},
+                authActive: 0,
             }
         },
         created(){
@@ -65,6 +78,9 @@
                         this.$router.push('/auth/identity/info');
                     }
                 }
+            },
+            changeAuthActiveVal(active){
+                this.authActive = active;
             }
         }
     }
