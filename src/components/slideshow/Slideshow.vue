@@ -67,6 +67,8 @@
         bottom: 5px;
         padding: 2px 5px;
         font-size: 12px;
-        background: rgba(0, 0, 0, 0.1);
+        /*background: rgba(249, 249, 249, 0.1);*/
+        background: white;
+        border-radius: 5px;
     }
 </style>
