@@ -8,6 +8,12 @@
         <PersonLabel :labelList="userInfo.labelList"/>
         <!--走心问答-->
         <QuestionAnswer :questionAnswerList="userInfo.questionAnswerList"/>
+
+        <div style="margin: 16px;">
+            <van-button round block color="#1296db" @click="shareInfo()">分享名片</van-button>
+        </div>
+        <HtmlToCanvas v-if="userInfo" ref="canvasImage" :userInfo="userInfo"/>
+        <div class="footer"></div>
     </div>
 </template>
 
@@ -24,6 +30,7 @@
     import BasicInfo from '../../components/person/BasicInfo';
     import PersonLabel from "../../components/person/PersonLabel";
     import QuestionAnswer from "../../components/person/QuestionAnswer";
+    import HtmlToCanvas from "../../components/canvas/HtmlToCanvas";
 
     export default {
         name: "Person",
@@ -34,6 +41,7 @@
             }
         },
         components:{
+            HtmlToCanvas,
             QuestionAnswer,
             PersonLabel,
             Slideshow,
@@ -59,6 +67,9 @@
                     this.$toast(result.message);
                 }
                 // console.log('questionAnswerList',result.data.questionAnswerList)
+            },
+            shareInfo(){
+                this.$refs.canvasImage.htmlToCanvas();
             }
         }
     }
@@ -67,6 +78,10 @@
 <style lang="less" scoped>
     #person{
         width: 100%;
+    }
+    /*底部*/
+    .footer{
+        height: 10rem;
     }
 
 </style>
