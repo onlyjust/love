@@ -70,6 +70,9 @@
 
     export default {
         name: "Identity",
+        props:{
+            authStatus:Number
+        },
         data(){
             return {
                 name:"",
@@ -93,6 +96,14 @@
                 let idNumber = this.idNumber;
                 console.log(name);
                 console.log(idNumber);
+                if (!name){
+                    this.$toast('请输入真实姓名');
+                    return;
+                }
+                if (!idNumber){
+                    this.$toast('请输入身份证号');
+                    return;
+                }
                 let result = await idCardAuth(idNumber, name);
                 if (!result.success){
                     this.$toast(result.message);

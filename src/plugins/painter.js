@@ -149,6 +149,17 @@ function poster(data) {
         }
       },
       {
+        type: 'text',
+        text: data.basicInfo,
+        css: {
+          top: '768px',
+          left: '26px',
+          color: '#3d2db3',
+          fontSize: '30px',
+          width: "300px"
+        }
+      },
+      {
         type: 'rect',
         css: {
           top: '647px',

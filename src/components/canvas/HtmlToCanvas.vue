@@ -56,6 +56,16 @@
                 console.log("window.location.href",window.location.href);
                 console.log("window.location",window.location.href.substring(0,window.location.href.indexOf(window.location.pathname)));*/
                 let avatar = "http://api.51vipyuan.com/api/file/download/"+this.userInfo.personalPhoto.substring(this.userInfo.personalPhoto.lastIndexOf("/")+1);
+                let basicInfo = '';
+                if (this.userInfo.age) {
+                    basicInfo += this.userInfo.age;
+                }
+                if (this.userInfo.horoscope) {
+                    basicInfo += "  "+this.userInfo.horoscope;
+                }
+                if (this.userInfo.job) {
+                    basicInfo += "  "+this.userInfo.job;
+                }
                 const params = {
                     type: 'pro', // 尝试换一下text,image
                     // avatar: this.userInfo.personalPhoto,
@@ -64,6 +74,7 @@
                     nickname: this.userInfo.nickname,
                     highlightTitle: this.userInfo.highlightTitle,
                     // qrcodeContent: window.location.href,
+                    basicInfo: basicInfo,
                     qrcodeContent: window.location.href.substring(0,window.location.href.indexOf(window.location.pathname))+"/tourist/preview/"+this.userInfo.datingDataId,
                 };
                 console.log("params:",params);

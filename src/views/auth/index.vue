@@ -13,8 +13,9 @@
             <van-step>学历认证</van-step>
             <van-step>工作认证</van-step>
         </van-steps>
-        <Identity v-if="authActive==0" @childFun="changeAuthActiveVal"/>
-        <Education v-else-if="authActive == 1"/>
+        <Identity v-if="authActive==0" :authStatus="datingAuth.authIdentity" @childFun="changeAuthActiveVal"/>
+        <Education v-else-if="authActive == 1" :authStatus="datingAuth.authEducation" @childFun="changeAuthActiveVal"/>
+        <Company v-else-if="authActive == 2" @childFun="changeAuthActiveVal"/>
 
         <!--<ul class="auth_type">
             <li @click="routerView(0,datingAuth.authIdentity)">
@@ -37,9 +38,10 @@
     import {getAuthInfo } from '../../service/api/index';
     import Identity from "./Identity";
     import Education from "./Education";
+    import Company from "./Company";
     export default {
         name: "index",
-        components: {Education, Identity},
+        components: {Company, Education, Identity},
         data(){
             return {
                 datingAuth:{},

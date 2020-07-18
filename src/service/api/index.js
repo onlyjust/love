@@ -90,7 +90,14 @@ export const idCardAuth = (idCard,realName) => ajax(BASE_URL+'/auth/identity',{i
 export const getAuthInfo = () => ajax(BASE_URL+'/auth/getAuthInfo');
 // 获取身份认证信息
 export const getIdentityInfo = () => ajax(BASE_URL+'/auth/getIdentityInfo');
-
+// 学历认证
+export const educationAuth = (fileParam) => ajax(BASE_URL+'/auth/education', fileParam, 'POST');
+// 获取学历认证信息
+export const getEducationInfo = () => ajax(BASE_URL+'/auth/getEducationInfo');
+// 工作认证
+export const companyAuth = (fileParam) => ajax(BASE_URL+'/auth/company', fileParam, 'POST');
+// 获取工作认证信息
+export const getCompanyInfo = () => ajax(BASE_URL+'/auth/getCompanyInfo');
 // 游客预览信息
 export const preview = (datingId) => ajax(BASE_URL+'/tourist/preview/'+datingId);
 
@@ -109,3 +116,4 @@ export const getLogOut = ()=> ajax(BASE_URL + '/login/logout');
 export const uploadAvatar = (fileParam) => ajax(BASE_URL+'/user/avatar',fileParam,"POST");
 // 喜欢TA关注TA
 export const likeUser = (datingId,liked) => ajax(BASE_URL+'/user/likeUser',{datingId,liked},"POST");
+

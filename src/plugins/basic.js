@@ -53,7 +53,7 @@ export default {
         { text: '199CM',value:'199' },
     ],
 
-    educationList: ['初中', '高中', '中专', '大专', '本科', '硕士','博士','教授'],
+    educationList: ['初中', '高中', '中专', '大专', '本科', '双学士', '硕士','博士','教授'],
 
     horoscopeList:[
         {text:'白羊座：3月21日~4月19日', value:'白羊座'},
