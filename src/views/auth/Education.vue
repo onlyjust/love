@@ -198,4 +198,8 @@
         display: flex;
         justify-content: space-around;
     }
+    .pageBox div {
+        flex-grow: 1;
+        margin: 0 5px;
+    }
 </style>

@@ -8,10 +8,7 @@
         <PersonLabel :labelList="userInfo.labelList"/>
         <!--走心问答-->
         <QuestionAnswer :questionAnswerList="userInfo.questionAnswerList"/>
-
-        <div style="margin: 16px;">
-            <van-button round block color="#1296db" @click="shareInfo()">分享名片</van-button>
-        </div>
+        <span class="share" @click="shareInfo()">分享名片</span>
         <HtmlToCanvas v-if="userInfo" ref="canvasImage" :userInfo="userInfo"/>
         <div class="footer"></div>
     </div>
@@ -82,6 +79,19 @@
     /*底部*/
     .footer{
         height: 10rem;
+    }
+
+    .share {
+        position: fixed;
+        right: 0;
+        bottom: 50px;
+        background: #e84310;
+        height: 40px;
+        line-height: 40px;
+        color: white;
+        padding: 0 5px 0 20px;
+        border-radius: 20px 0 0 20px;
+        font-size: 14px;
     }
 
 </style>

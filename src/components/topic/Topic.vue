@@ -7,7 +7,7 @@
         <div class="topic_container">
             <div class="topic_content" >
                 <div class="topic_info" @click="$router.push({name:'topicList',query: {title: topicInfo.topic}})">
-                    <h1 class="title">#{{topicInfo.topic}}#</h1>
+                    <h1 class="title">#{{topicInfo.topic}}</h1>
                 </div>
                 <a @click="$router.push({name:'publishDynamic',params: {title: topicInfo.topic}})" class="reply">参与话题</a>
             </div>
@@ -51,10 +51,15 @@
         /*margin-bottom: 1rem;*/
     }
     .topic .topic_title{
-        font-size: 1.4rem;
+        font-size: 14px;
         display: flex;
         justify-content: space-between;
-        margin: 1rem;
+        margin: 10px 10px 5px 10px;
+        height: 30px;
+        line-height: 30px;
+    }
+    .topic .topic_title .title{
+        font-size: 20px;
     }
     .topic .topic_container{
         padding: 1rem 2rem;
@@ -72,6 +77,7 @@
     .topic .topic_container .topic_content .topic_info .title{
         font-size: 1.4rem;
         font-weight: bold;
+        color: #3f0e6e;
     }
     .topic .topic_container .topic_content .reply{
         background: #eeeeee;
