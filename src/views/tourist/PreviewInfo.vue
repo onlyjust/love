@@ -17,6 +17,8 @@
         <!--走心问答-->
         <UserQuestion :questionAnswerList="datingData.questionAnswerList"/>
         <div class="footer"></div>
+
+        <span class="shouye iconfont iconindex" @click="goHome()"></span>
     </div>
 </template>
 
@@ -77,6 +79,9 @@
             },
             shareInfo(){
                 this.$refs.canvasImage.htmlToCanvas();
+            },
+            goHome(){
+                this.$router.push({path: '/'})
             }
         }
     }
@@ -110,6 +115,20 @@
         display: inline-block;
         border-radius: 1rem;
         color: #787878;
+    }
+
+    .shouye {
+        background: #a40818;
+        color: white;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        font-size: 25px;
+        position: fixed;
+        right: 20px;
+        bottom: 50px;
+        text-align: center;
+        border-radius: 20px;
     }
 
 </style>

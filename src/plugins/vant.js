@@ -119,3 +119,7 @@ Vue.use(SwipeCell);
 // Divider 分割线
 import { Divider } from 'vant';
 Vue.use(Divider);
+
+// Empty 空状态
+import { Empty } from 'vant';
+Vue.use(Empty);

@@ -10,7 +10,12 @@
         <!--今日话题-->
         <Topic :title="true"/>
         <!--动态列表-->
-        <love-dynamic v-for="(dynamic,index) in dynamicList" :dynamicInfo="dynamic" :key="index" />
+        <div v-if="dynamicList && dynamicList.size > 0">
+            <love-dynamic v-for="(dynamic,index) in dynamicList" :dynamicInfo="dynamic" :key="index" />
+        </div>
+        <div v-else>
+            <van-empty description="还没人发此动态信息" />
+        </div>
     </div>
 </template>
 

@@ -15,7 +15,6 @@
                 <div class="right">05-09</div>
             </div>
         </div>
-    <!--<van-divider />-->
         <div class="cell-box">
             <van-image
                     round
@@ -32,6 +31,7 @@
             </div>
         </div>
 
+        <van-empty description="您还没有被关注" />
 
     </div>
 </template>
@@ -50,7 +50,7 @@
         justify-content: space-between;
         margin: 0 0.5rem;
         padding: 1rem 0;
-        border-bottom: #bebebe solid 1px;
+        border-bottom: #e1e1e1 solid 1px;
     }
     .cell-box .cell-right{
         flex-grow: 1;
