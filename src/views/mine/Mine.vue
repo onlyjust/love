@@ -59,14 +59,13 @@
         </van-cell-group>
 
         <van-cell-group style="margin-top: 0.4rem">
-            <!--<van-cell title="签到" icon="gold-coin" is-link to="/task/signIn"></van-cell>-->
-            <van-cell title="实名认证" icon="gold-coin" is-link to="/auth/index"></van-cell>
+            <van-cell title="实名认证" icon="gold-coin" color="#556" is-link to="/auth/index"></van-cell>
             <!--<van-cell title="我的认证" icon="todo-list" is-link></van-cell>-->
         </van-cell-group>
         <van-cell-group style="margin-top: 0.4rem">
             <van-cell title="我的动态" icon="gold-coin" is-link to="/mydynamic"></van-cell>
             <van-cell title="我关注" icon="gold-coin" is-link to="/fans"></van-cell>
-            <van-cell title="关注我" icon="todo-list" is-link></van-cell>
+            <van-cell title="关注我" icon="todo-list" is-link to="/love"></van-cell>
         </van-cell-group>
         <!--<van-cell-group style="margin-top: 0.4rem">
             <van-cell title="我的优惠券" icon="gold-coin" value="1张" is-link></van-cell>

@@ -29,6 +29,10 @@ export const getDatingQuestion = () => ajax(BASE_URL+'/mine/getDatingQuestion');
 export const getDatingQuestionAnswer = (questionId) => ajax(BASE_URL+'/mine/getDatingQuestionAnswer/'+questionId);
 // 更新交友走心回答
 export const updateDatingQuestionAnswer = (questionId,answer,fileIdList) => ajax(BASE_URL+'/mine/updateDatingQuestionAnswer',{questionId,answer,fileIdList},"POST");
+// 喜欢我的
+export const getLikeMe = () => ajax(BASE_URL+'/mine/getLikeMe');
+// 我喜欢的
+export const getLiked = () => ajax(BASE_URL+'/mine/getLiked');
 // 上传文件
 export const uploadFile = (fileParam) => ajax(BASE_URL+'/file/upload',fileParam,"POST");
 // 删除文件

@@ -8,13 +8,14 @@
             <div class="desc">
                 <div>
                     <h2 class="nickname">{{match.nickname}} <i class="iconfont" :class="[match.matchPerson.gender == 1?'iconnan':'iconnv']"></i></h2>
+                    <p class="desc_info">
+                        <span>{{match.matchPerson.age}}岁  </span>
+                        <span>{{match.matchPerson.height}}cm  </span>
+                        <span>{{match.matchPerson.job}}  </span>
+                        <span class="location"><i class="iconfont iconzuobiao"></i>{{match.matchPerson.liveCity}}</span>
+                    </p>
                 </div>
-                <p class="desc_info">
-                    <span>{{match.matchPerson.age}}岁</span>
-                    <span>{{match.matchPerson.height}}cm</span>
-                    <span>{{match.matchPerson.job}}</span>
-                </p>
-                <span class="location"><i class="iconfont iconzuobiao"></i>{{match.matchPerson.liveCity}}</span>
+
             </div>
         </div>
     </div>
@@ -39,15 +40,23 @@
         border-radius: 1rem;
         padding: 1rem 1rem 1rem 1rem;
         box-shadow: 5px 5px 10px 5px rgba(178, 178, 195, 0.5);
+
     }
     .container .list .photo {
         margin: 0 auto;
+        position: relative;
     }
     .container .list .photo img {
         width: 100%;
+
     }
     .container .list .desc {
         color: #999999;
+        /*position: absolute;*/
+        bottom: 0;
+        /*background: rgba(223, 223, 223, 0.5);;*/
+        width: 100%;
+        box-sizing: border-box;
     }
     .container .list .desc .nickname {
         font-size: 1.4rem;
@@ -57,7 +66,7 @@
     }
     .container .list .desc .desc_info{
         margin-top: 0.2rem;
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
     .container .list .desc .desc_info span {
         margin-right: 1rem;

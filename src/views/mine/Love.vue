@@ -2,14 +2,14 @@
     <div class="top-bar">
         <!--导航栏-->
         <van-nav-bar
-                title="喜欢我的"
+                title="我喜欢的"
                 left-arrow
                 :fixed=true
                 :border=true
                 @click-left="$router.go(-1)"
         ></van-nav-bar>
-        <div v-if="likeMeList && likeMeList.length > 0">
-            <div class="cell-box" v-for="(dating,index) in likeMeList">
+        <div v-if="likedList && likedList.length > 0">
+            <div class="cell-box" v-for="(dating,index) in likedList">
                 <van-image
                         round
                         width="5rem"
@@ -28,17 +28,18 @@
         <div v-else>
             <van-empty description="您还没有被关注" />
         </div>
+
     </div>
 </template>
 
 <script>
-    import {getLikeMe} from "../../service/api";
+    import {getLiked} from "../../service/api";
 
     export default {
         name: "Love",
         data(){
             return {
-                likeMeList:[]
+                likedList:[]
             }
         },
         created() {
@@ -46,9 +47,9 @@
         },
         methods:{
             async initData(){
-                let result = await getLikeMe();
+                let result = await getLiked();
                 if (result.success){
-                    this.likeMeList = result.data;
+                    this.likedList = result.data;
                 }
             }
         }
@@ -77,4 +78,5 @@
         margin-right: 1rem;
         line-height: 4rem;
     }
+
 </style>
