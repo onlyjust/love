@@ -76,9 +76,9 @@
         /*border: 1px solid #ccc;*/
         input{
             background: transparent;
-            border-bottom: #999999 solid 1px;
+            /*border-bottom: #999999 solid 1px;*/
             padding-left: 15px;
-            height: 40px;
+            height: 48px;
         }
         .btn{
             /*margin: 0 5px 3px 0;*/

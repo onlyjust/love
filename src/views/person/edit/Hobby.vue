@@ -122,7 +122,7 @@
             // 操作标签
             async operationLabel(labelType,label,selected){
                 let result = await operationDatingLabel(labelType,label,selected);
-                console.log("操作标签结果：", result)
+                // console.log("操作标签结果：", result)
             },
         }
     }
