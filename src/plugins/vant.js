@@ -123,3 +123,7 @@ Vue.use(Divider);
 // Empty 空状态
 import { Empty } from 'vant';
 Vue.use(Empty);
+
+// TreeSelect 分类选择
+import { TreeSelect } from 'vant';
+Vue.use(TreeSelect);

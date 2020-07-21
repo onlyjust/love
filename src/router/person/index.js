@@ -35,4 +35,8 @@ export default [
         name: 'personDynamic',
         component: () => import('@/views/person/TaDynamic'),
     },
+    {
+        path: '/person/hobby',
+        component: () => import('@/views/person/edit/Hobby')
+    },
 ]

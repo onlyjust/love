@@ -19,6 +19,8 @@ export const getPersonal = () => ajax(BASE_URL+'/mine/personal');
 export const getLabelList = () => ajax(BASE_URL+'/mine/getLabelList');
 // 保存交友标签
 export const updateDatingLabel = (datingLabelList) => ajax(BASE_URL+'/mine/updateDatingLabel',{datingLabelList},"POST");
+// 操作交友标签
+export const operationDatingLabel = (labelType,label,selected) => ajax(BASE_URL+'/mine/operationDatingLabel',{labelType,label,selected},"POST");
 // 获取交友基础资料
 export const getDatingBasic = () => ajax(BASE_URL+'/mine/getDatingBasic');
 // 更新交友基础资料

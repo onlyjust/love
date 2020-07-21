@@ -2,7 +2,7 @@
     <div class="label">
         <div class="subject">
             <h1>个性标签</h1>
-            <a @click="$router.push('/person/label')"><i class="iconfont iconbianji"></i></a>
+            <a @click="$router.push('/person/hobby')"><i class="iconfont iconbianji"></i></a>
         </div>
         <div class="label_container">
             <label class="tag" v-for="(item,index) in labelList" :key="index">{{item}}</label>

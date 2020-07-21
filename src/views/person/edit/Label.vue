@@ -47,7 +47,7 @@
 </template>
 
 <script>
-    import {getLabelList, updateDatingLabel} from '@/service/api/index';
+    import {getLabelList, updateDatingLabel} from './../../../service/api/index';
     import TagsInput from '@/components/tag/TagsInput';
     export default {
         name: "Label",
