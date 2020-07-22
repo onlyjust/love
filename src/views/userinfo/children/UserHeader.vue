@@ -8,14 +8,23 @@
             <h1 class="nickname">{{userInfo.nickname}}<i class="iconfont" :class="[userInfo.gender == 1?'iconnan':'iconnv']"></i></h1>
             <p class="highlight_title">{{userInfo.highlightTitle}}</p>
         </div>
+        <div v-if="userInfo.myVoice">
+            <MobileAudio :src="userInfo.myVoice"></MobileAudio>
+        </div>
     </header>
 </template>
 
 <script>
+    import MobileAudio from "../../../components/audio/MobileAudio";
     export default {
         name: "UserHeader",
+        components: {MobileAudio},
         props:{
             userInfo:Object
+        },
+        data(){
+            return {
+            }
         }
     }
 </script>
@@ -27,6 +36,7 @@
         display: flex;
         padding: 10px 20px;
         align-items: center;
+        justify-content: space-between;
     }
     .header .header_left{
         width: 6rem;
