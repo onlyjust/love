@@ -27,7 +27,8 @@
                 </div>
 
                 <div class="voice-circle" @touchstart="goTouchStart" @touchend="goTouchEnd">
-                    <img src="./../../../images/voice/record.png">
+                    <!--<img src="./../../../images/voice/record.png">-->
+                    <svg t="1595508711350" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1541" width="128" height="128"><path d="M512 512m-512 0a512 512 0 1 0 1024 0 512 512 0 1 0-1024 0Z" fill="#3296FA" p-id="1542"></path><path d="M512.128 605.824c64.768 0 117.248-53.76 117.248-120.064v-166.4c0-66.304-52.48-120.064-117.248-120.064-64.768 0-117.248 53.76-117.248 120.064v166.4c0 66.304 52.48 120.064 117.248 120.064z m0 0" fill="#FFFFFF" p-id="1543"></path><path d="M682.624 438.4c-13.568 0-24.704 10.624-24.704 23.808v32.512c0 77.568-65.408 140.672-145.92 140.672s-145.92-63.104-145.92-140.672v-32.512c0-13.184-11.008-23.808-24.704-23.808-13.568 0-24.704 10.624-24.704 23.808v32.512c0 96.64 74.496 178.56 171.776 189.184v109.44h-62.592c-13.952 0-31.232 1.792-31.232 15.616 0 13.824 17.28 15.616 31.232 15.616h172.032c13.952 0 31.232-1.792 31.232-15.616 0-13.824-17.28-15.616-31.232-15.616h-62.592v-109.44c94.208-13.312 171.776-94.72 171.776-189.184v-32.512c0.128-13.184-10.88-23.808-24.448-23.808z m0 0" fill="#FFFFFF" p-id="1544"></path></svg>
                 </div>
             </div>
             <div v-else>
@@ -73,6 +74,7 @@
             goTouchStart(){
                 clearTimeout(this.timeOutEvent);//清除定时器
                 this.timeOutEvent = 0;
+                this.calculateSecond = 0;
                 let that = this;
                 this.timeOutEvent = setTimeout(function(){
                     //执行长按要执行的内容，
@@ -87,8 +89,12 @@
                 if(this.timeOutEvent!=0){
                     //这里写要执行的内容（尤如onclick事件）
                     console.log("go touch end---");
+                    clearInterval(this.timer);
+                    if (this.calculateSecond < 3000){
+                        this.$toast("时间不能小于3s");
+                        return;
+                    }
                     this.visibility = false;
-                    clearInterval(this.timer)
                     this.done = true;
                 }
             },
@@ -171,12 +177,15 @@
         height: 80px;
         /*border-radius: 50px;*/
         /*background: #6d9893;*/
-        margin: 80px auto 100px;
+        margin: 30px auto 100px;
+    }
+    .footer .voice-circle svg {
+        width: 100%;
+        height: 100%;
     }
     .footer .showVoice {
         width: 50px;
-        margin: 50px auto;
-
+        margin: 0 auto;
     }
 
 
@@ -184,7 +193,7 @@
         width: 60%;
         display: flex;
         align-items: center;
-        margin: 105px auto 0;
+        margin: 50px auto 0;
     }
     .footer .footer-wrapper .btn-img {
         width: 30px;
@@ -200,6 +209,7 @@
     .footer img{
         width: 100%;
         height: 100%;
+        /*pointer-events:none;!* 禁止长按图片保存 *!*/
     }
     .time-counter {
         margin-top: 20px;
