@@ -12,7 +12,7 @@
             </div>
             <div class="header_right">
                 <!--<img src="@/img/shengyin.png"><p>TA的声音</p>-->
-                <MobileAudio :src="userInfo.myVoice"></MobileAudio>
+                <MobileAudio v-if="userInfo" :src="userInfo.myVoice"></MobileAudio>
                 <span @click="$router.push('/person/voice')" class="iconfont iconbianji"></span>
             </div>
         </header>

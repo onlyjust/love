@@ -38,8 +38,10 @@
             }
         },
         mounted(){
-            this.audio=new Audio()
-            this.audio.src=this.src
+            this.audio=new Audio();
+            this.audio.src=this.src;
+            this.audio.crossOrigin="anonymous";
+            this.audio.preload="auto";
             this.audio.addEventListener('canplaythrough',()=>{
                 this.duration=this.format(this.audio.duration)
                 this.audioDuration=this.audio.duration *1000
@@ -70,8 +72,17 @@
                 if(this.audio.paused){
                     window.audioList.forEach(audio=>{//开始前先关闭所有可能正在运行的实例
                         audio.pause()
-                    })
+                    });
+                    if (this.src != this.audio.src){
+                        this.audio.src = this.src;
+                    }
                     this.audio.play()
+                    /*if (promise !== undefined) {
+                        promise.then(_ => {
+                        }).catch(error => {
+                            console.log("error  ",error)
+                        });
+                    }*/
                 }else{
                     this.audio.pause()
                 }

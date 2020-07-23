@@ -7,7 +7,7 @@
                 :main-active-index.sync="activeIndex"
                 @click-item="selectedItem"
         >
-            <template #content v-if="activeIndex === 3">
+            <template #content v-if="activeIndex === customIndex">
                 <!--<van-image
                         src="https://img.yzcdn.cn/vant/apple-2.jpg"
                 />-->
@@ -76,6 +76,7 @@
                 activeIds: [],
                 activeIndex: 0,
                 tags:[],
+                customIndex:0,
             };
         },
         created(){
@@ -89,12 +90,15 @@
                     return;
                 }
                 let data = result.data;
-                data.forEach((d)=>{
+                data.forEach((d,index)=>{
                     let obj = {};
                     obj.className = d.labelType;
                     obj.text = d.labelTypeDesc;
                     obj.children=[];
                     this.items.push(obj);
+                    if (d.labelType === 'CUSTOM'){
+                        this.customIndex = index;
+                    }
                     d.datingLabelList.forEach(item => {
                         let label = {};
                         label.id = item.id;
