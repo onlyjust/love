@@ -39,4 +39,8 @@ export default [
         path: '/person/hobby',
         component: () => import('@/views/person/edit/Hobby')
     },
+    {
+        path: '/person/voice',
+        component: () => import('@/views/person/edit/Voice')
+    },
 ]

@@ -8,7 +8,7 @@
             <h1 class="nickname">{{userInfo.nickname}}<i class="iconfont" :class="[userInfo.gender == 1?'iconnan':'iconnv']"></i></h1>
             <p class="highlight_title">{{userInfo.highlightTitle}}</p>
         </div>
-        <div v-if="userInfo.myVoice">
+        <div class="voice" v-if="userInfo.myVoice">
             <MobileAudio :src="userInfo.myVoice"></MobileAudio>
         </div>
     </header>
@@ -52,6 +52,9 @@
     .header .header_right .highlight_title{
         margin-top: 10px;
         font-size: 14px;
+    }
+    .voice{
+        text-align: center;
     }
 
 </style>

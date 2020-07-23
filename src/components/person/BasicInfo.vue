@@ -11,8 +11,9 @@
                 <!--<p class="highlight_title">{{userInfo.highlightTitle}}</p>-->
             </div>
             <div class="header_right">
-                <img src="@/img/shengyin.png">
-                <p>TA的声音</p>
+                <!--<img src="@/img/shengyin.png"><p>TA的声音</p>-->
+                <MobileAudio :src="userInfo.myVoice"></MobileAudio>
+                <span @click="$router.push('/person/voice')" class="iconfont iconbianji"></span>
             </div>
         </header>
         <p class="highlight_title">{{userInfo.highlightTitle}}</p>
@@ -47,9 +48,11 @@
 
 <script>
     import {uploadAvatar} from "../../service/api";
+    import MobileAudio from "../audio/MobileAudio";
 
     export default {
         name: "BasicInfo",
+        components: {MobileAudio},
         props:{
             userInfo:{
                 type:Object
@@ -118,8 +121,16 @@
     }
 
     .header .header_right {
-        width: 5rem;
-        text-align: center;
+        /*width: 5rem;*/
+        /*text-align: center;*/
+        /*font-size: 12px;*/
+        vertical-align: middle;
+    }
+    .header .header_right span{
+        /*margin-top: 5px;*/
+        margin-left: 1em;
+        display: inline-block;
+        font-size: 12px;
     }
 
     /*基本信息*/

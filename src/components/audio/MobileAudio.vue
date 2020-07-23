@@ -50,7 +50,7 @@
                     this.animate=false
                     setTimeout(()=>{
                         this.animate=true
-                        this.audioDuration-=50;
+                        this.audioDuration-=1300;
                         this.duration=this.format(this.audioDuration/1000);
                     },50)
                 }, 1250);
