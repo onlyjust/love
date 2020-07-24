@@ -26,4 +26,9 @@ npm install vue-qr --save
 npm install vue-mobile-audio
 cnpm install node-sass --save-dev
 cnpm install sass-loader --save-dev
+
+
+npm i js-audio-recorder
+
+
 ```

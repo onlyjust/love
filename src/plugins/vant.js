@@ -127,3 +127,7 @@ Vue.use(Empty);
 // TreeSelect 分类选择
 import { TreeSelect } from 'vant';
 Vue.use(TreeSelect);
+
+// CountDown 倒计时
+import { CountDown } from 'vant';
+Vue.use(CountDown);

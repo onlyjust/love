@@ -118,8 +118,10 @@ export const getUserInfo = (token)=> ajax(BASE_URL + '/login/getLoginUser/'+toke
 // 退出登录
 export const getLogOut = ()=> ajax(BASE_URL + '/login/logout');
 
-// 上传文件
+// 上传头像
 export const uploadAvatar = (fileParam) => ajax(BASE_URL+'/user/avatar',fileParam,"POST");
+// 上传声音
+export const uploadVoice = (fileParam) => ajax(BASE_URL+'/user/uploadVoice',fileParam,"POST");
 // 喜欢TA关注TA
 export const likeUser = (datingId,liked) => ajax(BASE_URL+'/user/likeUser',{datingId,liked},"POST");
 

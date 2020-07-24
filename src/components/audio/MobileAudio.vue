@@ -89,6 +89,9 @@
             },
             format(s){
                 var t='';
+                if (s< 0){
+                    s = 0;
+                }
                 if(s > -1){
                     var min = Math.floor(s/60) % 60;
                     var sec = s % 60;

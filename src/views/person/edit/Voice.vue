@@ -32,7 +32,15 @@
                 </div>
             </div>
             <div v-else>
-                <div class="done-counter">{{calculateTime}}</div>
+                <div class="done-counter">
+                    <van-count-down
+                            ref="countDown"
+                            millisecond
+                            :time="calculateSecond"
+                            :auto-start="false"
+                            format="ss:SSS"
+                    />
+                </div>
                 <div class="footer-wrapper">
                     <div class="btn-img">
                         <img @click="cancelRecord()" src="../../../images/voice/cuo.png">
@@ -53,6 +61,9 @@
 </template>
 
 <script>
+    import Recorder from 'js-audio-recorder';
+    import {uploadVoice} from "../../../service/api";
+
     export default {
         name: "Voice",
         data(){
@@ -62,13 +73,17 @@
                 calculateSecond:0,
                 timer:null,
                 done:false,
-                pay:false
+                pay:false,
+                recorder: null,
+                datingId:null,
             }
         },
         computed:{
             calculateTime(){
-                return this.calculateSecond;
+                return this.calculateSecond/1000+"s";
             }
+        },
+        created(){
         },
         methods:{
             goTouchStart(){
@@ -81,6 +96,13 @@
                     console.log("go touch start---");
                     that.visibility = true;
                     that.setCalculateSecond();
+                    // 开始录音
+                    that.recorder = new Recorder();
+                    that.recorder.start();
+                    // 回调持续输出时长
+                    /*that.recorder.onprocess = function(duration) {
+                        console.log("开始录音",duration);
+                    }*/
                 },600);//这里设置定时
             },
             //手释放，如果在500毫秒内就释放，则取消长按事件，此时可以执行onclick应该执行的事件
@@ -90,30 +112,62 @@
                     //这里写要执行的内容（尤如onclick事件）
                     console.log("go touch end---");
                     clearInterval(this.timer);
+                    this.visibility = false;
                     if (this.calculateSecond < 3000){
                         this.$toast("时间不能小于3s");
                         return;
                     }
-                    this.visibility = false;
                     this.done = true;
+
+                    // 回调持续输出时长
+                    /*this.recorder.onprocess = function(duration) {
+                        console.log("结束录音",duration);
+                    };*/
+                    this.recorder.stop();
                 }
             },
             // 播放
             payRecord(){
                 this.pay = true;
-                console.log("重听")
+                console.log("重听");
+                // 录音播放
+                this.recorder.play();
+                this.$refs.countDown.start();
             },
             pauseRecord(){
                 this.pay = false;
-                console.log("暂停")
+                console.log("暂停");
+                // 录音暂停
+                this.recorder.pause();
+                this.$refs.countDown.reset();
             },
             cancelRecord(){
                 this.done = false;
                 this.calculateSecond = 0;
-                console.log("取消")
+                console.log("取消");
+                this.recorder = null;
             },
             submitRecord(){
                 console.log("提交")
+                // 录音结束后才能使用
+                /*let PCM = this.recorder.getPCMBlob();
+                console.log("pcm: ", PCM);*/
+                let WAV = this.recorder.getWAVBlob();
+                console.log("WAV: ", WAV);
+                this.uploadRecord(WAV);
+            },
+            async uploadRecord(data){
+                let formData = new FormData();
+                formData.append("file", data, "record.mp3");
+                // console.log("formData: ", formData);
+                let result = await uploadVoice(formData);
+                console.log("上传结果：",result)
+                if (result.success){
+                    this.done = false;
+                    this.calculateSecond = 0;
+                    this.recorder = null;
+                    console.log("完成");
+                }
             },
             setCalculateSecond(){
                 this.timer = setInterval(()=>{
