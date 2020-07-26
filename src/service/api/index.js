@@ -78,6 +78,8 @@ export const getTopicList = () => ajax(BASE_URL+'/dynamic/getTopicList');
 
 // 获取微信公众号签名
 export const getSignature = (reqUrl) => ajax(BASE_URL+'/weixin/getSignature',{reqUrl});
+// 获取高清语音素材
+export const uploadWxVoice = (mediaId) => ajax(BASE_URL+'/weixin/uploadVoice',{mediaId});
 // 地图选点组件
 export const getComponentMap = (backurl) => ajax('https://3gimg.qq.com/lightmap/components/locationPicker2/index.html?search=1&type=0&backurl='+backurl+'&key=FYUBZ-S42CS-X5BOQ-6SUUV-LDADQ-FIBNX&referer=myapp');
 
@@ -124,4 +126,5 @@ export const uploadAvatar = (fileParam) => ajax(BASE_URL+'/user/avatar',filePara
 export const uploadVoice = (fileParam) => ajax(BASE_URL+'/user/uploadVoice',fileParam,"POST");
 // 喜欢TA关注TA
 export const likeUser = (datingId,liked) => ajax(BASE_URL+'/user/likeUser',{datingId,liked},"POST");
+
 

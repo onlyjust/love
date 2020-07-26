@@ -43,4 +43,8 @@ export default [
         path: '/person/voice',
         component: () => import('@/views/person/edit/Voice')
     },
+    {
+        path: '/person/wxVoice',
+        component: () => import('@/views/person/edit/WxVoice')
+    },
 ]
