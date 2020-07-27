@@ -138,5 +138,7 @@
 </script>
 
 <style scoped>
-
+    a {
+        font-size: 30px;
+    }
 </style>
