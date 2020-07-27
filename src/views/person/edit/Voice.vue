@@ -61,8 +61,8 @@
 </template>
 
 <script>
-    import Recorder from 'js-audio-recorder';
-    import {uploadVoice,getSignature,uploadWxVoice} from "../../../service/api";
+    // import Recorder from 'js-audio-recorder';
+    import {getSignature,uploadWxVoice} from "../../../service/api";
 
     export default {
         name: "Voice",
@@ -89,14 +89,11 @@
         },
         methods:{
             async initData() {
-                let httpUrl = window.location.href.substring(0,window.location.href.indexOf(window.location.pathname));
-                let result = await getSignature(window.location.href);
+                let result = await getSignature(encodeURIComponent(window.location.href));
                 if (!result.success){
                     console.log("获取微信签名失败");
-                    this.$toast(result.message);
                 }
                 let wxResp = result.data;
-                console.log("获取微信签名数据：",wxResp);
                 wx.config({
                     debug: false, // 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
                     appId: wxResp.appId, // 必填，公众号的唯一标识
@@ -117,6 +114,7 @@
                         'downloadVoice'
                     ]
                 });
+                // let that = this;
                 wx.ready(function () {
                     // config信息验证后会执行ready方法，所有接口调用都必须在config接口获得结果之后，config是一个客户端的异步操作，所以如果需要在页面加载时就调用相关接口，则须把相关接口放在ready函数中调用来确保正确执行。对于用户触发时才调用的接口，则可以直接调用，不需要放在ready函数中。
                     console.log("成功")
@@ -124,8 +122,16 @@
                 wx.error(function (res) {
                     // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
                     console.log("失败res===>", res);
-                    this.$toast(res);
+                    //that.$toast("失败res"+JSON.stringify(res));
                 });
+                /*wx.checkJsApi({
+                    jsApiList: ['startRecord'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
+                    success: function(res) {
+                        // 以键值对的形式返回，可用的api值true，不可用为false
+                        // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
+                        that.$toast("checkJsApi",res);
+                    }
+                });*/
             },
             goTouchStart(){
                 clearTimeout(this.timeOutEvent);//清除定时器
@@ -244,7 +250,7 @@
                 }
             },
 
-            async uploadRecord(data){
+            /*async uploadRecord(data){
                 let formData = new FormData();
                 formData.append("file", data, "record.mp3");
                 // console.log("formData: ", formData);
@@ -256,7 +262,7 @@
                     this.recorder = null;
                     console.log("完成");
                 }
-            },
+            },*/
             setCalculateSecond(){
                 this.timer = setInterval(()=>{
                     this.calculateSecond+=111;
