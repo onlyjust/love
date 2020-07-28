@@ -8,8 +8,19 @@ export default {
         if (!router) return false;
         let un_check_url = ['/login'];
         router.beforeEach((to, from, next) => {
+            /*var u = navigator.userAgent;
+            var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+            if (isiOS && to.path !== location.pathname) {
+                // 此处不可使用location.replace
+                location.assign(to.fullPath)
+            }*/
             if (isIOS()) {
                 if (from.path === '/') {
+                    console.log("to.path",to.path,"location.pathname",location.pathname);
+                    if (to.path !== location.pathname) {
+                        // 此处不可使用location.replace
+                        location.assign(to.fullPath)
+                    }
                     requestWxStr() //该函数和之前一样，被单独提取出来了
                 }
             }
