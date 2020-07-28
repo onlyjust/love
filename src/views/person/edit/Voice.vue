@@ -25,10 +25,13 @@
                     <img src="../../../images/voice/record-show.png">
                     <p class="time-counter">{{calculateTime}}</p>
                 </div>
-
-                <div class="voice-circle" @touchstart="goTouchStart" @touchend="goTouchEnd">
+                <!--@touchstart="goTouchStart" @touchend="goTouchEnd"-->
+                <div v-if="!recording" class="voice-circle" @click="goTouchStart">
                     <!--<img src="./../../../images/voice/record.png">-->
                     <svg t="1595508711350" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1541" width="128" height="128"><path d="M512 512m-512 0a512 512 0 1 0 1024 0 512 512 0 1 0-1024 0Z" fill="#3296FA" p-id="1542"></path><path d="M512.128 605.824c64.768 0 117.248-53.76 117.248-120.064v-166.4c0-66.304-52.48-120.064-117.248-120.064-64.768 0-117.248 53.76-117.248 120.064v166.4c0 66.304 52.48 120.064 117.248 120.064z m0 0" fill="#FFFFFF" p-id="1543"></path><path d="M682.624 438.4c-13.568 0-24.704 10.624-24.704 23.808v32.512c0 77.568-65.408 140.672-145.92 140.672s-145.92-63.104-145.92-140.672v-32.512c0-13.184-11.008-23.808-24.704-23.808-13.568 0-24.704 10.624-24.704 23.808v32.512c0 96.64 74.496 178.56 171.776 189.184v109.44h-62.592c-13.952 0-31.232 1.792-31.232 15.616 0 13.824 17.28 15.616 31.232 15.616h172.032c13.952 0 31.232-1.792 31.232-15.616 0-13.824-17.28-15.616-31.232-15.616h-62.592v-109.44c94.208-13.312 171.776-94.72 171.776-189.184v-32.512c0.128-13.184-10.88-23.808-24.448-23.808z m0 0" fill="#FFFFFF" p-id="1544"></path></svg>
+                </div>
+                <div v-else class="voice-circle" @click="goTouchEnd">
+                    <svg t="1595908133632" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2019"><path d="M512 512m-512 0a512 512 0 1 0 1024 0 512 512 0 1 0-1024 0Z" fill="#F25151" p-id="2020"></path><path d="M385.505882 385.505882v265.035294h265.035294V385.505882H385.505882z m-12.047058-36.141176h289.129411a24.094118 24.094118 0 0 1 24.094118 24.094118v289.129411a24.094118 24.094118 0 0 1-24.094118 24.094118H373.458824a24.094118 24.094118 0 0 1-24.094118-24.094118V373.458824a24.094118 24.094118 0 0 1 24.094118-24.094118z" fill="#FFFFFF" p-id="2021"></path></svg>
                 </div>
             </div>
             <div v-else>
@@ -63,6 +66,7 @@
 <script>
     // import Recorder from 'js-audio-recorder';
     import {getSignature,uploadWxVoice} from "../../../service/api";
+    import {isIOS,requestWxStr} from "../../../plugins/wx";
 
     export default {
         name: "Voice",
@@ -77,6 +81,7 @@
                 recorder: null,
                 datingId:null,
                 localId:null,
+                recording:false
             }
         },
         computed:{
@@ -89,7 +94,11 @@
         },
         methods:{
             async initData() {
-                let result = await getSignature(encodeURIComponent(window.location.href));
+                if (!isIOS()) {
+                    requestWxStr() //该函数和之前一样，被单独提取出来了
+                }
+
+                /*let result = await getSignature(encodeURIComponent(window.location.href));
                 if (!result.success){
                     console.log("获取微信签名失败");
                 }
@@ -123,7 +132,7 @@
                     // config信息验证失败会执行error函数，如签名过期导致验证失败，具体错误信息可以打开config的debug模式查看，也可以在返回的res参数中查看，对于SPA可以在这里更新签名。
                     console.log("失败res===>", res);
                     //that.$toast("失败res"+JSON.stringify(res));
-                });
+                });*/
                 /*wx.checkJsApi({
                     jsApiList: ['startRecord'], // 需要检测的JS接口列表，所有JS接口列表见附录2,
                     success: function(res) {
@@ -159,6 +168,7 @@
                             console.log(JSON.stringify(res))
                         }
                     })
+                    that.recording = true;
                 },600);//这里设置定时
             },
             //手释放，如果在500毫秒内就释放，则取消长按事件，此时可以执行onclick应该执行的事件
@@ -167,12 +177,12 @@
                 if(this.timeOutEvent!=0){
                     //这里写要执行的内容（尤如onclick事件）
                     console.log("go touch end---");
-                    clearInterval(this.timer);
-                    this.visibility = false;
                     if (this.calculateSecond < 3000){
                         this.$toast("时间不能小于3s");
                         return;
                     }
+                    clearInterval(this.timer);
+                    this.visibility = false;
                     this.done = true;
 
                     // 回调持续输出时长
@@ -189,7 +199,8 @@
                         fail: res => {
                             console.log(JSON.stringify(res))
                         }
-                    })
+                    });
+                    this.recording = false;
                 }
             },
             // 播放

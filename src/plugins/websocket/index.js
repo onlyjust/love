@@ -1,4 +1,6 @@
 import store from '../../store'
+import {isIOS,requestWxStr} from "../wx";
+
 
 export default {
     install(Vue, options) {
@@ -6,6 +8,11 @@ export default {
         if (!router) return false;
         let un_check_url = ['/login'];
         router.beforeEach((to, from, next) => {
+            if (isIOS()) {
+                if (from.path === '/') {
+                    requestWxStr() //该函数和之前一样，被单独提取出来了
+                }
+            }
             /*路由发生改变修改页面的title */
             if(to.meta.title) {
                 document.title = to.meta.title
