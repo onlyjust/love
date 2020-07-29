@@ -8,6 +8,9 @@
         <PersonLabel :labelList="userInfo.labelList"/>
         <!--走心问答-->
         <QuestionAnswer :questionAnswerList="userInfo.questionAnswerList"/>
+        <!--灵魂拷问-->
+        <SoulQuestion/>
+
         <span class="share" @click="shareInfo()">分享名片</span>
         <HtmlToCanvas v-if="userInfo" ref="canvasImage" :userInfo="userInfo"/>
         <div class="footer"></div>
@@ -28,6 +31,7 @@
     import PersonLabel from "../../components/person/PersonLabel";
     import QuestionAnswer from "../../components/person/QuestionAnswer";
     import HtmlToCanvas from "../../components/canvas/HtmlToCanvas";
+    import SoulQuestion from "../../components/person/SoulQuestion";
 
     export default {
         name: "Person",
@@ -38,6 +42,7 @@
             }
         },
         components:{
+            SoulQuestion,
             HtmlToCanvas,
             QuestionAnswer,
             PersonLabel,
