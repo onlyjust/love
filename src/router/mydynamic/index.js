@@ -4,7 +4,8 @@ export default [
         component: () => import('@/views/mydynamic/MyDynamic')
     },
     {
-        path: '/dynamicDetail',
+        path: '/dynamicDetail/:id',
+        name: 'dynamicDetail',
         component: () => import('@/views/dynamic/DynamicDetail')
     },
     {

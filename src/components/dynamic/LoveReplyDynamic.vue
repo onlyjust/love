@@ -2,11 +2,11 @@
 
     <div id="reply-dynamic">
         <!--回复动态-->
-        <form class="reply_dynamic" >
+        <div class="reply_dynamic" >
             <textarea rows="1" v-model="comment" :placeholder="placeholder" @blur.prevent="resetComment()" ref="replyTextarea"></textarea>
             <van-button class="btn" type="primary"  @click="submitComment">发送</van-button>
 
-        </form>
+        </div>
     </div>
     <!--<div class="message-foot">
         <span @click="switchMode" class="btn-mic"><i :class="'icon icon-' + mode"></i></span>
@@ -69,7 +69,9 @@
                 if (result.success){
                     // 刷新
                     // this.$router.back();
-                    location.reload();
+                    // location.reload();
+                    this.$emit("reloadData");
+                    this.comment = '';
                 }
             }
         }
@@ -84,26 +86,28 @@
         position: fixed;
         bottom: 0;
         width: 100%;
-        height: 3.5rem;
+        height: 5rem;
         border: #cccccc solid 1px;
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         background-color: #eee;
+        align-items: center;
     }
     .reply_dynamic textarea{
         resize: none;
         flex-grow: 1;
         width: calc(100% - 7rem);
-        height: 3rem;
-        line-height: 2rem;
+        height: 4rem;
+        line-height: 3rem;
         position: absolute;
-        top: 0.2rem;
+        top: 0.5rem;
         left: 0.5rem;
         outline: none;
-        border: 1px solid #9f9f9f;
+        /*border: 1px solid #9f9f9f;*/
         border-radius: 5px;
         color: #3e3e3e;
         margin: 0;
         padding: 0;
+        border: none;
     }
     .reply_dynamic .btn {
         color: #333333;
@@ -113,12 +117,12 @@
         flex-shrink: 0;
         padding: 0 1rem;
         width: 5rem;
-        height: 3rem;
-        line-height: 3rem;
+        height: 4rem;
+        line-height: 4rem;
         box-sizing: border-box;
         position: absolute;
         right: 8px;
-        top: 0.2rem;
+        top: 0.5rem;
     }
 
 </style>

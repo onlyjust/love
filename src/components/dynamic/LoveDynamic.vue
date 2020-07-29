@@ -17,7 +17,7 @@
                     </div>
                     <div class="dynamic_info">
                         <p class="dynamic_txt" v-if="isDetail">{{dynamicInfo.content}}</p>
-                        <p class="dynamic_txt" v-else @click="$router.push({path:'/dynamicDetail', query:{id:dynamicInfo.id}})">{{dynamicInfo.content}}</p>
+                        <p class="dynamic_txt" v-else @click="$router.push({name:'dynamicDetail', params:{id:dynamicInfo.id}})">{{dynamicInfo.content}}</p>
                         <div class="dynamic_img">
                             <img :class="dynamicImgIdx" v-for="(file,index) in dynamicInfo.dynamicFileList" @click="Preview_img(dynamicInfo.dynamicFileList,index)"  :src="file.filePath">
                         </div>

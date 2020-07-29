@@ -5,7 +5,7 @@
         <!--动态评论-->
         <love-dynamic-comment :Event="Event" :dynamicCommentList="dynamicInfo.dynamicCommentList"/>
         <!--动态回复-->
-        <love-reply-dynamic :Event="Event" :dynamicId="dynamicInfo.id" />
+        <love-reply-dynamic :Event="Event" @reloadData="initData" :dynamicId="dynamicInfo.id" />
     </div>
 </template>
 
@@ -39,7 +39,7 @@
             }
         },
         created() {
-            this.dynamicId=this.$route.query.id;
+            this.dynamicId=this.$route.params.id;
             this.initData();
         },
         methods:{

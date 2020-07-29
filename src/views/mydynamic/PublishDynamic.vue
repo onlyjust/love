@@ -206,6 +206,9 @@
             },
 
             async onPublishDynamic(){
+                if(!this.dynamicContent){
+                    this.$toast("动态内容不能为空");
+                }
                 let pushObj = {};
                 pushObj.content = this.dynamicContent;
                 pushObj.title = this.subject;
