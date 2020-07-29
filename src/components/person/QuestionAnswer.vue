@@ -32,7 +32,7 @@
 
     /*走心问答*/
     .question {
-        margin-bottom: 5rem;
+        /*margin-bottom: 5rem;*/
     }
     .question .question_container{
 
