@@ -2,7 +2,7 @@
     <div id="questionAnswer" class="top-bar">
         <!--导航栏-->
         <van-nav-bar
-                title="走心问题回答"
+                title="灵魂问题回答"
                 left-arrow
                 :fixed=true
                 :border=true
@@ -19,24 +19,6 @@
                         placeholder="请回答问题"
                 />
             </van-cell-group>
-            <van-cell-group title="上传回答问题相关图片" style="padding: 1rem">
-                <!--<van-uploader
-                        v-model="fileList"
-                        multiple
-                        :max-count="3"
-                        :after-read="afterReadFile"
-                        :before-read="beforeReadFile"
-                        :before-delete="deleteFile"
-                        image-fit="cover"
-                        preview-size="80px"
-                />-->
-                <cropper :fileList="fileList"
-                         :relationalId="relationalId"
-                         :fixed="false"
-                         :cropHeight = "0.8"
-                         relationalName="QUESTION_ANSWER_PHOTO"
-                         @on-success="onCropSuccess" ></cropper>
-            </van-cell-group>
             <div style="margin: 16px;">
                 <van-button round block color="#65c4aa" @click="onSubmit">
                     提交
@@ -47,7 +29,7 @@
 
 <script>
 
-    import {getDatingQuestionAnswer, updateDatingQuestionAnswer, uploadFile, deleteFile} from './../../../service/api/index';
+    import {getDatingQuestionAnswer, updateDatingQuestionAnswer} from './../../../service/api/index';
     import Cropper from "../../../components/cropper/Cropper";
 
     export default {
@@ -61,8 +43,6 @@
               questionId:'',
               question:'',
               answer:'',
-              fileList:[],
-              fileIdList:[],
           }
         },
         created() {
@@ -73,10 +53,7 @@
         methods:{
             // 提交
             async onSubmit(){
-                // values.questionId = this.questionId;
-                // values.fileIdList = this.fileIdList;
-                // console.log("values",values);
-                let result = await updateDatingQuestionAnswer(this.questionId, this.answer, this.fileIdList);
+                let result = await updateDatingQuestionAnswer(this.questionId, this.answer, null);
                 this.$toast(result.message);
                 if (result.success){
                     this.$router.back();
@@ -90,20 +67,8 @@
                     if (result.data){
                         this.answer = result.data.answer;
                         this.relationalId = result.data.id;
-                        this.fileList = result.data.answerPhotoList.map(item=>{
-                            let fileObj = {};
-                            fileObj.url = item.filePath;
-                            fileObj.id = item.id;
-                            return fileObj;
-                        });
-                        console.log('fileList',this.fileList)
                     }
                 }
-            },
-
-            onCropSuccess(val){
-                console.log('onCropSuccess');
-                this.fileIdList = val;
             },
 
         }

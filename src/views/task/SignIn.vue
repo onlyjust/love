@@ -1,6 +1,6 @@
 <template>
     <div class="sign_container">
-        <div class="sign_box">
+        <div :class="[signInInfo.signedIn?'sign_box_select':'sign_box']">
             <span v-if="signInInfo.signedIn">已签到</span>
             <span v-else @click="goSignIn()">签到</span>
         </div>
@@ -65,6 +65,18 @@
     .sign_container .sign_box{
         margin: 3rem auto;
         background: #ee0c45;
+        width: 8rem;
+        height: 8rem;
+        text-align: center;
+        line-height: 8rem;
+        border-radius: 50%;
+        color: #FFFFFF;
+        font-size: 2rem;
+    }
+
+    .sign_container .sign_box_select{
+        margin: 3rem auto;
+        background: #999999;
         width: 8rem;
         height: 8rem;
         text-align: center;

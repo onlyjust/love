@@ -31,6 +31,11 @@ export default [
         component: () => import('@/views/person/edit/QuestionAnswer')
     },
     {
+        path: '/person/soulQuestionAnswer/:id/:question',
+        name: 'soulQuestionAnswer',
+        component: () => import('@/views/person/edit/SoulQuestionAnswer')
+    },
+    {
         path: '/person/dynamic',
         name: 'personDynamic',
         component: () => import('@/views/person/TaDynamic'),

@@ -31,7 +31,7 @@
         },
         methods:{
             async initData(){
-                let result = await getDatingQuestion();
+                let result = await getDatingQuestion(0);
                 console.log('result',result)
                 if (result.success) {
                     this.questionList = result.data;

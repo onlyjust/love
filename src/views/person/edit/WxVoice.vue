@@ -125,8 +125,8 @@
                     isShowProgressTips: 1, // 默认为1，显示进度提示
                     success: function (res) {
                         var localId = res.localId; // 返回音频的本地ID
-                        console.log("downloadVoice res",res)
-                        console.log("downloadVoice localId",localId)
+                        // console.log("downloadVoice res",res)
+                        // console.log("downloadVoice localId",localId)
                         wx.playVoice({
                             localId: localId // 需要播放的音频的ID，由stopRecord接口获得
                         })

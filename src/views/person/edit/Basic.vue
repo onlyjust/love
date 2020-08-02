@@ -336,15 +336,16 @@
                 values.nativeProvince = this.datingBasic.nativeProvince;
                 values.nativeCity = this.datingBasic.nativeCity;
                 values.nativeArea = this.datingBasic.nativeArea;
-                console.log('submit', values);
-                console.log("datingBasic",this.datingBasic);
+                // console.log('submit', values);
+                // console.log("datingBasic",this.datingBasic);
                 if (!this.validateDating(values)) {
                     return;
                 }
                 let result = await updateDatingBasic(values);
-                this.$toast(result.message);
                 if (result.success){
                     this.$router.back();
+                } else {
+                    this.$toast(result.message);
                 }
             },
             // 学历

@@ -5,7 +5,17 @@
             <!--<a @click="$router.push('/person/question')"><i class="iconfont iconbianji"></i></a>-->
         </div>
         <div class="question">
-            <div class="question_wrap">
+            <div class="question_wrap" v-for="question in questionList">
+                <div class="question_container">
+                    <h2 class="question_title">Q：{{question.question}}</h2>
+                    <a @click="$router.push({name:'soulQuestionAnswer',params:{id:question.id,question:question.question}})"><i class="iconfont iconbianji"></i></a>
+                </div>
+                <div class="answer_container">
+                    <p class="answer" v-if="question.answer">A：{{question.answer}}</p>
+                    <p class="answer" v-else>A：您还没填写{{question.question}}请您尽快填写信息</p>
+                </div>
+            </div>
+            <!--<div class="question_wrap">
                 <div class="question_container">
                     <h2 class="question_title">Q：我为什么会单身？</h2>
                     <a @click="$router.push('/person/question')"><i class="iconfont iconbianji"></i></a>
@@ -42,15 +52,32 @@
                         爱情的样子就是世间所有的一切都不如你，只有你才是我生命里的唯一。当我凝视你的眼睛，
                         当我听到你的声音，当我闻到你秀发上的淡淡清香，当我感受到我剧烈的心跳，我会庆幸一辈子很长，幸好有你在我身边。</p>
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
 </template>
 
 <script>
+    import {getSoulQuestionAnswer} from "../../service/api";
+
     export default {
         name: "SoulQuestion",
-
+        data(){
+            return {
+                questionList:[]
+            }
+        },
+        created() {
+            this.initData();
+        },
+        methods:{
+            async initData(){
+                let result = await getSoulQuestionAnswer();
+                if (result.success){
+                    this.questionList = result.data;
+                }
+            }
+        }
     }
 </script>
 
@@ -81,7 +108,7 @@
     .question .answer_container{
         font-size: 13px;
         line-height: 26px;
-        margin: 1rem auto;
+        margin-bottom: 1rem;
         white-space: pre-wrap;
         color: #8b8b8b;
     }

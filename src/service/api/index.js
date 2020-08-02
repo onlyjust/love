@@ -26,9 +26,17 @@ export const getDatingBasic = () => ajax(BASE_URL+'/mine/getDatingBasic');
 // 更新交友基础资料
 export const updateDatingBasic = (datingBasic) => ajax(BASE_URL+'/mine/updateDatingBasic', datingBasic, "POST");
 // 获取交友走心问题
-export const getDatingQuestion = () => ajax(BASE_URL+'/mine/getDatingQuestion');
+export const getDatingQuestion = (type,recommend=null) => {
+    if (recommend == null){
+        return ajax(BASE_URL+'/mine/getDatingQuestion/'+type);
+    } else {
+        return ajax(BASE_URL+'/mine/getDatingQuestion/'+type+"/"+recommend);
+    }
+};
 // 获取交友走心回答
 export const getDatingQuestionAnswer = (questionId) => ajax(BASE_URL+'/mine/getDatingQuestionAnswer/'+questionId);
+// 获取灵魂问答
+export const getSoulQuestionAnswer = () => ajax(BASE_URL+'/mine/getSoulQuestionAnswer');
 // 更新交友走心回答
 export const updateDatingQuestionAnswer = (questionId,answer,fileIdList) => ajax(BASE_URL+'/mine/updateDatingQuestionAnswer',{questionId,answer,fileIdList},"POST");
 // 喜欢我的

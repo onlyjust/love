@@ -51,7 +51,7 @@
 <style scoped>
     /*走心问答*/
     .question {
-        margin-bottom: 50px;
+        /*margin-bottom: 50px;*/
     }
     .question .question_container{
 

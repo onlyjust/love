@@ -43,7 +43,7 @@
         background-color: #ffffff;
     }
     .swipe-img{
-        max-width: 100%;
+        /*max-width: 100%;
         max-height: 100%;
         width:auto;
         height:auto;
@@ -51,14 +51,15 @@
         position: absolute;
         top: 50%;
         left: 50%;
-        transform:translate(-50%,-50%);
+        transform:translate(-50%,-50%);*/
 
-        /*width: 100%;
+        width: 100%;
+        min-height: 100%;
         position: absolute;
         top: 50%;
         left: 50%;
         transform:translate(-50%,-50%);
-        object-fit: cover*/
+        /*object-fit: cover*/
     }
 
     .custom-indicator {

@@ -16,8 +16,10 @@
         <UserLabel :labelList="datingData.labelList"/>
         <!--走心问答-->
         <UserQuestion :questionAnswerList="datingData.questionAnswerList"/>
-        <div class="footer"></div>
+        <!--灵魂拷问-->
+        <UserSoulQuestion />
 
+        <div class="footer"></div>
         <span class="shouye iconfont iconindex" @click="goHome()"></span>
     </div>
 </template>
@@ -34,10 +36,12 @@
     import {preview} from "../../service/api";
     import HtmlToCanvas from "../../components/canvas/HtmlToCanvas";
     import UserDynamic from "../userinfo/children/UserDynamic";
+    import UserSoulQuestion from "../userinfo/children/UserSoulQuestion";
 
     export default {
         name: "PreviewInfo",
         components: {
+            UserSoulQuestion,
             UserDynamic,
             HtmlToCanvas, UserQuestion, UserLabel, UserAuth, UserBasic, UserNav, UserHeader, Slideshow},
         data(){

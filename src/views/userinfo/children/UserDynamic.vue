@@ -2,7 +2,8 @@
     <div id="user-dynamic" v-if="dynamicInfo">
         <div class="subject">
             <h1>最新动态</h1>
-            <a>更多…</a>
+            <a @click="onDynamic()">更多…</a>
+            <!--<a v-else >更多…</a>-->
         </div>
         <div class="dynamic_container">
             <div class="dynamic_info">
@@ -23,21 +24,35 @@
 </template>
 
 <script>
+    import {mapState} from 'vuex';
     export default {
         name: "UserDynamic",
         props: {
             dynamicInfo: {
                 type: Object,
                 default: ()=>{}
+            },
+            datingId:{
+                type: Number
             }
         },
         computed:{
+            // ...mapState(['token']),
             dynamicImgIdx(){
                 if (this.dynamicInfo.dynamicFileList){
                     let index = (this.dynamicInfo.dynamicFileList.length-1)%3
                     return 'dynamic_img_'+index;
                 }
-            }
+            },
+            onDynamic() {
+                console.log("this.token==>"+this.$store.state.token);
+                if ( this.$store.state.token){
+                    this.$router.push({name:'personDynamic',params:{datingId:this.datingId}})
+                } else {
+                    this.$toast("您还没登录，只有登录后才有权限访问")
+                }
+
+            },
         }
     }
 </script>

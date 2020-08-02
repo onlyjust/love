@@ -5,23 +5,32 @@
         <!--用户头信息-->
         <UserHeader :userInfo="datingData" />
         <!--用户导航-->
-        <UserNav :datingId="datingData.datingDataId" :liked="datingData.liked"/>
+        <!--<UserNav :datingId="datingData.datingDataId" :liked="datingData.liked"/>-->
+        <!--喜欢-->
+        <UserLike :datingId="datingData.datingDataId" :liked="datingData.liked"/>
         <!--基本信息-->
         <UserBasic :userInfo="datingData"/>
         <!--认证信息-->
         <UserAuth v-if="datingData.authIdentity" :authIdentity="datingData.authIdentity"/>
+        <!--最新动态-->
+        <UserDynamic :dynamicInfo="datingData.dynamicInfo" :datingId="datingData.datingDataId"/>
         <!--个性标签-->
         <UserLabel :labelList="datingData.labelList"/>
         <!--走心问答-->
         <UserQuestion :questionAnswerList="datingData.questionAnswerList"/>
+        <!--灵魂拷问-->
+        <UserSoulQuestion/>
+        <!--分享-->
+        <UserShare :datingData="datingData"/>
+
         <div class="footer"></div>
 
-        <div class="float_block">
+        <!--<div class="float_block">
             <span @click="shareInfo()">分享</span>
             <span @click="switchSession(datingData.userId,datingData.nickname)">想认识</span>
-        </div>
+        </div>-->
 
-        <HtmlToCanvas v-if="datingData" ref="canvasImage" :userInfo="datingData"/>
+
     </div>
 </template>
 
@@ -36,10 +45,19 @@
 
     import {previewPersonal} from "../../service/api";
     import HtmlToCanvas from "../../components/canvas/HtmlToCanvas";
+    import UserSoulQuestion from "./children/UserSoulQuestion";
+    import UserLike from "./children/UserLike";
+    import UserShare from "./children/UserShare";
+    import UserDynamic from "./children/UserDynamic";
 
     export default {
         name: "Person",
-        components: {HtmlToCanvas, UserQuestion, UserLabel, UserAuth, UserBasic, UserNav, UserHeader, Slideshow},
+        components: {
+            UserDynamic,
+            UserShare,
+            UserLike,
+            UserSoulQuestion,
+            HtmlToCanvas, UserQuestion, UserLabel, UserAuth, UserBasic, UserNav, UserHeader, Slideshow},
         data(){
             return {
                 datingId:0,
@@ -77,9 +95,9 @@
                     this.$router.push({path: '/chat/'+fromName})
                 })
             },
-            shareInfo(){
+            /*shareInfo(){
                 this.$refs.canvasImage.htmlToCanvas();
-            }
+            }*/
         }
     }
 </script>
@@ -113,5 +131,7 @@
         border-radius: 1rem;
         color: #787878;
     }
+
+
 
 </style>

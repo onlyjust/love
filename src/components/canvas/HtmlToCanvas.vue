@@ -31,22 +31,40 @@
                 // newVal && this.htmlToCanvas(); //newVal存在的话执行drawChar函数
             }*/
         },
-        mounted(){
-            // let avatar = getFile('http://a0.att.hudong.com/16/12/01300535031999137270128786964.jpg');
-            /*const params = {
-                type: 'pro', // 尝试换一下text,image
-                // avatar: this.datingData.personalPhoto,
-                avatar: this.personalPhoto,
-                // avatar: 'https://imgs.solui.cn/avatar.png',
-                nickname: this.nickname,
-                qrcodeContent: window.location.href,
-            };
-            console.log("params:",params);
-            drawPoster(params).then(res => {
-                this.painting = res
-            })*/
+        created(){
+            // this.initData();
         },
         methods:{
+            async initData(){
+                if (this.userInfo && this.userInfo.personalPhoto) {
+                    let avatar = "http://api.51vipyuan.com/api/file/download/"+this.userInfo.personalPhoto.substring(this.userInfo.personalPhoto.lastIndexOf("/")+1);
+                    let basicInfo = '';
+                    if (this.userInfo.age) {
+                        basicInfo += this.userInfo.age;
+                    }
+                    if (this.userInfo.horoscope) {
+                        basicInfo += "  "+this.userInfo.horoscope;
+                    }
+                    if (this.userInfo.job) {
+                        basicInfo += "  "+this.userInfo.job;
+                    }
+                    const params = {
+                        type: 'pro', // 尝试换一下text,image
+                        // avatar: this.userInfo.personalPhoto,
+                        // avatar: "http://192.168.0.103:8089/api/file/download/fa5b2c7c-991c-4eac-b416-13b66a822802.jpeg",
+                        avatar: avatar,
+                        nickname: this.userInfo.nickname,
+                        highlightTitle: this.userInfo.highlightTitle,
+                        // qrcodeContent: window.location.href,
+                        basicInfo: basicInfo,
+                        qrcodeContent: window.location.href.substring(0,window.location.href.indexOf(window.location.pathname))+"/tourist/preview/"+this.userInfo.datingDataId,
+                    };
+                    console.log("params:",params);
+                    drawPoster(params).then(res => {
+                        this.painting = res
+                    })
+                }
+            },
             htmlToCanvas() {
                 /*console.log("window.location.port",window.location.port);
                 console.log("window.location.protocol",window.location.protocol);
@@ -55,32 +73,11 @@
                 console.log("window.location.hostname",window.location.hostname);
                 console.log("window.location.href",window.location.href);
                 console.log("window.location",window.location.href.substring(0,window.location.href.indexOf(window.location.pathname)));*/
-                let avatar = "http://api.51vipyuan.com/api/file/download/"+this.userInfo.personalPhoto.substring(this.userInfo.personalPhoto.lastIndexOf("/")+1);
-                let basicInfo = '';
-                if (this.userInfo.age) {
-                    basicInfo += this.userInfo.age;
+                if(this.src){
+                    this.canvasPosterShow = true;
+                    return;
                 }
-                if (this.userInfo.horoscope) {
-                    basicInfo += "  "+this.userInfo.horoscope;
-                }
-                if (this.userInfo.job) {
-                    basicInfo += "  "+this.userInfo.job;
-                }
-                const params = {
-                    type: 'pro', // 尝试换一下text,image
-                    // avatar: this.userInfo.personalPhoto,
-                    // avatar: "http://192.168.0.103:8089/api/file/download/fa5b2c7c-991c-4eac-b416-13b66a822802.jpeg",
-                    avatar: avatar,
-                    nickname: this.userInfo.nickname,
-                    highlightTitle: this.userInfo.highlightTitle,
-                    // qrcodeContent: window.location.href,
-                    basicInfo: basicInfo,
-                    qrcodeContent: window.location.href.substring(0,window.location.href.indexOf(window.location.pathname))+"/tourist/preview/"+this.userInfo.datingDataId,
-                };
-                console.log("params:",params);
-                drawPoster(params).then(res => {
-                    this.painting = res
-                })
+                this.initData();
             },
             // 保存
             success(src) {
