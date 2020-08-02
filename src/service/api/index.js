@@ -37,6 +37,8 @@ export const getDatingQuestion = (type,recommend=null) => {
 export const getDatingQuestionAnswer = (questionId) => ajax(BASE_URL+'/mine/getDatingQuestionAnswer/'+questionId);
 // 获取灵魂问答
 export const getSoulQuestionAnswer = () => ajax(BASE_URL+'/mine/getSoulQuestionAnswer');
+// 获取TA灵魂问答
+export const getTaSoulQuestionAnswer = (datingId) => ajax(BASE_URL+'/mine/getTaSoulQuestionAnswer/'+datingId);
 // 更新交友走心回答
 export const updateDatingQuestionAnswer = (questionId,answer,fileIdList) => ajax(BASE_URL+'/mine/updateDatingQuestionAnswer',{questionId,answer,fileIdList},"POST");
 // 喜欢我的

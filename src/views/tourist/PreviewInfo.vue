@@ -17,7 +17,7 @@
         <!--走心问答-->
         <UserQuestion :questionAnswerList="datingData.questionAnswerList"/>
         <!--灵魂拷问-->
-        <UserSoulQuestion />
+        <UserSoulQuestion v-if="datingData.datingDataId" :datingId="datingData.datingDataId"/>
 
         <div class="footer"></div>
         <span class="shouye iconfont iconindex" @click="goHome()"></span>

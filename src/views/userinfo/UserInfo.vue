@@ -19,7 +19,7 @@
         <!--走心问答-->
         <UserQuestion :questionAnswerList="datingData.questionAnswerList"/>
         <!--灵魂拷问-->
-        <UserSoulQuestion/>
+        <UserSoulQuestion v-if="datingData.datingDataId" :datingId="datingData.datingDataId"/>
         <!--分享-->
         <UserShare :datingData="datingData"/>
 

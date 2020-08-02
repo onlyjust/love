@@ -20,10 +20,16 @@
 </template>
 
 <script>
-    import {getSoulQuestionAnswer} from "../../../service/api";
+    import {getTaSoulQuestionAnswer} from "../../../service/api";
 
     export default {
         name: "UserSoulQuestion",
+        props:{
+            datingId: {
+                type: Number,
+                default: () => 0
+            }
+        },
         data() {
             return {
                 questionList:[]
@@ -34,7 +40,7 @@
         },
         methods:{
             async initData(){
-                let result = await getSoulQuestionAnswer();
+                let result = await getTaSoulQuestionAnswer(this.datingId);
                 if (result.success){
                     this.questionList = result.data;
                 }
