@@ -2,7 +2,7 @@
     <div id="user-dynamic" v-if="dynamicInfo">
         <div class="subject">
             <h1>最新动态</h1>
-            <a @click="onDynamic()">更多…</a>
+            <span @click="moreDynamic()">更多…</span>
             <!--<a v-else >更多…</a>-->
         </div>
         <div class="dynamic_container">
@@ -39,12 +39,14 @@
         computed:{
             // ...mapState(['token']),
             dynamicImgIdx(){
-                if (this.dynamicInfo.dynamicFileList){
+                if (this.dynamicInfo.dynamicFileList && this.dynamicInfo.dynamicFileList.length>0){
                     let index = (this.dynamicInfo.dynamicFileList.length-1)%3
                     return 'dynamic_img_'+index;
                 }
             },
-            onDynamic() {
+        },
+        methods:{
+            moreDynamic() {
                 console.log("this.token==>"+this.$store.state.token);
                 if ( this.$store.state.token){
                     this.$router.push({name:'personDynamic',params:{datingId:this.datingId}})

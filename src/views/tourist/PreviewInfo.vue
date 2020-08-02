@@ -11,7 +11,7 @@
         <!--认证信息-->
         <UserAuth v-if="datingData.authIdentity" :authIdentity="datingData.authIdentity"/>
         <!--最新动态-->
-        <UserDynamic :dynamicInfo="datingData.dynamicInfo"/>
+        <UserDynamic :dynamicInfo="datingData.dynamicInfo" :datingId="this.datingId"/>
         <!--个性标签-->
         <UserLabel :labelList="datingData.labelList"/>
         <!--走心问答-->
