@@ -38,11 +38,11 @@
 
     .like {
         position: fixed;
-        right: 50px;
-        bottom: 100px;
-        width: 50px;
-        height: 50px;
-        line-height: 50px;
+        right: 40px;
+        bottom: 60px;
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
         text-align: center;
         vertical-align: middle;
     }

@@ -26,6 +26,9 @@
                     <span>{{userInfo.nativePlace}}人</span>
                 </div>
             </div>
+            <div v-if="!this.$store.state.token" class="fullbg">
+                登录后才能显示
+            </div>
         </div>
     </div>
 </template>
@@ -81,6 +84,7 @@
 
     .basic .basic_box {
         padding: 0 2rem;
+        position: relative;
     }
     .basic .basic_box .basic_box_info{
         display: flex;
@@ -101,5 +105,23 @@
     }
     .basic .basic_box .basic_box_info>div span {
         margin-right: 1rem;
+    }
+
+    .fullbg{
+        background-color: #b9b9b9;
+        left:0;
+        opacity: 0.96;
+        position: absolute;
+        top: 0;
+        z-index: 1;
+        filter: alpha(opacity=50);
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        font-size: 16px;
+        color: #ff2b42;
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
 </style>

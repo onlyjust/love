@@ -54,7 +54,7 @@
             // 提交
             async onSubmit(){
                 let result = await updateDatingQuestionAnswer(this.questionId, this.answer, null);
-                this.$toast(result.message);
+                // this.$toast(result.message);
                 if (result.success){
                     this.$router.back();
                 }

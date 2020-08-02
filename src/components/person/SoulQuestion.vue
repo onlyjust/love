@@ -8,11 +8,11 @@
             <div class="question_wrap" v-for="question in questionList">
                 <div class="question_container">
                     <h2 class="question_title">Q：{{question.question}}</h2>
-                    <a @click="$router.push({name:'soulQuestionAnswer',params:{id:question.id,question:question.question}})"><i class="iconfont iconbianji"></i></a>
+                    <a @click="$router.push({name:'soulQuestionAnswer',params:{id:question.questionId,question:question.question}})"><i class="iconfont iconbianji"></i></a>
                 </div>
                 <div class="answer_container">
                     <p class="answer" v-if="question.answer">A：{{question.answer}}</p>
-                    <p class="answer" v-else>A：您还没填写{{question.question}}请您尽快填写信息</p>
+                    <p class="answer" v-else>A：请说说{{question.question}}</p>
                 </div>
             </div>
             <!--<div class="question_wrap">

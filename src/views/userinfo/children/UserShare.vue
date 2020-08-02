@@ -2,6 +2,7 @@
     <div>
         <div class="share_box">
             <div @click="shareInfo()">分享名片</div>
+            <div @click="switchSession(datingData.userId,datingData.nickname)">聊天</div>
         </div>
         <HtmlToCanvas v-if="datingData" ref="canvasImage" :userInfo="datingData"/>
     </div>
@@ -16,6 +17,13 @@
             datingData:Object
         },
         methods:{
+            switchSession (fromId,fromName) {
+                let from = fromId;
+                let remark = '';
+                this.$store.dispatch('switchSession', {from, remark}).then(() => {
+                    this.$router.push({path: '/chat/'+fromName})
+                })
+            },
             shareInfo(){
                 this.$refs.canvasImage.htmlToCanvas();
             }
@@ -38,6 +46,7 @@
         color: white;
         font-weight: bold;
         border-radius: 20px;
+        margin: 10px auto;
     }
 
 </style>
