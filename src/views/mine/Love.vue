@@ -15,6 +15,7 @@
                         width="5rem"
                         height="5rem"
                         :src="dating.personalPhoto"
+                        @click="$router.push({name:'userinfo',params:{datingId:dating.datingId}})"
                 />
                 <div class="clearfix cell-right">
                     <div class="left">
