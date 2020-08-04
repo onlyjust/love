@@ -4,6 +4,8 @@
         <Slideshow :slideshow_list="slideshow_list"/>
         <!--用户头信息-->
         <UserHeader :userInfo="datingData" />
+        <!--申请加微信-->
+        <UserApply :datingId="datingData.datingDataId"/>
         <!--用户导航-->
         <!--<UserNav :datingId="datingData.datingDataId" :liked="datingData.liked"/>-->
         <!--喜欢-->
@@ -49,10 +51,12 @@
     import UserLike from "./children/UserLike";
     import UserShare from "./children/UserShare";
     import UserDynamic from "./children/UserDynamic";
+    import UserApply from "./children/UserApply";
 
     export default {
         name: "Person",
         components: {
+            UserApply,
             UserDynamic,
             UserShare,
             UserLike,
