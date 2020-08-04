@@ -4,6 +4,8 @@
         <Slideshow :slideshow_list="slideshow_list"/>
         <!--用户头信息-->
         <UserHeader :userInfo="datingData" />
+        <!--申请加微信-->
+        <UserApply :datingId="datingData.datingDataId" :wechatId="datingData.wechatId"/>
         <!--用户导航-->
         <!--<UserNav :datingId="datingData.datingDataId" :liked="false"/>-->
         <!--基本信息-->
@@ -11,7 +13,7 @@
         <!--认证信息-->
         <UserAuth v-if="datingData.authIdentity" :authIdentity="datingData.authIdentity"/>
         <!--最新动态-->
-        <UserDynamic :dynamicInfo="datingData.dynamicInfo" :datingId="this.datingId"/>
+        <UserDynamic v-if="datingData.datingDataId" :dynamicInfo="datingData.dynamicInfo" :datingId="datingData.datingDataId"/>
         <!--个性标签-->
         <UserLabel :labelList="datingData.labelList"/>
         <!--走心问答-->
@@ -37,10 +39,12 @@
     import HtmlToCanvas from "../../components/canvas/HtmlToCanvas";
     import UserDynamic from "../userinfo/children/UserDynamic";
     import UserSoulQuestion from "../userinfo/children/UserSoulQuestion";
+    import UserApply from "../userinfo/children/UserApply";
 
     export default {
         name: "PreviewInfo",
         components: {
+            UserApply,
             UserSoulQuestion,
             UserDynamic,
             HtmlToCanvas, UserQuestion, UserLabel, UserAuth, UserBasic, UserNav, UserHeader, Slideshow},

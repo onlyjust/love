@@ -1,7 +1,8 @@
 <template>
     <!--认证信息-->
     <div class="auth">
-        <h1 class="subject"><i class="iconfont iconjibenziliao_huaban">认证信息</i></h1>
+        <!--<i class="iconfont iconjibenziliao_huaban"></i>-->
+        <h1 class="subject">认证信息</h1>
         <div class="auth_container">
             <div class="auth_left">
                 <i class="iconfont iconrenzheng"></i>
@@ -41,11 +42,12 @@
 
     /*认证信息*/
     .auth{
-        color: #999999;
+
     }
     .auth .auth_container{
         display: flex;
         padding: 0 1rem;
+        color: #999999;
     }
     .auth .auth_container .auth_left {
         width: 6rem;

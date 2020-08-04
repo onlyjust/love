@@ -5,7 +5,7 @@
         <!--用户头信息-->
         <UserHeader :userInfo="datingData" />
         <!--申请加微信-->
-        <UserApply :datingId="datingData.datingDataId"/>
+        <UserApply :datingId="datingData.datingDataId" :wechatId="datingData.wechatId"/>
         <!--用户导航-->
         <!--<UserNav :datingId="datingData.datingDataId" :liked="datingData.liked"/>-->
         <!--喜欢-->

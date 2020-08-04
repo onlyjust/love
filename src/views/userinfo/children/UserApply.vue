@@ -4,7 +4,7 @@
             <div>
                 <span class="wechat-no">微信号：{{wechatId}}</span>
             </div>
-            <div>
+            <div v-if="wechatId == '********'">
                 <span class="apply-btn" @click="applyWechat()">申请加微信</span>
             </div>
         </div>
@@ -12,19 +12,26 @@
 </template>
 
 <script>
+    import {applyAddWechat} from "../../../service/api";
+
     export default {
         name: "UserApply",
         props:{
             datingId:Number,
+            wechatId:String
         },
         data(){
             return {
-                wechatId:"********",
             }
         },
         methods: {
-            async applyWechat(){
-                this.$toast('待开放');
+            async applyWechat() {
+                if (!this.$store.state.token) {
+                    this.$toast('请您登录后，再来申请加微信');
+                    return;
+                }
+                let result = await applyAddWechat(this.datingId);
+                this.$toast(result.message);
             }
         }
     }

@@ -1,7 +1,8 @@
 <template>
     <!--基本信息-->
     <div class="basic">
-        <h1 class="subject"><i class="iconfont iconjibenziliao_huaban">基本信息</i></h1>
+        <!--<i class="iconfont iconjibenziliao_huaban"></i>-->
+        <h1 class="subject">基本信息</h1>
         <div class="basic_box">
             <div class="basic_box_info">
                 <div>

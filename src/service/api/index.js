@@ -75,6 +75,8 @@ export const commentDynamic = (commentParam) => ajax(BASE_URL+'/mine/commentDyna
 // 动态评论点赞
 export const likeComment = (commentId,liked) => ajax(BASE_URL+'/mine/likeComment',{commentId,liked}, 'POST');
 
+// 申请加微信
+export const applyAddWechat = (applyId) => ajax(BASE_URL+'/mine/applyAddWechat/'+applyId);
 
 // 签到历史信息
 export const signInHistory = () => ajax(BASE_URL+'/task/signInHistory');
@@ -118,6 +120,7 @@ export const companyAuth = (fileParam) => ajax(BASE_URL+'/auth/company', filePar
 export const getCompanyInfo = () => ajax(BASE_URL+'/auth/getCompanyInfo');
 // 游客预览信息
 export const preview = (datingId) => ajax(BASE_URL+'/tourist/preview/'+datingId);
+
 
 // 获取短信验证码(GET)
 export const getPhoneCode = (phone) => ajax(BASE_URL + '/login/sendPhoneSms/'+phone);
