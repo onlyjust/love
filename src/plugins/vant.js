@@ -131,3 +131,7 @@ Vue.use(TreeSelect);
 // CountDown 倒计时
 import { CountDown } from 'vant';
 Vue.use(CountDown);
+
+// Tab 标签页
+import { Tab, Tabs } from 'vant';
+Vue.use(Tab).use(Tabs);

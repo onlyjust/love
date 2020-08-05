@@ -45,6 +45,12 @@ export const updateDatingQuestionAnswer = (questionId,answer,fileIdList) => ajax
 export const getLikeMe = () => ajax(BASE_URL+'/mine/getLikeMe');
 // 我喜欢的
 export const getLiked = () => ajax(BASE_URL+'/mine/getLiked');
+// 获取申请微信列表
+export const getApplyWechat = () => ajax(BASE_URL+'/apply/getApplyWechat');
+// 获取接收申请列表
+export const getAcceptWechat = () => ajax(BASE_URL+'/apply/getAcceptWechat');
+// 审核申请列表
+export const auditApply = (applyId,status,reason='') => ajax(BASE_URL+'/apply/auditApply',{applyId, status, reason},"POST");
 // 上传文件
 export const uploadFile = (fileParam) => ajax(BASE_URL+'/file/upload',fileParam,"POST");
 // 删除文件

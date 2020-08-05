@@ -67,6 +67,11 @@
             <van-cell title="我关注" icon="gold-coin" is-link to="/fans"></van-cell>
             <van-cell title="关注我" icon="todo-list" is-link to="/love"></van-cell>
         </van-cell-group>
+
+        <van-cell-group style="margin-top: 0.4rem">
+            <van-cell title="微信申请记录" icon="todo-list" is-link to="/apply/wechat"></van-cell>
+        </van-cell-group>
+
         <!--<van-cell-group style="margin-top: 0.4rem">
             <van-cell title="我的优惠券" icon="gold-coin" value="1张" is-link></van-cell>
             <van-cell title="我的收货地址" icon="todo-list" is-link></van-cell>
