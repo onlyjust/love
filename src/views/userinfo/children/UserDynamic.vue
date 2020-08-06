@@ -2,7 +2,7 @@
     <div id="user-dynamic" v-if="dynamicInfo">
         <div class="subject">
             <h1>最新动态</h1>
-            <span @click="moreDynamic()">更多…</span>
+            <span class="more-dynamic" @click="moreDynamic()">更多 ></span>
             <!--<a v-else >更多…</a>-->
         </div>
         <div class="dynamic_container">
@@ -10,7 +10,7 @@
                 <p class="dynamic_txt">{{dynamicInfo.content}}</p>
                 <div class="dynamic_img">
                     <img :class="dynamicImgIdx" v-for="(file,index) in dynamicInfo.dynamicFileList"
-                         @click="Preview_img(dynamicInfo.dynamicFileList,index)" :src="file.filePath">
+                         @click="previewImg(dynamicInfo.dynamicFileList,file.filePath)" :src="file.filePath">
                 </div>
                 <h1 v-if="dynamicInfo.title" class="dynamic_title">#{{dynamicInfo.title}}</h1>
                 <p v-if="dynamicInfo.location" class="location iconfont iconzuobiao">{{dynamicInfo.location}}</p>
@@ -55,6 +55,13 @@
                 }
 
             },
+            previewImg(images,currentImg) {
+                let imgList = images.map(image=>image.filePath);
+                wx.previewImage({
+                    current: currentImg, // 当前显示图片的http链接
+                    urls: imgList // 需要预览的图片http链接列表
+                });
+            }
         }
     }
 </script>
@@ -124,4 +131,9 @@
         line-height: 2rem;
     }
 
+    .subject .more-dynamic {
+        font-size: 14px;
+        color: #657bb3;
+        line-height: 30px;
+    }
 </style>

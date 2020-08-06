@@ -39,7 +39,8 @@ export async function requestWxStr () {
                 'stopVoice',
                 'onVoicePlayEnd',
                 'uploadVoice',
-                'downloadVoice'
+                'downloadVoice',
+                'previewImage'
             ]
         });
         // let that = this;

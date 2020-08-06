@@ -19,7 +19,7 @@
                         <p class="dynamic_txt" v-if="isDetail">{{dynamicInfo.content}}</p>
                         <p class="dynamic_txt" v-else @click="$router.push({name:'dynamicDetail', params:{id:dynamicInfo.id}})">{{dynamicInfo.content}}</p>
                         <div class="dynamic_img">
-                            <img :class="dynamicImgIdx" v-for="(file,index) in dynamicInfo.dynamicFileList" @click="Preview_img(dynamicInfo.dynamicFileList,index)"  :src="file.filePath">
+                            <img :class="dynamicImgIdx" v-for="(file,index) in dynamicInfo.dynamicFileList" @click="previewImg(dynamicInfo.dynamicFileList,file.filePath)"  :src="file.filePath">
                         </div>
                         <h1 v-if="dynamicInfo.title" class="dynamic_title">#{{dynamicInfo.title}}</h1>
                         <p v-if="dynamicInfo.location" class="location iconfont iconzuobiao">{{dynamicInfo.location}}</p>
@@ -76,6 +76,13 @@
                     loop: false,
                     startPosition: index
                 })
+            },
+            previewImg(images,currentImg) {
+                let imgList = images.map(image=>image.filePath);
+                wx.previewImage({
+                    current: currentImg, // 当前显示图片的http链接
+                    urls: imgList // 需要预览的图片http链接列表
+                });
             }
         },
         computed:{

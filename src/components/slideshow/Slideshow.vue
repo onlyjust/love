@@ -2,7 +2,8 @@
     <div>
         <van-swipe :height="370" :autoplay="3000" indicator-color="white">
             <van-swipe-item v-for="(image, index) in slideshow_list" :key="index">
-                <img class="swipe-img" v-lazy="image" @click="Preview_img(slideshow_list,index)" />
+                <!--<img class="swipe-img" v-lazy="image" @click="Preview_img(slideshow_list,index)" />-->
+                <img class="swipe-img" v-lazy="image" @click="previewImg(image)" />
             </van-swipe-item>
             <template #indicator v-if="datingId">
                 <div class="custom-indicator" @click="$router.push({name:'lifePhoto',params:{datingId:datingId}})">
@@ -24,7 +25,7 @@
         },
         methods: {
             // 轮播图预览
-            Preview_img(images, index) {
+            /*Preview_img(images, index) {
                 // console.info("image:{}",images)
                 ImagePreview({
                     images: images,//图片数组
@@ -32,6 +33,12 @@
                     loop: false,
                     startPosition: index
                 })
+            },*/
+            previewImg(currentImg) {
+                wx.previewImage({
+                    current: currentImg, // 当前显示图片的http链接
+                    urls: this.slideshow_list // 需要预览的图片http链接列表
+                });
             }
         }
     }

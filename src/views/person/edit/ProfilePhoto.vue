@@ -17,7 +17,7 @@
 
         <!--照片区-->
         <div class="photo-box">
-            <van-image width="25rem" height="25rem" fit="cover" radius="5" :src="profilePhoto"  @click="Preview_img(profilePhoto)"/>
+            <van-image width="25rem" height="25rem" fit="cover" radius="5" :src="profilePhoto"  @click="previewImg(profilePhoto)"/>
         </div>
 
         <!--裁剪-->
@@ -144,6 +144,12 @@
                         img
                     ],
                     closeable: true,
+                });
+            },
+            previewImg(currentImg) {
+                wx.previewImage({
+                    current: currentImg, // 当前显示图片的http链接
+                    urls: [currentImg] // 需要预览的图片http链接列表
                 });
             }
 
