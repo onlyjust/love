@@ -53,10 +53,16 @@
                 }
             },
             async agreeApply(applyId){
-                await auditApply(applyId, 1);
+                let result = await auditApply(applyId, 1);
+                if (result.success){
+                    this.getAcceptList();
+                }
             },
             async refuseApply(applyId){
-                await auditApply(applyId, 2);
+                let result = await auditApply(applyId, 2);
+                if (result.success){
+                    this.getAcceptList();
+                }
             }
         }
     }
