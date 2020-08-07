@@ -2,17 +2,19 @@
     <div >
         <van-steps :active="active">
             <van-step>我是</van-step>
+            <van-step>上传头像</van-step>
             <van-step>基本资料</van-step>
-            <van-step>教育/职业背景</van-step>
+            <van-step>教育背景</van-step>
             <van-step>联系方式</van-step>
             <van-step>生活照</van-step>
         </van-steps>
 
         <Registrant v-if="active==0" :datingObj="datingObj" @onDating="getDating"/>
-        <RegBasic v-if="active==1" :datingBasic="datingObj"/>
-        <RegJob v-if="active==2" :datingBasic="datingObj"/>
-        <RegContact v-if="active==3" :datingBasic="datingObj"/>
-        <RegLifePhoto v-if="active==4" :relationalId="datingId"/>
+        <RegPhoto v-if="active==1" :datingObj="datingObj"/>
+        <RegBasic v-if="active==2" :datingBasic="datingObj"/>
+        <RegJob v-if="active==3" :datingBasic="datingObj"/>
+        <RegContact v-if="active==4" :datingBasic="datingObj"/>
+        <RegLifePhoto v-if="active==5" :relationalId="datingId"/>
         <div class="step-box">
             <van-button type="primary" v-if="active!=0" @click="preStep">上一步</van-button>
             <van-button type="primary" @click="nextStep">{{active == 4?'完&emsp;&emsp;成':'下一步'}}</van-button>
@@ -31,10 +33,11 @@
     import {TOKEN,USER_INFO} from "../../store/mutations-type";
 
     import {getDatingBasic,updateDatingBasic,getUserInfo} from './../../service/api/index';
+    import RegPhoto from "./RegPhoto";
 
     export default {
         name: "RegUser",
-        components: {RegLifePhoto, RegContact, RegJob, RegBasic, Registrant},
+        components: {RegPhoto, RegLifePhoto, RegContact, RegJob, RegBasic, Registrant},
         data() {
             return {
                 active: 0,
@@ -66,15 +69,20 @@
                         this.$toast('请选择性别');
                         return;
                     }
-                } else if (this.active == 1) {
+                } else if (this.active == 1){
+                    /*if (!this.datingObj.personalPhoto) {
+                        this.$toast('请上传头像');
+                        return;
+                    }*/
+                } else if (this.active == 2) {
                     if(!this.validateBasic()){
                         return
                     }
-                } else if (this.active == 2){
+                } else if (this.active == 3){
                     if (!this.validateJob()){
                         return
                     }
-                } else if(this.active == 3){
+                } else if(this.active == 4){
                     if (!this.validateContact()){
                         return
                     }

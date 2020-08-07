@@ -10,9 +10,7 @@
                 <!--<a class="subject_edit" >编辑</a>-->
             </div>
             <div class="answer_container">
-                <p class="answer">
-                    {{item.answer}}
-                </p>
+                <p class="answer">{{item.answer}}</p>
                 <img v-for="(image,idx) in item.answerPhotoList" :key="idx" :src="image.filePath">
             </div>
         </div>

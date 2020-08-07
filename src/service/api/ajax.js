@@ -1,7 +1,8 @@
 import axios from 'axios'
 
-import {getStore} from './../../config/global';
+import {getStore,removeStore} from './../../config/global';
 import {TOKEN,USER_INFO} from "../../store/mutations-type";
+import router from './../../router/index'
 
 export default function ajax(url = '', params = {},type = 'GET') {
     let promise;
@@ -45,7 +46,19 @@ export default function ajax(url = '', params = {},type = 'GET') {
         }
         // 处理结果返回
         promise.then((response)=>{
-            resolve(response.data);
+            if (response.data.errorCode == '100'){
+                removeStore(TOKEN);
+                router.push("/login");
+                return false;
+            } else if (response.data.errorCode == '150') {
+                router.push("/register");
+                return false;
+            } else if (response.data.errorCode == '160') {
+                alert(response.data.message);
+                return false;
+            } else {
+                resolve(response.data);
+            }
         }).catch(error=>{
             reject(error);
         })

@@ -1,10 +1,6 @@
 <template>
     <div class="basic">
         <van-cell-group title="">
-            <!--头像-->
-            <van-cell title="头像" center is-link :to="{name:'profilePhoto',query:{url:datingBasic.personalPhoto}}">
-                <van-image width="40" height="40" radius="5" :src="datingBasic.personalPhoto" />
-            </van-cell>
             <!--昵称-->
             <van-field
                     v-model="datingBasic.nickname"
