@@ -3,12 +3,14 @@
     <div class="question" v-if="questionAnswerList !== undefined && questionAnswerList.length>0">
         <h1 class="subject">关于我</h1>
         <div class="question_container" v-for="(item,index) in questionAnswerList" :key="index">
-            <div class="subject">
-                <h2 class="subject_title question_title">{{item.question}}</h2>
-            </div>
-            <div class="answer_container">
-                <p class="answer">{{item.answer}}</p>
-                <img v-for="(image,idx) in item.answerPhotoList" :key="idx" :src="image.filePath">
+            <div v-if="item.answer">
+                <div class="subject">
+                    <h2 class="subject_title question_title">{{item.question}}</h2>
+                </div>
+                <div class="answer_container">
+                    <p class="answer">{{item.answer}}</p>
+                    <img v-for="(image,idx) in item.answerPhotoList" :key="idx" :src="image.filePath">
+                </div>
             </div>
         </div>
     </div>
