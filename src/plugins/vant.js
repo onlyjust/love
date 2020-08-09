@@ -135,3 +135,7 @@ Vue.use(CountDown);
 // Tab 标签页
 import { Tab, Tabs } from 'vant';
 Vue.use(Tab).use(Tabs);
+
+// Loading 加载
+import { Loading } from 'vant';
+Vue.use(Loading);

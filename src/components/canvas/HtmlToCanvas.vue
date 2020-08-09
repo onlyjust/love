@@ -1,8 +1,10 @@
 <template>
     <div id="htmlToCanvas"  >
         <van-popup v-model="canvasPosterShow" style="width: 60%">
-            <img :src="src" alt="" class="share-image">
+            <img v-if="src" :src="src" alt="" class="share-image">
+            <van-loading v-else size="24px" vertical>加载中...</van-loading>
         </van-popup>
+
         <vue-canvas-poster class="poster" :widthPixels="550" :painting="painting" @success="success" @fail="fail"></vue-canvas-poster>
     </div>
 </template>
@@ -37,7 +39,8 @@
         methods:{
             async initData(){
                 if (this.userInfo && this.userInfo.personalPhoto) {
-                    let avatar = "http://api.51vipyuan.com/api/file/download/"+this.userInfo.personalPhoto.substring(this.userInfo.personalPhoto.lastIndexOf("/")+1);
+                    // let avatar = "http://api.51vipyuan.com/api/file/download/"+this.userInfo.personalPhoto.substring(this.userInfo.personalPhoto.lastIndexOf("/")+1);
+                    let avatar = "/api/file/download/"+this.userInfo.personalPhoto.substring(this.userInfo.personalPhoto.lastIndexOf("/")+1);
                     let basicInfo = '';
                     if (this.userInfo.age) {
                         basicInfo += this.userInfo.age;
@@ -73,19 +76,21 @@
                 console.log("window.location.hostname",window.location.hostname);
                 console.log("window.location.href",window.location.href);
                 console.log("window.location",window.location.href.substring(0,window.location.href.indexOf(window.location.pathname)));*/
+                this.canvasPosterShow = true;
                 if(this.src){
-                    this.canvasPosterShow = true;
                     return;
                 }
+
                 this.initData();
             },
             // 保存
             success(src) {
-                this.canvasPosterShow = true;
+                // this.canvasPosterShow = true;
                 this.src = src
                 // console.log("src:",this.src);
             },
             fail(err) {
+                this.canvasPosterShow = false;
                 console.log('fail', err)
             },
         }

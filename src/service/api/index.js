@@ -37,8 +37,7 @@ export const getDatingQuestion = (type,recommend=null) => {
 export const getDatingQuestionAnswer = (questionId) => ajax(BASE_URL+'/mine/getDatingQuestionAnswer/'+questionId);
 // 获取灵魂问答
 export const getSoulQuestionAnswer = () => ajax(BASE_URL+'/mine/getSoulQuestionAnswer');
-// 获取TA灵魂问答
-export const getTaSoulQuestionAnswer = (datingId) => ajax(BASE_URL+'/mine/getTaSoulQuestionAnswer/'+datingId);
+
 // 更新交友走心回答
 export const updateDatingQuestionAnswer = (questionId,answer,fileIdList) => ajax(BASE_URL+'/mine/updateDatingQuestionAnswer',{questionId,answer,fileIdList},"POST");
 // 喜欢我的
@@ -126,7 +125,8 @@ export const companyAuth = (fileParam) => ajax(BASE_URL+'/auth/company', filePar
 export const getCompanyInfo = () => ajax(BASE_URL+'/auth/getCompanyInfo');
 // 游客预览信息
 export const preview = (datingId) => ajax(BASE_URL+'/tourist/preview/'+datingId);
-
+// 获取TA灵魂问答
+export const getTaSoulQuestionAnswer = (datingId) => ajax(BASE_URL+'/tourist/getTaSoulQuestionAnswer/'+datingId);
 
 // 获取短信验证码(GET)
 export const getPhoneCode = (phone) => ajax(BASE_URL + '/login/sendPhoneSms/'+phone);

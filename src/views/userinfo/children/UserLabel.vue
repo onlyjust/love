@@ -23,7 +23,8 @@
     .label_container{
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-around;
+        justify-content: flex-start;
+        /*margin-right: 5px;*/
         padding: 0 1rem;
     }
 
