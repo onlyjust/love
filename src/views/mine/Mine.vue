@@ -43,18 +43,18 @@
 
         <van-cell-group>
             <div class="watch-like">
-            <div class="watch-like-container">
-                <span class="watch-like-container-show">{{main.visitMeNum}}</span>
-                <span class="watch-like-container-label">看过我</span>
-            </div>
-            <div class="watch-like-container">
-                <span class="watch-like-container-show">{{main.likeMeNum}}</span>
-                <span class="watch-like-container-label" >喜欢我</span>
-            </div>
-            <div class="watch-like-container">
-                <span class="watch-like-container-show">{{main.likeNum}}</span>
-                <span class="watch-like-container-label">我喜欢</span>
-            </div>
+                <div class="watch-like-container" @click="$router.push('/visit')">
+                    <span class="watch-like-container-show">{{main.visitMeNum}}</span>
+                    <span class="watch-like-container-label">看过我</span>
+                </div>
+                <div class="watch-like-container" @click="$router.push('/fans')">
+                    <span class="watch-like-container-show">{{main.likeMeNum}}</span>
+                    <span class="watch-like-container-label" >喜欢我</span>
+                </div>
+                <div class="watch-like-container" @click="$router.push('/love')">
+                    <span class="watch-like-container-show">{{main.likeNum}}</span>
+                    <span class="watch-like-container-label">我喜欢</span>
+                </div>
             </div>
         </van-cell-group>
 
@@ -67,8 +67,9 @@
         </van-cell-group>
         <van-cell-group style="margin-top: 0.4rem">
             <van-cell title="我的动态" icon="gold-coin" is-link to="/mydynamic"></van-cell>
-            <van-cell title="我关注" icon="gold-coin" is-link to="/fans"></van-cell>
-            <van-cell title="关注我" icon="todo-list" is-link to="/love"></van-cell>
+            <!--<van-cell title="我关注" icon="gold-coin" is-link to="/fans"></van-cell>-->
+            <!--<van-cell title="关注我" icon="todo-list" is-link to="/love"></van-cell>-->
+            <van-cell title="我的资产" icon="todo-list" is-link to="/assetInfo"></van-cell>
         </van-cell-group>
 
 

@@ -44,6 +44,10 @@ export const updateDatingQuestionAnswer = (questionId,answer,fileIdList) => ajax
 export const getLikeMe = () => ajax(BASE_URL+'/mine/getLikeMe');
 // 我喜欢的
 export const getLiked = () => ajax(BASE_URL+'/mine/getLiked');
+// 看过我
+export const getVisit = () => ajax(BASE_URL+'/mine/getVisit');
+// 获取资产信息
+export const getAssetInfo = () => ajax(BASE_URL+'/mine/getAssetInfo');
 // 获取申请微信列表
 export const getApplyWechat = () => ajax(BASE_URL+'/apply/getApplyWechat');
 // 获取接收申请列表
@@ -145,5 +149,5 @@ export const uploadAvatar = (fileParam) => ajax(BASE_URL+'/user/avatar',filePara
 export const uploadVoice = (fileParam) => ajax(BASE_URL+'/user/uploadVoice',fileParam,"POST");
 // 喜欢TA关注TA
 export const likeUser = (datingId,liked) => ajax(BASE_URL+'/user/likeUser',{datingId,liked},"POST");
-
-
+// 随机获取声音主题
+export const getRandomTopicVoice = () => ajax(BASE_URL+'/basic/getRandomVoiceTopic');

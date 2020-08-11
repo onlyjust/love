@@ -13,5 +13,13 @@ export default [
     {
         path: '/love',
         component: () => import('@/views/mine/Love.vue'),
-    }
+    },
+    {
+        path: '/visit',
+        component: () => import('@/views/mine/Visit.vue'),
+    },
+    {
+        path: '/assetInfo',
+        component: () => import('@/views/mine/Asset.vue'),
+    },
 ]
