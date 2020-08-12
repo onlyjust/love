@@ -1,7 +1,7 @@
 <template>
     <div class="like" @click="onLike()">
-        <img v-if="liked" src="@/images/user/guanzhu.png">
-        <img v-else src="@/images/user/guanzhu2.png">
+        <img v-if="liked" src="@/images/user/shouchang.png">
+        <img v-else src="@/images/user/shouchang2.png">
     </div>
 </template>
 
@@ -35,7 +35,6 @@
 </script>
 
 <style scoped>
-
     .like {
         position: fixed;
         right: 40px;
@@ -45,7 +44,12 @@
         line-height: 40px;
         text-align: center;
         vertical-align: middle;
+        border-radius: 20px;
+        padding: 5px;
+        border: #619c8f solid 1px;
+        background-color: white;
     }
+
     .like img {
         width: 100%;
         height: 100%;

@@ -97,7 +97,7 @@
         align-items: flex-start;
         font-size: 1.3rem;
         box-sizing: border-box;
-        color: #999999;
+        color: #666666;
         height: 2.5rem;
         line-height: 2.5rem;
     }

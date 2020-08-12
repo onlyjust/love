@@ -89,7 +89,8 @@
         line-height: 26px;
         margin: 1rem auto;
         white-space: pre-wrap;
-        color: #999999;
+        /*color: #999999;*/
+        color: #666666;
     }
     .question .answer_container img{
         width: 100%;

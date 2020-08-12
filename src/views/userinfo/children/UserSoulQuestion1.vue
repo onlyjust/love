@@ -1,9 +1,9 @@
 <template>
     <div class="soul_question" v-if="questionList.length > 0">
+        <div class="subject">
+            <h1>灵魂拷问区</h1>
+        </div>
         <div class="question">
-            <div class="title_wrap">
-                <span class="title">灵魂拷问区</span>
-            </div>
             <div v-for="question in questionList">
                 <div class="question_wrap" v-if="question.answer" >
                     <div class="question_container">
@@ -23,8 +23,8 @@
     import {getTaSoulQuestionAnswer} from "../../../service/api";
 
     export default {
-        name: "UserSoulQuestion",
-        props: {
+        name: "UserSoulQuestion1",
+        props:{
             datingId: {
                 type: Number,
                 default: () => 0
@@ -32,16 +32,16 @@
         },
         data() {
             return {
-                questionList: []
+                questionList:[]
             }
         },
         created() {
             this.initData();
         },
-        methods: {
-            async initData() {
+        methods:{
+            async initData(){
                 let result = await getTaSoulQuestionAnswer(this.datingId);
-                if (result.success) {
+                if (result.success){
                     this.questionList = result.data;
                 }
             }
@@ -51,57 +51,35 @@
 
 <style scoped>
 
-    .soul_question {
-    }
-
     .question {
-        margin: 2rem 2rem;
-        border: #e8989a dashed 1px;
-        border-radius: 10px;
-        padding: 1rem 0 2rem;
+        margin: 0 2rem;
     }
-
-    .question .title_wrap {
-        text-align: center;
-    }
-
-    .question .title {
-        height: 50px;
-        line-height: 50px;
-        font-size: 20px;
-        font-weight: bold;
-        color: rgb(91, 156, 115);
-        border-bottom: rgb(255, 244, 92) solid 5px;
-        text-shadow: #55a532 1px 1px 1px;
-        padding-bottom: 5px;
-    }
-
     .question .question_wrap {
-        /*padding: 5px 10px;*/
+        border: #e8989a dashed 1px;
+        padding: 5px 10px;
+        border-radius: 10px;
         margin-bottom: 5px;
-        padding: 0 10px;
     }
-
     .question .question_container {
         display: flex;
         align-items: center;
         justify-content: space-between;
     }
-
-    .question .question_container .question_title {
-        margin: 1rem 0 0.5rem;
+    .question .question_container .question_title{
+        /*text-align: center;*/
+        margin: 1rem 0;
         font-size: 16px;
         font-weight: bold;
         color: #ee6d89;
+        /*border-left: #18a38d solid 4px;*/
+        /*padding-left: 5px;*/
     }
-
-    .question .answer_container {
+    .question .answer_container{
         font-size: 13px;
         line-height: 26px;
+        margin-bottom: 1rem;
         white-space: pre-wrap;
-        color: #666666;
-        /*color: #8b8b8b;*/
-        /*color: rgb(255, 255, 255);*/
+        color: #8b8b8b;
     }
 
 </style>
