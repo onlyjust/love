@@ -110,11 +110,12 @@
 
     .fullbg{
         background-color: #b9b9b9;
+        /*background-color: rgba(0,0,0,.9);*/
         left:0;
-        opacity: 0.96;
+        opacity: 0.98;
         position: absolute;
         top: 0;
-        z-index: 1;
+        /*z-index: 1;*/
         filter: alpha(opacity=50);
         width: 100%;
         height: 100%;
