@@ -33,6 +33,8 @@ export async function requestWxStr () {
             jsApiList: [
                 'updateAppMessageShareData',
                 'updateTimelineShareData',
+                'onMenuShareTimeline',
+                'onMenuShareAppMessage',
                 'startRecord',
                 'stopRecord',
                 'onVoiceRecordEnd',
