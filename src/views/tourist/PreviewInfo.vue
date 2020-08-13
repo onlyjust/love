@@ -20,6 +20,8 @@
         <UserQuestion :questionAnswerList="datingData.questionAnswerList"/>
         <!--灵魂拷问-->
         <UserSoulQuestion v-if="datingData.datingDataId" :datingId="datingData.datingDataId"/>
+        <!--分享给朋友-->
+        <UserShareWx v-if="datingData.datingDataId" :datingData="datingData"/>
 
         <div class="footer"></div>
         <span class="shouye iconfont iconindex" @click="goHome()"></span>
@@ -40,10 +42,12 @@
     import UserDynamic from "../userinfo/children/UserDynamic";
     import UserSoulQuestion from "../userinfo/children/UserSoulQuestion";
     import UserApply from "../userinfo/children/UserApply";
+    import UserShareWx from "../userinfo/children/UserShareWx";
 
     export default {
         name: "PreviewInfo",
         components: {
+            UserShareWx,
             UserApply,
             UserSoulQuestion,
             UserDynamic,

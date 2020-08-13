@@ -22,8 +22,10 @@
         <UserQuestion :questionAnswerList="datingData.questionAnswerList"/>
         <!--灵魂拷问-->
         <UserSoulQuestion v-if="datingData.datingDataId" :datingId="datingData.datingDataId"/>
-        <!--分享-->
+        <!--分享名片-->
         <UserShare :datingData="datingData"/>
+        <!--分享给朋友-->
+        <UserShareWx v-if="datingData.datingDataId" :datingData="datingData"/>
 
         <div class="footer"></div>
 
@@ -52,10 +54,12 @@
     import UserShare from "./children/UserShare";
     import UserDynamic from "./children/UserDynamic";
     import UserApply from "./children/UserApply";
+    import UserShareWx from "./children/UserShareWx";
 
     export default {
         name: "Person",
         components: {
+            UserShareWx,
             UserApply,
             UserDynamic,
             UserShare,

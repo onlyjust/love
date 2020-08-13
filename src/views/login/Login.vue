@@ -31,7 +31,7 @@
                             <input type="number" maxlength="4" placeholder="验证码" v-model="code" oninput="if(value.length>4)value=value.slice(0,4)"/>
                         </section>
                         <section class="login-hint">
-                            温馨提示：未注册心上人的手机号，登录时将自动注册，且代表已同意
+                            温馨提示：未注册的手机号，登录时将自动注册，且代表已同意
                             <a href="javascript:;">服务协议与隐私政策</a>
                         </section>
                     </div>

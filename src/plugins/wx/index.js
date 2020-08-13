@@ -40,7 +40,9 @@ export async function requestWxStr () {
                 'onVoicePlayEnd',
                 'uploadVoice',
                 'downloadVoice',
-                'previewImage'
+                'previewImage',
+                'updateAppMessageShareData',
+                'updateTimelineShareData'
             ]
         });
         // let that = this;
