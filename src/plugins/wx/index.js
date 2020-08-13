@@ -31,6 +31,8 @@ export async function requestWxStr () {
             // 必填，需要使用的JS接口列表，所有JS接口列表见官方js接口
             // 这里配置录音所需要的接口权限
             jsApiList: [
+                'updateAppMessageShareData',
+                'updateTimelineShareData',
                 'startRecord',
                 'stopRecord',
                 'onVoiceRecordEnd',
@@ -41,8 +43,6 @@ export async function requestWxStr () {
                 'uploadVoice',
                 'downloadVoice',
                 'previewImage',
-                'updateAppMessageShareData',
-                'updateTimelineShareData'
             ]
         });
         // let that = this;
