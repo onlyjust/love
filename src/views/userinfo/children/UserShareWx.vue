@@ -32,10 +32,6 @@
                     wx.updateAppMessageShareData(shareData);
                     wx.updateTimelineShareData(shareData);
                 });
-                let that = this;
-                wx.error(function (res) {
-                    that.$toast(res.errMsg);
-                });
             }
         }
     }
