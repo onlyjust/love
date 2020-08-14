@@ -21,7 +21,10 @@
                         success: function(res) {
                             // 以键值对的形式返回，可用的api值true，不可用为false
                             // 如：{"checkResult":{"chooseImage":true},"errMsg":"checkJsApi:ok"}
-                            // console.log("res==>",res);
+                            console.log("res==>",res);
+                            /*for (let key of Object.keys(res.checkResult)) {
+                                console.log("key==>",key, "value==>",res.checkResult[key]);
+                            }*/
                             that.shareInfo(res);
                             // console.log("personalPhoto==>",that.datingData.personalPhoto);
                         }
@@ -39,11 +42,6 @@
                 let personalPhoto = this.datingData.personalPhoto;
                 let checkResult = res.checkResult;
                 if (checkResult){
-                    /*console.log("checkResult==>",checkResult);
-                    console.log("updateAppMessageShareData==>",checkResult.updateAppMessageShareData);
-                    console.log("updateTimelineShareData==>",checkResult.updateTimelineShareData);
-                    console.log("onMenuShareAppMessage==>",checkResult.onMenuShareAppMessage);
-                    console.log("onMenuShareTimeline==>",checkResult.onMenuShareTimeline);*/
                     if (checkResult.updateAppMessageShareData){
                         wx.updateAppMessageShareData({
                             title: title,
